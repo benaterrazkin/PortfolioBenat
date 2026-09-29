@@ -22,20 +22,27 @@ export const SITIO: DatosSitio = {
   nombreCompleto: 'Beñat Errazkin Bermejo',
 
   /**
-   * Correo de contacto. Es el que aparece en las instrucciones del portfolio.
-   * (En el PDF del currículum figuraba benaterrazkin2@gmail.com: conviene
-   *  confirmar cuál de los dos es el bueno antes de publicar.)
+   * Correo de contacto. Se usa en toda la web: página de contacto, pie y
+   * currículum. Cambiarlo aquí lo cambia en los cuatro idiomas de golpe.
+   *
+   * (El PDF antiguo del currículum llevaba benaterrazkin2@gmail.com; el bueno
+   *  es este.)
    */
   correo: 'benaterrazkin224@gmail.com',
 
   /**
-   * Teléfono. Se muestra tal cual está escrito.
-   * Si se deja vacío no aparece en ningún sitio: ni en la web, ni en el pie,
-   * ni en el currículum.
+   * Teléfono. Se deja vacío a propósito: Beñat no quiere su número a la vista
+   * en una web pública, donde lo recogen los rastreadores de spam. Mientras
+   * esté vacío no aparece en ningún sitio: ni en la página de contacto, ni en
+   * el pie, ni en el currículum.
+   *
+   * Para volver a mostrarlo basta con escribirlo en las dos líneas de abajo:
+   *     telefono: '+34 688 89 02 66',
+   *     telefonoEnlace: '+34688890266',
    */
-  telefono: '+34 688 89 02 66',
+  telefono: '',
   /** El mismo teléfono sin espacios: es lo que marca el móvil al pulsarlo. */
-  telefonoEnlace: '+34688890266',
+  telefonoEnlace: '',
 
   /** PENDIENTE: dirección de su perfil de Instagram. Déjalo vacío para ocultarlo. */
   instagram: '',

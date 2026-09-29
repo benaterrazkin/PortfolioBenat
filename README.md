@@ -6,32 +6,27 @@ que se sube un cambio.
 
 ---
 
-## Antes de publicar: cosas pendientes de confirmar
+## Decisiones ya tomadas sobre los datos de Beñat
 
-Hay cinco puntos que dependen de Beñat y que conviene resolver antes de enseñar
-la web a nadie:
+Quedan aquí anotadas para que nadie las «corrija» de vuelta más adelante:
 
-1. **El correo.** En las instrucciones del portfolio aparece
-   `benaterrazkin224@gmail.com` y en el PDF del currículum
-   `benaterrazkin2@gmail.com`. La web usa el primero. Si el bueno es el otro,
-   se cambia en `src/config/sitio.ts`.
-2. **El carnet de conducir.** El currículum original dice «A1 y B1». En España
-   las categorías son A1 y **B** (B1 no existe). Está copiado tal cual del PDF:
-   si es una errata, se corrige en los cuatro archivos `src/data/cv/*.json`.
-3. **El teléfono.** El currículum lo incluye y la web también, en la página de
-   contacto y en el currículum. Si no quiere que su teléfono esté en una web
-   pública, basta con dejar `telefono: ''` en `src/config/sitio.ts` y desaparece
-   de todas partes.
-4. **La dirección postal.** El PDF del currículum incluye la calle («Avinguda de
-   Roma 43»). En la web solo aparece «Barcelona, España»: una dirección completa
-   en una página pública no aporta nada y se puede usar mal.
-5. **El español en la lista de idiomas del currículum.** El PDF solo listaba
-   euskera e inglés. Se ha añadido el español como lengua nativa porque parecía
-   un olvido; si no es así, se quita de los cuatro `src/data/cv/*.json`.
+- **El correo bueno es `benaterrazkin224@gmail.com`**, no el
+  `benaterrazkin2@gmail.com` que llevaba el PDF antiguo del currículum. Sale de
+  `src/config/sitio.ts` y desde ahí se reparte a la web y al currículum.
+- **El carnet es «A1 y B»**. El PDF ponía «B1», que en España no existe: era
+  una errata y está corregida en los cuatro `src/data/cv/*.json`.
+- **El teléfono no se publica.** Beñat prefiere que su número no esté a la
+  vista en una web pública. El campo `telefono` de `src/config/sitio.ts` está
+  vacío y, mientras lo esté, el número no sale ni en contacto, ni en el pie, ni
+  en el currículum. Para recuperarlo solo hay que volver a escribirlo ahí.
+- **La dirección postal no se publica.** El PDF incluía la calle («Avinguda de
+  Roma 43»); en la web aparece solo «Barcelona, España».
+- **El español se lista como lengua nativa** en el currículum, aunque el PDF
+  solo nombrara euskera e inglés.
 
-Y una cosa más, sin la cual el formulario de contacto no envía nada:
+## Antes de publicar: lo que falta
 
-6. **La clave del formulario.** Hay que darse de alta gratis en
+**La clave del formulario.** Hay que darse de alta gratis en
    [web3forms.com](https://web3forms.com) con el correo de Beñat y pegar la
    clave que llega por email en `claveFormulario`, dentro de
    `src/config/sitio.ts`. Mientras esté vacía, el formulario avisa de que no

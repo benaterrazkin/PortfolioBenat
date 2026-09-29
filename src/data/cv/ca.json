@@ -86,5 +86,5 @@
     { "lengua": "Castellà", "nivel": "Nadiu" },
     { "lengua": "Anglès", "nivel": "Nivell avançat" }
   ],
-  "otros": [{ "etiqueta": "Carnet de conduir", "valor": "A1 i B1" }]
+  "otros": [{ "etiqueta": "Carnet de conduir", "valor": "A1 i B" }]
 }

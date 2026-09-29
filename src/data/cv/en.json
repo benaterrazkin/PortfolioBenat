@@ -86,5 +86,5 @@
     { "lengua": "Spanish", "nivel": "Native" },
     { "lengua": "English", "nivel": "Advanced" }
   ],
-  "otros": [{ "etiqueta": "Driving licence", "valor": "A1 and B1" }]
+  "otros": [{ "etiqueta": "Driving licence", "valor": "A1 and B" }]
 }

@@ -86,5 +86,5 @@
     { "lengua": "Gaztelania", "nivel": "Ama hizkuntza" },
     { "lengua": "Ingelesa", "nivel": "Maila aurreratua" }
   ],
-  "otros": [{ "etiqueta": "Gidabaimena", "valor": "A1 eta B1" }]
+  "otros": [{ "etiqueta": "Gidabaimena", "valor": "A1 eta B" }]
 }

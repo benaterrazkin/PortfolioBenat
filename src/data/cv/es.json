@@ -86,5 +86,5 @@
     { "lengua": "Español", "nivel": "Nativo" },
     { "lengua": "Inglés", "nivel": "Nivel avanzado" }
   ],
-  "otros": [{ "etiqueta": "Carnet de conducir", "valor": "A1 y B1" }]
+  "otros": [{ "etiqueta": "Carnet de conducir", "valor": "A1 y B" }]
 }
