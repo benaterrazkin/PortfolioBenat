@@ -14,9 +14,6 @@ const es = {
     cambiarIdioma: 'Cambiar de idioma',
     saltarAlContenido: 'Saltar al contenido',
     cerrar: 'Cerrar',
-    anterior: 'Anterior',
-    siguiente: 'Siguiente',
-    volver: 'Volver a proyectos',
     revisionPendiente: 'Esta traducción está pendiente de revisión.',
   },
   nav: {
@@ -38,12 +35,6 @@ const es = {
     titulo: 'Proyectos',
     entradilla: 'Selección de trabajos académicos y profesionales.',
     vacio: 'Todavía no hay proyectos publicados. Pronto habrá novedades.',
-    ver: 'Ver proyecto',
-    galeria: 'Imágenes del proyecto',
-    ampliar: 'Ampliar imagen',
-    imagenDe: 'Imagen {n} de {total}',
-    unaImagen: '1 imagen',
-    variasImagenes: '{n} imágenes',
     ficha: {
       anio: 'Año',
       lugar: 'Lugar',
@@ -51,6 +42,18 @@ const es = {
       contexto: 'Contexto',
       herramientas: 'Herramientas',
     },
+  },
+  cuaderno: {
+    rotulo: 'Cuaderno de {titulo}',
+    hojaAnterior: 'Hoja anterior',
+    hojaSiguiente: 'Hoja siguiente',
+    hojaDe: 'Hoja {n} de {total}',
+    fin: 'Fin del cuaderno',
+    siguienteProyecto: 'Siguiente proyecto',
+    indice: 'Índice',
+    irA: 'Ir a {titulo}',
+    ayuda: 'Pulsa a los lados del cuaderno, o usa las flechas del teclado, para pasar las hojas.',
+    enBlanco: 'Hoja en blanco',
   },
   cv: {
     abrir: 'CV',
@@ -91,15 +94,7 @@ const es = {
     inicio: {
       titulo: 'Arquitecto',
       descripcion:
-        'Portfolio de Beñat Errazkin Bermejo, arquitecto por la UPV/EHU. Proyectos de arquitectura, dibujo y modelado tridimensional.',
-    },
-    proyectos: {
-      titulo: 'Proyectos',
-      descripcion: 'Proyectos de arquitectura de Beñat Errazkin Bermejo.',
-    },
-    contacto: {
-      titulo: 'Contacto',
-      descripcion: 'Escribe a Beñat Errazkin Bermejo, arquitecto con base en Barcelona.',
+        'Portfolio de Beñat Errazkin Bermejo, arquitecto por la UPV/EHU: proyectos de arquitectura, dibujo y modelado tridimensional, y forma de ponerse en contacto.',
     },
     privacidad: {
       titulo: 'Aviso legal',
@@ -116,9 +111,6 @@ const en: Textos = {
     cambiarIdioma: 'Change language',
     saltarAlContenido: 'Skip to content',
     cerrar: 'Close',
-    anterior: 'Previous',
-    siguiente: 'Next',
-    volver: 'Back to projects',
     revisionPendiente: 'This translation is pending review.',
   },
   nav: {
@@ -140,12 +132,6 @@ const en: Textos = {
     titulo: 'Projects',
     entradilla: 'A selection of academic and professional work.',
     vacio: 'No projects published yet. New work coming soon.',
-    ver: 'View project',
-    galeria: 'Project images',
-    ampliar: 'Enlarge image',
-    imagenDe: 'Image {n} of {total}',
-    unaImagen: '1 image',
-    variasImagenes: '{n} images',
     ficha: {
       anio: 'Year',
       lugar: 'Location',
@@ -153,6 +139,18 @@ const en: Textos = {
       contexto: 'Context',
       herramientas: 'Tools',
     },
+  },
+  cuaderno: {
+    rotulo: '{titulo} — notebook',
+    hojaAnterior: 'Previous page',
+    hojaSiguiente: 'Next page',
+    hojaDe: 'Page {n} of {total}',
+    fin: 'End of the notebook',
+    siguienteProyecto: 'Next project',
+    indice: 'Index',
+    irA: 'Go to {titulo}',
+    ayuda: 'Click either side of the notebook, or use the arrow keys, to turn the pages.',
+    enBlanco: 'Blank page',
   },
   cv: {
     abrir: 'CV',
@@ -193,15 +191,7 @@ const en: Textos = {
     inicio: {
       titulo: 'Architect',
       descripcion:
-        'Portfolio of Beñat Errazkin Bermejo, architect (UPV/EHU). Architecture projects, drawing and three-dimensional modelling.',
-    },
-    proyectos: {
-      titulo: 'Projects',
-      descripcion: 'Architecture projects by Beñat Errazkin Bermejo.',
-    },
-    contacto: {
-      titulo: 'Contact',
-      descripcion: 'Write to Beñat Errazkin Bermejo, architect based in Barcelona.',
+        'Portfolio of Beñat Errazkin Bermejo, architect (UPV/EHU): architecture projects, drawing and three-dimensional modelling, and how to get in touch.',
     },
     privacidad: {
       titulo: 'Legal notice',
@@ -216,9 +206,6 @@ const eu: Textos = {
     cambiarIdioma: 'Hizkuntza aldatu',
     saltarAlContenido: 'Edukira joan',
     cerrar: 'Itxi',
-    anterior: 'Aurrekoa',
-    siguiente: 'Hurrengoa',
-    volver: 'Proiektuetara itzuli',
     revisionPendiente: 'Itzulpen hau berrikusteke dago.',
   },
   nav: {
@@ -240,12 +227,6 @@ const eu: Textos = {
     titulo: 'Proiektuak',
     entradilla: 'Lan akademiko eta profesionalen hautaketa.',
     vacio: 'Oraindik ez dago proiekturik argitaratuta. Laster izango dira berriak.',
-    ver: 'Ikusi proiektua',
-    galeria: 'Proiektuaren irudiak',
-    ampliar: 'Handitu irudia',
-    imagenDe: '{total} irudietatik {n}.a',
-    unaImagen: 'Irudi 1',
-    variasImagenes: '{n} irudi',
     ficha: {
       anio: 'Urtea',
       lugar: 'Lekua',
@@ -253,6 +234,18 @@ const eu: Textos = {
       contexto: 'Testuingurua',
       herramientas: 'Tresnak',
     },
+  },
+  cuaderno: {
+    rotulo: '{titulo} proiektuaren koadernoa',
+    hojaAnterior: 'Aurreko orria',
+    hojaSiguiente: 'Hurrengo orria',
+    hojaDe: '{total} orritatik {n}.a',
+    fin: 'Koadernoaren amaiera',
+    siguienteProyecto: 'Hurrengo proiektua',
+    indice: 'Aurkibidea',
+    irA: 'Joan {titulo} atalera',
+    ayuda: 'Sakatu koadernoaren alboetan, edo erabili teklatuko geziak, orriak pasatzeko.',
+    enBlanco: 'Orri zuria',
   },
   cv: {
     abrir: 'CVa',
@@ -293,15 +286,7 @@ const eu: Textos = {
     inicio: {
       titulo: 'Arkitektoa',
       descripcion:
-        'Beñat Errazkin Bermejoren portfolioa, UPV/EHUko arkitektoa. Arkitektura proiektuak, marrazketa eta hiru dimentsioko modelizazioa.',
-    },
-    proyectos: {
-      titulo: 'Proiektuak',
-      descripcion: 'Beñat Errazkin Bermejoren arkitektura proiektuak.',
-    },
-    contacto: {
-      titulo: 'Kontaktua',
-      descripcion: 'Idatzi Beñat Errazkin Bermejori, Bartzelonan bizi den arkitektoari.',
+        'Beñat Errazkin Bermejoren portfolioa, UPV/EHUko arkitektoa: arkitektura proiektuak, marrazketa eta hiru dimentsioko modelizazioa, eta harremanetan jartzeko modua.',
     },
     privacidad: {
       titulo: 'Lege oharra',
@@ -316,9 +301,6 @@ const ca: Textos = {
     cambiarIdioma: "Canviar d'idioma",
     saltarAlContenido: 'Vés al contingut',
     cerrar: 'Tanca',
-    anterior: 'Anterior',
-    siguiente: 'Següent',
-    volver: 'Torna als projectes',
     revisionPendiente: 'Aquesta traducció està pendent de revisió.',
   },
   nav: {
@@ -340,12 +322,6 @@ const ca: Textos = {
     titulo: 'Projectes',
     entradilla: 'Selecció de treballs acadèmics i professionals.',
     vacio: 'Encara no hi ha projectes publicats. Aviat hi haurà novetats.',
-    ver: 'Veure projecte',
-    galeria: 'Imatges del projecte',
-    ampliar: 'Amplia la imatge',
-    imagenDe: 'Imatge {n} de {total}',
-    unaImagen: '1 imatge',
-    variasImagenes: '{n} imatges',
     ficha: {
       anio: 'Any',
       lugar: 'Lloc',
@@ -353,6 +329,18 @@ const ca: Textos = {
       contexto: 'Context',
       herramientas: 'Eines',
     },
+  },
+  cuaderno: {
+    rotulo: 'Quadern de {titulo}',
+    hojaAnterior: 'Pàgina anterior',
+    hojaSiguiente: 'Pàgina següent',
+    hojaDe: 'Pàgina {n} de {total}',
+    fin: 'Final del quadern',
+    siguienteProyecto: 'Projecte següent',
+    indice: 'Índex',
+    irA: 'Vés a {titulo}',
+    ayuda: 'Prem als costats del quadern, o fes servir les fletxes del teclat, per passar les pàgines.',
+    enBlanco: 'Pàgina en blanc',
   },
   cv: {
     abrir: 'CV',
@@ -393,15 +381,7 @@ const ca: Textos = {
     inicio: {
       titulo: 'Arquitecte',
       descripcion:
-        "Portfolio de Beñat Errazkin Bermejo, arquitecte per la UPV/EHU. Projectes d'arquitectura, dibuix i modelatge tridimensional.",
-    },
-    proyectos: {
-      titulo: 'Projectes',
-      descripcion: "Projectes d'arquitectura de Beñat Errazkin Bermejo.",
-    },
-    contacto: {
-      titulo: 'Contacte',
-      descripcion: 'Escriu a Beñat Errazkin Bermejo, arquitecte amb base a Barcelona.',
+        "Portfolio de Beñat Errazkin Bermejo, arquitecte per la UPV/EHU: projectes d'arquitectura, dibuix i modelatge tridimensional, i com posar-s'hi en contacte.",
     },
     privacidad: {
       titulo: 'Avís legal',

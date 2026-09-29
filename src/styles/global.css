@@ -28,6 +28,10 @@
   --font-texto: 'Inter Variable', system-ui, -apple-system, sans-serif;
 
   --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Curva del pase de hoja: el papel tiene masa y arranca desde cero, al
+     contrario que --ease-suave, que arranca a toda velocidad. */
+  --ease-hoja: cubic-bezier(0.33, 0.02, 0.15, 1);
 }
 
 @layer base {
@@ -145,4 +149,243 @@
   }
   & ol { padding-left: 1.2rem; }
   & ol > li { margin-block-start: 0.6em; }
+}
+
+/* ------------------------------------------------------------------ *
+ *  CUADERNO
+ *
+ *  Cada proyecto se enseña como un cuaderno abierto. Las HOJAS son
+ *  papeles con dos caras: al girar una hoja se avanzan dos páginas. La
+ *  guarda (el cajetín del proyecto) y la contraguarda (el cierre) no
+ *  giran nunca: son el fondo del cuaderno.
+ *
+ *  Sin JavaScript nada de esto se aplica y las caras se leen una debajo
+ *  de otra, en orden. La clase .con-js la pone Base.astro antes de que
+ *  se pinte nada, para que no se vea un fogonazo de la versión apilada.
+ * ------------------------------------------------------------------ */
+
+/* Deja sitio a la cabecera fija al saltar desde los puntos o el menú. */
+@utility anclada {
+  scroll-margin-block-start: clamp(5rem, 12vh, 7rem);
+}
+
+/* El cuaderno pide más ancho que el resto de la web. */
+@utility contenedor-ancho {
+  width: 100%;
+  max-width: 104rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 48rem) { padding-inline: 2rem; }
+}
+
+.cuaderno-seccion { padding-block: clamp(2.5rem, 7vh, 5rem); }
+
+/* --- Sin JS, y en cualquier caso antes del primer pintado --- */
+.cara {
+  position: relative;
+  border: 1px solid var(--color-linea);
+  background-color: var(--color-papel);
+  /* Sin JS la hoja no tiene alto propio: se le da uno para que la imagen
+     de dentro tenga contra qué medirse. */
+  min-height: 22rem;
+}
+.cara + .cara,
+.hoja + .hoja,
+.hoja + .cara { margin-block-start: 1.25rem; }
+.cara--imagen img { max-height: 70vh; }
+.cuaderno .zona { display: none; }
+
+/* Con JS la hoja siempre tiene alto, y la imagen se ajusta a él. */
+.con-js .cara { min-height: 0; }
+.con-js .cara--imagen img { max-height: 100%; }
+
+/* ------------------------------------------------------------------ *
+ *  Con JS y pantalla ancha: el cuaderno abierto de verdad
+ * ------------------------------------------------------------------ */
+@media (width >= 60rem) {
+  .con-js .cuaderno {
+    --giro: 620ms;
+
+    /* Doble página apaisada. Se mira primero cuánto cabe de alto, para
+       que el cuaderno entero se vea sin desplazarse, y el ancho sale de
+       la proporción. */
+    height: min(78svh, calc(min(100vw - 4rem, 100rem) * 297 / 420));
+    aspect-ratio: 420 / 297;
+    width: auto;
+    margin-inline: auto;
+
+    position: relative;
+    /* Los z-index de las hojas se quedan aquí dentro y nunca compiten
+       con la cabecera, que es z-40. */
+    isolation: isolate;
+    /* La perspectiva vive AQUÍ y el contexto se queda PLANO: así las
+       hojas se ordenan por z-index y no por su posición en el espacio. */
+    perspective: 2400px;
+    perspective-origin: 50% 45%;
+    user-select: none;
+  }
+
+  .con-js .cuaderno-papel { position: absolute; inset: 0; }
+
+  /* --- Los dos paneles que no giran --- */
+  .con-js .cara--base {
+    position: absolute;
+    inset-block: 0;
+    width: 50%;
+    margin: 0;
+    z-index: 0;
+  }
+  .con-js .cara--izquierda { left: 0; }
+  .con-js .cara--derecha { right: 0; }
+
+  /* --- Las hojas --- */
+  .con-js .hoja {
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    width: 50%;
+    margin: 0;
+
+    /* El eje de giro es el canal central, o sea el borde izquierdo de la
+       hoja, que está pegado al centro del cuaderno. */
+    transform-origin: left center;
+    /* preserve-3d SOLO aquí: la hoja necesita 3D para tener dos caras.
+       Si se pusiera en .cuaderno, el navegador ordenaría las hojas por
+       su posición en el espacio y los z-index dejarían de valer. */
+    transform-style: preserve-3d;
+
+    transform: rotateY(0deg);
+    transition: transform var(--giro) var(--ease-hoja);
+  }
+  .con-js .hoja[data-pasada] { transform: rotateY(-180deg); }
+
+  .con-js .hoja > .cara {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    margin: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .con-js .cara--reverso { transform: rotateY(180deg); }
+
+  /* ---------------------------------------------------------------- *
+   *  z-index: la parte que se rompe siempre
+   *
+   *  En reposo, la hoja 0 está ARRIBA del montón derecho (es la primera
+   *  que se pasa), así que cuenta hacia abajo. Ya pasada, está ABAJO del
+   *  montón izquierdo, así que cuenta hacia arriba. Y mientras GIRA
+   *  tiene que ir por encima de todo.
+   *
+   *  El orden de estas tres reglas importa: gana la última.
+   * ---------------------------------------------------------------- */
+  .con-js .hoja               { z-index: calc(var(--hojas) - var(--i)); }
+  .con-js .hoja[data-pasada]  { z-index: calc(var(--i) + 1); }
+  .con-js .hoja[data-girando] { z-index: calc(var(--hojas) + 2); }
+
+  /* Sombra del canal central: por encima de los montones quietos, por
+     debajo de la hoja que gira. */
+  .con-js .cuaderno-papel::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    width: 4.5rem;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(20 22 26 / 0.06) 45%,
+      rgb(20 22 26 / 0.06) 55%,
+      transparent
+    );
+    pointer-events: none;
+    z-index: calc(var(--hojas) + 1);
+  }
+
+  /* Sombra que recorre la hoja mientras gira: máxima a media vuelta. */
+  .con-js .hoja > .cara::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgb(20 22 26 / 0.13), transparent 42%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  @keyframes sombra-de-hoja {
+    0%, 100% { opacity: 0; }
+    50%      { opacity: 1; }
+  }
+  .con-js .hoja[data-girando] > .cara::after {
+    animation: sombra-de-hoja var(--giro) var(--ease-hoja);
+  }
+
+  /* --- Las zonas que se pulsan, por encima de todo --- */
+  .con-js .cuaderno .zona {
+    display: block;
+    position: absolute;
+    inset-block: 0;
+    width: 50%;
+    padding: 0;
+    border: 0;
+    background: none;
+    z-index: calc(var(--hojas) + 3);
+  }
+  .cuaderno .zona--izquierda { left: 0; cursor: w-resize; }
+  .cuaderno .zona--derecha { right: 0; cursor: e-resize; }
+  .cuaderno .zona[aria-disabled="true"] { cursor: default; pointer-events: none; }
+  /* El foco se dibuja por dentro: si no, rodearía media pantalla. */
+  .cuaderno .zona:focus-visible { outline-offset: -5px; }
+
+  /* Para recolocar las hojas de golpe, sin que se vea el giro. */
+  .cuaderno[data-sin-animacion] .hoja { transition: none; }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Con JS y pantalla estrecha: una hoja cada vez, y se arrastra
+ * ------------------------------------------------------------------ */
+@media (width < 60rem) {
+  .con-js .cuaderno { --giro: 420ms; position: relative; }
+
+  .con-js .cuaderno-papel {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .con-js .cuaderno-papel::-webkit-scrollbar { display: none; }
+
+  /* La hoja desaparece como caja y sus dos caras pasan a ser hermanas.
+     Por eso la hoja es un div y no un li: display:contents se llevaría
+     por delante la semántica de lista. */
+  .con-js .hoja { display: contents; }
+
+  .con-js .cara {
+    position: static;
+    transform: none;
+    backface-visibility: visible;
+    flex: 0 0 100%;
+    width: 100%;
+    margin: 0;
+    scroll-snap-align: start;
+    aspect-ratio: 210 / 297;
+    max-height: 76svh;
+  }
+  .con-js .hoja > .cara::after { display: none; }
+
+  .con-js .cuaderno .zona {
+    display: block;
+    position: absolute;
+    inset-block: 0;
+    width: 22%;
+    padding: 0;
+    border: 0;
+    background: none;
+    z-index: 5;
+  }
+  .cuaderno .zona--izquierda { left: 0; }
+  .cuaderno .zona--derecha { right: 0; }
+  .cuaderno .zona[aria-disabled="true"] { pointer-events: none; }
 }

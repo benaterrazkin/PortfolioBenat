@@ -1,0 +1,357 @@
+---
+import Cara from './Cara.astro';
+import type { Cuaderno } from '../data/cuaderno';
+import { textos, formatear } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+
+/**
+ * Un proyecto, dibujado como un cuaderno abierto.
+ *
+ * Las hojas son papeles con dos caras: al girar una se avanzan dos
+ * páginas. La guarda y la contraguarda no giran nunca. Todo el reparto
+ * viene hecho de src/data/cuaderno.ts; aquí solo se pinta.
+ */
+interface Props {
+  cuaderno: Cuaderno;
+  idioma: Idioma;
+  total: number;
+  /** El primero de la página carga su portada de inmediato. */
+  primero: boolean;
+  anclaSiguiente?: string;
+  tituloSiguiente?: string;
+}
+
+const { cuaderno: c, idioma, total, primero, anclaSiguiente, tituloSiguiente } = Astro.props;
+const t = textos(idioma);
+
+const comunes = {
+  idioma,
+  numeroCuaderno: c.numero,
+  totalCuadernos: total,
+  anclaSiguiente,
+  tituloSiguiente,
+};
+---
+
+<section
+  id={c.ancla}
+  class="cuaderno-seccion anclada"
+  data-seccion={c.ancla}
+  data-menu="proyectos"
+  aria-labelledby={`titulo-${c.id}`}
+>
+  <div class="contenedor-ancho">
+    <!-- Cabecera de la sección, fuera del cuaderno para que se lea siempre -->
+    <div class="flex items-baseline justify-between gap-6 border-b border-linea pb-3 mb-5">
+      <div class="flex items-baseline gap-4 min-w-0">
+        <span class="indice">{String(c.numero).padStart(2, '0')}</span>
+        <h3
+          id={`titulo-${c.id}`}
+          class="font-[family-name:var(--font-titulo)] text-xl md:text-2xl tracking-tight truncate"
+        >
+          {c.titulo}
+        </h3>
+      </div>
+      <p class="rotulo text-gris tabular-nums shrink-0">
+        <span data-contador></span>
+        <span class="sr-only">{c.anio}</span>
+      </p>
+    </div>
+
+    <div
+      class="cuaderno"
+      data-cuaderno
+      style={`--hojas:${c.hojas.length}`}
+      data-plantilla={t.cuaderno.hojaDe}
+      data-total-caras={c.caras.length}
+      aria-roledescription={formatear(t.cuaderno.rotulo, { titulo: c.titulo })}
+    >
+      <div class="cuaderno-papel" data-carril>
+        <!-- Guarda: el cajetín del proyecto. No gira nunca. -->
+        <Cara cara={c.guarda} lado="izquierda" {...comunes} />
+
+        {
+          c.hojas.map((hoja) => (
+            <div class="hoja" data-hoja={hoja.numero} style={`--i:${hoja.numero}`}>
+              <Cara
+                cara={hoja.anverso}
+                lado="anverso"
+                prioritaria={primero && hoja.numero === 0}
+                {...comunes}
+              />
+              <Cara cara={hoja.reverso} lado="reverso" {...comunes} />
+            </div>
+          ))
+        }
+
+        <!-- Contraguarda: el cierre. Va la última para que, sin JavaScript,
+             se lea al final de todo. -->
+        <Cara cara={c.contraguarda} lado="derecha" {...comunes} />
+      </div>
+
+      <!-- Las dos mitades que se pulsan para pasar hoja. Son botones de
+           verdad: se enfocan con el tabulador y los lee un lector. -->
+      <button type="button" class="zona zona--izquierda" data-paso="-1" aria-label={t.cuaderno.hojaAnterior}
+      ></button>
+      <button type="button" class="zona zona--derecha" data-paso="1" aria-label={t.cuaderno.hojaSiguiente}
+      ></button>
+
+      <p class="sr-only" aria-live="polite" data-aviso></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  /* ------------------------------------------------------------------ *
+   *  PASE DE HOJAS
+   *
+   *  Se guardan dos números: cuántas hojas se han pasado (pantalla ancha)
+   *  y qué cara se está viendo (pantalla estrecha, donde no hay doble
+   *  página). Al cruzar el umbral, uno se convierte en el otro.
+   * ------------------------------------------------------------------ */
+
+  const DOBLE = window.matchMedia('(min-width: 60rem)');
+  const QUIETO = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function montarCuaderno(cuaderno: HTMLElement) {
+    /* Estas cuatro piezas las escribe este mismo componente unas líneas más
+     * arriba, así que siempre están. */
+    const carril = cuaderno.querySelector<HTMLElement>('[data-carril]')!;
+    const aviso = cuaderno.querySelector<HTMLElement>('[data-aviso]')!;
+    const zonaIzq = cuaderno.querySelector<HTMLButtonElement>('[data-paso="-1"]')!;
+    const zonaDer = cuaderno.querySelector<HTMLButtonElement>('[data-paso="1"]')!;
+    const contador = cuaderno
+      .closest('.cuaderno-seccion')
+      ?.querySelector<HTMLElement>('[data-contador]');
+
+    const hojas = Array.from(cuaderno.querySelectorAll<HTMLElement>('[data-hoja]'));
+    const caras = Array.from(cuaderno.querySelectorAll<HTMLElement>('[data-cara]')).sort(
+      (a, b) => Number(a.dataset.cara) - Number(b.dataset.cara),
+    );
+    const totalHojas = hojas.length;
+    const totalCaras = caras.length;
+    const plantilla = cuaderno.dataset.plantilla ?? '{n} / {total}';
+
+    let hoja = 0; // hojas pasadas, de 0 a totalHojas
+    let cara = 0; // cara visible en pantalla estrecha
+    let girando = false;
+    let pendiente: 1 | -1 | 0 = 0;
+
+    /** La duración la manda el CSS; aquí solo se lee para el plan B. */
+    const duracion = () => {
+      const valor = getComputedStyle(cuaderno).getPropertyValue('--giro').trim();
+      if (valor.endsWith('ms')) return parseFloat(valor);
+      if (valor.endsWith('s')) return parseFloat(valor) * 1000;
+      return 620;
+    };
+
+    function pintar() {
+      const visibles = DOBLE.matches ? [hoja * 2, hoja * 2 + 1] : [cara];
+
+      for (const [i, c] of caras.entries()) {
+        const dentro = visibles.includes(i);
+        /* inert saca del foco, del ratón y del lector de pantalla todo lo
+         * que no se está viendo. Nunca display:none: eso impediría que se
+         * cargaran las imágenes. */
+        c.toggleAttribute('inert', !dentro);
+        c.setAttribute('aria-hidden', dentro ? 'false' : 'true');
+      }
+
+      const primera = DOBLE.matches ? hoja === 0 : cara === 0;
+      const ultima = DOBLE.matches ? hoja === totalHojas : cara === totalCaras - 1;
+      zonaIzq.setAttribute('aria-disabled', String(primera));
+      zonaDer.setAttribute('aria-disabled', String(ultima));
+
+      const texto = plantilla
+        .replace('{n}', String(visibles[0]! + 1))
+        .replace('{total}', String(totalCaras));
+      if (contador) contador.textContent = texto;
+      aviso.textContent = texto;
+    }
+
+    function precargar() {
+      const desde = DOBLE.matches ? hoja * 2 : cara;
+      for (let i = desde; i <= desde + 3; i++) {
+        caras[i]
+          ?.querySelectorAll<HTMLImageElement>('img[loading="lazy"]')
+          .forEach((img) => {
+            img.loading = 'eager';
+          });
+      }
+    }
+
+    /* ---------------- Pantalla ancha: girar la hoja ---------------- */
+
+    function pasar(paso: 1 | -1) {
+      if (!DOBLE.matches) return moverCara(paso);
+
+      /* Pulsar durante un giro no se pierde, pero solo se guarda UN paso:
+       * encolarlos todos produce una ráfaga que marea. */
+      if (girando) {
+        pendiente = paso;
+        return;
+      }
+
+      const destino = hoja + paso;
+      if (destino < 0 || destino > totalHojas) return;
+
+      /* Al avanzar gira la hoja de arriba del montón derecho; al retroceder,
+       * la de arriba del izquierdo. */
+      const laHoja = paso === 1 ? hojas[hoja] : hojas[destino];
+      if (!laHoja) return;
+
+      girando = true;
+      hoja = destino;
+
+      /* Los dos atributos, en el mismo fotograma: así el navegador ve a la
+       * vez el z-index máximo y el giro, y la hoja pasa POR ENCIMA de los
+       * dos montones en lugar de hundirse bajo el de destino. */
+      laHoja.dataset.girando = '';
+      laHoja.toggleAttribute('data-pasada', paso === 1);
+
+      precargar();
+      pintar();
+      alTerminar(laHoja);
+    }
+
+    function alTerminar(laHoja: HTMLElement) {
+      let hecho = false;
+      let reloj = 0;
+
+      const fin = (evento?: TransitionEvent) => {
+        /* transitionend burbujea: si algo de dentro tiene su propia
+         * transición, llegaría aquí y soltaría el cerrojo antes de tiempo. */
+        if (evento && (evento.target !== laHoja || evento.propertyName !== 'transform')) return;
+        if (hecho) return;
+        hecho = true;
+
+        clearTimeout(reloj);
+        laHoja.removeEventListener('transitionend', fin);
+        laHoja.removeEventListener('transitioncancel', fin);
+        delete laHoja.dataset.girando;
+        laHoja.style.willChange = '';
+        girando = false;
+
+        if (pendiente) {
+          const siguiente = pendiente;
+          pendiente = 0;
+          pasar(siguiente);
+        }
+      };
+
+      laHoja.addEventListener('transitionend', fin);
+      laHoja.addEventListener('transitioncancel', fin);
+      /* Red de seguridad: si la pestaña está en segundo plano el navegador
+       * puede saltarse el suceso, y el cuaderno se quedaría bloqueado. */
+      reloj = window.setTimeout(fin, duracion() + 200);
+    }
+
+    /* ---------------- Pantalla estrecha: una cara cada vez ---------------- */
+
+    function moverCara(paso: number) {
+      const destino = Math.min(totalCaras - 1, Math.max(0, cara + paso));
+      if (destino === cara) return;
+      cara = destino;
+      /* scrollTo sobre el carril y no scrollIntoView, que además movería
+       * la página entera en vertical. */
+      carril.scrollTo({
+        left: caras[cara]!.offsetLeft,
+        behavior: QUIETO.matches ? 'auto' : 'smooth',
+      });
+      precargar();
+      pintar();
+    }
+
+    let relojScroll = 0;
+    carril.addEventListener(
+      'scroll',
+      () => {
+        if (DOBLE.matches) return;
+        clearTimeout(relojScroll);
+        relojScroll = window.setTimeout(() => {
+          const i = Math.round(carril.scrollLeft / carril.clientWidth);
+          if (i !== cara && caras[i]) {
+            cara = i;
+            precargar();
+            pintar();
+          }
+        }, 120);
+      },
+      { passive: true },
+    );
+
+    /* ---------------- Saltar de golpe, sin animación ---------------- */
+
+    function irA(destino: number) {
+      const k = Math.min(totalHojas, Math.max(0, destino));
+      cuaderno.dataset.sinAnimacion = '';
+      hojas.forEach((h, i) => h.toggleAttribute('data-pasada', i < k));
+      void cuaderno.offsetWidth; // fuerza el recálculo antes de volver a animar
+      delete cuaderno.dataset.sinAnimacion;
+      hoja = k;
+      cara = k * 2;
+      precargar();
+      pintar();
+    }
+
+    DOBLE.addEventListener('change', () => {
+      if (DOBLE.matches) {
+        /* La cara que se veía en el móvil es la izquierda de su doble página. */
+        irA(Math.floor(cara / 2));
+      } else {
+        cara = hoja * 2;
+        carril.scrollLeft = caras[cara]?.offsetLeft ?? 0;
+        pintar();
+      }
+    });
+
+    /* ---------------- will-change, solo cuando hace falta ---------------- */
+
+    const preparar = (paso: 1 | -1) => {
+      if (!DOBLE.matches || girando) return;
+      const h = paso === 1 ? hojas[hoja] : hojas[hoja - 1];
+      if (h) h.style.willChange = 'transform';
+    };
+    const soltar = () => {
+      if (girando) return;
+      for (const h of hojas) h.style.willChange = '';
+    };
+    zonaDer.addEventListener('pointerenter', () => preparar(1));
+    zonaIzq.addEventListener('pointerenter', () => preparar(-1));
+    zonaDer.addEventListener('pointerleave', soltar);
+    zonaIzq.addEventListener('pointerleave', soltar);
+
+    /* ---------------- Sucesos ---------------- */
+
+    zonaIzq.addEventListener('click', () => pasar(-1));
+    zonaDer.addEventListener('click', () => pasar(1));
+
+    cuaderno.addEventListener('keydown', (evento) => {
+      if (evento.altKey || evento.ctrlKey || evento.metaKey) return;
+      switch (evento.key) {
+        case 'ArrowRight':
+          pasar(1);
+          break;
+        case 'ArrowLeft':
+          pasar(-1);
+          break;
+        case 'Home':
+          irA(0);
+          break;
+        case 'End':
+          irA(totalHojas);
+          break;
+        default:
+          return;
+      }
+      evento.preventDefault(); // que no se mueva la página a la vez
+    });
+
+    precargar();
+    pintar();
+  }
+
+  for (const cuaderno of document.querySelectorAll<HTMLElement>('[data-cuaderno]')) {
+    montarCuaderno(cuaderno);
+  }
+</script>

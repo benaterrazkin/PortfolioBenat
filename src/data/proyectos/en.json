@@ -1,47 +1,157 @@
 [
   {
-    "id": "ejemplo",
+    "id": "proyecto-1",
     "orden": 1,
-    "titulo": "Example project",
-    "subtitulo": "This entry is here to show what a project looks like",
-    "anio": "2025",
-    "lugar": "Donostia",
-    "tipo": "Collective housing",
+    "titulo": "Project 1",
+    "subtitulo": "A port warehouse turned into a trade school",
+    "anio": "2024",
+    "lugar": "Pasaia, Gipuzkoa",
+    "tipo": "Public facility · Refurbishment",
     "contexto": "Design Studio VI · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Physical model 1:100"],
     "texto": [
-      "This is the short project text: two or three paragraphs explaining what the project is about, what problem it solves and how. The title and the images are what matter most, so there is no need to write at length.",
-      "To publish a real project: copy this entry into the four language files, change the \"id\", the title and the text, and drop the images into src/assets/img/proyectos/. Delete this example entry once it is no longer needed."
+      "Warehouse number 3 on the Herrera quay has stood empty for twenty years: a concrete shed from 1962, with twelve-metre spans and a sawtooth roof that no longer covers anything. The proposal neither empties it nor rebuilds it. It repairs the roof, opens the floor at three points and inserts a timber building that never once touches the existing walls.",
+      "The workshops — carpentry, metal, boilermaking — occupy the ground floor, where the slab takes the heavy machinery and the quay doors let material in and out without detours. Above them, a tray of laminated timber holds the classrooms and a running corridor from which you can watch the work below. Learning a trade is, above all, watching someone who knows how to do it.",
+      "The works stop at the water's edge. The quay is left as it is, with its bollards and its rails, and all that is added is a ramp for launching whatever gets built inside. The building does not intend to reclaim the port: it intends to remain part of it."
     ],
     "portada": {
-      "archivo": "proyectos/ejemplo/portada.jpg",
-      "alt": "Placeholder image standing in for the project cover"
+      "archivo": "proyectos/proyecto-1/portada.jpg",
+      "alt": "View of the refurbished warehouse from the water of the quay"
     },
     "imagenes": [
       {
-        "archivo": "proyectos/ejemplo/planta.jpg",
-        "alt": "Placeholder image standing in for the floor plan",
-        "pie": "Ground floor plan. Level +0.00"
+        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
+        "alt": "Site plan showing the bay and the quays",
+        "pie": "Site plan. 1:2000"
       },
       {
-        "archivo": "proyectos/ejemplo/seccion.jpg",
-        "alt": "Placeholder image standing in for the section",
-        "pie": "Cross section"
+        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
+        "alt": "Ground floor plan with the three workshops and the access from the quay",
+        "pie": "Ground floor. Workshops and material access"
       },
       {
-        "archivo": "proyectos/ejemplo/alzado.jpg",
-        "alt": "Placeholder image standing in for the elevation",
-        "pie": "South elevation"
+        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
+        "alt": "Upper floor plan with the classrooms on the timber structure",
+        "pie": "Upper floor. Classrooms and running corridor"
       },
       {
-        "archivo": "proyectos/ejemplo/axonometrica.jpg",
-        "alt": "Placeholder image standing in for the axonometric drawing",
+        "archivo": "proyectos/proyecto-1/seccion.jpg",
+        "alt": "Longitudinal section showing the existing shed and the timber structure inside",
+        "pie": "Longitudinal section. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-1/alzado.jpg",
+        "alt": "Elevation towards the quay with the sliding doors open",
+        "pie": "Elevation to the quay"
+      },
+      {
+        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
+        "alt": "Exploded axonometric with the roof, the timber and the concrete shed",
         "pie": "Construction axonometric"
       },
       {
-        "archivo": "proyectos/ejemplo/maqueta.jpg",
-        "alt": "Placeholder image standing in for the photograph of the model",
-        "pie": "Model 1:200"
+        "archivo": "proyectos/proyecto-1/maqueta.jpg",
+        "alt": "Photograph of the card and timber model seen from the south",
+        "pie": "Model 1:100"
+      }
+    ]
+  },
+  {
+    "id": "proyecto-2",
+    "orden": 2,
+    "titulo": "Project 2",
+    "subtitulo": "Twelve houses and a public path above the estuary",
+    "anio": "2025",
+    "lugar": "Olabeaga, Bilbao",
+    "tipo": "Collective housing",
+    "contexto": "Final Degree Project · UPV/EHU",
+    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "texto": [
+      "Olabeaga is a long street propped against the hillside, with houses on one side only and the estuary on the other. The site is the gap left by a demolished workshop: fifteen metres of frontage, thirty of depth and seven metres of level difference between the street and the path above.",
+      "Instead of a block, twelve terraced houses stepping down with the slope. Each has two fronts — the estuary to the south, the hillside to the north — and a strip of services in between that absorbs the level change in two steps. Every dwelling has the same plan and differs only in the level it sits on.",
+      "The path linking the twelve houses runs at mid-height, between the street and the upper track, and works as a shortcut for the neighbourhood: you can walk up it without knocking on any door. It is the only part of the project that belongs to nobody in particular."
+    ],
+    "portada": {
+      "archivo": "proyectos/proyecto-2/portada.jpg",
+      "alt": "The twelve stepped dwellings seen from the far bank of the estuary"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/proyecto-2/implantacion.jpg",
+        "alt": "Site layout with the street, the plot and the upper path",
+        "pie": "Site layout. 1:1000"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
+        "alt": "Typical plan of three consecutive dwellings with the shared path",
+        "pie": "Typical plan. Three dwellings and the path"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
+        "alt": "Cross section showing the dwellings stepping down the hillside",
+        "pie": "Cross section. 1:100"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/vivienda.jpg",
+        "alt": "Plan and section of one dwelling with its two fronts",
+        "pie": "Typical dwelling. 1:50"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/paso.jpg",
+        "alt": "View of the public path between the houses, looking towards the estuary",
+        "pie": "The path, at mid-height"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/constructivo.jpg",
+        "alt": "Construction detail of the junction between the retaining wall and the floor slab",
+        "pie": "Detail. Junction with the retaining wall"
+      }
+    ]
+  },
+  {
+    "id": "proyecto-3",
+    "orden": 3,
+    "titulo": "Project 3",
+    "subtitulo": "A neighbourhood facility inside a block in Sants",
+    "anio": "2026",
+    "lugar": "La Bordeta, Barcelona",
+    "tipo": "Public facility",
+    "contexto": "Design Studio · ETSAB professional master",
+    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "texto": [
+      "The inside of the block is taken up by single-storey sheds that are no longer used and by a three-metre wall separating them from the housing. The brief asked for a neighbourhood facility; the project begins by deciding which part of the wall stays and which part comes down.",
+      "Two whole sheds are kept, along with the row of columns of a third. Between them a long courtyard appears, running east to west, distributing access to the three pieces of the programme: the multipurpose hall, the workshops and the senior citizens' centre. The rest is shade: a pergola of reclaimed beams that covers the courtyard without ever enclosing it.",
+      "The construction is deliberately poor: fair-faced brickwork, off-the-shelf aluminium windows and sheet metal over the old sheds. The budget concentrates on the ground, the water and the trees, which is what the neighbourhood will actually use."
+    ],
+    "portada": {
+      "archivo": "proyectos/proyecto-3/portada.jpg",
+      "alt": "The courtyard between the two retained sheds, with the pergola of reclaimed beams"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/proyecto-3/manzana.jpg",
+        "alt": "Plan of the whole block with the interior freed and the retained sheds",
+        "pie": "The block. 1:1000"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/planta.jpg",
+        "alt": "Plan of the facility with the multipurpose hall, the workshops and the centre",
+        "pie": "General plan. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
+        "alt": "Section through the courtyard with the two sheds, the pergola and the surrounding housing",
+        "pie": "Section through the courtyard. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/luz.jpg",
+        "alt": "Study of sunlight in the courtyard across the year",
+        "pie": "Sunlight in the courtyard"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/interior.jpg",
+        "alt": "Interior of the workshop shed with the steel structure left exposed",
+        "pie": "The workshops, in the north shed"
       }
     ]
   }

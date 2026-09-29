@@ -1,0 +1,126 @@
+---
+import { cuadernos } from '../data/cuaderno';
+import { textos, formatear } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+
+/**
+ * El carril de puntos de la derecha: un atajo por proyecto y otro para el
+ * contacto. Son enlaces a anclas normales, así que funcionan aunque no
+ * haya JavaScript; lo único que aporta el script es encender el punto de
+ * la sección por la que se va pasando (y, de paso, el del menú de arriba).
+ */
+interface Props {
+  idioma: Idioma;
+}
+
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+const paradas = [
+  ...cuadernos(idioma).map((c) => ({
+    ancla: c.ancla,
+    titulo: c.titulo,
+    etiqueta: String(c.numero).padStart(2, '0'),
+  })),
+  { ancla: 'contacto', titulo: t.contacto.titulo, etiqueta: '→' },
+];
+---
+
+<nav
+  class="puntos hidden lg:block fixed right-5 top-1/2 -translate-y-1/2 z-30"
+  aria-label={t.cuaderno.indice}
+>
+  <ul class="grid gap-4">
+    {
+      paradas.map((parada) => (
+        <li>
+          <a href={`#${parada.ancla}`} data-punto={parada.ancla} class="group relative flex items-center justify-end">
+            <span class="etiqueta rotulo text-gris">{parada.titulo}</span>
+            <span class="punto" aria-hidden="true" />
+            <span class="sr-only">{formatear(t.cuaderno.irA, { titulo: parada.titulo })}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .punto {
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--color-linea);
+    border-radius: 50%;
+    transition:
+      background-color 250ms var(--ease-suave),
+      border-color 250ms var(--ease-suave);
+  }
+  a:hover .punto,
+  a:focus-visible .punto {
+    border-color: var(--color-tinta);
+  }
+  /* Rojo de lápiz: marca pequeña, justo para lo que está reservado. */
+  a[data-activo] .punto {
+    background-color: var(--color-trazo);
+    border-color: var(--color-trazo);
+  }
+
+  /* El nombre solo aparece al apuntar o al enfocar. */
+  .etiqueta {
+    position: absolute;
+    right: 1.25rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms var(--ease-suave);
+  }
+  a:hover .etiqueta,
+  a:focus-visible .etiqueta {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  /* Enciende el punto —y el enlace del menú— de la sección que se está
+   * viendo. Un solo observador para las dos cosas. */
+  const puntos = new Map<string, HTMLElement>();
+  for (const punto of document.querySelectorAll<HTMLElement>('[data-punto]')) {
+    puntos.set(punto.dataset.punto!, punto);
+  }
+
+  const enlacesMenu = new Map<string, HTMLElement>();
+  for (const enlace of document.querySelectorAll<HTMLElement>('[data-ancla]')) {
+    enlacesMenu.set(enlace.dataset.ancla!, enlace);
+  }
+
+  const marcar = (mapa: Map<string, HTMLElement>, clave: string | undefined) => {
+    for (const [nombre, elemento] of mapa) {
+      elemento.toggleAttribute('data-activo', nombre === clave);
+      if (nombre === clave) elemento.setAttribute('aria-current', 'true');
+      else elemento.removeAttribute('aria-current');
+    }
+  };
+
+  /* Cuenta la sección que cruza la franja central de la ventana: así rara
+   * vez hay dos encendidas a la vez. */
+  const vigia = new IntersectionObserver(
+    (entradas) => {
+      for (const entrada of entradas) {
+        if (!entrada.isIntersecting) continue;
+        const seccion = (entrada.target as HTMLElement).dataset.seccion;
+        const menu = (entrada.target as HTMLElement).dataset.menu ?? seccion;
+        marcar(puntos, seccion);
+        marcar(enlacesMenu, menu);
+      }
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
+  );
+
+  for (const seccion of document.querySelectorAll('[data-seccion]')) {
+    /* La sección "proyectos" envuelve a los cuadernos: si se observara
+     * también, competiría con ellos. Solo se observan las paradas reales. */
+    if ((seccion as HTMLElement).dataset.seccion === 'proyectos') continue;
+    vigia.observe(seccion);
+  }
+</script>

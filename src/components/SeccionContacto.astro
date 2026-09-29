@@ -1,16 +1,21 @@
 ---
-import Base from '../layouts/Base.astro';
-import TituloPagina from '../components/TituloPagina.astro';
-import Formulario from '../components/Formulario.astro';
-import BotonCV from '../components/BotonCV.astro';
-import VisorCV from '../components/VisorCV.astro';
+import TituloSeccion from './TituloSeccion.astro';
+import Formulario from './Formulario.astro';
+import BotonCV from './BotonCV.astro';
 import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
 import { SITIO } from '../config/sitio';
 
+/**
+ * El contacto, al final del recorrido.
+ *
+ * No incluye el VisorCV: ese va una sola vez en la página (lo pone
+ * Inicio.astro), o habría dos ventanas con el mismo identificador.
+ */
 interface Props {
   idioma: Idioma;
 }
+
 const { idioma } = Astro.props;
 const t = textos(idioma);
 
@@ -40,19 +45,21 @@ const vias = [
 ];
 ---
 
-<Base idioma={idioma} pagina="contacto">
-  <TituloPagina indice="03" titulo={t.contacto.titulo} entradilla={t.contacto.entradilla} />
+<section id="contacto" class="anclada border-t border-linea" data-seccion="contacto">
+  <TituloSeccion indice="03" titulo={t.contacto.titulo} entradilla={t.contacto.entradilla} />
 
-  <div class="contenedor py-14 md:py-20 grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16 items-start">
+  <div class="contenedor pb-20 grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16 items-start">
     <div class="max-w-xl">
-      <h2 class="rotulo text-tinta border-b border-linea pb-3">{t.contacto.formularioTitulo}</h2>
+      <h3 class="rotulo text-tinta border-b border-linea pb-3">{t.contacto.formularioTitulo}</h3>
       <div class="mt-8">
         <Formulario idioma={idioma} />
       </div>
     </div>
 
     <aside class="border border-linea lg:sticky lg:top-24">
-      <h2 class="rotulo text-tinta px-4 py-2.5 border-b border-linea bg-papel-2">{t.contacto.directoTitulo}</h2>
+      <h3 class="rotulo text-tinta px-4 py-2.5 border-b border-linea bg-papel-2">
+        {t.contacto.directoTitulo}
+      </h3>
 
       <dl class="divide-y divide-linea-suave">
         {
@@ -74,7 +81,7 @@ const vias = [
         }
 
         <div class="px-4 py-3.5">
-          <dt class="rotulo">{t.contacto.ubicacion}</dt>
+          <dt class="rotulo text-gris">{t.contacto.ubicacion}</dt>
           <dd class="mt-1 text-[0.9375rem]">{SITIO.ubicacion}</dd>
         </div>
       </dl>
@@ -84,6 +91,4 @@ const vias = [
       </div>
     </aside>
   </div>
-
-  <VisorCV idioma={idioma} />
-</Base>
+</section>

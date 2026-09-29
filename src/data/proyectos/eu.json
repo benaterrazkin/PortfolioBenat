@@ -1,47 +1,157 @@
 [
   {
-    "id": "ejemplo",
+    "id": "proyecto-1",
     "orden": 1,
-    "titulo": "Adibideko proiektua",
-    "subtitulo": "Fitxa hau proiektu batek zer itxura duen erakusteko dago",
-    "anio": "2025",
-    "lugar": "Donostia",
-    "tipo": "Etxebizitza kolektiboa",
-    "contexto": "VI. Proiektuak · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "titulo": "1. proiektua",
+    "subtitulo": "Portuko biltegi bat lanbide eskola bihurtuta",
+    "anio": "2024",
+    "lugar": "Pasaia, Gipuzkoa",
+    "tipo": "Ekipamendua · Birgaitzea",
+    "contexto": "Proiektuak VI · UPV/EHU",
+    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Maketa 1:100"],
     "texto": [
-      "Hau da proiektuaren testu laburra: bi edo hiru paragrafo, zeri buruzkoa den, zer arazo konpontzen duen eta nola egin den azaltzeko. Garrantzitsuena izenburua eta irudiak dira; beraz, hobe da luzatzea ez.",
-      "Benetako proiektu bat argitaratzeko: kopiatu fitxa hau lau hizkuntza artxiboetan, aldatu \"id\"-a, izenburua eta testua, eta sartu irudiak src/assets/img/proyectos/ karpetan. Behar ez denean, ezabatu adibideko fitxa hau."
+      "Herrerako kaiko 3. biltegia hogei urte daramatza hutsik: 1962ko hormigoizko nabe bat, hamabi metroko argiko portikoekin eta jada ezer estaltzen ez duen zerra hortzeko estalki batekin. Proposamenak ez du hustu, ezta berregin ere. Estalkia konpontzen du, zorua hiru puntutan irekitzen du eta barruan zurezko eraikin bat sartzen du, inoiz lehendik dauden hormak ukitzera iritsi gabe.",
+      "Tailerrek —zurgintza, metala, galdaragintza— beheko solairua hartzen dute, zoruak makineria astuna jasaten duen eta kaiko ateek materiala inguru handirik gabe sartu eta ateratzea ahalbidetzen duten lekuan. Haien gainean, zur laminatuzko erretilu batek ikasgelak eta korridore jarrai bat hartzen ditu, azpian nola lan egiten den ikusteko. Lanbide bat ikastea, batez ere, dakienari begiratzea da.",
+      "Obra uraren ertzean gelditzen da. Kaia dagoen bezala uzten da, bere bolardo eta errailekin, eta barruan eraikitzen dena uretaratzeko arrapala bat baino ez da gehitzen. Eraikinak ez du portua berreskuratu nahi: haren parte izaten jarraitu nahi du."
     ],
     "portada": {
-      "archivo": "proyectos/ejemplo/portada.jpg",
-      "alt": "Proiektuaren azala ordezkatzen duen adibideko irudia"
+      "archivo": "proyectos/proyecto-1/portada.jpg",
+      "alt": "Biltegi birgaituaren ikuspegia kaiko uretatik"
     },
     "imagenes": [
       {
-        "archivo": "proyectos/ejemplo/planta.jpg",
-        "alt": "Oinplanoa ordezkatzen duen adibideko irudia",
-        "pie": "Beheko solairua. +0,00 kota"
+        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
+        "alt": "Kokapen planoa, badia eta kaiekin",
+        "pie": "Kokapena. 1:2000"
       },
       {
-        "archivo": "proyectos/ejemplo/seccion.jpg",
-        "alt": "Sekzioa ordezkatzen duen adibideko irudia",
-        "pie": "Zeharkako sekzioa"
+        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
+        "alt": "Beheko solairua, hiru tailerrekin eta kaitik sartzeko bidearekin",
+        "pie": "Beheko solairua. Tailerrak eta materialaren sarrera"
       },
       {
-        "archivo": "proyectos/ejemplo/alzado.jpg",
-        "alt": "Altxaera ordezkatzen duen adibideko irudia",
-        "pie": "Hegoaldeko altxaera"
+        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
+        "alt": "Goiko solairua, ikasgelak zurezko egituraren gainean",
+        "pie": "Goiko solairua. Ikasgelak eta korridore jarraia"
       },
       {
-        "archivo": "proyectos/ejemplo/axonometrica.jpg",
-        "alt": "Axonometria ordezkatzen duen adibideko irudia",
+        "archivo": "proyectos/proyecto-1/seccion.jpg",
+        "alt": "Sekzio luzetara, lehendik zegoen nabea eta barruko zurezko egitura erakusten dituena",
+        "pie": "Sekzio luzetara. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-1/alzado.jpg",
+        "alt": "Kairantz begira dagoen altxaera, ate lerrakorrak irekita",
+        "pie": "Kairako altxaera"
+      },
+      {
+        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
+        "alt": "Axonometria zatikatua, estalkia, zura eta hormigoizko nabearekin",
         "pie": "Eraikuntza axonometria"
       },
       {
-        "archivo": "proyectos/ejemplo/maqueta.jpg",
-        "alt": "Maketaren argazkia ordezkatzen duen adibideko irudia",
-        "pie": "1:200 maketa"
+        "archivo": "proyectos/proyecto-1/maqueta.jpg",
+        "alt": "Kartoizko eta zurezko maketaren argazkia, hegoaldetik ikusita",
+        "pie": "1:100 maketa"
+      }
+    ]
+  },
+  {
+    "id": "proyecto-2",
+    "orden": 2,
+    "titulo": "2. proiektua",
+    "subtitulo": "Hamabi etxe eta itsasadarraren gaineko igarobide publiko bat",
+    "anio": "2025",
+    "lugar": "Olabeaga, Bilbo",
+    "tipo": "Etxebizitza kolektiboa",
+    "contexto": "Gradu Amaierako Lana · UPV/EHU",
+    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "texto": [
+      "Olabeaga malda gainean bermatutako kale luze bat da, etxeak alde bakarrean eta itsasadarra bestean dituena. Orubea eraitsitako tailer batek utzitako hutsunea da: hamabost metroko frontea, hogeita hamarreko sakonera eta zazpi metroko desnibela kalearen eta goiko bidearen artean.",
+      "Bloke baten ordez, hamabi etxe ilaran, maldarekin mailakatuta. Bakoitzak bi fronte ditu —itsasadarra hegoaldean, malda iparraldean— eta erdian zerbitzuen zerrenda bat, desnibela bi mailatan xurgatzen duena. Etxebizitza guztiek oinplano bera dute eta zein kotatan dauden baino ez ditu bereizten.",
+      "Hamabi etxeak lotzen dituen igarobidea erdiko altueran dago, kalearen eta bidearen artean, eta auzorako lasterbide gisa funtzionatzen du: bertatik igo daiteke inongo aterik jo gabe. Proiektuan inorena zehazki ez den atal bakarra da."
+    ],
+    "portada": {
+      "archivo": "proyectos/proyecto-2/portada.jpg",
+      "alt": "Hamabi etxebizitza mailakatuak, itsasadarraren beste ertzetik ikusita"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/proyecto-2/implantacion.jpg",
+        "alt": "Ezarpen planoa, kalearekin, orubearekin eta goiko bidearekin",
+        "pie": "Ezarpena. 1:1000"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
+        "alt": "Elkarren segidako hiru etxebizitzaren oinplano tipoa, igarobide komunarekin",
+        "pie": "Oinplano tipoa. Hiru etxebizitza eta igarobidea"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
+        "alt": "Zeharkako sekzioa, etxebizitzen mailaketa maldaren gainean erakusten duena",
+        "pie": "Zeharkako sekzioa. 1:100"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/vivienda.jpg",
+        "alt": "Etxebizitza baten oinplanoa eta sekzioa, bere bi fronteekin",
+        "pie": "Etxebizitza tipoa. 1:50"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/paso.jpg",
+        "alt": "Etxebizitzen arteko igarobide publikoa, itsasadarrera begira",
+        "pie": "Igarobidea, erdiko altueran"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/constructivo.jpg",
+        "alt": "Eusteko hormaren eta forjatuaren arteko topaketaren eraikuntza xehetasuna",
+        "pie": "Xehetasuna. Eusteko hormarekiko topaketa"
+      }
+    ]
+  },
+  {
+    "id": "proyecto-3",
+    "orden": 3,
+    "titulo": "3. proiektua",
+    "subtitulo": "Auzoko ekipamendu bat Santseko etxadi baten barruan",
+    "anio": "2026",
+    "lugar": "La Bordeta, Bartzelona",
+    "tipo": "Ekipamendu publikoa",
+    "contexto": "Proiektu Tailerra · ETSABeko master gaitzailea",
+    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "texto": [
+      "Etxadiaren barrualdea jada erabiltzen ez diren solairu bakarreko nabeek eta etxebizitzetatik bereizten dituen hiru metroko horma batek hartzen dute. Enkarguak auzoko ekipamendu bat eskatzen zuen; proiektua hormaren zein zati geratzen den eta zein botatzen den erabakitzen hasten da.",
+      "Bi nabe oso gordetzen dira, eta hirugarren baten pilare ilara. Haien artean patio luze bat agertzen da, ekialdetik mendebaldera orientatua, programaren hiru zatietarako sarbidea banatzen duena: areto polibalentea, tailerrak eta adinekoen egoitza. Gainerakoa itzala da: berreskuratutako habeen pergola bat, patioa estaltzen duena itxi gabe.",
+      "Eraikuntza nahita da pobrea: fabrika bistan, katalogoko aluminiozko arotzeria eta xafla nabe zaharren gainean. Aurrekontua zoruan, uretan eta zuhaitzetan biltzen da, hori baita auzoak benetan erabiliko duena."
+    ],
+    "portada": {
+      "archivo": "proyectos/proyecto-3/portada.jpg",
+      "alt": "Gordetako bi nabeen arteko patioa, berreskuratutako habeen pergolarekin"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/proyecto-3/manzana.jpg",
+        "alt": "Etxadi osoaren oinplanoa, barrualdea libre eta gordetako nabeekin",
+        "pie": "Etxadia. 1:1000"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/planta.jpg",
+        "alt": "Ekipamenduaren oinplanoa, areto polibalentearekin, tailerrekin eta egoitzarekin",
+        "pie": "Oinplano orokorra. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
+        "alt": "Patiotik egindako sekzioa, bi nabeekin, pergolarekin eta inguruko etxebizitzekin",
+        "pie": "Patiotik egindako sekzioa. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/luz.jpg",
+        "alt": "Patioaren eguzkitzearen azterketa urte osoan zehar",
+        "pie": "Patioaren eguzkitzea"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/interior.jpg",
+        "alt": "Tailerren nabearen barrualdea, egitura metalikoa bistan",
+        "pie": "Tailerrak, iparraldeko nabean"
       }
     ]
   }

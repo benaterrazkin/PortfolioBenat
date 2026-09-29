@@ -7,29 +7,28 @@ import {
   CODIGO_HREFLANG,
   type Idioma,
 } from '../i18n/idiomas';
-import { MENU, ruta, rutaProyecto, type ClavePagina } from '../rutas';
+import { SECCIONES, ruta, rutaSeccion, type ClavePagina } from '../rutas';
 
 interface Props {
   idioma: Idioma;
   pagina: ClavePagina;
-  /** Si estamos en la ficha de un proyecto, su identificador. */
-  proyectoId?: string;
 }
 
-const { idioma, pagina, proyectoId } = Astro.props;
+const { idioma, pagina } = Astro.props;
 const t = textos(idioma);
 
-/**
- * Al cambiar de idioma se sigue en la misma página, no en la portada. Desde
- * la ficha de un proyecto se va a esa misma ficha traducida.
- */
-const mismaPagina = (otro: Idioma) =>
-  proyectoId ? rutaProyecto(proyectoId, otro) : ruta(pagina, otro);
+/** Al cambiar de idioma se sigue en la misma página, no en la portada. */
+const mismaPagina = (otro: Idioma) => ruta(pagina, otro);
 
-const enlaces = MENU.map((clave) => ({
+/**
+ * El menú lleva a las secciones de la portada. Cuál está marcada no se
+ * puede saber al compilar: lo decide, ya en el navegador, el mismo
+ * observador que enciende los puntos laterales.
+ */
+const enlaces = SECCIONES.map((clave) => ({
+  clave,
   texto: t.nav[clave],
-  href: ruta(clave, idioma),
-  activo: clave === pagina,
+  href: rutaSeccion(clave, idioma),
 }));
 ---
 
@@ -58,13 +57,8 @@ const enlaces = MENU.map((clave) => ({
             <li>
               <a
                 href={e.href}
-                aria-current={e.activo ? 'page' : undefined}
-                class:list={[
-                  'rotulo inline-block py-1 border-b transition-colors',
-                  e.activo
-                    ? 'border-trazo text-tinta'
-                    : 'border-transparent text-gris hover:text-tinta hover:border-linea',
-                ]}
+                data-ancla={e.clave}
+                class="rotulo enlace-seccion inline-block py-1 border-b border-transparent text-gris hover:text-tinta hover:border-linea transition-colors"
               >
                 {e.texto}
               </a>
@@ -93,6 +87,8 @@ const enlaces = MENU.map((clave) => ({
               <li class="border-b border-linea-suave last:border-b-0">
                 <a
                   href={mismaPagina(otro)}
+                  data-idioma
+                  data-base={mismaPagina(otro)}
                   hreflang={CODIGO_HREFLANG[otro]}
                   lang={CODIGO_HREFLANG[otro]}
                   aria-current={otro === idioma ? 'true' : undefined}
@@ -113,7 +109,28 @@ const enlaces = MENU.map((clave) => ({
   </div>
 </header>
 
+<style>
+  /* La sección que se está viendo. La marca, ya en el navegador, el mismo
+     observador que enciende los puntos laterales. */
+  .enlace-seccion[data-activo] {
+    color: var(--color-tinta);
+    border-block-end-color: var(--color-trazo);
+  }
+</style>
+
 <script>
+  /* El ancla no llega al servidor, así que se pega a mano a los enlaces de
+   * idioma: al cambiar de idioma se sigue en el mismo sitio de la página.
+   * Funciona porque las anclas son iguales en los cuatro idiomas. */
+  const enlacesIdioma = document.querySelectorAll<HTMLAnchorElement>('[data-idioma]');
+  const pegarAncla = () => {
+    for (const enlace of enlacesIdioma) {
+      enlace.href = (enlace.dataset.base ?? '') + location.hash;
+    }
+  };
+  addEventListener('hashchange', pegarAncla);
+  pegarAncla();
+
   /* Cierra el desplegable de idiomas al pulsar fuera o con Escape. */
   const desplegables = document.querySelectorAll<HTMLDetailsElement>('[data-desplegable]');
 

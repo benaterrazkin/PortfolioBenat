@@ -12,7 +12,7 @@ import {
   IDIOMA_DE_RESERVA,
   type Idioma,
 } from '../i18n/idiomas';
-import { ruta, rutaProyecto, recurso, type ClavePagina } from '../rutas';
+import { ruta, recurso, type ClavePagina } from '../rutas';
 import { SITIO } from '../config/sitio';
 
 interface Props {
@@ -21,11 +21,9 @@ interface Props {
   /** Sustituye al título por defecto de la página. */
   titulo?: string;
   descripcion?: string;
-  /** Si la página es la ficha de un proyecto, su identificador. */
-  proyectoId?: string;
 }
 
-const { idioma, pagina, titulo, descripcion, proyectoId } = Astro.props;
+const { idioma, pagina, titulo, descripcion } = Astro.props;
 const t = textos(idioma);
 
 const tituloPagina = titulo ?? t.meta[pagina].titulo;
@@ -34,8 +32,7 @@ const tituloCompleto =
   pagina === 'inicio' ? `${SITIO.nombre} — ${tituloPagina}` : `${tituloPagina} · ${SITIO.nombre}`;
 
 /** La dirección de esta misma página en un idioma cualquiera. */
-const direccion = (otro: Idioma) =>
-  proyectoId ? rutaProyecto(proyectoId, otro) : ruta(pagina, otro);
+const direccion = (otro: Idioma) => ruta(pagina, otro);
 
 const canonica = new URL(direccion(idioma), Astro.site).toString();
 const alternativas = IDIOMAS_PUBLICADOS.map((otro) => ({
@@ -82,6 +79,15 @@ const persona = {
     <link rel="icon" href={recurso('favicon.svg')} type="image/svg+xml" />
 
     <script type="application/ld+json" set:html={JSON.stringify(persona)} />
+
+    <!--
+      Marca que hay JavaScript ANTES de que se pinte nada. El cuaderno de
+      los proyectos solo se monta con esta clase puesta: sin ella, sus
+      hojas se leen una debajo de otra. Va aquí, y no en un script normal,
+      porque los de Astro son diferidos y se verían las hojas apiladas
+      durante un instante.
+    -->
+    <script is:inline>document.documentElement.classList.add('con-js');</script>
   </head>
 
   <body class="min-h-dvh flex flex-col">
@@ -92,7 +98,7 @@ const persona = {
       {t.general.saltarAlContenido}
     </a>
 
-    <Cabecera idioma={idioma} pagina={pagina} proyectoId={proyectoId} />
+    <Cabecera idioma={idioma} pagina={pagina} />
 
     <main id="contenido" class="flex-1">
       <slot />

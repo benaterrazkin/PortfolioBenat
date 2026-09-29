@@ -1,0 +1,17 @@
+---
+/** El aviso legal: la única página aparte, con su dirección traducida. */
+import { IDIOMAS_PUBLICADOS } from '../../i18n/idiomas';
+import { PAGINAS } from '../../rutas';
+import Privacidad from '../../paginas/Privacidad.astro';
+
+export function getStaticPaths() {
+  return IDIOMAS_PUBLICADOS.map((idioma) => ({
+    params: { idioma, aviso: PAGINAS.privacidad[idioma] },
+    props: { idioma },
+  }));
+}
+
+const { idioma } = Astro.props;
+---
+
+<Privacidad idioma={idioma} />

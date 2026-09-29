@@ -134,14 +134,36 @@ Detalles que importan:
   de pantalla, buscadores). Es obligatoria.
 - **`pie`** es el texto que se lee debajo de la imagen. Es opcional.
 
-### Borrar el proyecto de ejemplo
+### Cómo se reparte un proyecto en el cuaderno
 
-Ahora mismo hay un proyecto de mentira, `"ejemplo"`, con imágenes de relleno,
-para que se vea cómo queda la web antes de tener proyectos de verdad. Cuando
-haya uno real:
+Cada proyecto se enseña como un cuaderno abierto que se pasa hoja a hoja. El
+reparto lo hace sola la web (`src/data/cuaderno.ts`) y siempre igual, así que
+**no hay que maquetar nada**:
 
-1. Borra el bloque `"ejemplo"` de los cuatro `src/data/proyectos/*.json`.
-2. Borra la carpeta `src/assets/img/proyectos/ejemplo/`.
+| Cara | Qué lleva |
+| --- | --- |
+| Guarda (izquierda) | el número, el título, el subtítulo y la ficha |
+| 1 | la portada |
+| 2 | los párrafos de `texto` |
+| 3 y siguientes | una imagen por cara, con su pie y su número |
+| Contraguarda (derecha) | el cierre y el salto al siguiente proyecto |
+
+Lo único que decide quien escribe el contenido es **el orden de las imágenes**.
+Si al final las cuentas no cuadran, la web añade una hoja en blanco: en un
+cuaderno de verdad también la hay, así que no desentona.
+
+Por dentro, las hojas son papeles con dos caras y girar una avanza dos páginas.
+Si el número de caras no sale par, es que falta o sobra algo: la web lo cuadra
+sola, pero conviene saberlo si algún día se toca `src/data/cuaderno.ts`.
+
+### Borrar los proyectos de relleno
+
+Ahora mismo hay tres proyectos de mentira —`proyecto-1`, `proyecto-2` y
+`proyecto-3`— con imágenes grises de relleno, para ver cómo queda el cuaderno
+antes de tener láminas de verdad. Cuando haya proyectos reales:
+
+1. Borra los tres bloques de los cuatro `src/data/proyectos/*.json`.
+2. Borra las carpetas `src/assets/img/proyectos/proyecto-1`, `-2` y `-3`.
 3. Borra `scripts/placeholders.mjs` y la línea `"imagenes-ejemplo"` de
    `package.json`.
 
@@ -171,10 +193,14 @@ dirección traducida:
 
 | | Español | Inglés | Euskera | Catalán |
 | --- | --- | --- | --- | --- |
-| Portada | `/es/` | `/en/` | `/eu/` | `/ca/` |
-| Proyectos | `/es/proyectos/` | `/en/projects/` | `/eu/proiektuak/` | `/ca/projectes/` |
-| Contacto | `/es/contacto/` | `/en/contact/` | `/eu/kontaktua/` | `/ca/contacte/` |
+| Toda la web | `/es/` | `/en/` | `/eu/` | `/ca/` |
 | Aviso legal | `/es/privacidad/` | `/en/privacy/` | `/eu/pribatutasuna/` | `/ca/privacitat/` |
+
+La web es **una sola página por idioma**: el nombre y la foto, los proyectos y
+el contacto van seguidos en el mismo scroll. Dentro de esa página hay anclas,
+que son iguales en los cuatro idiomas para que al cambiar de idioma no se
+pierda el sitio: `#proyectos`, `#contacto` y `#cuaderno-<id>` para cada
+proyecto.
 
 Quien entra en la dirección raíz va al idioma de su navegador si está entre
 esos cuatro, y si no, al inglés.

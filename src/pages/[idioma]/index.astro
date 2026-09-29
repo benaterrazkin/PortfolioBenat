@@ -1,0 +1,13 @@
+---
+/** La portada de cada idioma: el nombre, los proyectos y el contacto, seguidos. */
+import { IDIOMAS_PUBLICADOS } from '../../i18n/idiomas';
+import Inicio from '../../paginas/Inicio.astro';
+
+export function getStaticPaths() {
+  return IDIOMAS_PUBLICADOS.map((idioma) => ({ params: { idioma }, props: { idioma } }));
+}
+
+const { idioma } = Astro.props;
+---
+
+<Inicio idioma={idioma} />

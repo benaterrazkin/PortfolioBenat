@@ -1,0 +1,22 @@
+---
+/**
+ * Encabezado de una sección de la portada. Es como TituloPagina, pero con
+ * <h2>: en una web de una sola página solo puede haber un <h1>, que es el
+ * nombre de Beñat, y todo lo demás cuelga de él.
+ */
+interface Props {
+  indice: string;
+  titulo: string;
+  entradilla?: string;
+}
+
+const { indice, titulo, entradilla } = Astro.props;
+---
+
+<div class="contenedor pt-16 pb-8 md:pt-24 md:pb-10">
+  <p class="indice">{indice}</p>
+  <h2 class="mt-4 font-[family-name:var(--font-titulo)] text-4xl md:text-6xl leading-[0.95] tracking-tight">
+    {titulo}
+  </h2>
+  {entradilla && <p class="mt-5 max-w-[48ch] text-lg text-gris leading-relaxed">{entradilla}</p>}
+</div>

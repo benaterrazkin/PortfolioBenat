@@ -1,47 +1,157 @@
 [
   {
-    "id": "ejemplo",
+    "id": "proyecto-1",
     "orden": 1,
-    "titulo": "Proyecto de ejemplo",
-    "subtitulo": "Esta ficha está aquí para enseñar cómo se ve un proyecto",
-    "anio": "2025",
-    "lugar": "Donostia",
-    "tipo": "Vivienda colectiva",
+    "titulo": "Proyecto 1",
+    "subtitulo": "Un almacén del puerto convertido en escuela de oficios",
+    "anio": "2024",
+    "lugar": "Pasaia, Gipuzkoa",
+    "tipo": "Equipamiento · Rehabilitación",
     "contexto": "Proyectos VI · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Maqueta 1:100"],
     "texto": [
-      "Este es el texto breve del proyecto: dos o tres párrafos que expliquen de qué va, qué problema resuelve y cómo se ha resuelto. Lo importante son el título y las imágenes, así que conviene no alargarse.",
-      "Para publicar un proyecto de verdad: copia esta ficha en los cuatro archivos de idioma, cambia el \"id\", el título y el texto, y mete las imágenes en src/assets/img/proyectos/. Cuando ya no haga falta, borra esta ficha de ejemplo."
+      "El almacén número 3 del muelle de Herrera lleva veinte años vacío: una nave de hormigón de 1962, con pórticos de doce metros de luz y una cubierta de dientes de sierra que ya no cubre nada. La propuesta no la vacía ni la rehace. Repara la cubierta, abre el suelo en tres puntos y mete dentro un edificio de madera que en ningún momento llega a tocar los muros existentes.",
+      "Los talleres —carpintería, metal, calderería— ocupan la planta baja, donde el suelo aguanta la maquinaria pesada y las puertas del muelle permiten entrar y sacar material sin rodeos. Sobre ellos, una bandeja de madera laminada recoge las aulas y un pasillo corrido desde el que se ve trabajar abajo. Aprender un oficio es, sobre todo, mirar a quien lo sabe hacer.",
+      "La obra se detiene en el borde del agua. El muelle se deja como está, con sus bolardos y sus raíles, y solo se añade una rampa para botar lo que se construya dentro. El edificio no pretende recuperar el puerto: pretende seguir siendo parte de él."
     ],
     "portada": {
-      "archivo": "proyectos/ejemplo/portada.jpg",
-      "alt": "Imagen de ejemplo que hace de portada del proyecto"
+      "archivo": "proyectos/proyecto-1/portada.jpg",
+      "alt": "Vista del almacén rehabilitado desde el agua del muelle"
     },
     "imagenes": [
       {
-        "archivo": "proyectos/ejemplo/planta.jpg",
-        "alt": "Imagen de ejemplo en lugar de la planta",
-        "pie": "Planta baja. Cota +0,00"
+        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
+        "alt": "Plano de emplazamiento con la bahía y los muelles",
+        "pie": "Emplazamiento. 1:2000"
       },
       {
-        "archivo": "proyectos/ejemplo/seccion.jpg",
-        "alt": "Imagen de ejemplo en lugar de la sección",
-        "pie": "Sección transversal"
+        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
+        "alt": "Planta baja con los tres talleres y el acceso desde el muelle",
+        "pie": "Planta baja. Talleres y acceso de material"
       },
       {
-        "archivo": "proyectos/ejemplo/alzado.jpg",
-        "alt": "Imagen de ejemplo en lugar del alzado",
-        "pie": "Alzado sur"
+        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
+        "alt": "Planta alta con las aulas sobre la estructura de madera",
+        "pie": "Planta alta. Aulas y pasillo corrido"
       },
       {
-        "archivo": "proyectos/ejemplo/axonometrica.jpg",
-        "alt": "Imagen de ejemplo en lugar de la axonometría",
+        "archivo": "proyectos/proyecto-1/seccion.jpg",
+        "alt": "Sección longitudinal con la nave existente y la estructura de madera interior",
+        "pie": "Sección longitudinal. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-1/alzado.jpg",
+        "alt": "Alzado hacia el muelle con las puertas correderas abiertas",
+        "pie": "Alzado al muelle"
+      },
+      {
+        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
+        "alt": "Axonometría despiezada con la cubierta, la madera y la nave de hormigón",
         "pie": "Axonometría constructiva"
       },
       {
-        "archivo": "proyectos/ejemplo/maqueta.jpg",
-        "alt": "Imagen de ejemplo en lugar de la fotografía de la maqueta",
-        "pie": "Maqueta 1:200"
+        "archivo": "proyectos/proyecto-1/maqueta.jpg",
+        "alt": "Fotografía de la maqueta de cartón y madera vista desde el sur",
+        "pie": "Maqueta 1:100"
+      }
+    ]
+  },
+  {
+    "id": "proyecto-2",
+    "orden": 2,
+    "titulo": "Proyecto 2",
+    "subtitulo": "Doce casas y un paso público sobre la ría",
+    "anio": "2025",
+    "lugar": "Olabeaga, Bilbao",
+    "tipo": "Vivienda colectiva",
+    "contexto": "Trabajo de Fin de Grado · UPV/EHU",
+    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "texto": [
+      "Olabeaga es una calle larga apoyada en la ladera, con las casas de un solo lado y la ría del otro. El solar es el hueco que dejó un taller derribado: quince metros de frente, treinta de fondo y siete metros de desnivel entre la calle y el camino de arriba.",
+      "En lugar de un bloque, doce casas en hilera escalonadas con la pendiente. Cada una tiene dos frentes —la ría al sur, la ladera al norte— y una franja de servicios en medio que absorbe el desnivel en dos peldaños. Todas las viviendas tienen la misma planta y se distinguen únicamente por la cota a la que están.",
+      "El paso que une las doce casas está a media altura, entre la calle y el camino, y funciona como atajo para el barrio: se puede subir por él sin llamar a ninguna puerta. Es la única parte del proyecto que no es de nadie en concreto."
+    ],
+    "portada": {
+      "archivo": "proyectos/proyecto-2/portada.jpg",
+      "alt": "Las doce viviendas escalonadas vistas desde la otra orilla de la ría"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/proyecto-2/implantacion.jpg",
+        "alt": "Plano de implantación con la calle, el solar y el camino superior",
+        "pie": "Implantación. 1:1000"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
+        "alt": "Planta tipo de tres viviendas consecutivas con el paso común",
+        "pie": "Planta tipo. Tres viviendas y el paso"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
+        "alt": "Sección transversal con el escalonamiento de las viviendas sobre la ladera",
+        "pie": "Sección transversal. 1:100"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/vivienda.jpg",
+        "alt": "Planta y sección de una vivienda con sus dos frentes",
+        "pie": "Vivienda tipo. 1:50"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/paso.jpg",
+        "alt": "Vista del paso público entre las viviendas, mirando hacia la ría",
+        "pie": "El paso, a media altura"
+      },
+      {
+        "archivo": "proyectos/proyecto-2/constructivo.jpg",
+        "alt": "Detalle constructivo del encuentro entre el muro de contención y el forjado",
+        "pie": "Detalle. Encuentro con el muro de contención"
+      }
+    ]
+  },
+  {
+    "id": "proyecto-3",
+    "orden": 3,
+    "titulo": "Proyecto 3",
+    "subtitulo": "Un equipamiento de barrio dentro de una manzana de Sants",
+    "anio": "2026",
+    "lugar": "La Bordeta, Barcelona",
+    "tipo": "Equipamiento público",
+    "contexto": "Taller de Proyectos · Máster habilitante ETSAB",
+    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "texto": [
+      "El interior de la manzana está ocupado por naves de una planta que ya no se usan y por un muro de tres metros que las separa de las viviendas. El encargo pedía un equipamiento de barrio; el proyecto empieza por decidir qué parte del muro se queda y qué parte se tira.",
+      "Se conservan dos naves enteras y la fila de pilares de una tercera. Entre ellas aparece un patio alargado, orientado de este a oeste, que reparte el acceso a las tres piezas del programa: la sala polivalente, los talleres y el casal de gent gran. Lo demás es sombra: una pérgola de vigas recuperadas que cubre el patio sin llegar a cerrarlo.",
+      "La construcción es deliberadamente pobre: fábrica vista, carpinterías de aluminio de catálogo y chapa sobre las naves antiguas. El presupuesto se concentra en el suelo, en el agua y en los árboles, que es lo que el barrio va a usar de verdad."
+    ],
+    "portada": {
+      "archivo": "proyectos/proyecto-3/portada.jpg",
+      "alt": "El patio entre las dos naves conservadas, con la pérgola de vigas recuperadas"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/proyecto-3/manzana.jpg",
+        "alt": "Planta de la manzana entera con el interior liberado y las naves conservadas",
+        "pie": "La manzana. 1:1000"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/planta.jpg",
+        "alt": "Planta del equipamiento con la sala polivalente, los talleres y el casal",
+        "pie": "Planta general. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
+        "alt": "Sección por el patio con las dos naves, la pérgola y las viviendas de alrededor",
+        "pie": "Sección por el patio. 1:200"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/luz.jpg",
+        "alt": "Estudio del soleamiento del patio a lo largo del año",
+        "pie": "Soleamiento del patio"
+      },
+      {
+        "archivo": "proyectos/proyecto-3/interior.jpg",
+        "alt": "Interior de la nave de los talleres con la estructura metálica vista",
+        "pie": "Los talleres, en la nave norte"
       }
     ]
   }
