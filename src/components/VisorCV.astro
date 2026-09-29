@@ -9,6 +9,7 @@ import {
   type Idioma,
 } from '../i18n/idiomas';
 import { curriculum } from '../data';
+import { recurso } from '../rutas';
 
 /**
  * Ventana del currículum.
@@ -17,8 +18,11 @@ import { curriculum } from '../data';
  * sitios (ver BotonCV.astro).
  *
  * El idioma que se elige aquí dentro solo afecta al currículum: la web sigue
- * en el suyo. No se descarga ningún PDF: quien lo quiera en papel usa el
- * botón de imprimir, que es también la forma de guardarlo como PDF.
+ * en el suyo. El botón de descarga está escrito en el idioma de la web, pero
+ * entrega el PDF del idioma que se esté viendo en ese momento.
+ *
+ * Ese PDF no está guardado a mano: se genera al compilar con el mismo
+ * contenido que se ve aquí (ver src/pages/cv/[idioma].pdf.ts).
  */
 interface Props {
   idioma: Idioma;
@@ -26,15 +30,21 @@ interface Props {
 
 const { idioma } = Astro.props;
 const t = textos(idioma);
+
+/** Un PDF por idioma, para que el botón cambie con el currículum. */
+const pdfs = Object.fromEntries(
+  IDIOMAS_PUBLICADOS.map((otro) => [otro, recurso(`cv/${otro}.pdf`)]),
+);
 ---
 
 <dialog
   id="visor-cv"
   class="bg-transparent p-0 m-0 max-w-none max-h-none w-full h-full backdrop:bg-tinta/85"
   aria-label={t.cv.titulo}
+  data-pdfs={JSON.stringify(pdfs)}
 >
   <div class="flex flex-col h-full">
-    <!-- Barra superior: idiomas a la izquierda, imprimir y cerrar a la derecha -->
+    <!-- Barra superior: idiomas a la izquierda, descarga y cierre a la derecha -->
     <div
       class="no-imprimir flex items-center justify-between gap-3 px-3 py-2.5 bg-tinta text-papel border-b border-papel/15"
     >
@@ -58,16 +68,18 @@ const t = textos(idioma);
       </fieldset>
 
       <div class="flex items-center gap-2 shrink-0">
-        <button
-          type="button"
-          data-imprimir-cv
+        <a
+          data-descargar-cv
+          href={pdfs[idioma]}
+          download={`Benat-Errazkin-CV-${idioma}.pdf`}
           class="rotulo h-8 px-3 inline-flex items-center gap-2 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors"
         >
           <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"></path>
+            <path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 20h16"></path>
           </svg>
-          <span class="hidden sm:inline">{t.cv.imprimir}</span>
-        </button>
+          <span class="hidden sm:inline">{t.cv.descargar}</span>
+          <span class="sm:hidden">PDF</span>
+        </a>
 
         <button
           type="button"
@@ -117,8 +129,10 @@ const t = textos(idioma);
   const dialogo = document.getElementById('visor-cv');
 
   if (dialogo instanceof HTMLDialogElement) {
+    const pdfs: Record<string, string> = JSON.parse(dialogo.dataset.pdfs ?? '{}');
     const documentos = dialogo.querySelectorAll<HTMLElement>('[data-documento]');
     const botonesIdioma = dialogo.querySelectorAll<HTMLButtonElement>('[data-idioma-cv]');
+    const descarga = dialogo.querySelector<HTMLAnchorElement>('[data-descargar-cv]');
     const zona = dialogo.querySelector<HTMLElement>('[data-zona-cv]');
     let ultimoBoton: HTMLElement | null = null;
 
@@ -129,6 +143,11 @@ const t = textos(idioma);
       }
       for (const boton of botonesIdioma) {
         boton.setAttribute('aria-pressed', boton.dataset.idiomaCv === idiomaCV ? 'true' : 'false');
+      }
+      /* La descarga entrega siempre el PDF del idioma que se está viendo. */
+      if (descarga && pdfs[idiomaCV]) {
+        descarga.href = pdfs[idiomaCV];
+        descarga.setAttribute('download', `Benat-Errazkin-CV-${idiomaCV}.pdf`);
       }
       zona?.scrollTo({ top: 0 });
     };
@@ -144,7 +163,6 @@ const t = textos(idioma);
       });
     }
 
-    dialogo.querySelector('[data-imprimir-cv]')?.addEventListener('click', () => window.print());
     dialogo.querySelector('[data-cerrar-cv]')?.addEventListener('click', () => dialogo.close());
     dialogo.addEventListener('close', () => ultimoBoton?.focus());
 

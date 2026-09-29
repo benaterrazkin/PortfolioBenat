@@ -171,18 +171,25 @@ antes de tener láminas de verdad. Cuando haya proyectos reales:
 
 ## El currículum
 
-El currículum **no es un PDF**: se dibuja dentro de la propia web, con los datos
-de `src/data/cv/<idioma>.json`. Se abre con el botón «CV» de la portada y de la
-página de contacto, y dentro se puede cambiar de idioma sin que cambie el idioma
-de la web.
+El currículum **no está guardado a mano en ningún sitio**: se escribe una sola
+vez, como datos, en `src/data/cv/<idioma>.json`, y de ahí salen las dos formas
+en que se puede leer.
 
-Esto tiene dos ventajas: traducirlo es traducir un archivo de texto, y los datos
-de contacto salen siempre de `src/config/sitio.ts`, así que no puede quedarse
-desfasado respecto al resto de la web.
+- **En la web**, dibujado dentro de una ventana que se abre con el botón «CV».
+  Dentro se puede cambiar el idioma del currículum sin que cambie el de la web.
+- **En PDF**, en `/cv/es.pdf`, `/cv/en.pdf`, `/cv/eu.pdf` y `/cv/ca.pdf`. Los
+  genera `src/pages/cv/[idioma].pdf.ts` al compilar, con el mismo contenido y
+  los mismos colores. El botón de descarga entrega el del idioma que se esté
+  viendo en ese momento.
 
-Quien lo quiera en papel usa el botón «Imprimir», que también sirve para
-guardarlo como PDF desde el navegador. Al imprimir se imprime solo el
-currículum, sin el menú ni el resto de la página.
+Por eso las dos versiones no pueden contradecirse: traducir el currículum es
+traducir un archivo de texto, y los datos de contacto salen siempre de
+`src/config/sitio.ts`.
+
+El PDF está pensado para caber en **una sola hoja**: las secciones cortas
+(programas, habilidades, idiomas y otros datos) van a dos columnas. Si algún día
+crece el contenido y se va a dos páginas, se recorta el espaciado en las
+constantes de arriba de ese archivo.
 
 ---
 

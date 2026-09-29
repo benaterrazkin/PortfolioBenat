@@ -43,5 +43,10 @@ export default defineConfig({
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },
   integrations: [sitemap()],
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    // pdfkit es una librería de Node: se usa tal cual al generar los PDF
+    // del currículum, y no hay que empaquetarla para el navegador.
+    ssr: { external: ['pdfkit'] },
+  },
 });
