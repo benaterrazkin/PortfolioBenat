@@ -1,0 +1,90 @@
+{
+  "titular": "Arquitecte",
+  "resumen": "Arquitecte creatiu amb experiència en modelatge 3D i renderització, centrat en dissenys innovadors i sostenibles. M'apassiona integrar solucions ecològiques en projectes arquitectònics, garantint l'estètica i minimitzant l'impacte ambiental. Busco aplicar la meva experiència per impulsar iniciatives d'arquitectura sostenible en una organització amb visió de futur.",
+  "secciones": {
+    "perfil": "Objectiu professional",
+    "experiencia": "Experiència",
+    "estudios": "Formació",
+    "programas": "Programes",
+    "habilidades": "Habilitats",
+    "idiomas": "Idiomes",
+    "otros": "Altres dades",
+    "contacto": "Contacte"
+  },
+  "experiencia": [
+    {
+      "periodo": "Jun 2025 — Set 2025",
+      "puesto": "Arquitecte",
+      "entidad": "Estudi d'arquitectura LYMA",
+      "lugar": "Sant Sebastià",
+      "puntos": [
+        "Preparació de la documentació de projectes, com ara plànols i memòries.",
+        "Seguiment del procés de disseny i d'obra, i control dels acabats."
+      ]
+    },
+    {
+      "periodo": "Jul 2024",
+      "puesto": "Monitor de lleure",
+      "entidad": "Gautena, Associació Guipuscoana d'Autisme",
+      "lugar": "San Asensio, La Rioja",
+      "detalle": "Campament d'estiu per a persones de l'espectre autista.",
+      "puntos": [
+        "Acompanyament a persones amb trastorn de l'espectre autista i amb discapacitat intel·lectual i/o del desenvolupament."
+      ]
+    },
+    {
+      "periodo": "Mai 2023 — Set 2023",
+      "puesto": "Monitor d'activitats",
+      "entidad": "Canopy Donostia & Abentura",
+      "lugar": "Donostia",
+      "puntos": [
+        "Organització i coordinació de tasques, i registre de les activitats realitzades.",
+        "Manteniment diari de l'ordre i la neteja dels espais de treball.",
+        "Administració i cura dels equips i materials utilitzats."
+      ]
+    },
+    {
+      "periodo": "Set 2018 — Mai 2020",
+      "puesto": "Entrenador d'handbol",
+      "entidad": "U.K.E.",
+      "lugar": "Urnieta",
+      "puntos": [
+        "Planificació i execució de sessions d'entrenament orientades a la millora.",
+        "Participació i representació de l'equip en esdeveniments i competicions."
+      ]
+    }
+  ],
+  "estudios": [
+    {
+      "periodo": "2025 — actualitat",
+      "titulo": "Màster habilitant en Arquitectura",
+      "centro": "ETSAB — Universitat Politècnica de Catalunya"
+    },
+    {
+      "periodo": "Gen 2020 — Jun 2025",
+      "titulo": "Grau en Arquitectura",
+      "centro": "UPV/EHU, Universitat del País Basc"
+    },
+    {
+      "periodo": "Set 2018 — Jun 2020",
+      "titulo": "Batxillerat",
+      "centro": "Hernani BHI"
+    }
+  ],
+  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Programes de renderització"],
+  "habilidades": [
+    "Treball en equip",
+    "Capacitat de treball",
+    "Facilitat per aprendre",
+    "Flexibilitat i adaptabilitat",
+    "Disseny 3D",
+    "Creativitat",
+    "Compromís"
+  ],
+  "idiomas": [
+    { "lengua": "Basc", "nivel": "Nadiu" },
+    { "lengua": "Castellà", "nivel": "Nadiu" },
+    { "lengua": "Anglès", "nivel": "Nivell avançat" }
+  ],
+  "otros": [{ "etiqueta": "Carnet de conduir", "valor": "A1 i B1" }]
+}

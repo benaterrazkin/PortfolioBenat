@@ -1,0 +1,163 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import BotonCV from '../components/BotonCV.astro';
+import VisorCV from '../components/VisorCV.astro';
+import { textos, formatear } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+import { ruta, rutaProyecto } from '../rutas';
+import { SITIO } from '../config/sitio';
+import { proyectos, imagen } from '../data';
+import retrato from '../assets/img/retrato.jpg';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+const lista = proyectos(idioma);
+const cv = { total: lista.length };
+---
+
+<Base idioma={idioma} pagina="inicio">
+  <!-- ---------------------------------------------------------------- -->
+  <!--  Portada                                                          -->
+  <!-- ---------------------------------------------------------------- -->
+  <section class="relative border-b border-linea overflow-hidden">
+    <div class="reticula absolute inset-0 opacity-60" aria-hidden="true"></div>
+
+    <div class="contenedor relative pt-16 pb-14 md:pt-24 md:pb-20">
+      <div class="grid gap-12 lg:grid-cols-[1fr_22rem] lg:gap-16 items-start">
+        <div>
+          <p class="indice">01 — {t.inicio.rotulo}</p>
+
+          <h1 class="mt-5 font-[family-name:var(--font-titulo)] font-light text-[3.25rem] sm:text-7xl lg:text-8xl leading-[0.88] tracking-[-0.03em]">
+            Beñat<br />Errazkin
+          </h1>
+
+          <div class="mt-8 h-px w-full bg-tinta" aria-hidden="true"></div>
+
+          <p class="mt-8 max-w-[52ch] text-lg leading-relaxed text-gris">
+            {t.inicio.entradilla}
+          </p>
+
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a
+              href={ruta('contacto', idioma)}
+              class="rotulo h-11 px-6 inline-flex items-center gap-3 border border-tinta bg-tinta text-papel hover:bg-papel hover:text-tinta transition-colors"
+            >
+              {t.inicio.contacto}
+              <span aria-hidden="true" class="w-5 h-px bg-current"></span>
+            </a>
+            <BotonCV idioma={idioma} tono="linea" />
+          </div>
+
+          <!-- Línea de cota con la ubicación -->
+          <div class="mt-12 flex items-center gap-4">
+            <span class="h-2 w-px bg-linea" aria-hidden="true"></span>
+            <span class="flex-1 h-px bg-linea" aria-hidden="true"></span>
+            <span class="rotulo text-gris shrink-0">{t.inicio.ubicacion} · {SITIO.ubicacion}</span>
+            <span class="flex-1 h-px bg-linea" aria-hidden="true"></span>
+            <span class="h-2 w-px bg-linea" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- Retrato, enmarcado como una lámina -->
+        <figure class="relative lg:mt-2">
+          <div class="border border-tinta p-2 bg-papel">
+            <Image
+              src={retrato}
+              alt={`${SITIO.nombreCompleto}, ${t.inicio.rotulo.toLowerCase()}`}
+              widths={[320, 640, 880]}
+              sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 20rem, 90vw"
+              class="w-full h-auto object-cover"
+              loading="eager"
+            />
+          </div>
+          <span class="absolute -top-1.5 -left-1.5 w-3 h-3 border-t border-l border-trazo" aria-hidden="true"></span>
+          <span class="absolute -top-1.5 -right-1.5 w-3 h-3 border-t border-r border-trazo" aria-hidden="true"></span>
+          <span class="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b border-l border-trazo" aria-hidden="true"></span>
+          <span class="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b border-r border-trazo" aria-hidden="true"></span>
+          <figcaption class="mt-3 rotulo text-gris">{SITIO.nombreCompleto}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------------- -->
+  <!--  Proyectos                                                        -->
+  <!-- ---------------------------------------------------------------- -->
+  <section class="contenedor pt-14 md:pt-20">
+    <div class="flex items-end justify-between gap-6 border-b border-linea pb-4">
+      <div>
+        <p class="indice">02 — {t.proyectos.titulo}</p>
+        <h2 class="mt-3 font-[family-name:var(--font-titulo)] text-3xl md:text-4xl tracking-tight">
+          {t.proyectos.entradilla}
+        </h2>
+      </div>
+      {
+        cv.total > 0 && (
+          <a
+            href={ruta('proyectos', idioma)}
+            class="rotulo text-gris shrink-0 hidden sm:inline-flex items-center gap-3 hover:text-tinta transition-colors"
+          >
+            {t.inicio.verProyectos}
+            <span aria-hidden="true" class="w-6 h-px bg-current" />
+          </a>
+        )
+      }
+    </div>
+
+    {
+      lista.length === 0 ? (
+        <p class="py-16 text-gris">{t.proyectos.vacio}</p>
+      ) : (
+        <ul class="grid gap-px bg-linea sm:grid-cols-2 mt-px">
+          {lista.map((p, i) => (
+            <li class="bg-papel">
+              <a href={rutaProyecto(p.id, idioma)} class="group block h-full p-5 sm:p-7 hover:bg-papel-2 transition-colors">
+                <div class="overflow-hidden border border-linea bg-papel-2">
+                  <Image
+                    src={imagen(p.portada.archivo)}
+                    alt={p.portada.alt}
+                    widths={[480, 800, 1200]}
+                    sizes="(min-width: 64rem) 36rem, (min-width: 40rem) 50vw, 90vw"
+                    class="w-full aspect-[3/2] object-cover transition-transform duration-500 ease-[var(--ease-suave)] group-hover:scale-[1.02]"
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                  />
+                </div>
+                <div class="mt-4 flex items-baseline gap-4">
+                  <span class="indice">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 class="flex-1 font-[family-name:var(--font-titulo)] text-2xl md:text-3xl tracking-tight leading-tight">
+                    {p.titulo}
+                  </h3>
+                  <span class="rotulo text-gris tabular-nums">{p.anio}</span>
+                </div>
+                {p.subtitulo && <p class="mt-2 text-sm text-gris">{p.subtitulo}</p>}
+                <p class="mt-4 rotulo text-gris group-hover:text-tinta transition-colors">
+                  {p.imagenes.length + 1 === 1
+                    ? t.proyectos.unaImagen
+                    : formatear(t.proyectos.variasImagenes, { n: p.imagenes.length + 1 })}
+                </p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      cv.total > 0 && (
+        <p class="mt-8 sm:hidden">
+          <a href={ruta('proyectos', idioma)} class="rotulo text-gris inline-flex items-center gap-3">
+            {t.inicio.verProyectos}
+            <span aria-hidden="true" class="w-6 h-px bg-current" />
+          </a>
+        </p>
+      )
+    }
+  </section>
+
+  <VisorCV idioma={idioma} />
+</Base>

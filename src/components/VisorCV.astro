@@ -1,0 +1,156 @@
+---
+import DocumentoCV from './DocumentoCV.astro';
+import { textos } from '../i18n/ui';
+import {
+  IDIOMAS_PUBLICADOS,
+  NOMBRE_IDIOMA,
+  SIGLA_IDIOMA,
+  CODIGO_HREFLANG,
+  type Idioma,
+} from '../i18n/idiomas';
+import { curriculum } from '../data';
+
+/**
+ * Ventana del currículum.
+ *
+ * Va una sola vez por página; el botón que la abre puede estar en varios
+ * sitios (ver BotonCV.astro).
+ *
+ * El idioma que se elige aquí dentro solo afecta al currículum: la web sigue
+ * en el suyo. No se descarga ningún PDF: quien lo quiera en papel usa el
+ * botón de imprimir, que es también la forma de guardarlo como PDF.
+ */
+interface Props {
+  idioma: Idioma;
+}
+
+const { idioma } = Astro.props;
+const t = textos(idioma);
+---
+
+<dialog
+  id="visor-cv"
+  class="bg-transparent p-0 m-0 max-w-none max-h-none w-full h-full backdrop:bg-tinta/85"
+  aria-label={t.cv.titulo}
+>
+  <div class="flex flex-col h-full">
+    <!-- Barra superior: idiomas a la izquierda, imprimir y cerrar a la derecha -->
+    <div
+      class="no-imprimir flex items-center justify-between gap-3 px-3 py-2.5 bg-tinta text-papel border-b border-papel/15"
+    >
+      <fieldset class="flex items-center gap-1.5 min-w-0 overflow-x-auto">
+        <legend class="sr-only">{t.cv.idiomaDelCV}</legend>
+        {
+          IDIOMAS_PUBLICADOS.map((otro) => (
+            <button
+              type="button"
+              data-idioma-cv={otro}
+              lang={CODIGO_HREFLANG[otro]}
+              aria-pressed={otro === idioma ? 'true' : 'false'}
+              title={NOMBRE_IDIOMA[otro]}
+              class="rotulo h-8 px-3 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors aria-pressed:bg-papel aria-pressed:text-tinta aria-pressed:border-papel"
+            >
+              <span aria-hidden="true">{SIGLA_IDIOMA[otro]}</span>
+              <span class="sr-only">{NOMBRE_IDIOMA[otro]}</span>
+            </button>
+          ))
+        }
+      </fieldset>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          data-imprimir-cv
+          class="rotulo h-8 px-3 inline-flex items-center gap-2 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"></path>
+          </svg>
+          <span class="hidden sm:inline">{t.cv.imprimir}</span>
+        </button>
+
+        <button
+          type="button"
+          data-cerrar-cv
+          class="h-8 w-8 inline-flex items-center justify-center border border-papel/25 text-papel/70 hover:bg-papel hover:text-tinta transition-colors"
+          aria-label={t.general.cerrar}>✕</button
+        >
+      </div>
+    </div>
+
+    <!-- El documento -->
+    <div data-zona-cv class="flex-1 overflow-y-auto bg-papel-2 px-3 py-6 sm:px-6 sm:py-10">
+      {
+        IDIOMAS_PUBLICADOS.map((otro) => (
+          <DocumentoCV cv={curriculum(otro)} idioma={otro} oculto={otro !== idioma} />
+        ))
+      }
+      <p class="no-imprimir mx-auto mt-5 max-w-[52rem] text-xs text-gris">{t.cv.nota}</p>
+    </div>
+  </div>
+</dialog>
+
+<style is:global>
+  /* Al imprimir con el currículum abierto se imprime solo el currículum. */
+  @media print {
+    body:has(#visor-cv[open]) > *:not(#visor-cv) {
+      display: none !important;
+    }
+    #visor-cv[open] {
+      position: static;
+      display: block;
+      height: auto;
+      background: #fff;
+    }
+    #visor-cv[open] .no-imprimir {
+      display: none !important;
+    }
+    #visor-cv[open] [data-zona-cv] {
+      overflow: visible;
+      background: #fff;
+      padding: 0;
+    }
+  }
+</style>
+
+<script>
+  const dialogo = document.getElementById('visor-cv');
+
+  if (dialogo instanceof HTMLDialogElement) {
+    const documentos = dialogo.querySelectorAll<HTMLElement>('[data-documento]');
+    const botonesIdioma = dialogo.querySelectorAll<HTMLButtonElement>('[data-idioma-cv]');
+    const zona = dialogo.querySelector<HTMLElement>('[data-zona-cv]');
+    let ultimoBoton: HTMLElement | null = null;
+
+    /** Cambia solo el currículum: la web se queda en su idioma. */
+    const mostrar = (idiomaCV: string) => {
+      for (const documento of documentos) {
+        documento.hidden = documento.dataset.documento !== idiomaCV;
+      }
+      for (const boton of botonesIdioma) {
+        boton.setAttribute('aria-pressed', boton.dataset.idiomaCv === idiomaCV ? 'true' : 'false');
+      }
+      zona?.scrollTo({ top: 0 });
+    };
+
+    for (const boton of botonesIdioma) {
+      boton.addEventListener('click', () => mostrar(boton.dataset.idiomaCv!));
+    }
+
+    for (const abrir of document.querySelectorAll<HTMLElement>('[data-abrir-cv]')) {
+      abrir.addEventListener('click', () => {
+        ultimoBoton = abrir;
+        dialogo.showModal();
+      });
+    }
+
+    dialogo.querySelector('[data-imprimir-cv]')?.addEventListener('click', () => window.print());
+    dialogo.querySelector('[data-cerrar-cv]')?.addEventListener('click', () => dialogo.close());
+    dialogo.addEventListener('close', () => ultimoBoton?.focus());
+
+    // Cerrar al pulsar fuera del documento.
+    dialogo.addEventListener('click', (evento) => {
+      if (evento.target === dialogo) dialogo.close();
+    });
+  }
+</script>

@@ -1,0 +1,23 @@
+---
+/**
+ * Encabezado de las páginas interiores: número de sección, título y entradilla,
+ * separados por líneas finas como el cajetín de un plano.
+ */
+interface Props {
+  indice: string;
+  titulo: string;
+  entradilla?: string;
+}
+
+const { indice, titulo, entradilla } = Astro.props;
+---
+
+<div class="border-b border-linea">
+  <div class="contenedor pt-14 pb-10 md:pt-20 md:pb-14">
+    <p class="indice">{indice}</p>
+    <h1 class="mt-4 font-[family-name:var(--font-titulo)] text-5xl md:text-7xl leading-[0.92] tracking-tight">
+      {titulo}
+    </h1>
+    {entradilla && <p class="mt-6 max-w-[48ch] text-lg text-gris leading-relaxed">{entradilla}</p>}
+  </div>
+</div>

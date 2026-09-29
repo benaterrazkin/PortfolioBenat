@@ -1,0 +1,90 @@
+{
+  "titular": "Arquitecto",
+  "resumen": "Arquitecto creativo con experiencia en modelado 3D y renderizado, enfocado en diseños innovadores y sostenibles. Me apasiona integrar soluciones ecológicas en proyectos arquitectónicos, garantizando la estética y minimizando el impacto ambiental. Busco aplicar mi experiencia para impulsar iniciativas de arquitectura sostenible en una organización con visión de futuro.",
+  "secciones": {
+    "perfil": "Objetivo profesional",
+    "experiencia": "Experiencia",
+    "estudios": "Educación",
+    "programas": "Programas",
+    "habilidades": "Habilidades",
+    "idiomas": "Idiomas",
+    "otros": "Otros datos",
+    "contacto": "Contacto"
+  },
+  "experiencia": [
+    {
+      "periodo": "Jun 2025 — Sep 2025",
+      "puesto": "Arquitecto",
+      "entidad": "Estudio de arquitectura LYMA",
+      "lugar": "San Sebastián",
+      "puntos": [
+        "Preparación de documentación de proyectos, como planos y memorias.",
+        "Seguimiento del proceso de diseño y de obra, y control de los acabados."
+      ]
+    },
+    {
+      "periodo": "Jul 2024",
+      "puesto": "Monitor de tiempo libre",
+      "entidad": "Gautena, Asociación Guipuzcoana de Autismo",
+      "lugar": "San Asensio, La Rioja",
+      "detalle": "Campamento de verano para personas del espectro autista.",
+      "puntos": [
+        "Acompañamiento a personas con trastorno del espectro del autismo y con discapacidad intelectual y/o del desarrollo."
+      ]
+    },
+    {
+      "periodo": "May 2023 — Sep 2023",
+      "puesto": "Monitor de actividades",
+      "entidad": "Canopy Donostia & Abentura",
+      "lugar": "Donostia",
+      "puntos": [
+        "Organización y coordinación de tareas, y registro de las actividades realizadas.",
+        "Mantenimiento diario del orden y la limpieza de los espacios de trabajo.",
+        "Administración y cuidado de los equipos y materiales utilizados."
+      ]
+    },
+    {
+      "periodo": "Sep 2018 — May 2020",
+      "puesto": "Entrenador de balonmano",
+      "entidad": "U.K.E.",
+      "lugar": "Urnieta",
+      "puntos": [
+        "Planificación y ejecución de sesiones de entrenamiento orientadas a la mejora.",
+        "Participación y representación del equipo en eventos y competiciones."
+      ]
+    }
+  ],
+  "estudios": [
+    {
+      "periodo": "2025 — Actualidad",
+      "titulo": "Máster habilitante en Arquitectura",
+      "centro": "ETSAB — Universitat Politècnica de Catalunya"
+    },
+    {
+      "periodo": "Ene 2020 — Jun 2025",
+      "titulo": "Grado en Arquitectura",
+      "centro": "UPV/EHU"
+    },
+    {
+      "periodo": "Sep 2018 — Jun 2020",
+      "titulo": "Bachillerato",
+      "centro": "Hernani BHI"
+    }
+  ],
+  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Programas de renderizado"],
+  "habilidades": [
+    "Trabajo en equipo",
+    "Capacidad de trabajo",
+    "Habilidad para aprender",
+    "Flexibilidad y adaptabilidad",
+    "Diseño 3D",
+    "Creatividad",
+    "Compromiso"
+  ],
+  "idiomas": [
+    { "lengua": "Euskera", "nivel": "Nativo" },
+    { "lengua": "Español", "nivel": "Nativo" },
+    { "lengua": "Inglés", "nivel": "Nivel avanzado" }
+  ],
+  "otros": [{ "etiqueta": "Carnet de conducir", "valor": "A1 y B1" }]
+}

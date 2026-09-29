@@ -1,0 +1,53 @@
+name: Publicar la web
+
+# Cada vez que se suben cambios a la rama principal, la web se reconstruye
+# y se publica sola en GitHub Pages. No hay que hacer nada a mano.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Construir la web
+        run: npm run build
+
+      - name: Preparar la publicación
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacion.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: publicacion
+        uses: actions/deploy-pages@v4

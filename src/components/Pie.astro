@@ -1,0 +1,61 @@
+---
+import { textos } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+import { ruta } from '../rutas';
+import { SITIO } from '../config/sitio';
+
+interface Props {
+  idioma: Idioma;
+}
+
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+const anio = new Date().getFullYear();
+const rango = anio > SITIO.anioInicio ? `${SITIO.anioInicio}–${anio}` : `${anio}`;
+
+const enlaces = [
+  { texto: SITIO.correo, href: `mailto:${SITIO.correo}` },
+  ...(SITIO.instagram ? [{ texto: 'Instagram', href: SITIO.instagram }] : []),
+  ...(SITIO.linkedin ? [{ texto: 'LinkedIn', href: SITIO.linkedin }] : []),
+];
+---
+
+<footer class="border-t border-linea mt-24">
+  <div class="contenedor py-10 grid gap-8 sm:grid-cols-[1fr_auto] sm:items-end">
+    <div>
+      <p class="rotulo text-gris">{t.pie.rotulo}</p>
+      <p class="mt-3 font-[family-name:var(--font-titulo)] text-xl tracking-tight">
+        {SITIO.nombreCompleto}
+      </p>
+      <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+        {
+          enlaces.map((e) => (
+            <li>
+              <a
+                href={e.href}
+                rel={e.href.startsWith('http') ? 'noopener' : undefined}
+                target={e.href.startsWith('http') ? '_blank' : undefined}
+                class="text-sm text-gris underline decoration-linea underline-offset-4 hover:text-tinta hover:decoration-trazo transition-colors"
+              >
+                {e.texto}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="sm:text-right">
+      <p class="text-xs text-gris tabular-nums">© {rango} · {t.pie.derechos}</p>
+      <p class="mt-2">
+        <a
+          href={ruta('privacidad', idioma)}
+          class="rotulo text-gris hover:text-tinta transition-colors"
+        >
+          {t.nav.privacidad}
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

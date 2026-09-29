@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ejemplo",
+    "orden": 1,
+    "titulo": "Proyecto de ejemplo",
+    "subtitulo": "Esta ficha está aquí para enseñar cómo se ve un proyecto",
+    "anio": "2025",
+    "lugar": "Donostia",
+    "tipo": "Vivienda colectiva",
+    "contexto": "Proyectos VI · UPV/EHU",
+    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "texto": [
+      "Este es el texto breve del proyecto: dos o tres párrafos que expliquen de qué va, qué problema resuelve y cómo se ha resuelto. Lo importante son el título y las imágenes, así que conviene no alargarse.",
+      "Para publicar un proyecto de verdad: copia esta ficha en los cuatro archivos de idioma, cambia el \"id\", el título y el texto, y mete las imágenes en src/assets/img/proyectos/. Cuando ya no haga falta, borra esta ficha de ejemplo."
+    ],
+    "portada": {
+      "archivo": "proyectos/ejemplo/portada.jpg",
+      "alt": "Imagen de ejemplo que hace de portada del proyecto"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/ejemplo/planta.jpg",
+        "alt": "Imagen de ejemplo en lugar de la planta",
+        "pie": "Planta baja. Cota +0,00"
+      },
+      {
+        "archivo": "proyectos/ejemplo/seccion.jpg",
+        "alt": "Imagen de ejemplo en lugar de la sección",
+        "pie": "Sección transversal"
+      },
+      {
+        "archivo": "proyectos/ejemplo/alzado.jpg",
+        "alt": "Imagen de ejemplo en lugar del alzado",
+        "pie": "Alzado sur"
+      },
+      {
+        "archivo": "proyectos/ejemplo/axonometrica.jpg",
+        "alt": "Imagen de ejemplo en lugar de la axonometría",
+        "pie": "Axonometría constructiva"
+      },
+      {
+        "archivo": "proyectos/ejemplo/maqueta.jpg",
+        "alt": "Imagen de ejemplo en lugar de la fotografía de la maqueta",
+        "pie": "Maqueta 1:200"
+      }
+    ]
+  }
+]

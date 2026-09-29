@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import TituloPagina from '../components/TituloPagina.astro';
+import Formulario from '../components/Formulario.astro';
+import BotonCV from '../components/BotonCV.astro';
+import VisorCV from '../components/VisorCV.astro';
+import { textos } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+import { SITIO } from '../config/sitio';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+const vias = [
+  { etiqueta: t.contacto.correo, valor: SITIO.correo, href: `mailto:${SITIO.correo}` },
+  ...(SITIO.telefono
+    ? [{ etiqueta: t.contacto.telefono, valor: SITIO.telefono, href: `tel:${SITIO.telefonoEnlace}` }]
+    : []),
+  ...(SITIO.instagram
+    ? [
+        {
+          etiqueta: t.contacto.instagram,
+          valor: SITIO.instagram.replace(/^https?:\/\//, ''),
+          href: SITIO.instagram,
+        },
+      ]
+    : []),
+  ...(SITIO.linkedin
+    ? [
+        {
+          etiqueta: t.contacto.linkedin,
+          valor: SITIO.linkedin.replace(/^https?:\/\//, ''),
+          href: SITIO.linkedin,
+        },
+      ]
+    : []),
+];
+---
+
+<Base idioma={idioma} pagina="contacto">
+  <TituloPagina indice="03" titulo={t.contacto.titulo} entradilla={t.contacto.entradilla} />
+
+  <div class="contenedor py-14 md:py-20 grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16 items-start">
+    <div class="max-w-xl">
+      <h2 class="rotulo text-tinta border-b border-linea pb-3">{t.contacto.formularioTitulo}</h2>
+      <div class="mt-8">
+        <Formulario idioma={idioma} />
+      </div>
+    </div>
+
+    <aside class="border border-linea lg:sticky lg:top-24">
+      <h2 class="rotulo text-tinta px-4 py-2.5 border-b border-linea bg-papel-2">{t.contacto.directoTitulo}</h2>
+
+      <dl class="divide-y divide-linea-suave">
+        {
+          vias.map((via) => (
+            <div class="px-4 py-3.5">
+              <dt class="rotulo text-gris">{via.etiqueta}</dt>
+              <dd class="mt-1">
+                <a
+                  href={via.href}
+                  rel={via.href.startsWith('http') ? 'noopener' : undefined}
+                  target={via.href.startsWith('http') ? '_blank' : undefined}
+                  class="text-[0.9375rem] underline decoration-linea underline-offset-4 hover:decoration-trazo break-all"
+                >
+                  {via.valor}
+                </a>
+              </dd>
+            </div>
+          ))
+        }
+
+        <div class="px-4 py-3.5">
+          <dt class="rotulo">{t.contacto.ubicacion}</dt>
+          <dd class="mt-1 text-[0.9375rem]">{SITIO.ubicacion}</dd>
+        </div>
+      </dl>
+
+      <div class="border-t border-linea p-4">
+        <BotonCV idioma={idioma} tono="linea" clase="w-full justify-center" />
+      </div>
+    </aside>
+  </div>
+
+  <VisorCV idioma={idioma} />
+</Base>

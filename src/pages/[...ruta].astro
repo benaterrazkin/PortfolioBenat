@@ -1,0 +1,47 @@
+---
+/**
+ * Punto de entrada de todas las páginas.
+ *
+ * Genera una dirección por cada combinación de idioma y sección, usando el
+ * nombre que esa sección tiene en cada idioma (ver src/rutas.ts), y una más
+ * por cada proyecto. Después renderiza el componente correspondiente de
+ * src/paginas/.
+ */
+import { todasLasRutas, PAGINAS, type ClavePagina } from '../rutas';
+import { IDIOMAS_PUBLICADOS } from '../i18n/idiomas';
+import { PROYECTOS } from '../data';
+
+import Inicio from '../paginas/Inicio.astro';
+import Proyectos from '../paginas/Proyectos.astro';
+import Proyecto from '../paginas/Proyecto.astro';
+import Contacto from '../paginas/Contacto.astro';
+import Privacidad from '../paginas/Privacidad.astro';
+
+export function getStaticPaths() {
+  const secciones = todasLasRutas().map(({ idioma, pagina, trozo }) => ({
+    params: { ruta: trozo ? `${idioma}/${trozo}` : idioma },
+    props: { idioma, pagina, proyectoId: undefined as string | undefined },
+  }));
+
+  const fichas = IDIOMAS_PUBLICADOS.flatMap((idioma) =>
+    PROYECTOS[idioma].map((p) => ({
+      params: { ruta: `${idioma}/${PAGINAS.proyectos[idioma]}/${p.id}` },
+      props: { idioma, pagina: 'proyectos' as ClavePagina, proyectoId: p.id },
+    })),
+  );
+
+  return [...secciones, ...fichas];
+}
+
+const PAGINAS_COMPONENTE: Record<ClavePagina, any> = {
+  inicio: Inicio,
+  proyectos: Proyectos,
+  contacto: Contacto,
+  privacidad: Privacidad,
+};
+
+const { idioma, pagina, proyectoId } = Astro.props;
+const Pagina = proyectoId ? Proyecto : PAGINAS_COMPONENTE[pagina as ClavePagina];
+---
+
+<Pagina idioma={idioma} proyectoId={proyectoId} />

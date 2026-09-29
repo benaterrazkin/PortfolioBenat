@@ -1,0 +1,43 @@
+---
+/**
+ * Página de entrada: quien llega a la dirección raíz sin idioma es enviado
+ * al idioma de su navegador si está disponible, y si no, al inglés.
+ * Funciona sin JavaScript gracias a la etiqueta <meta http-equiv="refresh">.
+ */
+import { IDIOMAS_PUBLICADOS, IDIOMA_DE_RESERVA } from '../i18n/idiomas';
+import { ruta } from '../rutas';
+
+const destinos = Object.fromEntries(
+  IDIOMAS_PUBLICADOS.map((idioma) => [idioma, ruta('inicio', idioma)]),
+);
+const reserva = ruta('inicio', IDIOMA_DE_RESERVA);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beñat Errazkin</title>
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${reserva}`} />
+    <link rel="canonical" href={reserva} />
+    <script is:inline define:vars={{ destinos, reserva }}>
+      const preferidos = navigator.languages ?? [navigator.language ?? 'en'];
+      let destino = reserva;
+      for (const etiqueta of preferidos) {
+        const corto = etiqueta.toLowerCase().split('-')[0];
+        if (destinos[corto]) {
+          destino = destinos[corto];
+          break;
+        }
+      }
+      location.replace(destino);
+    </script>
+  </head>
+  <body>
+    <p style="font-family: system-ui, sans-serif; padding: 2rem">
+      <a href={reserva}>Beñat Errazkin</a>
+    </p>
+  </body>
+</html>

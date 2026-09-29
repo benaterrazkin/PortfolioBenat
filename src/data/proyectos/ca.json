@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ejemplo",
+    "orden": 1,
+    "titulo": "Projecte d'exemple",
+    "subtitulo": "Aquesta fitxa hi és per ensenyar com es veu un projecte",
+    "anio": "2025",
+    "lugar": "Donostia",
+    "tipo": "Habitatge col·lectiu",
+    "contexto": "Projectes VI · UPV/EHU",
+    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "texto": [
+      "Aquest és el text breu del projecte: dos o tres paràgrafs que expliquin de què va, quin problema resol i com s'ha resolt. El que importa són el títol i les imatges, així que val més no allargar-se.",
+      "Per publicar un projecte de debò: copia aquesta fitxa als quatre arxius d'idioma, canvia l'\"id\", el títol i el text, i posa les imatges a src/assets/img/proyectos/. Quan ja no calgui, esborra aquesta fitxa d'exemple."
+    ],
+    "portada": {
+      "archivo": "proyectos/ejemplo/portada.jpg",
+      "alt": "Imatge d'exemple que fa de portada del projecte"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/ejemplo/planta.jpg",
+        "alt": "Imatge d'exemple en lloc de la planta",
+        "pie": "Planta baixa. Cota +0,00"
+      },
+      {
+        "archivo": "proyectos/ejemplo/seccion.jpg",
+        "alt": "Imatge d'exemple en lloc de la secció",
+        "pie": "Secció transversal"
+      },
+      {
+        "archivo": "proyectos/ejemplo/alzado.jpg",
+        "alt": "Imatge d'exemple en lloc de l'alçat",
+        "pie": "Alçat sud"
+      },
+      {
+        "archivo": "proyectos/ejemplo/axonometrica.jpg",
+        "alt": "Imatge d'exemple en lloc de l'axonometria",
+        "pie": "Axonometria constructiva"
+      },
+      {
+        "archivo": "proyectos/ejemplo/maqueta.jpg",
+        "alt": "Imatge d'exemple en lloc de la fotografia de la maqueta",
+        "pie": "Maqueta 1:200"
+      }
+    ]
+  }
+]

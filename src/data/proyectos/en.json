@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ejemplo",
+    "orden": 1,
+    "titulo": "Example project",
+    "subtitulo": "This entry is here to show what a project looks like",
+    "anio": "2025",
+    "lugar": "Donostia",
+    "tipo": "Collective housing",
+    "contexto": "Design Studio VI · UPV/EHU",
+    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "texto": [
+      "This is the short project text: two or three paragraphs explaining what the project is about, what problem it solves and how. The title and the images are what matter most, so there is no need to write at length.",
+      "To publish a real project: copy this entry into the four language files, change the \"id\", the title and the text, and drop the images into src/assets/img/proyectos/. Delete this example entry once it is no longer needed."
+    ],
+    "portada": {
+      "archivo": "proyectos/ejemplo/portada.jpg",
+      "alt": "Placeholder image standing in for the project cover"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/ejemplo/planta.jpg",
+        "alt": "Placeholder image standing in for the floor plan",
+        "pie": "Ground floor plan. Level +0.00"
+      },
+      {
+        "archivo": "proyectos/ejemplo/seccion.jpg",
+        "alt": "Placeholder image standing in for the section",
+        "pie": "Cross section"
+      },
+      {
+        "archivo": "proyectos/ejemplo/alzado.jpg",
+        "alt": "Placeholder image standing in for the elevation",
+        "pie": "South elevation"
+      },
+      {
+        "archivo": "proyectos/ejemplo/axonometrica.jpg",
+        "alt": "Placeholder image standing in for the axonometric drawing",
+        "pie": "Construction axonometric"
+      },
+      {
+        "archivo": "proyectos/ejemplo/maqueta.jpg",
+        "alt": "Placeholder image standing in for the photograph of the model",
+        "pie": "Model 1:200"
+      }
+    ]
+  }
+]

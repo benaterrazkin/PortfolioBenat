@@ -1,0 +1,90 @@
+{
+  "titular": "Arkitektoa",
+  "resumen": "Arkitekto sortzailea, 3D modelizazioan eta errenderizazioan esperientzia duena, diseinu berritzaile eta jasangarrietan zentratua. Konponbide ekologikoak arkitektura proiektuetan txertatzea gustuko dut, estetika bermatuz eta ingurumen inpaktua gutxituz. Nire esperientzia arkitektura jasangarriaren ekimenak bultzatzeko erabili nahi dut, etorkizunari begira dagoen erakunde batean.",
+  "secciones": {
+    "perfil": "Helburu profesionala",
+    "experiencia": "Esperientzia",
+    "estudios": "Ikasketak",
+    "programas": "Programak",
+    "habilidades": "Gaitasunak",
+    "idiomas": "Hizkuntzak",
+    "otros": "Bestelako datuak",
+    "contacto": "Kontaktua"
+  },
+  "experiencia": [
+    {
+      "periodo": "2025eko eka. — ira.",
+      "puesto": "Arkitektoa",
+      "entidad": "LYMA arkitektura estudioa",
+      "lugar": "Donostia",
+      "puntos": [
+        "Proiektuen dokumentazioa prestatzea: planoak eta memoriak.",
+        "Diseinu eta obra prozesuaren jarraipena, eta akaberen kontrola."
+      ]
+    },
+    {
+      "periodo": "2024ko uzt.",
+      "puesto": "Aisialdiko begiralea",
+      "entidad": "Gautena, Gipuzkoako Autismoaren Elkartea",
+      "lugar": "San Asensio, Errioxa",
+      "detalle": "Espektro autistako pertsonentzako udalekua.",
+      "puntos": [
+        "Autismoaren espektroko nahasmendua eta adimen edo garapen desgaitasuna duten pertsonei laguntzea."
+      ]
+    },
+    {
+      "periodo": "2023ko mai. — ira.",
+      "puesto": "Jardueretako begiralea",
+      "entidad": "Canopy Donostia & Abentura",
+      "lugar": "Donostia",
+      "puntos": [
+        "Zereginak antolatzea eta koordinatzea, eta egindako jardueren erregistroa.",
+        "Lan espazioen ordena eta garbitasuna egunero mantentzea.",
+        "Erabilitako ekipoen eta materialen kudeaketa eta zaintza."
+      ]
+    },
+    {
+      "periodo": "2018ko ira. — 2020ko mai.",
+      "puesto": "Eskubaloi entrenatzailea",
+      "entidad": "U.K.E.",
+      "lugar": "Urnieta",
+      "puntos": [
+        "Hobekuntzara bideratutako entrenamendu saioak planifikatzea eta gauzatzea.",
+        "Taldearen parte hartzea eta ordezkaritza ekitaldi eta lehiaketetan."
+      ]
+    }
+  ],
+  "estudios": [
+    {
+      "periodo": "2025 — gaur egun",
+      "titulo": "Arkitekturako master gaitzailea",
+      "centro": "ETSAB — Kataluniako Unibertsitate Politeknikoa"
+    },
+    {
+      "periodo": "2020ko urt. — 2025eko eka.",
+      "titulo": "Arkitekturako gradua",
+      "centro": "UPV/EHU"
+    },
+    {
+      "periodo": "2018ko ira. — 2020ko eka.",
+      "titulo": "Batxilergoa",
+      "centro": "Hernani BHI"
+    }
+  ],
+  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Errenderizazio programak"],
+  "habilidades": [
+    "Taldean lan egitea",
+    "Lanerako gaitasuna",
+    "Ikasteko erraztasuna",
+    "Malgutasuna eta egokitzeko gaitasuna",
+    "3D diseinua",
+    "Sormena",
+    "Konpromisoa"
+  ],
+  "idiomas": [
+    { "lengua": "Euskara", "nivel": "Ama hizkuntza" },
+    { "lengua": "Gaztelania", "nivel": "Ama hizkuntza" },
+    { "lengua": "Ingelesa", "nivel": "Maila aurreratua" }
+  ],
+  "otros": [{ "etiqueta": "Gidabaimena", "valor": "A1 eta B1" }]
+}

@@ -1,0 +1,37 @@
+---
+import { textos } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+
+/**
+ * Botón que abre la ventana del currículum. Puede repetirse en varios sitios
+ * de la misma página: todos abren la misma ventana (VisorCV.astro), que solo
+ * hace falta incluir una vez.
+ */
+interface Props {
+  /** "relleno" para el botón principal, "linea" para el secundario. */
+  tono?: 'relleno' | 'linea';
+  clase?: string;
+  idioma: Idioma;
+}
+
+const { idioma, tono = 'linea', clase = '' } = Astro.props;
+const t = textos(idioma);
+
+const estilos =
+  tono === 'relleno'
+    ? 'bg-tinta text-papel border-tinta hover:bg-papel hover:text-tinta'
+    : 'border-tinta text-tinta hover:bg-tinta hover:text-papel';
+---
+
+<button
+  type="button"
+  data-abrir-cv
+  class:list={[
+    'rotulo h-11 px-6 inline-flex items-center gap-3 border transition-colors',
+    estilos,
+    clase,
+  ]}
+>
+  {t.cv.abrir}
+  <span aria-hidden="true" class="w-5 h-px bg-current"></span>
+</button>

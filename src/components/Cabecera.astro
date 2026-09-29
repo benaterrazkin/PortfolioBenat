@@ -1,0 +1,130 @@
+---
+import { textos } from '../i18n/ui';
+import {
+  IDIOMAS_PUBLICADOS,
+  NOMBRE_IDIOMA,
+  SIGLA_IDIOMA,
+  CODIGO_HREFLANG,
+  type Idioma,
+} from '../i18n/idiomas';
+import { MENU, ruta, rutaProyecto, type ClavePagina } from '../rutas';
+
+interface Props {
+  idioma: Idioma;
+  pagina: ClavePagina;
+  /** Si estamos en la ficha de un proyecto, su identificador. */
+  proyectoId?: string;
+}
+
+const { idioma, pagina, proyectoId } = Astro.props;
+const t = textos(idioma);
+
+/**
+ * Al cambiar de idioma se sigue en la misma página, no en la portada. Desde
+ * la ficha de un proyecto se va a esa misma ficha traducida.
+ */
+const mismaPagina = (otro: Idioma) =>
+  proyectoId ? rutaProyecto(proyectoId, otro) : ruta(pagina, otro);
+
+const enlaces = MENU.map((clave) => ({
+  texto: t.nav[clave],
+  href: ruta(clave, idioma),
+  activo: clave === pagina,
+}));
+---
+
+<!--
+  En pantallas anchas va todo en una línea: firma · secciones · idioma.
+  En el móvil no caben, así que las secciones bajan a una segunda franja.
+-->
+<header class="sticky top-0 z-40 border-b border-linea bg-papel/95 backdrop-blur-sm">
+  <div class="contenedor flex flex-wrap items-center justify-between gap-x-6">
+    <!-- Firma -->
+    <a href={ruta('inicio', idioma)} class="group order-1 shrink-0 leading-none py-4">
+      <span class="block font-[family-name:var(--font-titulo)] text-[0.9375rem] tracking-[0.18em] uppercase">
+        Beñat Errazkin
+      </span>
+      <span class="mt-1 block h-px w-full bg-linea group-hover:bg-trazo transition-colors"></span>
+    </a>
+
+    <!-- Secciones -->
+    <nav
+      aria-label={t.general.menu}
+      class="order-3 w-full border-t border-linea-suave py-2 sm:order-2 sm:w-auto sm:border-0 sm:py-0"
+    >
+      <ul class="flex items-center gap-6">
+        {
+          enlaces.map((e) => (
+            <li>
+              <a
+                href={e.href}
+                aria-current={e.activo ? 'page' : undefined}
+                class:list={[
+                  'rotulo inline-block py-1 border-b transition-colors',
+                  e.activo
+                    ? 'border-trazo text-tinta'
+                    : 'border-transparent text-gris hover:text-tinta hover:border-linea',
+                ]}
+              >
+                {e.texto}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="order-2 flex items-center py-3 sm:order-3">
+      <!-- Idiomas -->
+      <details class="relative" data-desplegable>
+        <summary
+          class="rotulo text-gris list-none cursor-pointer select-none inline-flex items-center gap-1.5 h-8 px-3 border border-linea hover:border-tinta hover:text-tinta transition-colors"
+          aria-label={t.general.cambiarIdioma}
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"></path>
+          </svg>
+          {SIGLA_IDIOMA[idioma]}
+        </summary>
+        <ul class="absolute right-0 mt-2 min-w-40 border border-linea bg-papel shadow-[0_2px_16px_rgba(20,22,26,0.08)]">
+          {
+            IDIOMAS_PUBLICADOS.map((otro) => (
+              <li class="border-b border-linea-suave last:border-b-0">
+                <a
+                  href={mismaPagina(otro)}
+                  hreflang={CODIGO_HREFLANG[otro]}
+                  lang={CODIGO_HREFLANG[otro]}
+                  aria-current={otro === idioma ? 'true' : undefined}
+                  class:list={[
+                    'flex items-center justify-between gap-4 px-3.5 py-2.5 text-sm hover:bg-papel-2 transition-colors',
+                    otro === idioma ? 'text-tinta' : 'text-gris',
+                  ]}
+                >
+                  {NOMBRE_IDIOMA[otro]}
+                  <span class="rotulo text-gris">{SIGLA_IDIOMA[otro]}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script>
+  /* Cierra el desplegable de idiomas al pulsar fuera o con Escape. */
+  const desplegables = document.querySelectorAll<HTMLDetailsElement>('[data-desplegable]');
+
+  document.addEventListener('click', (evento) => {
+    for (const caja of desplegables) {
+      if (!caja.contains(evento.target as Node)) caja.open = false;
+    }
+  });
+
+  document.addEventListener('keydown', (evento) => {
+    if (evento.key !== 'Escape') return;
+    for (const caja of desplegables) caja.open = false;
+  });
+</script>

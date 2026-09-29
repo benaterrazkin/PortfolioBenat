@@ -1,0 +1,90 @@
+{
+  "titular": "Architect",
+  "resumen": "Creative architect with experience in 3D modelling and rendering, focused on innovative and sustainable design. I am passionate about integrating ecological solutions into architectural projects, ensuring aesthetic quality while minimising environmental impact. I am looking to apply my experience to drive sustainable architecture initiatives within a forward-thinking organisation.",
+  "secciones": {
+    "perfil": "Professional objective",
+    "experiencia": "Experience",
+    "estudios": "Education",
+    "programas": "Software",
+    "habilidades": "Skills",
+    "idiomas": "Languages",
+    "otros": "Other details",
+    "contacto": "Contact"
+  },
+  "experiencia": [
+    {
+      "periodo": "Jun 2025 — Sep 2025",
+      "puesto": "Architect",
+      "entidad": "LYMA architecture studio",
+      "lugar": "San Sebastián",
+      "puntos": [
+        "Preparation of project documentation, such as drawings and reports.",
+        "Follow-up of the design and construction process, and control of finishes."
+      ]
+    },
+    {
+      "periodo": "Jul 2024",
+      "puesto": "Leisure-time monitor",
+      "entidad": "Gautena, Gipuzkoa Autism Association",
+      "lugar": "San Asensio, La Rioja",
+      "detalle": "Summer camp for people on the autism spectrum.",
+      "puntos": [
+        "Support for people with autism spectrum disorder and with intellectual and/or developmental disabilities."
+      ]
+    },
+    {
+      "periodo": "May 2023 — Sep 2023",
+      "puesto": "Activity monitor",
+      "entidad": "Canopy Donostia & Abentura",
+      "lugar": "Donostia",
+      "puntos": [
+        "Organisation and coordination of tasks, and record-keeping of the activities carried out.",
+        "Daily upkeep of order and cleanliness in the work areas.",
+        "Management and care of the equipment and materials used."
+      ]
+    },
+    {
+      "periodo": "Sep 2018 — May 2020",
+      "puesto": "Handball coach",
+      "entidad": "U.K.E.",
+      "lugar": "Urnieta",
+      "puntos": [
+        "Planning and delivery of training sessions aimed at improvement.",
+        "Participation in and representation of the team at events and competitions."
+      ]
+    }
+  ],
+  "estudios": [
+    {
+      "periodo": "2025 — present",
+      "titulo": "Professional master's degree in Architecture",
+      "centro": "ETSAB — Universitat Politècnica de Catalunya"
+    },
+    {
+      "periodo": "Jan 2020 — Jun 2025",
+      "titulo": "Bachelor's degree in Architecture",
+      "centro": "UPV/EHU, University of the Basque Country"
+    },
+    {
+      "periodo": "Sep 2018 — Jun 2020",
+      "titulo": "Upper secondary education (Bachillerato)",
+      "centro": "Hernani BHI"
+    }
+  ],
+  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Rendering software"],
+  "habilidades": [
+    "Teamwork",
+    "Strong work ethic",
+    "Willingness to learn",
+    "Flexibility and adaptability",
+    "3D design",
+    "Creativity",
+    "Commitment"
+  ],
+  "idiomas": [
+    { "lengua": "Basque", "nivel": "Native" },
+    { "lengua": "Spanish", "nivel": "Native" },
+    { "lengua": "English", "nivel": "Advanced" }
+  ],
+  "otros": [{ "etiqueta": "Driving licence", "valor": "A1 and B1" }]
+}

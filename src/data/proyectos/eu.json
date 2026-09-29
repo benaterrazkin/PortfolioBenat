@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ejemplo",
+    "orden": 1,
+    "titulo": "Adibideko proiektua",
+    "subtitulo": "Fitxa hau proiektu batek zer itxura duen erakusteko dago",
+    "anio": "2025",
+    "lugar": "Donostia",
+    "tipo": "Etxebizitza kolektiboa",
+    "contexto": "VI. Proiektuak · UPV/EHU",
+    "herramientas": ["Rhinoceros", "AutoCAD", "Revit"],
+    "texto": [
+      "Hau da proiektuaren testu laburra: bi edo hiru paragrafo, zeri buruzkoa den, zer arazo konpontzen duen eta nola egin den azaltzeko. Garrantzitsuena izenburua eta irudiak dira; beraz, hobe da luzatzea ez.",
+      "Benetako proiektu bat argitaratzeko: kopiatu fitxa hau lau hizkuntza artxiboetan, aldatu \"id\"-a, izenburua eta testua, eta sartu irudiak src/assets/img/proyectos/ karpetan. Behar ez denean, ezabatu adibideko fitxa hau."
+    ],
+    "portada": {
+      "archivo": "proyectos/ejemplo/portada.jpg",
+      "alt": "Proiektuaren azala ordezkatzen duen adibideko irudia"
+    },
+    "imagenes": [
+      {
+        "archivo": "proyectos/ejemplo/planta.jpg",
+        "alt": "Oinplanoa ordezkatzen duen adibideko irudia",
+        "pie": "Beheko solairua. +0,00 kota"
+      },
+      {
+        "archivo": "proyectos/ejemplo/seccion.jpg",
+        "alt": "Sekzioa ordezkatzen duen adibideko irudia",
+        "pie": "Zeharkako sekzioa"
+      },
+      {
+        "archivo": "proyectos/ejemplo/alzado.jpg",
+        "alt": "Altxaera ordezkatzen duen adibideko irudia",
+        "pie": "Hegoaldeko altxaera"
+      },
+      {
+        "archivo": "proyectos/ejemplo/axonometrica.jpg",
+        "alt": "Axonometria ordezkatzen duen adibideko irudia",
+        "pie": "Eraikuntza axonometria"
+      },
+      {
+        "archivo": "proyectos/ejemplo/maqueta.jpg",
+        "alt": "Maketaren argazkia ordezkatzen duen adibideko irudia",
+        "pie": "1:200 maketa"
+      }
+    ]
+  }
+]

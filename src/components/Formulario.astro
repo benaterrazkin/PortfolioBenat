@@ -1,0 +1,168 @@
+---
+import { textos, formatear } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+import { SITIO } from '../config/sitio';
+import { ruta } from '../rutas';
+
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+const configurado = SITIO.claveFormulario.length > 0;
+const mensajes = {
+  exito: t.contacto.exito,
+  error: formatear(t.contacto.error, { correo: SITIO.correo }),
+  enviando: t.contacto.enviando,
+};
+const claseCampo =
+  'w-full h-11 px-3 border border-linea bg-papel focus:border-tinta outline-none transition-colors';
+---
+
+<form
+  data-formulario
+  data-clave={SITIO.claveFormulario}
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="grid gap-5"
+  novalidate
+>
+  <input type="hidden" name="access_key" value={SITIO.claveFormulario} />
+  <input type="hidden" name="subject" value={`Contacto desde la web · ${SITIO.nombre}`} />
+  <input type="hidden" name="from_name" value={SITIO.nombre} />
+
+  <!-- Trampa antispam: si un robot la rellena, el envío se descarta. -->
+  <input
+    type="checkbox"
+    name="botcheck"
+    class="hidden"
+    style="display:none"
+    tabindex="-1"
+    autocomplete="off"
+  />
+
+  <p class="grid gap-1.5">
+    <label for="campo-nombre" class="rotulo text-tinta">{t.contacto.nombre}</label>
+    <input id="campo-nombre" name="name" type="text" required autocomplete="name" class={claseCampo} />
+  </p>
+
+  <p class="grid gap-1.5">
+    <label for="campo-email" class="rotulo text-tinta">{t.contacto.email}</label>
+    <input id="campo-email" name="email" type="email" required autocomplete="email" class={claseCampo} />
+  </p>
+
+  <p class="grid gap-1.5">
+    <label for="campo-organizacion" class="rotulo text-tinta">
+      {t.contacto.organizacion} <span class="normal-case tracking-normal">({t.contacto.opcional})</span>
+    </label>
+    <input
+      id="campo-organizacion"
+      name="organisation"
+      type="text"
+      autocomplete="organization"
+      class={claseCampo}
+    />
+  </p>
+
+  <p class="grid gap-1.5">
+    <label for="campo-mensaje" class="rotulo text-tinta">{t.contacto.mensaje}</label>
+    <textarea
+      id="campo-mensaje"
+      name="message"
+      required
+      rows="6"
+      class="w-full p-3 border border-linea bg-papel focus:border-tinta outline-none transition-colors resize-y"
+    ></textarea>
+  </p>
+
+  <p class="text-sm text-gris">
+    {t.contacto.avisoDatos}{' '}
+    <a
+      href={ruta('privacidad', idioma)}
+      class="underline decoration-linea underline-offset-4 hover:text-tinta hover:decoration-trazo"
+    >
+      {t.contacto.leerPrivacidad}
+    </a>
+  </p>
+
+  <p>
+    <button
+      type="submit"
+      data-enviar
+      disabled={!configurado}
+      class="rotulo h-11 px-6 inline-flex items-center gap-3 border border-tinta bg-tinta text-papel hover:bg-papel hover:text-tinta transition-colors disabled:opacity-40 disabled:hover:bg-tinta disabled:hover:text-papel"
+    >
+      {t.contacto.enviar}
+      <span aria-hidden="true" class="w-5 h-px bg-current"></span>
+    </button>
+  </p>
+
+  <p data-aviso role="status" aria-live="polite" class="hidden text-sm p-3.5 border"></p>
+
+  {
+    !configurado && (
+      <p class="text-sm p-3.5 border border-trazo/40 bg-trazo/5">
+        El formulario todavía no está conectado: falta poner la clave gratuita de Web3Forms en
+        <code class="font-mono">src/config/sitio.ts</code>. Mientras tanto, escribe directamente a{' '}
+        <a href={`mailto:${SITIO.correo}`} class="underline underline-offset-4">
+          {SITIO.correo}
+        </a>
+        .
+      </p>
+    )
+  }
+</form>
+
+<script is:inline define:vars={{ mensajes, textoObligatorio: t.contacto.obligatorio }}>
+  (() => {
+    const formulario = document.querySelector('[data-formulario]');
+    if (!formulario) return;
+
+    const aviso = formulario.querySelector('[data-aviso]');
+    const boton = formulario.querySelector('[data-enviar]');
+    const clave = formulario.dataset.clave;
+
+    const mostrar = (texto, correcto) => {
+      aviso.textContent = texto;
+      aviso.className = correcto
+        ? 'text-sm p-3.5 border border-tinta bg-papel-2'
+        : 'text-sm p-3.5 border border-trazo bg-trazo/5';
+    };
+
+    for (const campo of formulario.querySelectorAll('input, textarea')) {
+      campo.addEventListener('invalid', () => {
+        if (campo.validity.valueMissing) campo.setCustomValidity(textoObligatorio);
+      });
+      campo.addEventListener('input', () => campo.setCustomValidity(''));
+    }
+
+    formulario.addEventListener('submit', async (evento) => {
+      evento.preventDefault();
+      if (!clave) return;
+      if (!formulario.reportValidity()) return;
+
+      boton.disabled = true;
+      const textoOriginal = boton.textContent;
+      boton.textContent = mensajes.enviando;
+
+      try {
+        const respuesta = await fetch(formulario.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(formulario),
+        });
+        const resultado = await respuesta.json();
+        if (!respuesta.ok || resultado.success === false) throw new Error(resultado.message);
+        formulario.reset();
+        mostrar(mensajes.exito, true);
+      } catch (error) {
+        console.error(error);
+        mostrar(mensajes.error, false);
+      } finally {
+        boton.disabled = false;
+        boton.textContent = textoOriginal;
+      }
+    });
+  })();
+</script>

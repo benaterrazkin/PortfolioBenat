@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ *  PALETA Y TIPOGRAFÍAS
+ *
+ *  Estética de plano de arquitectura: papel claro, tinta casi negra y
+ *  líneas finísimas. El único color es el rojo de lápiz (--color-trazo),
+ *  reservado para marcas pequeñas: nunca para rellenos grandes.
+ *
+ *  Cambiar un color aquí lo cambia en toda la web.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-papel: #fbfaf8;
+  --color-papel-2: #f2f0ec;
+  --color-tinta: #14161a;
+  --color-tinta-2: #23262b;
+  --color-gris: #6a6c71;
+  --color-gris-claro: #9a9ca1;
+
+  /* Líneas: la fina para todo, la suave para retículas de fondo. */
+  --color-linea: #cbc8c2;
+  --color-linea-suave: #e7e4df;
+
+  /* Rojo de lápiz: cotas, marcas, estado activo. */
+  --color-trazo: #a8482f;
+
+  --font-titulo: 'Archivo Variable', 'Helvetica Neue', system-ui, sans-serif;
+  --font-texto: 'Inter Variable', system-ui, -apple-system, sans-serif;
+
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body {
+    background-color: var(--color-papel);
+    color: var(--color-tinta);
+    font-family: var(--font-texto);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-titulo);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  :focus-visible {
+    outline: 2px solid var(--color-trazo);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background-color: var(--color-tinta);
+    color: var(--color-papel);
+  }
+  hr {
+    border: 0;
+    border-top: 1px solid var(--color-linea);
+  }
+}
+
+@utility contenedor {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) { padding-inline: 2.5rem; }
+}
+
+/* Etiqueta pequeña en versales, como los rótulos de un plano. */
+@utility rotulo {
+  font-family: var(--font-titulo);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Numeración de secciones: 01 / 02 / 03 */
+@utility indice {
+  font-family: var(--font-titulo);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--color-trazo);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Retícula de fondo, como el papel milimetrado. Muy tenue. */
+@utility reticula {
+  background-image:
+    linear-gradient(to right, var(--color-linea-suave) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-linea-suave) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+}
+
+/* Texto largo escrito en Markdown */
+@utility prosa {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-tinta);
+
+  & > * + * { margin-block-start: 1.25em; }
+  & h2 {
+    font-size: 1.5rem;
+    margin-block-start: 2.5em;
+    padding-block-end: 0.5em;
+    border-block-end: 1px solid var(--color-linea);
+  }
+  & h3 { font-size: 1.1875rem; margin-block-start: 2em; }
+  & strong { font-weight: 600; }
+  & a {
+    color: var(--color-tinta);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-linea);
+  }
+  & a:hover { text-decoration-color: var(--color-trazo); }
+  & ul { list-style: none; padding-left: 0; }
+  & ul > li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-block-start: 0.6em;
+  }
+  & ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 0.6rem;
+    height: 1px;
+    background-color: var(--color-trazo);
+  }
+  & ol { padding-left: 1.2rem; }
+  & ol > li { margin-block-start: 0.6em; }
+}

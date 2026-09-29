@@ -1,0 +1,214 @@
+---
+import Base from '../layouts/Base.astro';
+import TituloPagina from '../components/TituloPagina.astro';
+import { textos } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+import { SITIO } from '../config/sitio';
+
+/**
+ * Aviso legal. Es un texto corto y honesto sobre lo que hace esta web:
+ * no usa cookies, no mide visitas y lo único que recoge son los datos que
+ * se escriben a mano en el formulario de contacto.
+ *
+ * Si algún día se añade una herramienta de estadísticas, hay que actualizar
+ * este texto en los cuatro idiomas.
+ */
+interface Props {
+  idioma: Idioma;
+}
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+const CONTENIDO: Record<Idioma, { titulo: string; parrafos: string[] }[]> = {
+  es: [
+    {
+      titulo: 'Titular de la web',
+      parrafos: [
+        `Esta web es el portfolio personal de ${SITIO.nombreCompleto}, arquitecto. Su finalidad es mostrar trabajos de arquitectura y permitir ponerse en contacto.`,
+        `Para cualquier cuestión relacionada con esta web: ${SITIO.correo}.`,
+      ],
+    },
+    {
+      titulo: 'Datos que se recogen',
+      parrafos: [
+        'Esta web no usa cookies, no instala rastreadores y no mide las visitas.',
+        'Los únicos datos que se recogen son los que se escriben voluntariamente en el formulario de contacto: nombre, correo electrónico, organización (opcional) y el mensaje. Se usan solo para responder y no se ceden a terceros ni se emplean para enviar publicidad.',
+      ],
+    },
+    {
+      titulo: 'Cómo se envían los mensajes',
+      parrafos: [
+        'El formulario de contacto funciona con el servicio Web3Forms, que hace de intermediario y entrega el mensaje por correo electrónico. Web3Forms no conserva el contenido de los mensajes.',
+        'También se puede escribir directamente al correo de arriba, sin pasar por el formulario.',
+      ],
+    },
+    {
+      titulo: 'Dónde está alojada',
+      parrafos: [
+        'La web está publicada en GitHub Pages. Como cualquier servidor, GitHub registra técnicamente las peticiones que recibe (dirección IP y navegador) para poder servir las páginas.',
+      ],
+    },
+    {
+      titulo: 'Derechos',
+      parrafos: [
+        'Se puede pedir en cualquier momento el acceso, la rectificación o la eliminación de los datos enviados a través del formulario escribiendo a la dirección de correo de arriba.',
+      ],
+    },
+    {
+      titulo: 'Imágenes y textos',
+      parrafos: [
+        `Los proyectos, dibujos, fotografías y textos de esta web son obra de ${SITIO.nombreCompleto}, salvo que se indique lo contrario. No se pueden reproducir sin permiso.`,
+      ],
+    },
+  ],
+  en: [
+    {
+      titulo: 'Site owner',
+      parrafos: [
+        `This website is the personal portfolio of ${SITIO.nombreCompleto}, architect. Its purpose is to show architecture work and to allow visitors to get in touch.`,
+        `For anything related to this website: ${SITIO.correo}.`,
+      ],
+    },
+    {
+      titulo: 'Data collected',
+      parrafos: [
+        'This website uses no cookies, installs no trackers and does not measure visits.',
+        'The only data collected is what is voluntarily typed into the contact form: name, email address, organisation (optional) and the message. It is used solely to reply, and is never passed on to third parties or used to send advertising.',
+      ],
+    },
+    {
+      titulo: 'How messages are sent',
+      parrafos: [
+        'The contact form runs on the Web3Forms service, which acts as an intermediary and delivers the message by email. Web3Forms does not keep the content of the messages.',
+        'You can also write directly to the email address above, without using the form.',
+      ],
+    },
+    {
+      titulo: 'Where it is hosted',
+      parrafos: [
+        'The website is published on GitHub Pages. Like any server, GitHub technically logs the requests it receives (IP address and browser) in order to serve the pages.',
+      ],
+    },
+    {
+      titulo: 'Your rights',
+      parrafos: [
+        'You may request access to, correction of, or deletion of any data sent through the form at any time by writing to the email address above.',
+      ],
+    },
+    {
+      titulo: 'Images and texts',
+      parrafos: [
+        `The projects, drawings, photographs and texts on this website are the work of ${SITIO.nombreCompleto} unless stated otherwise. They may not be reproduced without permission.`,
+      ],
+    },
+  ],
+  eu: [
+    {
+      titulo: 'Webgunearen titularra',
+      parrafos: [
+        `Webgune hau ${SITIO.nombreCompleto} arkitektoaren portfolio pertsonala da. Arkitektura lanak erakustea eta harremanetan jartzeko bidea ematea du helburu.`,
+        `Webgune honi buruzko edozein gairako: ${SITIO.correo}.`,
+      ],
+    },
+    {
+      titulo: 'Jasotzen diren datuak',
+      parrafos: [
+        'Webgune honek ez du cookierik erabiltzen, ez du jarraipen tresnarik instalatzen eta ez ditu bisitak neurtzen.',
+        'Jasotzen diren datu bakarrak kontaktu formularioan borondatez idazten direnak dira: izena, helbide elektronikoa, erakundea (aukerakoa) eta mezua. Erantzuteko soilik erabiltzen dira; ez zaizkie hirugarrenei lagatzen, ezta publizitatea bidaltzeko erabiltzen ere.',
+      ],
+    },
+    {
+      titulo: 'Mezuak nola bidaltzen diren',
+      parrafos: [
+        'Kontaktu formularioak Web3Forms zerbitzuarekin funtzionatzen du: bitartekari lana egiten du eta mezua posta elektronikoz helarazten du. Web3Formsek ez du mezuen edukia gordetzen.',
+        'Formularioa erabili gabe ere idatz daiteke, zuzenean goiko helbide elektronikora.',
+      ],
+    },
+    {
+      titulo: 'Non dagoen ostatatuta',
+      parrafos: [
+        'Webgunea GitHub Pagesen argitaratuta dago. Edozein zerbitzarik bezala, GitHubek jasotzen dituen eskaerak erregistratzen ditu teknikoki (IP helbidea eta nabigatzailea), orriak zerbitzatu ahal izateko.',
+      ],
+    },
+    {
+      titulo: 'Eskubideak',
+      parrafos: [
+        'Edozein unetan eska daiteke formularioaren bidez bidalitako datuetarako sarbidea, haien zuzenketa edo ezabaketa, goiko helbide elektronikora idatzita.',
+      ],
+    },
+    {
+      titulo: 'Irudiak eta testuak',
+      parrafos: [
+        `Webgune honetako proiektuak, marrazkiak, argazkiak eta testuak ${SITIO.nombreCompleto}(r)en lana dira, kontrakoa adierazi ezean. Ezin dira baimenik gabe erreproduzitu.`,
+      ],
+    },
+  ],
+  ca: [
+    {
+      titulo: 'Titular de la web',
+      parrafos: [
+        `Aquesta web és el portfolio personal de ${SITIO.nombreCompleto}, arquitecte. La seva finalitat és mostrar treballs d'arquitectura i permetre posar-s'hi en contacte.`,
+        `Per a qualsevol qüestió relacionada amb aquesta web: ${SITIO.correo}.`,
+      ],
+    },
+    {
+      titulo: 'Dades que es recullen',
+      parrafos: [
+        'Aquesta web no fa servir galetes, no instal·la rastrejadors i no mesura les visites.',
+        "Les úniques dades que es recullen són les que s'escriuen voluntàriament al formulari de contacte: nom, correu electrònic, organització (opcional) i el missatge. S'utilitzen només per respondre i no es cedeixen a tercers ni s'empren per enviar publicitat.",
+      ],
+    },
+    {
+      titulo: "Com s'envien els missatges",
+      parrafos: [
+        'El formulari de contacte funciona amb el servei Web3Forms, que fa d\'intermediari i lliura el missatge per correu electrònic. Web3Forms no conserva el contingut dels missatges.',
+        "També es pot escriure directament al correu de dalt, sense passar pel formulari.",
+      ],
+    },
+    {
+      titulo: 'On està allotjada',
+      parrafos: [
+        'La web està publicada a GitHub Pages. Com qualsevol servidor, GitHub registra tècnicament les peticions que rep (adreça IP i navegador) per poder servir les pàgines.',
+      ],
+    },
+    {
+      titulo: 'Drets',
+      parrafos: [
+        "Es pot demanar en qualsevol moment l'accés, la rectificació o l'eliminació de les dades enviades a través del formulari escrivint a l'adreça de correu de dalt.",
+      ],
+    },
+    {
+      titulo: 'Imatges i textos',
+      parrafos: [
+        `Els projectes, dibuixos, fotografies i textos d'aquesta web són obra de ${SITIO.nombreCompleto}, llevat que s'indiqui el contrari. No es poden reproduir sense permís.`,
+      ],
+    },
+  ],
+};
+
+const apartados = CONTENIDO[idioma];
+---
+
+<Base idioma={idioma} pagina="privacidad">
+  <TituloPagina indice="04" titulo={t.nav.privacidad} />
+
+  <div class="contenedor py-14 md:py-20">
+    <div class="max-w-[62ch] grid gap-10">
+      {
+        apartados.map((apartado, i) => (
+          <section>
+            <div class="flex items-baseline gap-4 border-b border-linea pb-2.5">
+              <span class="indice">{String(i + 1).padStart(2, '0')}</span>
+              <h2 class="font-[family-name:var(--font-titulo)] text-xl tracking-tight">
+                {apartado.titulo}
+              </h2>
+            </div>
+            {apartado.parrafos.map((parrafo) => (
+              <p class="mt-4 leading-relaxed text-gris">{parrafo}</p>
+            ))}
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</Base>
