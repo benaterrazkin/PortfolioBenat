@@ -30,6 +30,13 @@ jobs:
           node-version: 22
           cache: npm
 
+      # Enciende GitHub Pages la primera vez, para no tener que entrar en los
+      # ajustes del repositorio. Si ya está encendido, no hace nada.
+      - name: Activar GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - name: Instalar dependencias
         run: npm ci
 
