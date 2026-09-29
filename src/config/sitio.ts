@@ -60,10 +60,10 @@ export const SITIO: DatosSitio = {
    * es enviar un mensaje al correo de arriba. Si se deja vacía, el formulario
    * avisa de que no está configurado y ofrece escribir directamente al correo.
    *
-   * PENDIENTE: darse de alta en https://web3forms.com con el correo de Beñat
-   * y pegar aquí la clave que llega por email.
+   * Está dada de alta a nombre del correo de arriba: los mensajes del
+   * formulario llegan a esa bandeja de entrada.
    */
-  claveFormulario: '',
+  claveFormulario: 'bf8d2e16-9538-4132-82c9-5d3ce0c37ecd',
 
   /** Primer año de actividad; se usa en el pie de página. */
   anioInicio: 2025,

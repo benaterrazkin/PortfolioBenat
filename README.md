@@ -24,13 +24,19 @@ Quedan aquí anotadas para que nadie las «corrija» de vuelta más adelante:
 - **El español se lista como lengua nativa** en el currículum, aunque el PDF
   solo nombrara euskera e inglés.
 
-## Antes de publicar: lo que falta
+## El formulario de contacto
 
-**La clave del formulario.** Hay que darse de alta gratis en
-   [web3forms.com](https://web3forms.com) con el correo de Beñat y pegar la
-   clave que llega por email en `claveFormulario`, dentro de
-   `src/config/sitio.ts`. Mientras esté vacía, el formulario avisa de que no
-   está conectado y ofrece escribir directamente al correo.
+Funciona con [Web3Forms](https://web3forms.com), un servicio gratuito que hace
+de intermediario: recoge el mensaje y lo entrega por correo. La clave está en
+`claveFormulario`, dentro de `src/config/sitio.ts`, y está dada de alta a
+nombre de `benaterrazkin224@gmail.com`: ahí es donde llegan los mensajes.
+
+Esa clave se ve en el código fuente de la web, y es así a propósito: lo único
+que permite hacer es enviar un mensaje a ese buzón. No da acceso a nada.
+
+Si algún día deja de funcionar, se saca una clave nueva en web3forms.com con
+ese mismo correo y se sustituye. Si se deja el campo vacío, el formulario no se
+rompe: avisa de que no está conectado y ofrece escribir directamente al correo.
 
 ---
 
