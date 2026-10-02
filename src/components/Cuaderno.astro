@@ -52,16 +52,15 @@ const comunes = {
           {c.titulo}
         </h3>
       </div>
-      <p class="rotulo text-gris tabular-nums shrink-0">
-        <span data-contador></span>
-        <span class="sr-only">{c.anio}</span>
-      </p>
+      <!-- El recuento de hojas ya no se escribe aquí: cada hoja lleva su
+           número en la esquina, que es como funciona un cuaderno. -->
+      <p class="rotulo text-tinta tabular-nums shrink-0 sr-only">{c.anio}</p>
     </div>
 
     <div
       class="cuaderno"
       data-cuaderno
-      style={`--hojas:${c.hojas.length}`}
+      style={`--hojas:${c.hojas.length}${c.lomo ? `;--lomo:${c.lomo}` : ''}`}
       data-plantilla={t.cuaderno.hojaDe}
       data-total-caras={c.caras.length}
       aria-roledescription={formatear(t.cuaderno.rotulo, { titulo: c.titulo })}
@@ -325,6 +324,16 @@ const comunes = {
 
     zonaIzq.addEventListener('click', () => pasar(-1));
     zonaDer.addEventListener('click', () => pasar(1));
+
+    /* El botón de la tapa trasera: cierra el cuaderno de golpe en vez de
+     * obligar a deshacer el camino hoja a hoja. */
+    cuaderno.querySelector<HTMLButtonElement>('[data-reiniciar]')?.addEventListener('click', () => {
+      irA(0);
+      cuaderno.closest('section')?.scrollIntoView({
+        behavior: QUIETO.matches ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    });
 
     cuaderno.addEventListener('keydown', (evento) => {
       if (evento.altKey || evento.ctrlKey || evento.metaKey) return;

@@ -1,40 +1,25 @@
 ---
 import { Image } from 'astro:assets';
 import type { Cara } from '../data/cuaderno';
-import { textos, formatear } from '../i18n/ui';
+import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
 
 /**
- * Una cara del cuaderno: media doble página. Las hay de cinco clases
- * (portadilla, texto, imagen, blanca y cierre) y todas miden lo mismo,
- * para que al pasar la hoja no se vea ningún salto.
+ * Una hoja del cuaderno: media doble página, en A4 apaisado.
+ *
+ * Hay tres clases —presentación, lámina y hoja en blanco— y todas miden
+ * lo mismo, para que al pasar la hoja no se vea ningún salto.
  */
 interface Props {
   cara: Cara;
   idioma: Idioma;
-  /** Número del cuaderno y total, para el cierre. */
   numeroCuaderno: number;
-  totalCuadernos: number;
-  /** Ancla del siguiente cuaderno, para el enlace del cierre. */
-  anclaSiguiente?: string;
-  tituloSiguiente?: string;
-  /** La primera imagen de la web se carga de inmediato: es la que se ve. */
+  /** La primera lámina de la web se carga de inmediato: es la que se ve. */
   prioritaria?: boolean;
-  /** "anverso" o "reverso" dentro de una hoja; vacío en las dos fijas. */
   lado?: 'anverso' | 'reverso' | 'izquierda' | 'derecha';
 }
 
-const {
-  cara,
-  idioma,
-  numeroCuaderno,
-  totalCuadernos,
-  anclaSiguiente,
-  tituloSiguiente,
-  prioritaria = false,
-  lado,
-} = Astro.props;
-
+const { cara, idioma, numeroCuaderno, prioritaria = false, lado } = Astro.props;
 const t = textos(idioma);
 
 const clases = [
@@ -43,81 +28,107 @@ const clases = [
   lado === 'reverso' && 'cara--reverso',
   lado === 'izquierda' && 'cara--base cara--izquierda',
   lado === 'derecha' && 'cara--base cara--derecha',
-  cara.tipo === 'imagen' && 'cara--imagen',
-  cara.tipo === 'blanca' && 'reticula',
+  cara.tipo === 'lamina' && 'cara--imagen',
+  cara.tipo === 'mesa' && 'cara--mesa',
+  (cara.tipo === 'tapa' || cara.tipo === 'contratapa') && 'cara--tapa',
+  cara.tipo === 'tapa-interior' && 'cara--tapa-interior',
 ];
+
+/* El cajetín del plano: solo se escribe lo que se sabe. Una escala
+ * inventada es peor que ninguna escala. */
+const cajetin =
+  cara.tipo === 'lamina'
+    ? [cara.lamina.escala, cara.lamina.orientacion].filter(Boolean).join(' · ')
+    : '';
 ---
 
 <div class:list={clases} data-cara={cara.indice}>
   {
-    cara.tipo === 'portadilla' && (
-      <div class="cara-caja flex flex-col justify-between">
-        <div>
-          <p class="indice">{String(numeroCuaderno).padStart(2, '0')}</p>
-          <h3 class="mt-4 font-[family-name:var(--font-titulo)] text-[clamp(1.75rem,3.2vw,3rem)] leading-[0.98] tracking-tight">
+    cara.tipo === 'tapa' && (
+      <div class="cara-caja flex flex-col">
+        <p class="indice shrink-0">{String(numeroCuaderno).padStart(2, '0')}</p>
+
+        {cara.lamina ? (
+          <div class="flex-1 min-h-0 flex items-center justify-center py-[3%]">
+            <Image
+              src={cara.lamina.fuente}
+              alt={cara.lamina.alt}
+              widths={[640, 1024, 1600]}
+              sizes="(min-width: 60rem) 40vw, 85vw"
+              class="max-w-full max-h-full w-auto h-auto object-contain"
+              loading={prioritaria ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          </div>
+        ) : (
+          <div class="hueco-diagrama my-[3%]">
+            <span class="rotulo text-tinta/80">{t.cuaderno.diagrama}</span>
+          </div>
+        )}
+
+        <div class="shrink-0">
+          <h3 class="font-[family-name:var(--font-titulo)] font-semibold text-[clamp(1.25rem,2.4vw,2.25rem)] leading-[1.05] tracking-[-0.02em] max-w-[22ch]">
             {cara.titulo}
           </h3>
-          {cara.subtitulo && (
-            <p class="mt-4 text-[clamp(0.875rem,1.1vw,1.0625rem)] text-gris leading-relaxed max-w-[38ch]">
-              {cara.subtitulo}
-            </p>
-          )}
-        </div>
 
-        <dl class="mt-6 grid gap-2 border-t border-linea pt-4 text-[clamp(0.75rem,0.9vw,0.875rem)]">
-          <div class="flex gap-4">
-            <dt class="rotulo text-gris w-28 shrink-0">{t.proyectos.ficha.anio}</dt>
-            <dd class="tabular-nums">{cara.ficha.anio}</dd>
+          {/* La franja de abajo: una sola fila informativa. Los datos del
+              proyecto a la izquierda y los programas pegados al borde
+              derecho de la hoja, línea contra línea. Es la única vez que
+              aparecen en todo el cuaderno. */}
+          <div class="mt-3 pt-2.5 border-t border-tinta/40 grid gap-x-[6%] grid-cols-[1fr_auto] items-start">
+            <ul class="grid gap-px">
+              {cara.claves.map((clave) => (
+                <li class="rotulo text-tinta leading-snug">{clave}</li>
+              ))}
+            </ul>
+
+            <ul class="grid gap-px text-right">
+              {cara.herramientas.map((herramienta) => (
+                <li class="rotulo text-tinta/70 text-[0.5625rem] tracking-[0.16em] leading-snug">
+                  {herramienta}
+                </li>
+              ))}
+            </ul>
           </div>
-          {cara.ficha.lugar && (
-            <div class="flex gap-4 border-t border-linea-suave pt-2">
-              <dt class="rotulo text-gris w-28 shrink-0">{t.proyectos.ficha.lugar}</dt>
-              <dd>{cara.ficha.lugar}</dd>
-            </div>
-          )}
-          {cara.ficha.tipo && (
-            <div class="flex gap-4 border-t border-linea-suave pt-2">
-              <dt class="rotulo text-gris w-28 shrink-0">{t.proyectos.ficha.tipo}</dt>
-              <dd>{cara.ficha.tipo}</dd>
-            </div>
-          )}
-          {cara.ficha.contexto && (
-            <div class="flex gap-4 border-t border-linea-suave pt-2">
-              <dt class="rotulo text-gris w-28 shrink-0">{t.proyectos.ficha.contexto}</dt>
-              <dd>{cara.ficha.contexto}</dd>
-            </div>
-          )}
-          {cara.ficha.herramientas.length > 0 && (
-            <div class="flex gap-4 border-t border-linea-suave pt-2">
-              <dt class="rotulo text-gris w-28 shrink-0">{t.proyectos.ficha.herramientas}</dt>
-              <dd>{cara.ficha.herramientas.join(' · ')}</dd>
-            </div>
-          )}
-        </dl>
+        </div>
+      </div>
+    )
+  }
+
+  {/* El cartón por dentro y la tapa trasera van lisos, como en cualquier
+      libro. La vuelta al principio está fuera del cuaderno. */}
+  {(cara.tipo === 'tapa-interior' || cara.tipo === 'contratapa') && (
+    <span class="sr-only">{t.cuaderno.enBlanco}</span>
+  )}
+
+  {/* La primera hoja: el título en pequeño y el resumen. Nada más. La
+      ficha del proyecto ya está en la tapa y no se repite. */}
+  {
+    cara.tipo === 'presentacion' && (
+      <div class="cara-caja grid gap-x-[6%] gap-y-[5%] sm:grid-cols-[1fr_1.9fr] content-start">
+        {/* El título se queda arriba a la izquierda, con una columna de
+            aire debajo: es lo que abre la hoja y deja respirar al texto. */}
+        <h3 class="font-[family-name:var(--font-titulo)] font-light text-[clamp(0.9375rem,1.4vw,1.3125rem)] leading-[1.15] tracking-tight pt-2 border-t border-tinta">
+          {cara.titulo}
+        </h3>
+
+        <div class="prosa-cuaderno pt-2 border-t border-linea">
+          {cara.parrafos.map((parrafo) => (
+            <p>{parrafo}</p>
+          ))}
+        </div>
       </div>
     )
   }
 
   {
-    cara.tipo === 'texto' && (
-      <div class="cara-caja flex flex-col justify-center">
-        {cara.parrafos.map((parrafo) => (
-          <p class="mt-4 first:mt-0 text-[clamp(0.875rem,1.05vw,1.0625rem)] leading-relaxed max-w-[46ch]">
-            {parrafo}
-          </p>
-        ))}
-      </div>
-    )
-  }
-
-  {
-    cara.tipo === 'imagen' && (
+    cara.tipo === 'lamina' && (
       <figure class="cara-caja flex flex-col h-full">
         <div class="flex-1 min-h-0 flex items-center justify-center">
           <Image
-            src={cara.imagen.fuente}
-            alt={cara.imagen.alt}
-            widths={[640, 1024, 1440, 2000]}
+            src={cara.lamina.fuente}
+            alt={cara.lamina.alt}
+            widths={[640, 1024, 1600, 2400]}
             sizes="(min-width: 60rem) 46vw, 92vw"
             class="max-w-full max-h-full w-auto h-auto object-contain"
             loading={prioritaria ? 'eager' : 'lazy'}
@@ -125,59 +136,110 @@ const clases = [
             fetchpriority={prioritaria ? 'high' : undefined}
           />
         </div>
-        <figcaption class="mt-3 flex items-baseline gap-4 border-t border-linea-suave pt-2 shrink-0">
-          <span class="indice">{String(cara.numero).padStart(2, '0')}</span>
-          <span class="text-[0.75rem] text-gris truncate">{cara.imagen.pie ?? ''}</span>
-        </figcaption>
+        {
+          (cara.lamina.titulo || cajetin) && (
+            <figcaption class="mt-3 flex items-baseline justify-between gap-4 border-t border-linea pt-2 shrink-0">
+              <span class="rotulo text-tinta">{cara.lamina.titulo}</span>
+              <span class="text-[0.6875rem] text-gris tabular-nums">{cajetin}</span>
+            </figcaption>
+          )
+        }
       </figure>
     )
   }
 
-  {
-    cara.tipo === 'blanca' && <p class="sr-only">{t.cuaderno.enBlanco}</p>
-  }
+  {cara.tipo === 'blanca' && <p class="sr-only">{t.cuaderno.enBlanco}</p>}
 
   {
-    cara.tipo === 'cierre' && (
-      <div class="cara-caja flex flex-col justify-between items-start">
-        <p class="rotulo text-gris">{t.cuaderno.fin}</p>
-
-        <div>
-          <p class="indice">
-            {formatear('{n} / {total}', { n: numeroCuaderno, total: totalCuadernos })}
-          </p>
-          <p class="mt-3 font-[family-name:var(--font-titulo)] text-[clamp(1.25rem,2vw,1.75rem)] tracking-tight">
-            {cara.titulo}
-          </p>
-          <p class="mt-1 rotulo text-gris tabular-nums">{cara.anio}</p>
+    cara.tipo === 'mesa' &&
+      (cara.final ? (
+        /* El cuaderno ya está cerrado y esta mitad es mesa: aquí cabe la
+           vuelta al principio. Mientras no se llegue hasta aquí, la cara
+           está inerte, así que el botón ni se enfoca ni se pulsa. */
+        <div class="cara-caja grid place-items-center">
+          <button type="button" data-reiniciar class="boton-reiniciar rotulo text-tinta">
+            <span aria-hidden="true" class="w-5 h-px bg-current" />
+            {t.cuaderno.volverAlPrincipio}
+          </button>
         </div>
-
-        {anclaSiguiente ? (
-          <a
-            href={`#${anclaSiguiente}`}
-            class="rotulo text-gris inline-flex items-center gap-3 hover:text-tinta transition-colors"
-          >
-            {t.cuaderno.siguienteProyecto}
-            <span aria-hidden="true" class="w-6 h-px bg-current" />
-            <span class="text-tinta">{tituloSiguiente}</span>
-          </a>
-        ) : (
-          <span />
-        )}
-      </div>
-    )
+      ) : (
+        <p class="sr-only">{t.cuaderno.enBlanco}</p>
+      ))
   }
+
+  {/* El número de hoja, en la esquina de fuera. El canal queda siempre a
+      la izquierda de la cara, así que anclarlo a la derecha lo deja en el
+      borde exterior tanto en la página izquierda como en la derecha. */}
+  {cara.folio && <span class="folio rotulo text-gris tabular-nums">{cara.folio}</span>}
 </div>
 
 <style>
-  /* El respiro de dentro de la hoja. Se separa del borde lo justo para
-     que se lea como papel y no como una caja de web. */
+  /* El margen de la hoja: el MISMO por los cuatro lados, incluido el del
+     pliegue. Los dibujos independientes no se tocan en el centro del
+     cuaderno; si algún día un dibujo tiene que coger las dos páginas,
+     se parte en dos y se le quita este margen solo por dentro. */
   .cara-caja {
     height: 100%;
-    padding: clamp(1.25rem, 2.4vw, 2.75rem);
+    padding: clamp(1.75rem, 3.6vw, 4.25rem);
   }
-  /* Las imágenes respiran menos: son las protagonistas. */
-  .cara--imagen .cara-caja {
-    padding: clamp(1rem, 1.6vw, 1.75rem);
+
+  /* El botón de la mesa final. Va por encima de la zona que pasa hoja,
+     que cubre esa mitad entera, o quedaría debajo y no se podría pulsar. */
+  .boton-reiniciar {
+    position: relative;
+    z-index: calc(var(--hojas, 10) + 4);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    height: 2.5rem;
+    padding-inline: 1.25rem;
+    border: 1px solid rgb(20 22 26 / 0.35);
+    background: none;
+    cursor: pointer;
+    transition:
+      background-color 200ms var(--ease-suave),
+      border-color 200ms var(--ease-suave);
+  }
+  .boton-reiniciar:hover {
+    background-color: rgb(20 22 26 / 0.06);
+    border-color: var(--color-tinta);
+  }
+
+  /* El número de hoja va dentro del margen, en la esquina exterior. */
+  .folio {
+    position: absolute;
+    bottom: clamp(0.625rem, 1.3vw, 1.5rem);
+    right: clamp(0.625rem, 1.3vw, 1.5rem);
+    pointer-events: none;
+  }
+
+  /* El hueco del diagrama conceptual, mientras no haya diagrama. En cuanto
+     la página reciba su "lamina", este recuadro desaparece solo. */
+  .hueco-diagrama {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    /* Sobre el cartón, una línea de tinta rebajada se ve mejor que la
+       línea gris que usa el resto de la web. */
+    border: 1px dashed rgb(20 22 26 / 0.38);
+  }
+
+  /* El texto del proyecto: columna de 60 caracteres por línea, justificada.
+     La partición de palabras es imprescindible aquí: una columna estrecha
+     justificada SIN partir abre ríos de espacio entre palabras. El idioma
+     lo hereda del <html>, así que parte bien en los cuatro. */
+  .prosa-cuaderno {
+    max-width: 60ch;
+    font-size: clamp(0.75rem, 0.95vw, 0.9375rem);
+    line-height: 1.7;
+    color: var(--color-gris);
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    overflow: hidden;
+  }
+  .prosa-cuaderno p + p {
+    margin-block-start: 0.85em;
   }
 </style>

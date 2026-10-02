@@ -56,14 +56,6 @@ const t = textos(idioma);
             <BotonCV idioma={idioma} tono="linea" />
           </div>
 
-          <!-- Línea de cota con la ubicación -->
-          <div class="mt-12 flex items-center gap-4">
-            <span class="h-2 w-px bg-linea" aria-hidden="true"></span>
-            <span class="flex-1 h-px bg-linea" aria-hidden="true"></span>
-            <span class="rotulo text-gris shrink-0">{t.inicio.ubicacion} · {SITIO.ubicacion}</span>
-            <span class="flex-1 h-px bg-linea" aria-hidden="true"></span>
-            <span class="h-2 w-px bg-linea" aria-hidden="true"></span>
-          </div>
         </div>
 
         <!-- Retrato, enmarcado como una lámina -->
@@ -86,15 +78,6 @@ const t = textos(idioma);
         </figure>
       </div>
 
-      <p class="mt-14">
-        <a
-          href={rutaSeccion('proyectos', idioma)}
-          class="rotulo text-gris inline-flex items-center gap-3 hover:text-tinta transition-colors"
-        >
-          {t.inicio.verProyectos}
-          <span aria-hidden="true" class="w-6 h-px bg-current"></span>
-        </a>
-      </p>
     </div>
   </section>
 

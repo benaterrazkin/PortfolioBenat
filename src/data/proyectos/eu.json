@@ -1,157 +1,437 @@
 [
   {
-    "id": "proyecto-1",
+    "id": "astigarreta",
     "orden": 1,
-    "titulo": "1. proiektua",
-    "subtitulo": "Portuko biltegi bat lanbide eskola bihurtuta",
-    "anio": "2024",
-    "lugar": "Pasaia, Gipuzkoa",
-    "tipo": "Ekipamendua · Birgaitzea",
-    "contexto": "Proiektuak VI · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Maketa 1:100"],
-    "texto": [
-      "Herrerako kaiko 3. biltegia hogei urte daramatza hutsik: 1962ko hormigoizko nabe bat, hamabi metroko argiko portikoekin eta jada ezer estaltzen ez duen zerra hortzeko estalki batekin. Proposamenak ez du hustu, ezta berregin ere. Estalkia konpontzen du, zorua hiru puntutan irekitzen du eta barruan zurezko eraikin bat sartzen du, inoiz lehendik dauden hormak ukitzera iritsi gabe.",
-      "Tailerrek —zurgintza, metala, galdaragintza— beheko solairua hartzen dute, zoruak makineria astuna jasaten duen eta kaiko ateek materiala inguru handirik gabe sartu eta ateratzea ahalbidetzen duten lekuan. Haien gainean, zur laminatuzko erretilu batek ikasgelak eta korridore jarrai bat hartzen ditu, azpian nola lan egiten den ikusteko. Lanbide bat ikastea, batez ere, dakienari begiratzea da.",
-      "Obra uraren ertzean gelditzen da. Kaia dagoen bezala uzten da, bere bolardo eta errailekin, eta barruan eraikitzen dena uretaratzeko arrapala bat baino ez da gehitzen. Eraikinak ez du portua berreskuratu nahi: haren parte izaten jarraitu nahi du."
-    ],
-    "portada": {
-      "archivo": "proyectos/proyecto-1/portada.jpg",
-      "alt": "Biltegi birgaituaren ikuspegia kaiko uretatik"
-    },
-    "imagenes": [
-      {
-        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
-        "alt": "Kokapen planoa, badia eta kaiekin",
-        "pie": "Kokapena. 1:2000"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
-        "alt": "Beheko solairua, hiru tailerrekin eta kaitik sartzeko bidearekin",
-        "pie": "Beheko solairua. Tailerrak eta materialaren sarrera"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
-        "alt": "Goiko solairua, ikasgelak zurezko egituraren gainean",
-        "pie": "Goiko solairua. Ikasgelak eta korridore jarraia"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/seccion.jpg",
-        "alt": "Sekzio luzetara, lehendik zegoen nabea eta barruko zurezko egitura erakusten dituena",
-        "pie": "Sekzio luzetara. 1:200"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/alzado.jpg",
-        "alt": "Kairantz begira dagoen altxaera, ate lerrakorrak irekita",
-        "pie": "Kairako altxaera"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
-        "alt": "Axonometria zatikatua, estalkia, zura eta hormigoizko nabearekin",
-        "pie": "Eraikuntza axonometria"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/maqueta.jpg",
-        "alt": "Kartoizko eta zurezko maketaren argazkia, hegoaldetik ikusita",
-        "pie": "1:100 maketa"
-      }
-    ]
-  },
-  {
-    "id": "proyecto-2",
-    "orden": 2,
-    "titulo": "2. proiektua",
-    "subtitulo": "Hamabi etxe eta itsasadarraren gaineko igarobide publiko bat",
-    "anio": "2025",
-    "lugar": "Olabeaga, Bilbo",
+    "titulo": "Astigarretako etxebizitza multifamiliarrak",
+    "subtitulo": "Hiru etxebizitza bloke mendiko herri bat birpopulatzeko",
+    "anio": "2023",
+    "lugar": "Astigarreta, Goierri (Gipuzkoa)",
     "tipo": "Etxebizitza kolektiboa",
-    "contexto": "Gradu Amaierako Lana · UPV/EHU",
-    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "contexto": "Proiektuak IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
     "texto": [
-      "Olabeaga malda gainean bermatutako kale luze bat da, etxeak alde bakarrean eta itsasadarra bestean dituena. Orubea eraitsitako tailer batek utzitako hutsunea da: hamabost metroko frontea, hogeita hamarreko sakonera eta zazpi metroko desnibela kalearen eta goiko bidearen artean.",
-      "Bloke baten ordez, hamabi etxe ilaran, maldarekin mailakatuta. Bakoitzak bi fronte ditu —itsasadarra hegoaldean, malda iparraldean— eta erdian zerbitzuen zerrenda bat, desnibela bi mailatan xurgatzen duena. Etxebizitza guztiek oinplano bera dute eta zein kotatan dauden baino ez ditu bereizten.",
-      "Hamabi etxeak lotzen dituen igarobidea erdiko altueran dago, kalearen eta bidearen artean, eta auzorako lasterbide gisa funtzionatzen du: bertatik igo daiteke inongo aterik jo gabe. Proiektuan inorena zehazki ez den atal bakarra da."
+      "Astigarreta mendian kokatutako eraikin multzo txiki bat da, Goierri eskualdean. Enkarguak hiru etxebizitza bloke eskatzen zituen, ingurura egokituko zirenak, herriaren egungo egoerari erreparatuz eta, komunitate bizitza bultzatuz, zona birpopulatzen nola lagun zezaketen kontuan hartuz.",
+      "Hemen ikasten dena lurraren antolaketarekin lotuta dago. Euskal Herriko topografia menditsuak herri txikiak hiriguneetatik isolatuta uzten ditu, eta lotura hori dagoeneko dauden garraioekin baino ezin da konpondu. Horregatik, proiektua bere esku dagoenean zentratzen da: etxebizitza eta espazio publikoa sortzean, kalea, plazak eta eraikinak egungo auzokideei eta etor daitezkeenei egokituz."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-2/portada.jpg",
-      "alt": "Hamabi etxebizitza mailakatuak, itsasadarraren beste ertzetik ikusita"
+      "archivo": "proyectos/astigarreta/portada.webp",
+      "alt": "Kartoizko eta zurezko maketa, sestra kurbetako topografiarekin eta etxebizitzen bolumenekin"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-2/implantacion.jpg",
-        "alt": "Ezarpen planoa, kalearekin, orubearekin eta goiko bidearekin",
-        "pie": "Ezarpena. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
-        "alt": "Elkarren segidako hiru etxebizitzaren oinplano tipoa, igarobide komunarekin",
-        "pie": "Oinplano tipoa. Hiru etxebizitza eta igarobidea"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/emplazamiento.webp",
+        "alt": "Kokapen planoa, sestra kurbekin, herriarekin eta hiru bloke berriekin",
+        "titulo": "Kokapena"
       },
       {
-        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
-        "alt": "Zeharkako sekzioa, etxebizitzen mailaketa maldaren gainean erakusten duena",
-        "pie": "Zeharkako sekzioa. 1:100"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/portada.webp",
+        "alt": "Kartoizko eta zurezko maketa, sestra kurbetako topografiarekin eta etxebizitzen bolumenekin",
+        "titulo": "Maketa"
       },
       {
-        "archivo": "proyectos/proyecto-2/vivienda.jpg",
-        "alt": "Etxebizitza baten oinplanoa eta sekzioa, bere bi fronteekin",
-        "pie": "Etxebizitza tipoa. 1:50"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/planta-conjunto.webp",
+        "alt": "Multzoaren oinplanoa, hiru bloke berriak lehendik dauden etxeen artean",
+        "titulo": "Multzoaren oinplanoa"
       },
       {
-        "archivo": "proyectos/proyecto-2/paso.jpg",
-        "alt": "Etxebizitzen arteko igarobide publikoa, itsasadarrera begira",
-        "pie": "Igarobidea, erdiko altueran"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-aa.webp",
+        "alt": "AA' sekzioa etxebizitza bloketik, eliza atzean duela",
+        "titulo": "AA' sekzioa"
       },
       {
-        "archivo": "proyectos/proyecto-2/constructivo.jpg",
-        "alt": "Eusteko hormaren eta forjatuaren arteko topaketaren eraikuntza xehetasuna",
-        "pie": "Xehetasuna. Eusteko hormarekiko topaketa"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-bb.webp",
+        "alt": "BB' sekzioa maldan zehar, lehendik dagoen baserriarekin",
+        "titulo": "BB' sekzioa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-dd.webp",
+        "alt": "DD' sekzioa bi etxebizitza gorputzetatik",
+        "titulo": "DD' sekzioa"
+      }
+    ],
+    "lomo": "#e07b1e"
+  },
+  {
+    "id": "eliza-reforma",
+    "orden": 2,
+    "titulo": "Gubingo elizaren birgaitzea",
+    "subtitulo": "Adreiluzko hondakin bat kultura gune bihurtuta",
+    "anio": "2024",
+    "lugar": "Gubin, Polonia",
+    "tipo": "Birgaitzea · Kultura ekipamendua",
+    "contexto": "Design for Conservation",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#97313e",
+    "texto": [
+      "Enkarguak Bigarren Mundu Gerraren ondoren abandonatutako eliza bati bizitza berria ematea zuen helburu, Gubin herrian, Polonian. Eliza erabat hondatuta dago: zutik zutabeak, fatxada eta erdiko dorrea baino ez dira geratzen, denak adreiluzkoak.",
+      "Berreraikitzea garaiko egitura benetakoa berrerabiltzetik eta osatzetik abiatzen da, egitura berri eta autoeramaile batekin, nagusitik bereizten dena eta hura eguneratzen duena. Erabilerari dagokionez, jatorrizko funtzioa gaur egungo beharrekin alderatzen da, eta kultura espazio zabal bat ateratzen da, historia eta oraina lotzen dituena: kontzertuak, erakusketak eta bisitarientzako atsedena.",
+      "Proiektuaren gakoa dagoena ulertzea da, eta hori bilakatzea eta denborara egokitzea lortzea, bere izaera aldatu gabe."
+    ],
+    "portada": {
+      "archivo": "proyectos/eliza-reforma/portada.webp",
+      "alt": "Birgaitutako elizaren kanpoko ikuspegia, adreiluzko dorrea zutik duela"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/portada.webp",
+        "alt": "Birgaitutako elizaren kanpoko ikuspegia, adreiluzko dorrea zutik duela",
+        "titulo": "Kanpoko ikuspegia"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-general.webp",
+        "alt": "Multzoaren ikuspegi orokorra plazatik",
+        "titulo": "Ikuspegi orokorra"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-1.webp",
+        "alt": "Lehen solairua, nabearekin eta barruko egitura berriarekin",
+        "titulo": "1. solairua",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-4.webp",
+        "alt": "Laugarren solairua, dorrean",
+        "titulo": "4. solairua",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-1.webp",
+        "alt": "Nabetik egindako sekzio luzetara, adreiluzko arkuen gaineko estalki berriarekin",
+        "titulo": "Sekzio luzetara",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-2.webp",
+        "alt": "Dorretik egindako zeharkako sekzioa, egituraren ainguraketaren xehetasunarekin",
+        "titulo": "Zeharkako sekzioa",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-1.webp",
+        "alt": "Elizaren kanpoko ikuspegia sarreratik",
+        "titulo": "Kanpoko ikuspegia"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-3.webp",
+        "alt": "Fatxada nagusiaren kanpoko ikuspegia",
+        "titulo": "Kanpoko ikuspegia"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-5.webp",
+        "alt": "Multzoaren kanpoko ikuspegia ilunabarrean",
+        "titulo": "Kanpoko ikuspegia"
       }
     ]
   },
   {
-    "id": "proyecto-3",
+    "id": "proiektuak-9",
     "orden": 3,
-    "titulo": "3. proiektua",
-    "subtitulo": "Auzoko ekipamendu bat Santseko etxadi baten barruan",
-    "anio": "2026",
-    "lugar": "La Bordeta, Bartzelona",
-    "tipo": "Ekipamendu publikoa",
-    "contexto": "Proiektu Tailerra · ETSABeko master gaitzailea",
-    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "titulo": "Hiri proiektua Hondarribian",
+    "subtitulo": "Merkatua, ekipamenduak eta etxebizitzak Magdalenako kuboan",
+    "anio": "2024",
+    "lugar": "Hondarribia, Gipuzkoa",
+    "tipo": "Hiri proiektua · Erabilera mistoa",
+    "contexto": "Proiektuak IX · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#1b3050",
     "texto": [
-      "Etxadiaren barrualdea jada erabiltzen ez diren solairu bakarreko nabeek eta etxebizitzetatik bereizten dituen hiru metroko horma batek hartzen dute. Enkarguak auzoko ekipamendu bat eskatzen zuen; proiektua hormaren zein zati geratzen den eta zein botatzen den erabakitzen hasten da.",
-      "Bi nabe oso gordetzen dira, eta hirugarren baten pilare ilara. Haien artean patio luze bat agertzen da, ekialdetik mendebaldera orientatua, programaren hiru zatietarako sarbidea banatzen duena: areto polibalentea, tailerrak eta adinekoen egoitza. Gainerakoa itzala da: berreskuratutako habeen pergola bat, patioa estaltzen duena itxi gabe.",
-      "Eraikuntza nahita da pobrea: fabrika bistan, katalogoko aluminiozko arotzeria eta xafla nabe zaharren gainean. Aurrekontua zoruan, uretan eta zuhaitzetan biltzen da, hori baita auzoak benetan erabiliko duena."
+      "Proiektua Hondarribiko Magdalenako kuboan kokatzen da, alde zaharraren eta zabalgunearen arteko lotunean. Josketa horretako zirkulazioa ulertzea da gainerako guztiaren gakoa.",
+      "Enkarguak merkatua, ekipamendu administratiboak, bulegoak, areto kultural polibalente bat eta adineko pertsona independenteentzako etxebizitza tutelatuak eskatzen zituen, eta aldi berean, eremuaren jarioa oztopatzen zuten elkarte gastronomikoa eta zurgintza tailerra birkokatzea.",
+      "Erantzuna hiru bloke dira: txiki bat merkaturako, erdiko bat kultura eta administrazioa biltzen dituena eta lekuaren pisua hartzen duena, eta hirugarren bat etxebizitza eraikin bihurtua. Bakoitzari funtzionatzen duen kokapena bilatzen zaio."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-3/portada.jpg",
-      "alt": "Gordetako bi nabeen arteko patioa, berreskuratutako habeen pergolarekin"
+      "archivo": "proyectos/proiektuak-9/portada.webp",
+      "alt": "Hiri proiektua Hondarribian — Merkatua, ekipamenduak eta etxebizitzak Magdalenako kuboan"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-3/manzana.jpg",
-        "alt": "Etxadi osoaren oinplanoa, barrualdea libre eta gordetako nabeekin",
-        "pie": "Etxadia. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-3/planta.jpg",
-        "alt": "Ekipamenduaren oinplanoa, areto polibalentearekin, tailerrekin eta egoitzarekin",
-        "pie": "Oinplano orokorra. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/portada.webp",
+        "alt": "Axonometria — Hiri proiektua Hondarribian",
+        "titulo": "Axonometria"
       },
       {
-        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
-        "alt": "Patiotik egindako sekzioa, bi nabeekin, pergolarekin eta inguruko etxebizitzekin",
-        "pie": "Patiotik egindako sekzioa. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/aretoa.webp",
+        "alt": "Barruko ikuspegiak — Hiri proiektua Hondarribian",
+        "titulo": "Barruko ikuspegiak"
       },
       {
-        "archivo": "proyectos/proyecto-3/luz.jpg",
-        "alt": "Patioaren eguzkitzearen azterketa urte osoan zehar",
-        "pie": "Patioaren eguzkitzea"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/planta-baja.webp",
+        "alt": "Beheko solairua — Hiri proiektua Hondarribian",
+        "titulo": "Beheko solairua",
+        "escala": "1:100"
       },
       {
-        "archivo": "proyectos/proyecto-3/interior.jpg",
-        "alt": "Tailerren nabearen barrualdea, egitura metalikoa bistan",
-        "pie": "Tailerrak, iparraldeko nabean"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/detalle-fachada.webp",
+        "alt": "Fatxadaren xehetasuna — Hiri proiektua Hondarribian",
+        "titulo": "Fatxadaren xehetasuna"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-seccion.webp",
+        "alt": "Etxebizitzaren sekzioa — Hiri proiektua Hondarribian",
+        "titulo": "Etxebizitzaren sekzioa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-planta.webp",
+        "alt": "Etxebizitzaren oinplanoa — Hiri proiektua Hondarribian",
+        "titulo": "Etxebizitzaren oinplanoa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/axonometrica.webp",
+        "alt": "Axonometria — Hiri proiektua Hondarribian",
+        "titulo": "Axonometria"
+      }
+    ]
+  },
+  {
+    "id": "elorrieta",
+    "orden": 4,
+    "titulo": "Elorrietako urbanizazioa",
+    "subtitulo": "Forma desberdineko blokeak, klimara eta topografiara egokituta",
+    "anio": "2023",
+    "lugar": "Elorrieta, Bilbo",
+    "tipo": "Hirigintza · Etxebizitza",
+    "contexto": "Proiektuak IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#6e624d",
+    "texto": [
+      "Proiektua Elorrietan kokatzen da, Bilboko industria auzo batean, eta eremuaren formara eta topografiara egokituko zen urbanizazio bat eskatzen zuen.",
+      "Forma eta altuera desberdineko blokeek osatutako etxadi joko bat proposatzen da. Konposizioa Envimet programarekin aztertu zen, eta horrek urtean zehar lortzen diren itzalak, aire korronteak eta tenperaturak justifikatzeko aukera ematen du.",
+      "Hemen ikasten dena bolumen desberdinak erabiltzea da, eta haiek, elkarrekin, funtzionatzen duen eta programara egokitzen den multzo bat osatzea lortzea."
+    ],
+    "portada": {
+      "archivo": "proyectos/elorrieta/situacion.webp",
+      "alt": "Elorrietako urbanizazioa — Forma desberdineko blokeak, klimara eta topografiara egokituta"
+    },
+    "diagrama": {
+      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "alt": "Diagrama conceptual — Elorrietako urbanizazioa"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/situacion.webp",
+        "alt": "Kokapen orokorra — Elorrietako urbanizazioa",
+        "titulo": "Kokapen orokorra"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/plantas-tipo.webp",
+        "alt": "Oinplano tipoak — Elorrietako urbanizazioa",
+        "titulo": "Oinplano tipoak"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/secciones.webp",
+        "alt": "Sekzioak — Elorrietako urbanizazioa",
+        "titulo": "Sekzioak"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/alzados.webp",
+        "alt": "Altxaerak — Elorrietako urbanizazioa",
+        "titulo": "Altxaerak"
+      }
+    ]
+  },
+  {
+    "id": "tfg",
+    "orden": 5,
+    "titulo": "Birgaitzea Urnietan",
+    "subtitulo": "Hutsik gelditutako ikastola bat herriari itzulia",
+    "anio": "2025",
+    "lugar": "Urnieta, Gipuzkoa",
+    "tipo": "Birgaitzea · Ekipamendua",
+    "contexto": "Gradu Amaierako Lana · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#f0a923",
+    "texto": [
+      "Gradu amaierako lan hau eraikin baten erabilera galtzea dela eta, honi funtzio berri bat emateko helburuarekin hasi zen. Urnieta herria kokaleku bezala izanik, bertako eta inguruko herritarrei beharrak aseko dizkien proiektu batez.",
+      "Tokiaren aukeraketa nire ikastola izandako eraikin multzoa txiki gelditu eta oin berriko proiektu baten bitartez berkokatuko dutelako izan da. Eremua hutsik gelditzearen bidean dago, erabilerarik gabe.",
+      "Aztertu eta dituen arazo ugariez ohartzerakoan, eraikinaz gain, partzela osoa herrian berriz txertatzeko proiektu bat bilakatu da, birgaitze, berritze eta handitze esku hartzeak abian jarriz. Jasoko diren erabilera berriak gaur egungo eskaintzan falta diren puntuetatik abiatzen dira."
+    ],
+    "portada": {
+      "archivo": "proyectos/tfg/emplazamiento.webp",
+      "alt": "Birgaitzea Urnietan — Hutsik gelditutako ikastola bat herriari itzulia"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/emplazamiento.webp",
+        "alt": "Kokapena — Birgaitzea Urnietan",
+        "titulo": "Kokapena"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/situacion.webp",
+        "alt": "Kokapen orokorra — Birgaitzea Urnietan",
+        "titulo": "Kokapen orokorra"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/axonometrica.webp",
+        "alt": "Axonometria — Birgaitzea Urnietan",
+        "titulo": "Axonometria"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/seccion-1.webp",
+        "alt": "Sekzioa — Birgaitzea Urnietan",
+        "titulo": "Sekzioa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-12.webp",
+        "alt": "Birgaitzea Urnietan — Birgaitzea Urnietan"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-13.webp",
+        "alt": "Birgaitzea Urnietan — Birgaitzea Urnietan"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/vistas-interiores.webp",
+        "alt": "Barruko ikuspegiak — Birgaitzea Urnietan",
+        "titulo": "Barruko ikuspegiak"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-09.webp",
+        "alt": "Birgaitzea Urnietan — Birgaitzea Urnietan"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-11.webp",
+        "alt": "Birgaitzea Urnietan — Birgaitzea Urnietan"
+      }
+    ]
+  },
+  {
+    "id": "urbanismo",
+    "orden": 6,
+    "titulo": "Birurbanizazioa Piekaryn",
+    "subtitulo": "Eskola ondoko jolas gune bat, herri osoarentzat",
+    "anio": "2024",
+    "lugar": "Piekary, Polonia",
+    "tipo": "Hirigintza · Espazio publikoa",
+    "contexto": "Architecture & Planning in the Countryside",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#616a70",
+    "texto": [
+      "Birurbanizazio proiektua Poloniako herri txiki batean, jolas gune propiorik ez duen eskola baten ondoan.",
+      "Enkargua hasieratik bi eskalatan ulertzen da: eskolak behar duen patioa konpontzea eta, operazio berarekin, herri osoari falta zaion espazio publikoa ematea. Eskola orduetan haurrentzat eraikitzen dena auzokideentzat erabilgarri gelditzen da gainerako denboran.",
+      "Lana eremuaren azterketa batekin hasten da —ibilbideak, erabilerak eta erreferentziak—, eta azterketa horrek finkatzen du non esku hartu eta zer indarrekin."
+    ],
+    "portada": {
+      "archivo": "proyectos/urbanismo/portada.webp",
+      "alt": "Birurbanizazioa Piekaryn — Eskola ondoko jolas gune bat, herri osoarentzat"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/portada.webp",
+        "alt": "Ikuspegia — Birurbanizazioa Piekaryn",
+        "titulo": "Ikuspegia"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-1.webp",
+        "alt": "Eremuaren azterketa — Birurbanizazioa Piekaryn",
+        "titulo": "Eremuaren azterketa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-2.webp",
+        "alt": "Eremuaren azterketa — Birurbanizazioa Piekaryn",
+        "titulo": "Eremuaren azterketa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/referencias.webp",
+        "alt": "Erreferentziak — Birurbanizazioa Piekaryn",
+        "titulo": "Erreferentziak"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-2.webp",
+        "alt": "Ikuspegia — Birurbanizazioa Piekaryn",
+        "titulo": "Ikuspegia"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-3.webp",
+        "alt": "Ikuspegia — Birurbanizazioa Piekaryn",
+        "titulo": "Ikuspegia"
       }
     ]
   }

@@ -1,157 +1,437 @@
 [
   {
-    "id": "proyecto-1",
+    "id": "astigarreta",
     "orden": 1,
-    "titulo": "Proyecto 1",
-    "subtitulo": "Un almacén del puerto convertido en escuela de oficios",
-    "anio": "2024",
-    "lugar": "Pasaia, Gipuzkoa",
-    "tipo": "Equipamiento · Rehabilitación",
-    "contexto": "Proyectos VI · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Maqueta 1:100"],
-    "texto": [
-      "El almacén número 3 del muelle de Herrera lleva veinte años vacío: una nave de hormigón de 1962, con pórticos de doce metros de luz y una cubierta de dientes de sierra que ya no cubre nada. La propuesta no la vacía ni la rehace. Repara la cubierta, abre el suelo en tres puntos y mete dentro un edificio de madera que en ningún momento llega a tocar los muros existentes.",
-      "Los talleres —carpintería, metal, calderería— ocupan la planta baja, donde el suelo aguanta la maquinaria pesada y las puertas del muelle permiten entrar y sacar material sin rodeos. Sobre ellos, una bandeja de madera laminada recoge las aulas y un pasillo corrido desde el que se ve trabajar abajo. Aprender un oficio es, sobre todo, mirar a quien lo sabe hacer.",
-      "La obra se detiene en el borde del agua. El muelle se deja como está, con sus bolardos y sus raíles, y solo se añade una rampa para botar lo que se construya dentro. El edificio no pretende recuperar el puerto: pretende seguir siendo parte de él."
-    ],
-    "portada": {
-      "archivo": "proyectos/proyecto-1/portada.jpg",
-      "alt": "Vista del almacén rehabilitado desde el agua del muelle"
-    },
-    "imagenes": [
-      {
-        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
-        "alt": "Plano de emplazamiento con la bahía y los muelles",
-        "pie": "Emplazamiento. 1:2000"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
-        "alt": "Planta baja con los tres talleres y el acceso desde el muelle",
-        "pie": "Planta baja. Talleres y acceso de material"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
-        "alt": "Planta alta con las aulas sobre la estructura de madera",
-        "pie": "Planta alta. Aulas y pasillo corrido"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/seccion.jpg",
-        "alt": "Sección longitudinal con la nave existente y la estructura de madera interior",
-        "pie": "Sección longitudinal. 1:200"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/alzado.jpg",
-        "alt": "Alzado hacia el muelle con las puertas correderas abiertas",
-        "pie": "Alzado al muelle"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
-        "alt": "Axonometría despiezada con la cubierta, la madera y la nave de hormigón",
-        "pie": "Axonometría constructiva"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/maqueta.jpg",
-        "alt": "Fotografía de la maqueta de cartón y madera vista desde el sur",
-        "pie": "Maqueta 1:100"
-      }
-    ]
-  },
-  {
-    "id": "proyecto-2",
-    "orden": 2,
-    "titulo": "Proyecto 2",
-    "subtitulo": "Doce casas y un paso público sobre la ría",
-    "anio": "2025",
-    "lugar": "Olabeaga, Bilbao",
+    "titulo": "Viviendas multifamiliares en Astigarreta",
+    "subtitulo": "Tres bloques de vivienda para repoblar un pueblo del monte",
+    "anio": "2023",
+    "lugar": "Astigarreta, Goierri (Gipuzkoa)",
     "tipo": "Vivienda colectiva",
-    "contexto": "Trabajo de Fin de Grado · UPV/EHU",
-    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "contexto": "Proyectos IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
     "texto": [
-      "Olabeaga es una calle larga apoyada en la ladera, con las casas de un solo lado y la ría del otro. El solar es el hueco que dejó un taller derribado: quince metros de frente, treinta de fondo y siete metros de desnivel entre la calle y el camino de arriba.",
-      "En lugar de un bloque, doce casas en hilera escalonadas con la pendiente. Cada una tiene dos frentes —la ría al sur, la ladera al norte— y una franja de servicios en medio que absorbe el desnivel en dos peldaños. Todas las viviendas tienen la misma planta y se distinguen únicamente por la cota a la que están.",
-      "El paso que une las doce casas está a media altura, entre la calle y el camino, y funciona como atajo para el barrio: se puede subir por él sin llamar a ninguna puerta. Es la única parte del proyecto que no es de nadie en concreto."
+      "Astigarreta es un pequeño grupo de edificios en el monte, en la comarca del Goierri. El encargo pedía tres bloques de viviendas que se adaptaran al entorno, atentos al estado actual del pueblo y a cómo ayudar a repoblar la zona impulsando la vida en comunidad.",
+      "Lo que se aprende aquí tiene que ver con la organización del terreno. La topografía montañosa del País Vasco deja aislados a los pueblos pequeños, y la conexión con los centros urbanos solo se resuelve con los transportes que ya existen. Por eso el proyecto se centra en lo que sí está en su mano: crear vivienda y espacio público, adecuando la calle, las plazas y los edificios a los vecinos actuales y a los que puedan venir."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-2/portada.jpg",
-      "alt": "Las doce viviendas escalonadas vistas desde la otra orilla de la ría"
+      "archivo": "proyectos/astigarreta/portada.webp",
+      "alt": "Maqueta de cartón y madera con la topografía en curvas de nivel y los volúmenes de las viviendas"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-2/implantacion.jpg",
-        "alt": "Plano de implantación con la calle, el solar y el camino superior",
-        "pie": "Implantación. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
-        "alt": "Planta tipo de tres viviendas consecutivas con el paso común",
-        "pie": "Planta tipo. Tres viviendas y el paso"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/emplazamiento.webp",
+        "alt": "Plano de emplazamiento con las curvas de nivel, el pueblo y los tres bloques nuevos",
+        "titulo": "Emplazamiento"
       },
       {
-        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
-        "alt": "Sección transversal con el escalonamiento de las viviendas sobre la ladera",
-        "pie": "Sección transversal. 1:100"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/portada.webp",
+        "alt": "Maqueta de cartón y madera con la topografía en curvas de nivel y los volúmenes de las viviendas",
+        "titulo": "Maqueta"
       },
       {
-        "archivo": "proyectos/proyecto-2/vivienda.jpg",
-        "alt": "Planta y sección de una vivienda con sus dos frentes",
-        "pie": "Vivienda tipo. 1:50"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/planta-conjunto.webp",
+        "alt": "Planta de conjunto con los tres bloques nuevos entre las casas existentes",
+        "titulo": "Planta de conjunto"
       },
       {
-        "archivo": "proyectos/proyecto-2/paso.jpg",
-        "alt": "Vista del paso público entre las viviendas, mirando hacia la ría",
-        "pie": "El paso, a media altura"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-aa.webp",
+        "alt": "Sección AA' por el bloque de viviendas, con la iglesia al fondo",
+        "titulo": "Sección AA'"
       },
       {
-        "archivo": "proyectos/proyecto-2/constructivo.jpg",
-        "alt": "Detalle constructivo del encuentro entre el muro de contención y el forjado",
-        "pie": "Detalle. Encuentro con el muro de contención"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-bb.webp",
+        "alt": "Sección BB' a lo largo de la ladera, con el caserío existente",
+        "titulo": "Sección BB'"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-dd.webp",
+        "alt": "Sección DD' por los dos cuerpos de vivienda",
+        "titulo": "Sección DD'"
+      }
+    ],
+    "lomo": "#e07b1e"
+  },
+  {
+    "id": "eliza-reforma",
+    "orden": 2,
+    "titulo": "Rehabilitación de la iglesia de Gubin",
+    "subtitulo": "Una ruina de ladrillo convertida en espacio de cultura",
+    "anio": "2024",
+    "lugar": "Gubin, Polonia",
+    "tipo": "Rehabilitación · Equipamiento cultural",
+    "contexto": "Design for Conservation",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#97313e",
+    "texto": [
+      "El encargo consistía en dar nueva vida a una iglesia abandonada tras la Segunda Guerra Mundial, en el pueblo de Gubin, Polonia. La iglesia está en ruina completa: en pie quedan solo las columnas, la fachada y la torre central, todo de ladrillo.",
+      "La reconstrucción parte de reusar y completar la estructura auténtica de la época con una nueva, autoportante, que se distinga de la principal y la actualice. En cuanto al uso, se compara la función original con las necesidades de hoy, y sale un espacio amplio de cultura que junta historia y presente: conciertos, exposiciones y descanso para quien visita.",
+      "Lo importante del proyecto está en entender lo que hay y conseguir que evolucione y se adapte al tiempo sin cambiar su forma de ser."
+    ],
+    "portada": {
+      "archivo": "proyectos/eliza-reforma/portada.webp",
+      "alt": "Vista exterior de la iglesia rehabilitada, con la torre de ladrillo en pie"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/portada.webp",
+        "alt": "Vista exterior de la iglesia rehabilitada, con la torre de ladrillo en pie",
+        "titulo": "Vista exterior"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-general.webp",
+        "alt": "Vista general del conjunto desde la plaza",
+        "titulo": "Vista general"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-1.webp",
+        "alt": "Planta primera, con la nave y la nueva estructura interior",
+        "titulo": "Planta 1",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-4.webp",
+        "alt": "Planta cuarta, en la torre",
+        "titulo": "Planta 4",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-1.webp",
+        "alt": "Sección longitudinal por la nave, con la cubierta nueva sobre los arcos de ladrillo",
+        "titulo": "Sección longitudinal",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-2.webp",
+        "alt": "Sección transversal por la torre, con el detalle del anclaje de la estructura",
+        "titulo": "Sección transversal",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-1.webp",
+        "alt": "Vista exterior de la iglesia desde el acceso",
+        "titulo": "Vista exterior"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-3.webp",
+        "alt": "Vista exterior de la fachada principal",
+        "titulo": "Vista exterior"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-5.webp",
+        "alt": "Vista exterior del conjunto al atardecer",
+        "titulo": "Vista exterior"
       }
     ]
   },
   {
-    "id": "proyecto-3",
+    "id": "proiektuak-9",
     "orden": 3,
-    "titulo": "Proyecto 3",
-    "subtitulo": "Un equipamiento de barrio dentro de una manzana de Sants",
-    "anio": "2026",
-    "lugar": "La Bordeta, Barcelona",
-    "tipo": "Equipamiento público",
-    "contexto": "Taller de Proyectos · Máster habilitante ETSAB",
-    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "titulo": "Proyecto urbano en Hondarribia",
+    "subtitulo": "Mercado, equipamientos y viviendas en el cubo de la Magdalena",
+    "anio": "2024",
+    "lugar": "Hondarribia, Gipuzkoa",
+    "tipo": "Proyecto urbano · Uso mixto",
+    "contexto": "Proyectos IX · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#1b3050",
     "texto": [
-      "El interior de la manzana está ocupado por naves de una planta que ya no se usan y por un muro de tres metros que las separa de las viviendas. El encargo pedía un equipamiento de barrio; el proyecto empieza por decidir qué parte del muro se queda y qué parte se tira.",
-      "Se conservan dos naves enteras y la fila de pilares de una tercera. Entre ellas aparece un patio alargado, orientado de este a oeste, que reparte el acceso a las tres piezas del programa: la sala polivalente, los talleres y el casal de gent gran. Lo demás es sombra: una pérgola de vigas recuperadas que cubre el patio sin llegar a cerrarlo.",
-      "La construcción es deliberadamente pobre: fábrica vista, carpinterías de aluminio de catálogo y chapa sobre las naves antiguas. El presupuesto se concentra en el suelo, en el agua y en los árboles, que es lo que el barrio va a usar de verdad."
+      "El proyecto se sitúa en el cubo de la Magdalena, en Hondarribia, justo en la unión entre el casco histórico y el ensanche. Entender la circulación de esa costura es la clave de todo lo demás.",
+      "El encargo pedía mercado, equipamientos administrativos, oficinas, una sala cultural polivalente y viviendas tuteladas para personas mayores independientes, y a la vez reubicar la sociedad gastronómica y el taller de madera que entorpecían la fluidez de la zona.",
+      "La respuesta son tres bloques: uno pequeño para el mercado, otro central que recoge cultura y administración y asume el peso del lugar, y un tercero convertido en edificio de viviendas. A cada uno se le busca la posición en la que funciona."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-3/portada.jpg",
-      "alt": "El patio entre las dos naves conservadas, con la pérgola de vigas recuperadas"
+      "archivo": "proyectos/proiektuak-9/portada.webp",
+      "alt": "Proyecto urbano en Hondarribia — Mercado, equipamientos y viviendas en el cubo de la Magdalena"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-3/manzana.jpg",
-        "alt": "Planta de la manzana entera con el interior liberado y las naves conservadas",
-        "pie": "La manzana. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-3/planta.jpg",
-        "alt": "Planta del equipamiento con la sala polivalente, los talleres y el casal",
-        "pie": "Planta general. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/portada.webp",
+        "alt": "Axonométrica — Proyecto urbano en Hondarribia",
+        "titulo": "Axonométrica"
       },
       {
-        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
-        "alt": "Sección por el patio con las dos naves, la pérgola y las viviendas de alrededor",
-        "pie": "Sección por el patio. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/aretoa.webp",
+        "alt": "Vistas interiores — Proyecto urbano en Hondarribia",
+        "titulo": "Vistas interiores"
       },
       {
-        "archivo": "proyectos/proyecto-3/luz.jpg",
-        "alt": "Estudio del soleamiento del patio a lo largo del año",
-        "pie": "Soleamiento del patio"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/planta-baja.webp",
+        "alt": "Planta baja — Proyecto urbano en Hondarribia",
+        "titulo": "Planta baja",
+        "escala": "1:100"
       },
       {
-        "archivo": "proyectos/proyecto-3/interior.jpg",
-        "alt": "Interior de la nave de los talleres con la estructura metálica vista",
-        "pie": "Los talleres, en la nave norte"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/detalle-fachada.webp",
+        "alt": "Detalle de fachada — Proyecto urbano en Hondarribia",
+        "titulo": "Detalle de fachada"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-seccion.webp",
+        "alt": "Sección de vivienda — Proyecto urbano en Hondarribia",
+        "titulo": "Sección de vivienda"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-planta.webp",
+        "alt": "Planta de vivienda — Proyecto urbano en Hondarribia",
+        "titulo": "Planta de vivienda"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/axonometrica.webp",
+        "alt": "Axonométrica — Proyecto urbano en Hondarribia",
+        "titulo": "Axonométrica"
+      }
+    ]
+  },
+  {
+    "id": "elorrieta",
+    "orden": 4,
+    "titulo": "Urbanización de Elorrieta",
+    "subtitulo": "Manzanas de bloques distintos ajustadas al clima y a la topografía",
+    "anio": "2023",
+    "lugar": "Elorrieta, Bilbao",
+    "tipo": "Urbanismo · Vivienda",
+    "contexto": "Proyectos IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#6e624d",
+    "texto": [
+      "El proyecto se sitúa en Elorrieta, un barrio industrial de Bilbao, y pedía una urbanización que se adecuara a la forma y la topografía de la zona.",
+      "Se propone un juego de manzanas compuestas por bloques de distinta forma y altura. La composición se analizó con el programa Envimet, que permite justificar las sombras, las corrientes de aire y las temperaturas que se alcanzan a lo largo del año.",
+      "Lo que se aprende aquí es a usar volúmenes diferentes y conseguir que, juntos, formen un conjunto que funcione y se ajuste al programa."
+    ],
+    "portada": {
+      "archivo": "proyectos/elorrieta/situacion.webp",
+      "alt": "Urbanización de Elorrieta — Manzanas de bloques distintos ajustadas al clima y a la topografía"
+    },
+    "diagrama": {
+      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "alt": "Diagrama conceptual — Urbanización de Elorrieta"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/situacion.webp",
+        "alt": "Situación — Urbanización de Elorrieta",
+        "titulo": "Situación"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/plantas-tipo.webp",
+        "alt": "Plantas tipo — Urbanización de Elorrieta",
+        "titulo": "Plantas tipo"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/secciones.webp",
+        "alt": "Secciones — Urbanización de Elorrieta",
+        "titulo": "Secciones"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/alzados.webp",
+        "alt": "Alzados — Urbanización de Elorrieta",
+        "titulo": "Alzados"
+      }
+    ]
+  },
+  {
+    "id": "tfg",
+    "orden": 5,
+    "titulo": "Rehabilitación en Urnieta",
+    "subtitulo": "Una ikastola vacía devuelta al pueblo",
+    "anio": "2025",
+    "lugar": "Urnieta, Gipuzkoa",
+    "tipo": "Rehabilitación · Equipamiento",
+    "contexto": "Trabajo de Fin de Grado · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#f0a923",
+    "texto": [
+      "El trabajo parte de un edificio que ha perdido su uso y busca darle una función nueva. El lugar es Urnieta, y el conjunto elegido es el de la ikastola donde estudié: se ha quedado pequeña y van a reubicarla en un edificio de nueva planta, así que la parcela camina hacia el vacío.",
+      "Al analizarla y ver la cantidad de problemas que arrastra, el encargo creció: no solo el edificio, sino la parcela entera vuelve a insertarse en el pueblo, con operaciones de rehabilitación, renovación y ampliación.",
+      "Los usos nuevos parten de lo que hoy falta en la oferta del municipio, y se dirigen tanto a los vecinos como a quien visita, pensando en el bienestar del pueblo ahora y de cara al futuro."
+    ],
+    "portada": {
+      "archivo": "proyectos/tfg/emplazamiento.webp",
+      "alt": "Rehabilitación en Urnieta — Una ikastola vacía devuelta al pueblo"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/emplazamiento.webp",
+        "alt": "Emplazamiento — Rehabilitación en Urnieta",
+        "titulo": "Emplazamiento"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/situacion.webp",
+        "alt": "Situación — Rehabilitación en Urnieta",
+        "titulo": "Situación"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/axonometrica.webp",
+        "alt": "Axonométrica — Rehabilitación en Urnieta",
+        "titulo": "Axonométrica"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/seccion-1.webp",
+        "alt": "Sección — Rehabilitación en Urnieta",
+        "titulo": "Sección"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-12.webp",
+        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-13.webp",
+        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/vistas-interiores.webp",
+        "alt": "Vistas interiores — Rehabilitación en Urnieta",
+        "titulo": "Vistas interiores"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-09.webp",
+        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-11.webp",
+        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
+      }
+    ]
+  },
+  {
+    "id": "urbanismo",
+    "orden": 6,
+    "titulo": "Reurbanización en Piekary",
+    "subtitulo": "Una zona de juego junto al colegio que sirve a todo el pueblo",
+    "anio": "2024",
+    "lugar": "Piekary, Polonia",
+    "tipo": "Urbanismo · Espacio público",
+    "contexto": "Architecture & Planning in the Countryside",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#616a70",
+    "texto": [
+      "Proyecto de reurbanización en un pueblo pequeño de Polonia, junto a un colegio que no tiene zona de juego propia.",
+      "El encargo se entiende desde el principio a dos escalas: resolver el patio que el colegio necesita y, con la misma operación, dar al pueblo entero el espacio público del que carece. Lo que se construye para los niños en horario lectivo queda disponible para los vecinos el resto del tiempo.",
+      "El trabajo arranca con un análisis de la zona —recorridos, usos y referencias— que es el que acaba fijando dónde se interviene y con qué intensidad."
+    ],
+    "portada": {
+      "archivo": "proyectos/urbanismo/portada.webp",
+      "alt": "Reurbanización en Piekary — Una zona de juego junto al colegio que sirve a todo el pueblo"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/portada.webp",
+        "alt": "Vista — Reurbanización en Piekary",
+        "titulo": "Vista"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-1.webp",
+        "alt": "Análisis de la zona — Reurbanización en Piekary",
+        "titulo": "Análisis de la zona"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-2.webp",
+        "alt": "Análisis de la zona — Reurbanización en Piekary",
+        "titulo": "Análisis de la zona"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/referencias.webp",
+        "alt": "Referencias — Reurbanización en Piekary",
+        "titulo": "Referencias"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-2.webp",
+        "alt": "Vista — Reurbanización en Piekary",
+        "titulo": "Vista"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-3.webp",
+        "alt": "Vista — Reurbanización en Piekary",
+        "titulo": "Vista"
       }
     ]
   }

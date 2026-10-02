@@ -21,10 +21,31 @@
   --color-linea: #cbc8c2;
   --color-linea-suave: #e7e4df;
 
+  /* La mesa sobre la que se apoyan los cuadernos. Va bastante más oscura
+     que el papel de la web para que las hojas destaquen; y como las hojas
+     son blancas puras, los recortes de los PDF no se notan: su fondo
+     blanco es el mismo que el de la hoja.
+     Ojo al tocar este color: los textos pequeños que van encima usan
+     --color-tinta precisamente porque el gris no daría contraste. */
+  --color-mesa: #c9c4ba;
+  --color-hoja: #ffffff;
+
+  /* Las tapas, de corcho, y la cinta del lomo: un cuaderno de los de toda
+     la vida. La cinta va en naranja.
+     Ojo al aclarar este marrón: los textos pequeños de la tapa van en
+     tinta llena justo porque sobre él un gris o una tinta rebajada se
+     quedarían por debajo del contraste legible. */
+  --color-corcho: #e6ccaa;
+  --color-corcho-2: #d6b68c;
+  --color-lomo: #e07b1e;
+
   /* Rojo de lápiz: cotas, marcas, estado activo. */
   --color-trazo: #a8482f;
 
-  --font-titulo: 'Archivo Variable', 'Helvetica Neue', system-ui, sans-serif;
+  /* Work Sans en vez de Archivo: igual de legible pero de trazo humanista
+     —aperturas más abiertas y formas menos cerradas—, así que los títulos
+     se leen menos rígidos sin perder sobriedad. */
+  --font-titulo: 'Work Sans Variable', 'Helvetica Neue', system-ui, sans-serif;
   --font-texto: 'Inter Variable', system-ui, -apple-system, sans-serif;
 
   --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
@@ -174,17 +195,28 @@
   width: 100%;
   max-width: 104rem;
   margin-inline: auto;
-  padding-inline: 1rem;
-  @media (width >= 48rem) { padding-inline: 2rem; }
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) { padding-inline: 4rem; }
 }
 
-.cuaderno-seccion { padding-block: clamp(2.5rem, 7vh, 5rem); }
+/* Los cuadernos se apoyan sobre la mesa: es lo que los separa del resto
+   de la web y hace que las hojas se lean como papel. Lleva la misma
+   retícula de papel milimetrado que la portada, un punto más marcada
+   porque el fondo es más oscuro. */
+.cuaderno-seccion {
+  padding-block: clamp(2.5rem, 7vh, 5rem);
+  background-color: var(--color-mesa);
+  background-image:
+    linear-gradient(to right, rgb(20 22 26 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(20 22 26 / 0.05) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+}
 
 /* --- Sin JS, y en cualquier caso antes del primer pintado --- */
 .cara {
   position: relative;
-  border: 1px solid var(--color-linea);
-  background-color: var(--color-papel);
+  background-color: var(--color-hoja);
+  box-shadow: 0 1px 10px rgb(20 22 26 / 0.09);
   /* Sin JS la hoja no tiene alto propio: se le da uno para que la imagen
      de dentro tenga contra qué medirse. */
   min-height: 22rem;
@@ -194,6 +226,61 @@
 .hoja + .cara { margin-block-start: 1.25rem; }
 .cara--imagen img { max-height: 70vh; }
 .cuaderno .zona { display: none; }
+
+/* Donde no hay hoja se ve la mesa. Es lo que hace que el cuaderno
+   parezca cerrado: al principio enseña solo la tapa a la derecha, y al
+   final solo la tapa trasera a la izquierda. */
+.cara--mesa {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ *
+ *  LAS TAPAS
+ *
+ *  Corcho y una cinta de tela en el lomo, como los cuadernos de Muji.
+ *  La cinta va en el borde izquierdo de la cara, que es el que queda
+ *  pegado al canal... pero SOLO en el anverso. En el reverso no: la hoja
+ *  gira sobre el canal y la cara, además, está volteada sobre su propio
+ *  centro, así que los dos giros se componen y el borde izquierdo del
+ *  reverso acaba en el borde de FUERA. Por eso la tapa trasera lleva la
+ *  cinta a la derecha (ver más abajo, en el bloque de pantalla ancha).
+ *
+ *  IMPORTANTE: este bloque va DESPUÉS de .cara. Las dos reglas pesan lo
+ *  mismo —una sola clase cada una—, así que si se pone antes, el blanco
+ *  de .cara gana y las tapas salen blancas pase lo que pase con el
+ *  color. Es exactamente el error que tuvieron durante tres intentos.
+ * ------------------------------------------------------------------ */
+.cara--tapa,
+.cara--tapa-interior {
+  /* Las tapas van a color plano. Se probó a darles grano de corcho, con
+     degradados y con una textura generada, y en ninguno de los dos casos
+     quedó bien: o se veía la cuadrícula o ensuciaba el color. Mejor liso
+     que mal texturizado. */
+  background-color: var(--color-corcho);
+}
+
+/* La cinta solo se ve por fuera, en la tapa. Por dentro, el cartón va
+   limpio: en un cuaderno de verdad la cinta no se dobla hacia dentro. */
+.cara--tapa::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: clamp(1.25rem, 6%, 2.5rem);
+  background-color: var(--lomo, var(--color-lomo));
+  /* El canto de la cinta, donde se dobla sobre el cartón. */
+  box-shadow: inset -1px 0 0 rgb(20 22 26 / 0.18);
+}
+
+/* El contenido de la tapa no se mete debajo de la cinta. Y toda la
+   composición baja: mucho aire arriba y poco abajo, para que el título y
+   la franja de datos se apoyen cerca del canto inferior. */
+.cara--tapa .cara-caja {
+  padding-inline-start: clamp(3rem, 10%, 5.5rem);
+  padding-block-start: clamp(2.5rem, 6vw, 6.5rem);
+  padding-block-end: clamp(1rem, 2vw, 2.25rem);
+}
 
 /* Con JS la hoja siempre tiene alto, y la imagen se ajusta a él. */
 .con-js .cara { min-height: 0; }
@@ -206,11 +293,14 @@
   .con-js .cuaderno {
     --giro: 620ms;
 
-    /* Doble página apaisada. Se mira primero cuánto cabe de alto, para
-       que el cuaderno entero se vea sin desplazarse, y el ancho sale de
-       la proporción. */
-    height: min(78svh, calc(min(100vw - 4rem, 100rem) * 297 / 420));
-    aspect-ratio: 420 / 297;
+    /* Dos hojas A4 apaisadas, una al lado de otra: 594 × 210. Sale una
+       franja muy ancha, que es justo lo que piden los dibujos de
+       arquitectura —secciones, alzados, emplazamientos— porque son
+       anchos. Se mide contra el ancho disponible, no contra el alto. */
+    /* El 8rem que se descuenta es el aire a los lados: el cuaderno nunca
+       llega al borde de la ventana. */
+    height: min(78svh, calc(min(100vw - 8rem, 96rem) * 210 / 594));
+    aspect-ratio: 594 / 210;
     width: auto;
     margin-inline: auto;
 
@@ -268,6 +358,15 @@
     -webkit-backface-visibility: hidden;
   }
   .con-js .cara--reverso { transform: rotateY(180deg); }
+
+  /* La cinta del lomo, en el reverso, va a la derecha: es ese borde el
+     que queda contra el canal una vez compuestos los dos giros. Sin
+     esto, la tapa trasera luce la cinta por el lado de fuera. */
+  .con-js .cara--reverso.cara--tapa::before {
+    left: auto;
+    right: 0;
+    box-shadow: inset 1px 0 0 rgb(20 22 26 / 0.18);
+  }
 
   /* ---------------------------------------------------------------- *
    *  z-index: la parte que se rompe siempre
@@ -370,7 +469,8 @@
     width: 100%;
     margin: 0;
     scroll-snap-align: start;
-    aspect-ratio: 210 / 297;
+    /* Una sola hoja A4 apaisada. */
+    aspect-ratio: 297 / 210;
     max-height: 76svh;
   }
   .con-js .hoja > .cara::after { display: none; }

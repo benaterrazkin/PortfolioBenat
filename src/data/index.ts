@@ -12,7 +12,7 @@ import { IDIOMAS_PUBLICADOS, type Idioma } from '../i18n/idiomas';
  * ------------------------------------------------------------------ */
 
 const Imagen = z.object({
-  /** Ruta dentro de src/assets/img/, por ejemplo "proyectos/casa-ur/planta.jpg". */
+  /** Ruta dentro de src/assets/img/, por ejemplo "proyectos/astigarreta/seccion-aa.webp". */
   archivo: z.string().min(1),
   /** Descripción de la imagen para quien no puede verla. Obligatoria. */
   alt: z.string().min(3),
@@ -20,6 +20,52 @@ const Imagen = z.object({
   pie: z.string().optional(),
 });
 export type Imagen = z.infer<typeof Imagen>;
+
+/* ------------------------------------------------------------------ *
+ *  LAS HOJAS DEL CUADERNO
+ *
+ *  Cada proyecto dice qué va en cada hoja, en orden. No se reparte
+ *  solo: el reparto lo decide quien monta el portfolio, hoja a hoja,
+ *  como en un documento de verdad.
+ *
+ *  Hay dos clases de hoja:
+ *    · "presentacion" — el título, la ficha y el texto del proyecto.
+ *      Puede llevar además un plano debajo (el de emplazamiento).
+ *    · "lamina" — un dibujo a toda hoja, con su cajetín: nombre del
+ *      plano, escala y orientación. Lo que no se sepa, se deja fuera:
+ *      más vale un cajetín corto que una escala inventada.
+ * ------------------------------------------------------------------ */
+
+const Lamina = z.object({
+  archivo: z.string().min(1),
+  alt: z.string().min(3),
+  /** Cómo se llama el dibujo: "Sección AA'", "Planta de conjunto"… */
+  titulo: z.string().optional(),
+  /** Escala, tal cual se escribe: "1:250". Solo si se conoce. */
+  escala: z.string().optional(),
+  /** Orientación, si la lámina la indica. */
+  orientacion: z.string().optional(),
+});
+export type Lamina = z.infer<typeof Lamina>;
+
+/**
+ * Las páginas que se escriben a mano son SOLO las de contenido. Las tapas,
+ * el cartón por dentro y las hojas que hagan falta para cuadrar las
+ * cuentas las pone la web sola (ver src/data/cuaderno.ts), para que todos
+ * los cuadernos se abran y se cierren igual sin repetirlo en cada
+ * proyecto y en cada idioma.
+ */
+const Pagina = z.discriminatedUnion('tipo', [
+  z.object({
+    tipo: z.literal('presentacion'),
+    /** Plano que acompaña al texto. Normalmente el de emplazamiento. */
+    lamina: Lamina.optional(),
+  }),
+  z.object({ tipo: z.literal('lamina') }).merge(Lamina),
+  /** Hoja en blanco puesta a propósito, en medio del contenido. */
+  z.object({ tipo: z.literal('blanca') }),
+]);
+export type Pagina = z.infer<typeof Pagina>;
 
 const Proyecto = z.object({
   /**
@@ -42,8 +88,26 @@ const Proyecto = z.object({
   texto: z.array(z.string()).default([]),
   /** Imagen que representa al proyecto en el listado. */
   portada: Imagen,
-  /** Las demás imágenes, en el orden en el que se quieren ver. */
-  imagenes: z.array(Imagen).default([]),
+  /**
+   * El diagrama conceptual de la tapa. Mientras no lo haya, la tapa
+   * enseña su recuadro vacío con el rótulo.
+   */
+  diagrama: Lamina.optional(),
+  /**
+   * Las hojas del cuaderno, en orden de lectura. Si salen impares, la web
+   * añade una en blanco al final: un cuaderno no puede acabar a media
+   * doble página.
+   */
+  paginas: z.array(Pagina).default([]),
+  /**
+   * El color de la cinta del lomo, en hexadecimal. Cada cuaderno lleva el
+   * suyo, como en una estantería de cuadernos Muji. Si no se escribe, se
+   * usa el naranja de --color-lomo.
+   */
+  lomo: z
+    .string()
+    .regex(/^#[0-9a-fA-F]{6}$/, 'Tiene que ser un color en hexadecimal, por ejemplo "#97313e"')
+    .optional(),
   /** Los proyectos se ordenan por este número, de menor a mayor. */
   orden: z.number().int().default(99),
 });

@@ -6,14 +6,13 @@ import { imagen, proyectos, type Proyecto } from './index';
 /* ------------------------------------------------------------------ *
  *  DE UN PROYECTO A UN CUADERNO
  *
- *  Los proyectos se enseñan como cuadernos abiertos que se pasan hoja a
- *  hoja. Aquí se decide, siempre de la misma manera, qué va en cada cara.
- *  Quien escribe el contenido no tiene que pensar en esto: le basta con
- *  poner las imágenes en el orden en que quiere que se vean.
+ *  Cada proyecto trae sus hojas escritas una a una (ver "paginas" en
+ *  src/data/proyectos/<idioma>.json). Aquí solo se numeran y se
+ *  emparejan de dos en dos, porque el cuaderno se lee a doble página.
  *
- *  Un cuaderno es una lista de CARAS. Las dos de los extremos no giran
- *  nunca —son el fondo del cuaderno— y las de en medio se agrupan de dos
- *  en dos formando HOJAS de papel, con su anverso y su reverso:
+ *  Las dos hojas de los extremos no giran nunca —son el fondo del
+ *  cuaderno— y las de en medio se agrupan formando HOJAS de papel, con
+ *  su anverso y su reverso:
  *
  *    caras[0]        guarda        (fija, mitad izquierda)
  *    caras[2i+1]     anverso de la hoja i
@@ -24,14 +23,13 @@ import { imagen, proyectos, type Proyecto } from './index';
  *  De ahí que el número de caras tenga que ser PAR.
  * ------------------------------------------------------------------ */
 
-/** Cuántas letras de texto caben, como mucho, en una cara. */
-const LETRAS_POR_CARA = 1400;
-
 /** Una imagen ya resuelta, lista para <Image src={...} />. */
-export interface ImagenDeCara {
+export interface LaminaDeCara {
   fuente: ImageMetadata;
   alt: string;
-  pie?: string;
+  titulo?: string;
+  escala?: string;
+  orientacion?: string;
 }
 
 /** Los datos del cajetín. Mismos nombres que t.proyectos.ficha. */
@@ -46,14 +44,39 @@ export interface Ficha {
 interface Comun {
   /** Posición dentro del cuaderno, empezando en 0 por la guarda. */
   indice: number;
+  /**
+   * El número que se escribe en la esquina de la hoja. Solo lo llevan las
+   * hojas con contenido: las tapas, el cartón y las hojas en blanco no se
+   * numeran, igual que en cualquier libro.
+   */
+  folio?: number;
 }
 
 export type Cara =
-  | (Comun & { tipo: 'portadilla'; titulo: string; subtitulo?: string; ficha: Ficha })
-  | (Comun & { tipo: 'texto'; parrafos: string[] })
-  | (Comun & { tipo: 'imagen'; imagen: ImagenDeCara; numero: number; esPortada: boolean })
+  | (Comun & {
+      tipo: 'tapa';
+      titulo: string;
+      /** Lugar, tipo, contexto y año, en una línea. */
+      claves: string[];
+      /** Los programas con los que se hizo, en otra. */
+      herramientas: string[];
+      lamina?: LaminaDeCara;
+    })
+  /** La tapa trasera, por fuera: cartón y cinta, sin nada escrito. */
+  | (Comun & { tipo: 'contratapa' })
+  /** El cartón por dentro, en cualquiera de las dos tapas. */
+  | (Comun & { tipo: 'tapa-interior' })
+  | (Comun & { tipo: 'presentacion'; titulo: string; parrafos: string[] })
+  | (Comun & { tipo: 'lamina'; lamina: LaminaDeCara })
+  /** Hoja de papel sin nada: existe, es blanca y se pasa. */
   | (Comun & { tipo: 'blanca' })
-  | (Comun & { tipo: 'cierre'; titulo: string; anio: string });
+  /**
+   * No hay hoja: se ve la mesa. Es lo que hace que el libro parezca
+   * cerrado. La del final lleva el botón de volver al principio, y como
+   * las caras que no se ven están inertes, el botón solo existe para
+   * quien de verdad ha llegado hasta ahí.
+   */
+  | (Comun & { tipo: 'mesa'; final?: boolean });
 
 export interface Hoja {
   /** Número de hoja, empezando en 0. Es lo que el CSS usa como --i. */
@@ -71,7 +94,11 @@ export interface Cuaderno {
   anio: string;
   /** Identificador del ancla: #cuaderno-<id> */
   ancla: string;
-  portada: ImagenDeCara;
+  /** El color de la cinta del lomo de este cuaderno. */
+  lomo?: string;
+  /** Nombre corto para los atajos del lateral: el lugar, sin más. */
+  nombreCorto: string;
+  portada: { fuente: ImageMetadata; alt: string };
   /** Todas las caras en orden de lectura. Siempre son un número par. */
   caras: Cara[];
   guarda: Cara;
@@ -85,66 +112,78 @@ export interface Cuaderno {
 type SinIndice<T> = T extends unknown ? Omit<T, 'indice'> : never;
 type Borrador = SinIndice<Cara>;
 
-/** Agrupa los párrafos en tandas que quepan en una cara. */
-function trocearTexto(parrafos: string[]): string[][] {
-  const tandas: string[][] = [];
-  let actual: string[] = [];
-  let letras = 0;
+/**
+ * Los datos de la tapa, uno por línea. El contexto suele venir escrito
+ * como "Proyectos IV · UPV/EHU", así que se parte en sus dos partes, y el
+ * año se pega a la última línea en vez de ocupar una para él solo.
+ */
+function clavesDe(p: Proyecto): string[] {
+  const lineas = [p.lugar, p.tipo, ...(p.contexto?.split('·') ?? [])]
+    .filter(Boolean)
+    .map((c) => (c as string).trim());
 
-  for (const parrafo of parrafos) {
-    if (actual.length > 0 && letras + parrafo.length > LETRAS_POR_CARA) {
-      tandas.push(actual);
-      actual = [];
-      letras = 0;
-    }
-    actual.push(parrafo);
-    letras += parrafo.length;
-  }
-  if (actual.length > 0) tandas.push(actual);
-  return tandas;
+  if (lineas.length === 0) return [p.anio];
+  lineas[lineas.length - 1] += ` · ${p.anio}`;
+  return lineas;
 }
 
 /** Convierte un proyecto en su cuaderno. */
 export function cuaderno(p: Proyecto, numero: number): Cuaderno {
-  const portada: ImagenDeCara = {
-    fuente: imagen(p.portada.archivo),
-    alt: p.portada.alt,
-    pie: p.portada.pie,
-  };
+  const resolver = (l: {
+    archivo: string;
+    alt: string;
+    titulo?: string;
+    escala?: string;
+    orientacion?: string;
+  }): LaminaDeCara => ({
+    fuente: imagen(l.archivo),
+    alt: l.alt,
+    titulo: l.titulo,
+    escala: l.escala,
+    orientacion: l.orientacion,
+  });
 
-  /* Primero, qué caras hay y en qué orden. */
+  /* Solo el contenido: lo que viene escrito en el .json del proyecto. */
+  const contenido: Borrador[] = p.paginas.map((pagina) => {
+    if (pagina.tipo === 'blanca') return { tipo: 'blanca' };
+    if (pagina.tipo === 'presentacion') {
+      return { tipo: 'presentacion', titulo: p.titulo, parrafos: p.texto };
+    }
+    return { tipo: 'lamina', lamina: resolver(pagina) };
+  });
+
+  /* El contenido tiene que ocupar un número par de caras para que las
+   * tapas caigan donde deben. Si sale impar se añade UNA hoja en blanco
+   * al final del contenido: en un cuaderno de verdad también la hay. */
+  if (contenido.length % 2 !== 0) contenido.push({ tipo: 'blanca' });
+
+  /* Y alrededor, el cuaderno: se abre enseñando la tapa sola a la derecha
+   * y se cierra enseñando la tapa trasera sola a la izquierda, igual que
+   * un cuaderno de verdad encima de la mesa. */
   const borrador: Borrador[] = [
+    { tipo: 'mesa' },
     {
-      tipo: 'portadilla',
+      tipo: 'tapa',
       titulo: p.titulo,
-      subtitulo: p.subtitulo,
-      ficha: {
-        anio: p.anio,
-        lugar: p.lugar,
-        tipo: p.tipo,
-        contexto: p.contexto,
-        herramientas: p.herramientas,
-      },
+      /* Estos datos salen aquí y en ningún otro sitio del cuaderno. */
+      claves: clavesDe(p),
+      herramientas: p.herramientas,
+      lamina: p.diagrama ? resolver(p.diagrama) : undefined,
     },
-    { tipo: 'imagen', imagen: portada, numero: 0, esPortada: true },
-    ...trocearTexto(p.texto).map((parrafos) => ({ tipo: 'texto' as const, parrafos })),
-    ...p.imagenes.map((im, i) => ({
-      tipo: 'imagen' as const,
-      imagen: { fuente: imagen(im.archivo), alt: im.alt, pie: im.pie },
-      numero: i + 1,
-      esPortada: false,
-    })),
+    { tipo: 'tapa-interior' },
+    ...contenido,
+    { tipo: 'tapa-interior' },
+    { tipo: 'contratapa' },
+    { tipo: 'mesa', final: true },
   ];
 
-  /* El cierre va siempre el último, y entre medias puede hacer falta una
-   * cara en blanco para que las cuentas cuadren: un cuaderno no puede
-   * acabar a media doble página. En un cuaderno de verdad esa página
-   * vacía también existe, así que no desentona. */
-  const cierre: Borrador = { tipo: 'cierre', titulo: p.titulo, anio: p.anio };
-  if ((borrador.length + 1) % 2 !== 0) borrador.push({ tipo: 'blanca' });
-  borrador.push(cierre);
-
-  const caras: Cara[] = borrador.map((b, indice) => ({ ...b, indice }) as Cara);
+  /* Se numeran solo las hojas con contenido, y se cuentan desde la
+   * primera: la tapa y el cartón no llevan número. */
+  let folio = 0;
+  const caras: Cara[] = borrador.map((b, indice) => {
+    const seNumera = b.tipo === 'presentacion' || b.tipo === 'lamina';
+    return { ...b, indice, folio: seNumera ? ++folio : undefined } as Cara;
+  });
 
   /* Las caras de en medio se emparejan: cada pareja es una hoja de papel. */
   const hojas: Hoja[] = [];
@@ -159,7 +198,11 @@ export function cuaderno(p: Proyecto, numero: number): Cuaderno {
     subtitulo: p.subtitulo,
     anio: p.anio,
     ancla: anclaProyecto(p.id),
-    portada,
+    lomo: p.lomo,
+    /* El lugar hasta la primera coma: "Astigarreta, Goierri (Gipuzkoa)"
+     * se queda en "Astigarreta". Es lo que hace falta en un atajo. */
+    nombreCorto: p.lugar?.split(',')[0]?.trim() || p.titulo,
+    portada: { fuente: imagen(p.portada.archivo), alt: p.portada.alt },
     caras,
     guarda: caras[0]!,
     contraguarda: caras[caras.length - 1]!,

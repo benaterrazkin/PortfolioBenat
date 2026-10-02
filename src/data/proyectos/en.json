@@ -1,157 +1,437 @@
 [
   {
-    "id": "proyecto-1",
+    "id": "astigarreta",
     "orden": 1,
-    "titulo": "Project 1",
-    "subtitulo": "A port warehouse turned into a trade school",
-    "anio": "2024",
-    "lugar": "Pasaia, Gipuzkoa",
-    "tipo": "Public facility · Refurbishment",
-    "contexto": "Design Studio VI · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Physical model 1:100"],
-    "texto": [
-      "Warehouse number 3 on the Herrera quay has stood empty for twenty years: a concrete shed from 1962, with twelve-metre spans and a sawtooth roof that no longer covers anything. The proposal neither empties it nor rebuilds it. It repairs the roof, opens the floor at three points and inserts a timber building that never once touches the existing walls.",
-      "The workshops — carpentry, metal, boilermaking — occupy the ground floor, where the slab takes the heavy machinery and the quay doors let material in and out without detours. Above them, a tray of laminated timber holds the classrooms and a running corridor from which you can watch the work below. Learning a trade is, above all, watching someone who knows how to do it.",
-      "The works stop at the water's edge. The quay is left as it is, with its bollards and its rails, and all that is added is a ramp for launching whatever gets built inside. The building does not intend to reclaim the port: it intends to remain part of it."
-    ],
-    "portada": {
-      "archivo": "proyectos/proyecto-1/portada.jpg",
-      "alt": "View of the refurbished warehouse from the water of the quay"
-    },
-    "imagenes": [
-      {
-        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
-        "alt": "Site plan showing the bay and the quays",
-        "pie": "Site plan. 1:2000"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
-        "alt": "Ground floor plan with the three workshops and the access from the quay",
-        "pie": "Ground floor. Workshops and material access"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
-        "alt": "Upper floor plan with the classrooms on the timber structure",
-        "pie": "Upper floor. Classrooms and running corridor"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/seccion.jpg",
-        "alt": "Longitudinal section showing the existing shed and the timber structure inside",
-        "pie": "Longitudinal section. 1:200"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/alzado.jpg",
-        "alt": "Elevation towards the quay with the sliding doors open",
-        "pie": "Elevation to the quay"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
-        "alt": "Exploded axonometric with the roof, the timber and the concrete shed",
-        "pie": "Construction axonometric"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/maqueta.jpg",
-        "alt": "Photograph of the card and timber model seen from the south",
-        "pie": "Model 1:100"
-      }
-    ]
-  },
-  {
-    "id": "proyecto-2",
-    "orden": 2,
-    "titulo": "Project 2",
-    "subtitulo": "Twelve houses and a public path above the estuary",
-    "anio": "2025",
-    "lugar": "Olabeaga, Bilbao",
+    "titulo": "Multi-family housing in Astigarreta",
+    "subtitulo": "Three housing blocks to bring people back to a hill village",
+    "anio": "2023",
+    "lugar": "Astigarreta, Goierri (Gipuzkoa)",
     "tipo": "Collective housing",
-    "contexto": "Final Degree Project · UPV/EHU",
-    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "contexto": "Design Studio IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
     "texto": [
-      "Olabeaga is a long street propped against the hillside, with houses on one side only and the estuary on the other. The site is the gap left by a demolished workshop: fifteen metres of frontage, thirty of depth and seven metres of level difference between the street and the path above.",
-      "Instead of a block, twelve terraced houses stepping down with the slope. Each has two fronts — the estuary to the south, the hillside to the north — and a strip of services in between that absorbs the level change in two steps. Every dwelling has the same plan and differs only in the level it sits on.",
-      "The path linking the twelve houses runs at mid-height, between the street and the upper track, and works as a shortcut for the neighbourhood: you can walk up it without knocking on any door. It is the only part of the project that belongs to nobody in particular."
+      "Astigarreta is a small cluster of buildings up in the hills, in the Goierri district. The brief asked for three housing blocks that would fit their surroundings, alert to the state the village is in and to how new homes might help repopulate the area by encouraging community life.",
+      "What this project teaches has to do with organising the terrain. The mountainous topography of the Basque Country leaves small villages cut off from the towns, and that connection can only be solved with the transport that already exists. So the project concentrates on what is within its reach: making homes and public space, fitting the street, the squares and the buildings to the neighbours there are and the ones who might come."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-2/portada.jpg",
-      "alt": "The twelve stepped dwellings seen from the far bank of the estuary"
+      "archivo": "proyectos/astigarreta/portada.webp",
+      "alt": "Card and timber model with the contour topography and the housing volumes"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-2/implantacion.jpg",
-        "alt": "Site layout with the street, the plot and the upper path",
-        "pie": "Site layout. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
-        "alt": "Typical plan of three consecutive dwellings with the shared path",
-        "pie": "Typical plan. Three dwellings and the path"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/emplazamiento.webp",
+        "alt": "Site plan with the contour lines, the village and the three new blocks",
+        "titulo": "Site plan"
       },
       {
-        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
-        "alt": "Cross section showing the dwellings stepping down the hillside",
-        "pie": "Cross section. 1:100"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/portada.webp",
+        "alt": "Card and timber model with the contour topography and the housing volumes",
+        "titulo": "Model"
       },
       {
-        "archivo": "proyectos/proyecto-2/vivienda.jpg",
-        "alt": "Plan and section of one dwelling with its two fronts",
-        "pie": "Typical dwelling. 1:50"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/planta-conjunto.webp",
+        "alt": "Layout plan with the three new blocks among the existing houses",
+        "titulo": "Layout plan"
       },
       {
-        "archivo": "proyectos/proyecto-2/paso.jpg",
-        "alt": "View of the public path between the houses, looking towards the estuary",
-        "pie": "The path, at mid-height"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-aa.webp",
+        "alt": "Section AA' through the housing block, with the church behind",
+        "titulo": "Section AA'"
       },
       {
-        "archivo": "proyectos/proyecto-2/constructivo.jpg",
-        "alt": "Construction detail of the junction between the retaining wall and the floor slab",
-        "pie": "Detail. Junction with the retaining wall"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-bb.webp",
+        "alt": "Section BB' along the hillside, with the existing farmhouse",
+        "titulo": "Section BB'"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-dd.webp",
+        "alt": "Section DD' through the two housing volumes",
+        "titulo": "Section DD'"
+      }
+    ],
+    "lomo": "#e07b1e"
+  },
+  {
+    "id": "eliza-reforma",
+    "orden": 2,
+    "titulo": "Refurbishment of Gubin church",
+    "subtitulo": "A brick ruin turned into a cultural space",
+    "anio": "2024",
+    "lugar": "Gubin, Poland",
+    "tipo": "Refurbishment · Cultural facility",
+    "contexto": "Design for Conservation",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#97313e",
+    "texto": [
+      "The brief was to give new life to a church abandoned after the Second World War, in the town of Gubin, Poland. The church stands in complete ruin: only the columns, the façade and the central tower remain, all of them in brick.",
+      "The reconstruction reuses and completes the authentic structure of its time with a new, self-supporting one that stays distinct from the original and brings it up to date. As for its use, the original function is weighed against present-day needs, and what comes out is a generous cultural space joining history and today: concerts, exhibitions and somewhere for visitors to rest.",
+      "What matters here is understanding what is already there, and making it evolve and adapt to time without changing what it is."
+    ],
+    "portada": {
+      "archivo": "proyectos/eliza-reforma/portada.webp",
+      "alt": "Exterior view of the refurbished church, with the brick tower still standing"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/portada.webp",
+        "alt": "Exterior view of the refurbished church, with the brick tower still standing",
+        "titulo": "Exterior view"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-general.webp",
+        "alt": "General view of the complex from the square",
+        "titulo": "General view"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-1.webp",
+        "alt": "First floor plan, with the nave and the new inner structure",
+        "titulo": "Floor 1",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-4.webp",
+        "alt": "Fourth floor plan, inside the tower",
+        "titulo": "Floor 4",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-1.webp",
+        "alt": "Longitudinal section through the nave, with the new roof over the brick arches",
+        "titulo": "Longitudinal section",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-2.webp",
+        "alt": "Cross section through the tower, with the structural anchorage detail",
+        "titulo": "Cross section",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-1.webp",
+        "alt": "Exterior view of the church from the approach",
+        "titulo": "Exterior view"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-3.webp",
+        "alt": "Exterior view of the main façade",
+        "titulo": "Exterior view"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-5.webp",
+        "alt": "Exterior view of the complex at dusk",
+        "titulo": "Exterior view"
       }
     ]
   },
   {
-    "id": "proyecto-3",
+    "id": "proiektuak-9",
     "orden": 3,
-    "titulo": "Project 3",
-    "subtitulo": "A neighbourhood facility inside a block in Sants",
-    "anio": "2026",
-    "lugar": "La Bordeta, Barcelona",
-    "tipo": "Public facility",
-    "contexto": "Design Studio · ETSAB professional master",
-    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "titulo": "Urban project in Hondarribia",
+    "subtitulo": "Market, public facilities and housing at the Magdalena bastion",
+    "anio": "2024",
+    "lugar": "Hondarribia, Gipuzkoa",
+    "tipo": "Urban project · Mixed use",
+    "contexto": "Design Studio IX · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#1b3050",
     "texto": [
-      "The inside of the block is taken up by single-storey sheds that are no longer used and by a three-metre wall separating them from the housing. The brief asked for a neighbourhood facility; the project begins by deciding which part of the wall stays and which part comes down.",
-      "Two whole sheds are kept, along with the row of columns of a third. Between them a long courtyard appears, running east to west, distributing access to the three pieces of the programme: the multipurpose hall, the workshops and the senior citizens' centre. The rest is shade: a pergola of reclaimed beams that covers the courtyard without ever enclosing it.",
-      "The construction is deliberately poor: fair-faced brickwork, off-the-shelf aluminium windows and sheet metal over the old sheds. The budget concentrates on the ground, the water and the trees, which is what the neighbourhood will actually use."
+      "The project sits at the Magdalena bastion in Hondarribia, right where the old town meets the nineteenth-century extension. Understanding how people move across that seam is the key to everything else.",
+      "The brief asked for a market, administrative facilities, offices, a multipurpose cultural hall and sheltered housing for independent older people, and at the same time for relocating the gastronomic society and the woodwork shop that were getting in the way.",
+      "The answer is three blocks: a small one for the market, a central one holding culture and administration and carrying the weight of the place, and a third turned into a housing building. Each is given the position where it works."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-3/portada.jpg",
-      "alt": "The courtyard between the two retained sheds, with the pergola of reclaimed beams"
+      "archivo": "proyectos/proiektuak-9/portada.webp",
+      "alt": "Urban project in Hondarribia — Market, public facilities and housing at the Magdalena bastion"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-3/manzana.jpg",
-        "alt": "Plan of the whole block with the interior freed and the retained sheds",
-        "pie": "The block. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-3/planta.jpg",
-        "alt": "Plan of the facility with the multipurpose hall, the workshops and the centre",
-        "pie": "General plan. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/portada.webp",
+        "alt": "Axonometric — Urban project in Hondarribia",
+        "titulo": "Axonometric"
       },
       {
-        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
-        "alt": "Section through the courtyard with the two sheds, the pergola and the surrounding housing",
-        "pie": "Section through the courtyard. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/aretoa.webp",
+        "alt": "Interior views — Urban project in Hondarribia",
+        "titulo": "Interior views"
       },
       {
-        "archivo": "proyectos/proyecto-3/luz.jpg",
-        "alt": "Study of sunlight in the courtyard across the year",
-        "pie": "Sunlight in the courtyard"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/planta-baja.webp",
+        "alt": "Ground floor — Urban project in Hondarribia",
+        "titulo": "Ground floor",
+        "escala": "1:100"
       },
       {
-        "archivo": "proyectos/proyecto-3/interior.jpg",
-        "alt": "Interior of the workshop shed with the steel structure left exposed",
-        "pie": "The workshops, in the north shed"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/detalle-fachada.webp",
+        "alt": "Façade detail — Urban project in Hondarribia",
+        "titulo": "Façade detail"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-seccion.webp",
+        "alt": "Dwelling section — Urban project in Hondarribia",
+        "titulo": "Dwelling section"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-planta.webp",
+        "alt": "Dwelling plan — Urban project in Hondarribia",
+        "titulo": "Dwelling plan"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/axonometrica.webp",
+        "alt": "Axonometric — Urban project in Hondarribia",
+        "titulo": "Axonometric"
+      }
+    ]
+  },
+  {
+    "id": "elorrieta",
+    "orden": 4,
+    "titulo": "Elorrieta urban development",
+    "subtitulo": "Blocks of differing shape tuned to climate and terrain",
+    "anio": "2023",
+    "lugar": "Elorrieta, Bilbao",
+    "tipo": "Urban design · Housing",
+    "contexto": "Design Studio IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#6e624d",
+    "texto": [
+      "The project sits in Elorrieta, an industrial district of Bilbao, and called for a development that would fit the shape and the topography of the area.",
+      "It proposes a play of blocks of differing shape and height. The composition was tested with Envimet, which makes it possible to justify the shadows, the air currents and the temperatures reached over the year.",
+      "What this teaches is how to use different volumes and get them, together, to form a whole that works and fits the brief."
+    ],
+    "portada": {
+      "archivo": "proyectos/elorrieta/situacion.webp",
+      "alt": "Elorrieta urban development — Blocks of differing shape tuned to climate and terrain"
+    },
+    "diagrama": {
+      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "alt": "Diagrama conceptual — Elorrieta urban development"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/situacion.webp",
+        "alt": "Site layout — Elorrieta urban development",
+        "titulo": "Site layout"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/plantas-tipo.webp",
+        "alt": "Typical floor plans — Elorrieta urban development",
+        "titulo": "Typical floor plans"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/secciones.webp",
+        "alt": "Sections — Elorrieta urban development",
+        "titulo": "Sections"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/alzados.webp",
+        "alt": "Elevations — Elorrieta urban development",
+        "titulo": "Elevations"
+      }
+    ]
+  },
+  {
+    "id": "tfg",
+    "orden": 5,
+    "titulo": "Refurbishment in Urnieta",
+    "subtitulo": "An empty school given back to the town",
+    "anio": "2025",
+    "lugar": "Urnieta, Gipuzkoa",
+    "tipo": "Refurbishment · Public facility",
+    "contexto": "Final Degree Project · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#f0a923",
+    "texto": [
+      "The work starts from a building that has lost its use and sets out to give it a new one. The place is Urnieta, and the chosen complex is the ikastola where I studied: it has outgrown itself and is being moved to a new building, so the site is drifting towards emptiness.",
+      "Looking at it closely and seeing how many problems it carries, the brief grew: not only the building but the whole site is woven back into the town, through refurbishment, renovation and extension.",
+      "The new uses start from what the town currently lacks, and address residents and visitors alike, with the well-being of the town today and in the future as the ground to stand on."
+    ],
+    "portada": {
+      "archivo": "proyectos/tfg/emplazamiento.webp",
+      "alt": "Refurbishment in Urnieta — An empty school given back to the town"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/emplazamiento.webp",
+        "alt": "Site plan — Refurbishment in Urnieta",
+        "titulo": "Site plan"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/situacion.webp",
+        "alt": "Site layout — Refurbishment in Urnieta",
+        "titulo": "Site layout"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/axonometrica.webp",
+        "alt": "Axonometric — Refurbishment in Urnieta",
+        "titulo": "Axonometric"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/seccion-1.webp",
+        "alt": "Section — Refurbishment in Urnieta",
+        "titulo": "Section"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-12.webp",
+        "alt": "Refurbishment in Urnieta — Refurbishment in Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-13.webp",
+        "alt": "Refurbishment in Urnieta — Refurbishment in Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/vistas-interiores.webp",
+        "alt": "Interior views — Refurbishment in Urnieta",
+        "titulo": "Interior views"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-09.webp",
+        "alt": "Refurbishment in Urnieta — Refurbishment in Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-11.webp",
+        "alt": "Refurbishment in Urnieta — Refurbishment in Urnieta"
+      }
+    ]
+  },
+  {
+    "id": "urbanismo",
+    "orden": 6,
+    "titulo": "Redevelopment in Piekary",
+    "subtitulo": "A playground by the school that serves the whole village",
+    "anio": "2024",
+    "lugar": "Piekary, Poland",
+    "tipo": "Urban design · Public space",
+    "contexto": "Architecture & Planning in the Countryside",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#616a70",
+    "texto": [
+      "A redevelopment project in a small Polish village, next to a school that has no playground of its own.",
+      "The brief is read at two scales from the outset: solving the yard the school needs and, through the same move, giving the whole village the public space it lacks. What is built for the children during school hours stays available to the neighbours the rest of the time.",
+      "The work begins with an analysis of the area — routes, uses and references — and it is that analysis that ends up setting where to intervene and how hard."
+    ],
+    "portada": {
+      "archivo": "proyectos/urbanismo/portada.webp",
+      "alt": "Redevelopment in Piekary — A playground by the school that serves the whole village"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/portada.webp",
+        "alt": "View — Redevelopment in Piekary",
+        "titulo": "View"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-1.webp",
+        "alt": "Site analysis — Redevelopment in Piekary",
+        "titulo": "Site analysis"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-2.webp",
+        "alt": "Site analysis — Redevelopment in Piekary",
+        "titulo": "Site analysis"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/referencias.webp",
+        "alt": "References — Redevelopment in Piekary",
+        "titulo": "References"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-2.webp",
+        "alt": "View — Redevelopment in Piekary",
+        "titulo": "View"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-3.webp",
+        "alt": "View — Redevelopment in Piekary",
+        "titulo": "View"
       }
     ]
   }

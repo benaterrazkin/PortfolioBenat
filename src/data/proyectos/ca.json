@@ -1,157 +1,437 @@
 [
   {
-    "id": "proyecto-1",
+    "id": "astigarreta",
     "orden": 1,
-    "titulo": "Projecte 1",
-    "subtitulo": "Un magatzem del port convertit en escola d'oficis",
-    "anio": "2024",
-    "lugar": "Pasaia, Guipúscoa",
-    "tipo": "Equipament · Rehabilitació",
-    "contexto": "Projectes VI · UPV/EHU",
-    "herramientas": ["Rhinoceros", "AutoCAD", "Illustrator", "Maqueta 1:100"],
-    "texto": [
-      "El magatzem número 3 del moll d'Herrera fa vint anys que és buit: una nau de formigó del 1962, amb pòrtics de dotze metres de llum i una coberta de dents de serra que ja no cobreix res. La proposta no la buida ni la refà. Repara la coberta, obre el terra en tres punts i hi encabeix un edifici de fusta que en cap moment arriba a tocar els murs existents.",
-      "Els tallers —fusteria, metall, calderera— ocupen la planta baixa, on el terra aguanta la maquinària pesant i les portes del moll permeten entrar i treure material sense giragonses. A sobre, una safata de fusta laminada recull les aules i un passadís corregut des d'on es veu treballar a baix. Aprendre un ofici és, sobretot, mirar qui en sap.",
-      "L'obra s'atura a la vora de l'aigua. El moll es deixa tal com està, amb els seus norais i els seus rails, i només s'hi afegeix una rampa per avarar el que es construeixi a dins. L'edifici no pretén recuperar el port: pretén continuar formant-ne part."
-    ],
-    "portada": {
-      "archivo": "proyectos/proyecto-1/portada.jpg",
-      "alt": "Vista del magatzem rehabilitat des de l'aigua del moll"
-    },
-    "imagenes": [
-      {
-        "archivo": "proyectos/proyecto-1/emplazamiento.jpg",
-        "alt": "Plànol d'emplaçament amb la badia i els molls",
-        "pie": "Emplaçament. 1:2000"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-baja.jpg",
-        "alt": "Planta baixa amb els tres tallers i l'accés des del moll",
-        "pie": "Planta baixa. Tallers i accés de material"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/planta-alta.jpg",
-        "alt": "Planta alta amb les aules sobre l'estructura de fusta",
-        "pie": "Planta alta. Aules i passadís corregut"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/seccion.jpg",
-        "alt": "Secció longitudinal amb la nau existent i l'estructura de fusta interior",
-        "pie": "Secció longitudinal. 1:200"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/alzado.jpg",
-        "alt": "Alçat cap al moll amb les portes corredisses obertes",
-        "pie": "Alçat al moll"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/axonometrica.jpg",
-        "alt": "Axonometria esquarterada amb la coberta, la fusta i la nau de formigó",
-        "pie": "Axonometria constructiva"
-      },
-      {
-        "archivo": "proyectos/proyecto-1/maqueta.jpg",
-        "alt": "Fotografia de la maqueta de cartró i fusta vista des del sud",
-        "pie": "Maqueta 1:100"
-      }
-    ]
-  },
-  {
-    "id": "proyecto-2",
-    "orden": 2,
-    "titulo": "Projecte 2",
-    "subtitulo": "Dotze cases i un pas públic sobre la ria",
-    "anio": "2025",
-    "lugar": "Olabeaga, Bilbao",
+    "titulo": "Habitatges multifamiliars a Astigarreta",
+    "subtitulo": "Tres blocs d'habitatge per repoblar un poble de muntanya",
+    "anio": "2023",
+    "lugar": "Astigarreta, Goierri (Guipúscoa)",
     "tipo": "Habitatge col·lectiu",
-    "contexto": "Treball de Fi de Grau · UPV/EHU",
-    "herramientas": ["Revit", "Rhinoceros", "Enscape", "AutoCAD"],
+    "contexto": "Projectes IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
     "texto": [
-      "Olabeaga és un carrer llarg recolzat al vessant, amb les cases només d'un costat i la ria de l'altre. El solar és el buit que va deixar un taller enderrocat: quinze metres de front, trenta de fondària i set metres de desnivell entre el carrer i el camí de dalt.",
-      "En lloc d'un bloc, dotze cases en filera escalonades amb el pendent. Cadascuna té dos fronts —la ria al sud, el vessant al nord— i una franja de serveis al mig que absorbeix el desnivell en dos graons. Tots els habitatges tenen la mateixa planta i només es distingeixen per la cota on són.",
-      "El pas que uneix les dotze cases és a mitja alçada, entre el carrer i el camí, i funciona com a drecera per al barri: s'hi pot pujar sense trucar a cap porta. És l'única part del projecte que no és de ningú en concret."
+      "Astigarreta és un petit grup d'edificis a la muntanya, a la comarca del Goierri. L'encàrrec demanava tres blocs d'habitatges que s'adaptessin a l'entorn, atents a l'estat actual del poble i a com ajudar a repoblar la zona impulsant la vida en comunitat.",
+      "El que s'aprèn aquí té a veure amb l'organització del terreny. La topografia muntanyosa del País Basc deixa aïllats els pobles petits, i la connexió amb els centres urbans només es resol amb els transports que ja existeixen. Per això el projecte se centra en allò que sí que està a les seves mans: crear habitatge i espai públic, adequant el carrer, les places i els edificis als veïns actuals i als que puguin venir."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-2/portada.jpg",
-      "alt": "Els dotze habitatges escalonats vistos des de l'altra riba de la ria"
+      "archivo": "proyectos/astigarreta/portada.webp",
+      "alt": "Maqueta de cartró i fusta amb la topografia en corbes de nivell i els volums dels habitatges"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-2/implantacion.jpg",
-        "alt": "Plànol d'implantació amb el carrer, el solar i el camí superior",
-        "pie": "Implantació. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-2/planta-tipo.jpg",
-        "alt": "Planta tipus de tres habitatges consecutius amb el pas comú",
-        "pie": "Planta tipus. Tres habitatges i el pas"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/emplazamiento.webp",
+        "alt": "Plànol d'emplaçament amb les corbes de nivell, el poble i els tres blocs nous",
+        "titulo": "Emplaçament"
       },
       {
-        "archivo": "proyectos/proyecto-2/seccion-transversal.jpg",
-        "alt": "Secció transversal amb l'escalonament dels habitatges sobre el vessant",
-        "pie": "Secció transversal. 1:100"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/portada.webp",
+        "alt": "Maqueta de cartró i fusta amb la topografia en corbes de nivell i els volums dels habitatges",
+        "titulo": "Maqueta"
       },
       {
-        "archivo": "proyectos/proyecto-2/vivienda.jpg",
-        "alt": "Planta i secció d'un habitatge amb els seus dos fronts",
-        "pie": "Habitatge tipus. 1:50"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/planta-conjunto.webp",
+        "alt": "Planta de conjunt amb els tres blocs nous entre les cases existents",
+        "titulo": "Planta de conjunt"
       },
       {
-        "archivo": "proyectos/proyecto-2/paso.jpg",
-        "alt": "Vista del pas públic entre els habitatges, mirant cap a la ria",
-        "pie": "El pas, a mitja alçada"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-aa.webp",
+        "alt": "Secció AA' pel bloc d'habitatges, amb l'església al fons",
+        "titulo": "Secció AA'"
       },
       {
-        "archivo": "proyectos/proyecto-2/constructivo.jpg",
-        "alt": "Detall constructiu de la trobada entre el mur de contenció i el forjat",
-        "pie": "Detall. Trobada amb el mur de contenció"
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-bb.webp",
+        "alt": "Secció BB' al llarg del vessant, amb el caseriu existent",
+        "titulo": "Secció BB'"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/astigarreta/seccion-dd.webp",
+        "alt": "Secció DD' pels dos cossos d'habitatge",
+        "titulo": "Secció DD'"
+      }
+    ],
+    "lomo": "#e07b1e"
+  },
+  {
+    "id": "eliza-reforma",
+    "orden": 2,
+    "titulo": "Rehabilitació de l'església de Gubin",
+    "subtitulo": "Una ruïna de maó convertida en espai de cultura",
+    "anio": "2024",
+    "lugar": "Gubin, Polònia",
+    "tipo": "Rehabilitació · Equipament cultural",
+    "contexto": "Design for Conservation",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#97313e",
+    "texto": [
+      "L'encàrrec consistia a donar nova vida a una església abandonada després de la Segona Guerra Mundial, al poble de Gubin, Polònia. L'església és en ruïna completa: dempeus només queden les columnes, la façana i la torre central, tot de maó.",
+      "La reconstrucció parteix de reusar i completar l'estructura autèntica de l'època amb una de nova, autoportant, que es distingeixi de la principal i l'actualitzi. Quant a l'ús, es compara la funció original amb les necessitats d'avui, i en surt un espai ampli de cultura que uneix història i present: concerts, exposicions i descans per a qui visita.",
+      "El que importa del projecte és entendre el que hi ha i aconseguir que evolucioni i s'adapti al temps sense canviar la seva manera de ser."
+    ],
+    "portada": {
+      "archivo": "proyectos/eliza-reforma/portada.webp",
+      "alt": "Vista exterior de l'església rehabilitada, amb la torre de maó dempeus"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/portada.webp",
+        "alt": "Vista exterior de l'església rehabilitada, amb la torre de maó dempeus",
+        "titulo": "Vista exterior"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-general.webp",
+        "alt": "Vista general del conjunt des de la plaça",
+        "titulo": "Vista general"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-1.webp",
+        "alt": "Planta primera, amb la nau i la nova estructura interior",
+        "titulo": "Planta 1",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/planta-4.webp",
+        "alt": "Planta quarta, a la torre",
+        "titulo": "Planta 4",
+        "escala": "1:100"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-1.webp",
+        "alt": "Secció longitudinal per la nau, amb la coberta nova sobre els arcs de maó",
+        "titulo": "Secció longitudinal",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/seccion-2.webp",
+        "alt": "Secció transversal per la torre, amb el detall de l'ancoratge de l'estructura",
+        "titulo": "Secció transversal",
+        "escala": "1:150"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-1.webp",
+        "alt": "Vista exterior de l'església des de l'accés",
+        "titulo": "Vista exterior"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-3.webp",
+        "alt": "Vista exterior de la façana principal",
+        "titulo": "Vista exterior"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/eliza-reforma/vista-5.webp",
+        "alt": "Vista exterior del conjunt al capvespre",
+        "titulo": "Vista exterior"
       }
     ]
   },
   {
-    "id": "proyecto-3",
+    "id": "proiektuak-9",
     "orden": 3,
-    "titulo": "Projecte 3",
-    "subtitulo": "Un equipament de barri dins d'una illa de Sants",
-    "anio": "2026",
-    "lugar": "La Bordeta, Barcelona",
-    "tipo": "Equipament públic",
-    "contexto": "Taller de Projectes · Màster habilitant ETSAB",
-    "herramientas": ["Rhinoceros", "Grasshopper", "QGIS", "Illustrator"],
+    "titulo": "Projecte urbà a Hondarribia",
+    "subtitulo": "Mercat, equipaments i habitatges al cub de la Magdalena",
+    "anio": "2024",
+    "lugar": "Hondarribia, Guipúscoa",
+    "tipo": "Projecte urbà · Ús mixt",
+    "contexto": "Projectes IX · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#1b3050",
     "texto": [
-      "L'interior de l'illa està ocupat per naus d'una planta que ja no es fan servir i per un mur de tres metres que les separa dels habitatges. L'encàrrec demanava un equipament de barri; el projecte comença decidint quina part del mur es queda i quina part es tira.",
-      "Es conserven dues naus senceres i la filera de pilars d'una tercera. Entre elles apareix un pati allargat, orientat d'est a oest, que reparteix l'accés a les tres peces del programa: la sala polivalent, els tallers i el casal de gent gran. La resta és ombra: una pèrgola de bigues recuperades que cobreix el pati sense arribar a tancar-lo.",
-      "La construcció és deliberadament pobra: obra vista, fusteries d'alumini de catàleg i xapa sobre les naus antigues. El pressupost es concentra en el terra, en l'aigua i en els arbres, que és el que el barri farà servir de debò."
+      "El projecte se situa al cub de la Magdalena, a Hondarribia, just a la unió entre el nucli històric i l’eixample. Entendre la circulació d’aquesta costura és la clau de tota la resta.",
+      "L’encàrrec demanava mercat, equipaments administratius, oficines, una sala cultural polivalent i habitatges tutelats per a gent gran independent, i alhora reubicar la societat gastronòmica i el taller de fusta que destorbaven la fluïdesa de la zona.",
+      "La resposta són tres blocs: un de petit per al mercat, un de central que recull cultura i administració i assumeix el pes del lloc, i un tercer convertit en edifici d’habitatges. A cadascun se li busca la posició on funciona."
     ],
     "portada": {
-      "archivo": "proyectos/proyecto-3/portada.jpg",
-      "alt": "El pati entre les dues naus conservades, amb la pèrgola de bigues recuperades"
+      "archivo": "proyectos/proiektuak-9/portada.webp",
+      "alt": "Projecte urbà a Hondarribia — Mercat, equipaments i habitatges al cub de la Magdalena"
     },
-    "imagenes": [
+    "paginas": [
       {
-        "archivo": "proyectos/proyecto-3/manzana.jpg",
-        "alt": "Planta de l'illa sencera amb l'interior alliberat i les naus conservades",
-        "pie": "L'illa. 1:1000"
+        "tipo": "presentacion"
       },
       {
-        "archivo": "proyectos/proyecto-3/planta.jpg",
-        "alt": "Planta de l'equipament amb la sala polivalent, els tallers i el casal",
-        "pie": "Planta general. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/portada.webp",
+        "alt": "Axonometria — Projecte urbà a Hondarribia",
+        "titulo": "Axonometria"
       },
       {
-        "archivo": "proyectos/proyecto-3/seccion-patio.jpg",
-        "alt": "Secció pel pati amb les dues naus, la pèrgola i els habitatges del voltant",
-        "pie": "Secció pel pati. 1:200"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/aretoa.webp",
+        "alt": "Vistes interiors — Projecte urbà a Hondarribia",
+        "titulo": "Vistes interiors"
       },
       {
-        "archivo": "proyectos/proyecto-3/luz.jpg",
-        "alt": "Estudi de l'assolellament del pati al llarg de l'any",
-        "pie": "Assolellament del pati"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/planta-baja.webp",
+        "alt": "Planta baixa — Projecte urbà a Hondarribia",
+        "titulo": "Planta baixa",
+        "escala": "1:100"
       },
       {
-        "archivo": "proyectos/proyecto-3/interior.jpg",
-        "alt": "Interior de la nau dels tallers amb l'estructura metàl·lica vista",
-        "pie": "Els tallers, a la nau nord"
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/detalle-fachada.webp",
+        "alt": "Detall de façana — Projecte urbà a Hondarribia",
+        "titulo": "Detall de façana"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-seccion.webp",
+        "alt": "Secció d'habitatge — Projecte urbà a Hondarribia",
+        "titulo": "Secció d'habitatge"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/vivienda-planta.webp",
+        "alt": "Planta d'habitatge — Projecte urbà a Hondarribia",
+        "titulo": "Planta d'habitatge"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/proiektuak-9/axonometrica.webp",
+        "alt": "Axonometria — Projecte urbà a Hondarribia",
+        "titulo": "Axonometria"
+      }
+    ]
+  },
+  {
+    "id": "elorrieta",
+    "orden": 4,
+    "titulo": "Urbanització d’Elorrieta",
+    "subtitulo": "Illes de blocs diferents ajustades al clima i a la topografia",
+    "anio": "2023",
+    "lugar": "Elorrieta, Bilbao",
+    "tipo": "Urbanisme · Habitatge",
+    "contexto": "Projectes IV · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#6e624d",
+    "texto": [
+      "El projecte se situa a Elorrieta, un barri industrial de Bilbao, i demanava una urbanització que s’adeqüés a la forma i la topografia de la zona.",
+      "Es proposa un joc d’illes compostes per blocs de forma i alçada diferents. La composició es va analitzar amb el programa Envimet, que permet justificar les ombres, els corrents d’aire i les temperatures que s’assoleixen al llarg de l’any.",
+      "El que s’aprèn aquí és a fer servir volums diferents i aconseguir que, junts, formin un conjunt que funcioni i s’ajusti al programa."
+    ],
+    "portada": {
+      "archivo": "proyectos/elorrieta/situacion.webp",
+      "alt": "Urbanització d’Elorrieta — Illes de blocs diferents ajustades al clima i a la topografia"
+    },
+    "diagrama": {
+      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "alt": "Diagrama conceptual — Urbanització d’Elorrieta"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/situacion.webp",
+        "alt": "Situació — Urbanització d’Elorrieta",
+        "titulo": "Situació"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/plantas-tipo.webp",
+        "alt": "Plantes tipus — Urbanització d’Elorrieta",
+        "titulo": "Plantes tipus"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/secciones.webp",
+        "alt": "Seccions — Urbanització d’Elorrieta",
+        "titulo": "Seccions"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/elorrieta/alzados.webp",
+        "alt": "Alçats — Urbanització d’Elorrieta",
+        "titulo": "Alçats"
+      }
+    ]
+  },
+  {
+    "id": "tfg",
+    "orden": 5,
+    "titulo": "Rehabilitació a Urnieta",
+    "subtitulo": "Una ikastola buida retornada al poble",
+    "anio": "2025",
+    "lugar": "Urnieta, Guipúscoa",
+    "tipo": "Rehabilitació · Equipament",
+    "contexto": "Treball de Fi de Grau · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#f0a923",
+    "texto": [
+      "El treball parteix d’un edifici que ha perdut el seu ús i busca donar-li una funció nova. El lloc és Urnieta, i el conjunt escollit és el de la ikastola on vaig estudiar: se li ha quedat petita i la reubicaran en un edifici de nova planta, de manera que la parcel·la camina cap al buit.",
+      "En analitzar-la i veure la quantitat de problemes que arrossega, l’encàrrec va créixer: no només l’edifici, sinó la parcel·la sencera es torna a inserir al poble, amb operacions de rehabilitació, renovació i ampliació.",
+      "Els usos nous parteixen del que avui falta a l’oferta del municipi, i s’adrecen tant als veïns com a qui visita, pensant en el benestar del poble ara i de cara al futur."
+    ],
+    "portada": {
+      "archivo": "proyectos/tfg/emplazamiento.webp",
+      "alt": "Rehabilitació a Urnieta — Una ikastola buida retornada al poble"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/emplazamiento.webp",
+        "alt": "Emplaçament — Rehabilitació a Urnieta",
+        "titulo": "Emplaçament"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/situacion.webp",
+        "alt": "Situació — Rehabilitació a Urnieta",
+        "titulo": "Situació"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/axonometrica.webp",
+        "alt": "Axonometria — Rehabilitació a Urnieta",
+        "titulo": "Axonometria"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/seccion-1.webp",
+        "alt": "Secció — Rehabilitació a Urnieta",
+        "titulo": "Secció"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-12.webp",
+        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-13.webp",
+        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/vistas-interiores.webp",
+        "alt": "Vistes interiors — Rehabilitació a Urnieta",
+        "titulo": "Vistes interiors"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-09.webp",
+        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-11.webp",
+        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
+      }
+    ]
+  },
+  {
+    "id": "urbanismo",
+    "orden": 6,
+    "titulo": "Reurbanització a Piekary",
+    "subtitulo": "Una zona de joc al costat de l’escola que serveix a tot el poble",
+    "anio": "2024",
+    "lugar": "Piekary, Polònia",
+    "tipo": "Urbanisme · Espai públic",
+    "contexto": "Architecture & Planning in the Countryside",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Photoshop",
+      "InDesign"
+    ],
+    "lomo": "#616a70",
+    "texto": [
+      "Projecte de reurbanització en un poble petit de Polònia, al costat d’una escola que no té zona de joc pròpia.",
+      "L’encàrrec s’entén des del principi a dues escales: resoldre el pati que l’escola necessita i, amb la mateixa operació, donar al poble sencer l’espai públic que li falta. El que es construeix per als nens en horari lectiu queda disponible per als veïns la resta del temps.",
+      "El treball arrenca amb una anàlisi de la zona —recorreguts, usos i referències— que és la que acaba fixant on s’intervé i amb quina intensitat."
+    ],
+    "portada": {
+      "archivo": "proyectos/urbanismo/portada.webp",
+      "alt": "Reurbanització a Piekary — Una zona de joc al costat de l’escola que serveix a tot el poble"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/portada.webp",
+        "alt": "Vista — Reurbanització a Piekary",
+        "titulo": "Vista"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-1.webp",
+        "alt": "Anàlisi de la zona — Reurbanització a Piekary",
+        "titulo": "Anàlisi de la zona"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-2.webp",
+        "alt": "Anàlisi de la zona — Reurbanització a Piekary",
+        "titulo": "Anàlisi de la zona"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/referencias.webp",
+        "alt": "Referències — Reurbanització a Piekary",
+        "titulo": "Referències"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-2.webp",
+        "alt": "Vista — Reurbanització a Piekary",
+        "titulo": "Vista"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-3.webp",
+        "alt": "Vista — Reurbanització a Piekary",
+        "titulo": "Vista"
       }
     ]
   }

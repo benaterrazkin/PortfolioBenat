@@ -15,3 +15,8 @@ dist/
 /*.jpeg
 /*.jpg
 /*.png
+
+# Las láminas originales de los proyectos, descargadas del Drive de Beñat.
+# Son medio giga de PDF de entrega: de aquí se sacan los planos, se guardan
+# ya a tamaño web en src/assets/img/ y esta carpeta se puede borrar.
+/assets/

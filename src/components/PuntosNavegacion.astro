@@ -16,13 +16,12 @@ interface Props {
 const { idioma } = Astro.props;
 const t = textos(idioma);
 
+/* En los atajos va el nombre corto —el lugar— y no el título entero:
+ * «Astigarreta» se lee de un vistazo, «Viviendas multifamiliares en
+ * Astigarreta» no. */
 const paradas = [
-  ...cuadernos(idioma).map((c) => ({
-    ancla: c.ancla,
-    titulo: c.titulo,
-    etiqueta: String(c.numero).padStart(2, '0'),
-  })),
-  { ancla: 'contacto', titulo: t.contacto.titulo, etiqueta: '→' },
+  ...cuadernos(idioma).map((c) => ({ ancla: c.ancla, titulo: c.nombreCorto })),
+  { ancla: 'contacto', titulo: t.contacto.titulo },
 ];
 ---
 
@@ -46,24 +45,25 @@ const paradas = [
 </nav>
 
 <style>
+  /* Todos los puntos del mismo gris neutro; solo el de la sección que se
+     está viendo se enciende en rojo de lápiz. */
   .punto {
     display: block;
-    width: 0.5rem;
-    height: 0.5rem;
-    border: 1px solid var(--color-linea);
+    width: 0.8125rem;
+    height: 0.8125rem;
     border-radius: 50%;
+    background-color: var(--color-gris-claro);
     transition:
       background-color 250ms var(--ease-suave),
-      border-color 250ms var(--ease-suave);
+      transform 250ms var(--ease-suave);
   }
   a:hover .punto,
   a:focus-visible .punto {
-    border-color: var(--color-tinta);
+    background-color: var(--color-gris);
   }
-  /* Rojo de lápiz: marca pequeña, justo para lo que está reservado. */
   a[data-activo] .punto {
     background-color: var(--color-trazo);
-    border-color: var(--color-trazo);
+    transform: scale(1.15);
   }
 
   /* El nombre solo aparece al apuntar o al enfocar. */

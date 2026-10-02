@@ -54,6 +54,8 @@ const es = {
     irA: 'Ir a {titulo}',
     ayuda: 'Pulsa a los lados del cuaderno, o usa las flechas del teclado, para pasar las hojas.',
     enBlanco: 'Hoja en blanco',
+    diagrama: 'Diagrama conceptual',
+    volverAlPrincipio: 'Volver al principio',
   },
   cv: {
     abrir: 'CV',
@@ -151,6 +153,8 @@ const en: Textos = {
     irA: 'Go to {titulo}',
     ayuda: 'Click either side of the notebook, or use the arrow keys, to turn the pages.',
     enBlanco: 'Blank page',
+    diagrama: 'Concept diagram',
+    volverAlPrincipio: 'Back to the start',
   },
   cv: {
     abrir: 'CV',
@@ -246,6 +250,8 @@ const eu: Textos = {
     irA: 'Joan {titulo} atalera',
     ayuda: 'Sakatu koadernoaren alboetan, edo erabili teklatuko geziak, orriak pasatzeko.',
     enBlanco: 'Orri zuria',
+    diagrama: 'Kontzeptu diagrama',
+    volverAlPrincipio: 'Hasierara itzuli',
   },
   cv: {
     abrir: 'CVa',
@@ -341,6 +347,8 @@ const ca: Textos = {
     irA: 'Vés a {titulo}',
     ayuda: 'Prem als costats del quadern, o fes servir les fletxes del teclat, per passar les pàgines.',
     enBlanco: 'Pàgina en blanc',
+    diagrama: 'Diagrama conceptual',
+    volverAlPrincipio: 'Torna al principi',
   },
   cv: {
     abrir: 'CV',
