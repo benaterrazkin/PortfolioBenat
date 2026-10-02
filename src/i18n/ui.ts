@@ -57,6 +57,13 @@ const es = {
     diagrama: 'Diagrama conceptual',
     volverAlPrincipio: 'Volver al principio',
   },
+  portfolio: {
+    abrir: 'Portfolio',
+    titulo: 'Portfolio',
+    introduccion: 'Introducción',
+    contenido: 'Contenido',
+    proyecto: 'Proyecto',
+  },
   cv: {
     abrir: 'CV',
     titulo: 'Currículum',
@@ -157,6 +164,13 @@ const en: Textos = {
     diagrama: 'Concept diagram',
     volverAlPrincipio: 'Back to the start',
   },
+  portfolio: {
+    abrir: 'Portfolio',
+    titulo: 'Portfolio',
+    introduccion: 'Introduction',
+    contenido: 'Contents',
+    proyecto: 'Project',
+  },
   cv: {
     abrir: 'CV',
     titulo: 'Curriculum vitae',
@@ -255,6 +269,13 @@ const eu: Textos = {
     diagrama: 'Kontzeptu diagrama',
     volverAlPrincipio: 'Hasierara itzuli',
   },
+  portfolio: {
+    abrir: 'Portfolioa',
+    titulo: 'Portfolioa',
+    introduccion: 'Sarrera',
+    contenido: 'Edukia',
+    proyecto: 'Proiektua',
+  },
   cv: {
     abrir: 'CVa',
     titulo: 'Curriculuma',
@@ -352,6 +373,13 @@ const ca: Textos = {
     enBlanco: 'Pàgina en blanc',
     diagrama: 'Diagrama conceptual',
     volverAlPrincipio: 'Torna al principi',
+  },
+  portfolio: {
+    abrir: 'Portfolio',
+    titulo: 'Portfolio',
+    introduccion: 'Introducció',
+    contenido: 'Contingut',
+    proyecto: 'Projecte',
   },
   cv: {
     abrir: 'CV',

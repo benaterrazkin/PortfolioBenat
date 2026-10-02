@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import BotonCV from '../components/BotonCV.astro';
+import BotonPortfolio from '../components/BotonPortfolio.astro';
 import VisorCV from '../components/VisorCV.astro';
 import SeccionProyectos from '../components/SeccionProyectos.astro';
 import SeccionContacto from '../components/SeccionContacto.astro';
@@ -54,6 +55,7 @@ const t = textos(idioma);
               <span aria-hidden="true" class="w-5 h-px bg-current"></span>
             </a>
             <BotonCV idioma={idioma} tono="linea" />
+            <BotonPortfolio idioma={idioma} tono="linea" />
           </div>
 
         </div>

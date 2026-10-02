@@ -2,6 +2,7 @@
 import TituloSeccion from './TituloSeccion.astro';
 import Formulario from './Formulario.astro';
 import BotonCV from './BotonCV.astro';
+import BotonPortfolio from './BotonPortfolio.astro';
 import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
 import { SITIO } from '../config/sitio';
@@ -86,8 +87,9 @@ const vias = [
         </div>
       </dl>
 
-      <div class="border-t border-linea p-4">
+      <div class="border-t border-linea p-4 grid gap-2">
         <BotonCV idioma={idioma} tono="linea" clase="w-full justify-center" />
+        <BotonPortfolio idioma={idioma} tono="linea" clase="w-full justify-center" />
       </div>
     </aside>
   </div>
