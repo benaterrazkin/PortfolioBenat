@@ -91,6 +91,7 @@ const es = {
   pie: {
     derechos: 'Todos los derechos reservados.',
     rotulo: 'Portfolio de arquitectura',
+    creadora: 'Diseño y desarrollo',
   },
   meta: {
     inicio: {
@@ -190,6 +191,7 @@ const en: Textos = {
   pie: {
     derechos: 'All rights reserved.',
     rotulo: 'Architecture portfolio',
+    creadora: 'Design and development',
   },
   meta: {
     inicio: {
@@ -287,6 +289,7 @@ const eu: Textos = {
   pie: {
     derechos: 'Eskubide guztiak erreserbatuta.',
     rotulo: 'Arkitektura portfolioa',
+    creadora: 'Diseinua eta garapena',
   },
   meta: {
     inicio: {
@@ -384,6 +387,7 @@ const ca: Textos = {
   pie: {
     derechos: 'Tots els drets reservats.',
     rotulo: "Portfolio d'arquitectura",
+    creadora: 'Disseny i desenvolupament',
   },
   meta: {
     inicio: {

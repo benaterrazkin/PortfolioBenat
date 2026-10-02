@@ -58,4 +58,18 @@ const enlaces = [
       </p>
     </div>
   </div>
+
+  <!-- Quién ha hecho la web, abajo del todo y en su propia franja. -->
+  <div class="border-t border-linea-suave">
+    <div class="contenedor py-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+      <span class="rotulo text-gris">{t.pie.creadora}</span>
+      <span class="text-sm">{SITIO.creadora.nombre}</span>
+      <a
+        href={`mailto:${SITIO.creadora.correo}`}
+        class="text-sm text-gris underline decoration-linea underline-offset-4 hover:text-tinta hover:decoration-trazo transition-colors break-all"
+      >
+        {SITIO.creadora.correo}
+      </a>
+    </div>
+  </div>
 </footer>

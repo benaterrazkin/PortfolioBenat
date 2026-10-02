@@ -15,6 +15,8 @@ interface DatosSitio {
   ubicacion: string;
   claveFormulario: string;
   anioInicio: number;
+  /** Quién ha hecho la web. Aparece en el pie. */
+  creadora: { nombre: string; correo: string };
 }
 
 export const SITIO: DatosSitio = {
@@ -72,4 +74,10 @@ export const SITIO: DatosSitio = {
 
   /** Primer año de actividad; se usa en el pie de página. */
   anioInicio: 2025,
+
+  /** Quién ha hecho la web. Aparece en el pie. */
+  creadora: {
+    nombre: 'Julia Fernández Bermejo',
+    correo: 'juliafernandezbermejo@gmail.com',
+  },
 };
