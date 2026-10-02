@@ -158,7 +158,11 @@ const claseCampo =
         mostrar(mensajes.exito, true);
       } catch (error) {
         console.error(error);
-        mostrar(mensajes.error, false);
+        /* El motivo que devuelve Web3Forms —clave sin verificar, clave
+         * mal escrita— se enseña entre paréntesis. Sin esto, cualquier
+         * fallo se ve igual y no hay forma de saber qué pasa. */
+        const motivo = error && error.message ? ' (' + error.message + ')' : '';
+        mostrar(mensajes.error + motivo, false);
       } finally {
         boton.disabled = false;
         boton.textContent = textoOriginal;
