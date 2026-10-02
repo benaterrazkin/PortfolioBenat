@@ -1,17 +1,11 @@
 ---
 import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
-import { recurso } from '../rutas';
-import { SITIO } from '../config/sitio';
 
 /**
- * Botón que descarga el portfolio completo en PDF.
- *
- * A diferencia del currículum, que se lee dentro de la web, esto es un
- * documento para mandar a un estudio: se baja directamente. El PDF se
- * genera al compilar desde los mismos proyectos que se ven en los
- * cuadernos (ver src/pages/portfolio/[idioma].pdf.ts), uno por idioma,
- * así que nunca puede quedarse desfasado respecto a la web.
+ * Botón que abre la ventana del portfolio. Puede repetirse en varios sitios
+ * de la misma página: todos abren la misma ventana (VisorPortfolio.astro),
+ * que solo hace falta incluir una vez.
  */
 interface Props {
   /** "relleno" para el botón principal, "linea" para el secundario. */
@@ -27,14 +21,11 @@ const estilos =
   tono === 'relleno'
     ? 'bg-tinta text-papel border-tinta hover:bg-papel hover:text-tinta'
     : 'border-tinta text-tinta hover:bg-tinta hover:text-papel';
-
-/* El nombre con el que se guarda en el ordenador de quien lo descarga. */
-const archivo = `${SITIO.nombreCompleto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}-Portfolio-${idioma}.pdf`;
 ---
 
-<a
-  href={recurso(`portfolio/${idioma}.pdf`)}
-  download={archivo}
+<button
+  type="button"
+  data-abrir-portfolio
   class:list={[
     'rotulo h-11 px-6 inline-flex items-center gap-3 border transition-colors',
     estilos,
@@ -43,4 +34,4 @@ const archivo = `${SITIO.nombreCompleto.normalize('NFD').replace(/[\u0300-\u036f
 >
   {t.portfolio.abrir}
   <span aria-hidden="true" class="w-5 h-px bg-current"></span>
-</a>
+</button>

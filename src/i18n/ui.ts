@@ -63,6 +63,10 @@ const es = {
     introduccion: 'Introducción',
     contenido: 'Contenido',
     proyecto: 'Proyecto',
+    idiomaDelPortfolio: 'Idioma del portfolio',
+    descargar: 'Descargar',
+    sinVista: 'Aquí el PDF no se puede ver dentro de la página. Ábrelo en otra pestaña o descárgalo.',
+    enOtraPestana: 'Abrir en otra pestaña',
   },
   cv: {
     abrir: 'CV',
@@ -170,6 +174,10 @@ const en: Textos = {
     introduccion: 'Introduction',
     contenido: 'Contents',
     proyecto: 'Project',
+    idiomaDelPortfolio: 'Portfolio language',
+    descargar: 'Download',
+    sinVista: 'The PDF cannot be shown inside the page here. Open it in a new tab or download it.',
+    enOtraPestana: 'Open in a new tab',
   },
   cv: {
     abrir: 'CV',
@@ -275,6 +283,10 @@ const eu: Textos = {
     introduccion: 'Sarrera',
     contenido: 'Edukia',
     proyecto: 'Proiektua',
+    idiomaDelPortfolio: 'Portfolioaren hizkuntza',
+    descargar: 'Deskargatu',
+    sinVista: 'Hemen PDFa ezin da orriaren barruan ikusi. Ireki beste fitxa batean edo deskargatu.',
+    enOtraPestana: 'Beste fitxa batean ireki',
   },
   cv: {
     abrir: 'CVa',
@@ -380,6 +392,10 @@ const ca: Textos = {
     introduccion: 'Introducció',
     contenido: 'Contingut',
     proyecto: 'Projecte',
+    idiomaDelPortfolio: 'Idioma del portfolio',
+    descargar: 'Descarrega',
+    sinVista: "Aquí el PDF no es pot veure dins de la pàgina. Obre'l en una altra pestanya o descarrega'l.",
+    enOtraPestana: 'Obre en una altra pestanya',
   },
   cv: {
     abrir: 'CV',

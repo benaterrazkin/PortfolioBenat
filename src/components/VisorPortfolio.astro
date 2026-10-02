@@ -1,0 +1,211 @@
+---
+import { textos } from '../i18n/ui';
+import {
+  IDIOMAS_PUBLICADOS,
+  NOMBRE_IDIOMA,
+  SIGLA_IDIOMA,
+  CODIGO_HREFLANG,
+  type Idioma,
+} from '../i18n/idiomas';
+import { recurso } from '../rutas';
+import { SITIO } from '../config/sitio';
+
+/**
+ * Ventana del portfolio.
+ *
+ * Va una sola vez por página; el botón que la abre puede estar en varios
+ * sitios (ver BotonPortfolio.astro).
+ *
+ * Funciona como la del currículum, con una diferencia: el currículum se
+ * escribe en HTML y aquí lo que se enseña es el PDF, que son casi seis megas.
+ * Por eso el visor nace vacío y el archivo solo se pide cuando alguien abre la
+ * ventana: quien no la abra no se descarga nada.
+ *
+ * El idioma que se elige aquí dentro solo afecta al portfolio: la web sigue en
+ * el suyo.
+ */
+interface Props {
+  idioma: Idioma;
+}
+
+const { idioma } = Astro.props;
+const t = textos(idioma);
+
+/** Un PDF por idioma; se generan al compilar (src/pages/portfolio/[idioma].pdf.ts). */
+const pdfs = Object.fromEntries(
+  IDIOMAS_PUBLICADOS.map((otro) => [otro, recurso(`portfolio/${otro}.pdf`)]),
+);
+
+/* Cómo se llama el archivo al guardarlo en el ordenador. */
+const base = SITIO.nombreCompleto
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/\s+/g, '-');
+const nombres = Object.fromEntries(
+  IDIOMAS_PUBLICADOS.map((otro) => [otro, `${base}-Portfolio-${otro}.pdf`]),
+);
+---
+
+<dialog
+  id="visor-portfolio"
+  class="bg-transparent p-0 m-0 max-w-none max-h-none w-full h-full backdrop:bg-tinta/85"
+  aria-label={t.portfolio.titulo}
+  data-pdfs={JSON.stringify(pdfs)}
+  data-nombres={JSON.stringify(nombres)}
+  data-idioma={idioma}
+>
+  <div class="flex flex-col h-full">
+    <!-- Barra superior: idiomas a la izquierda, descarga y cierre a la derecha -->
+    <div
+      class="flex items-center justify-between gap-3 px-3 py-2.5 bg-tinta text-papel border-b border-papel/15"
+    >
+      <fieldset class="flex items-center gap-1.5 min-w-0 overflow-x-auto">
+        <legend class="sr-only">{t.portfolio.idiomaDelPortfolio}</legend>
+        {
+          IDIOMAS_PUBLICADOS.map((otro) => (
+            <button
+              type="button"
+              data-idioma-portfolio={otro}
+              lang={CODIGO_HREFLANG[otro]}
+              aria-pressed={otro === idioma ? 'true' : 'false'}
+              title={NOMBRE_IDIOMA[otro]}
+              class="rotulo h-8 px-3 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors aria-pressed:bg-papel aria-pressed:text-tinta aria-pressed:border-papel"
+            >
+              <span aria-hidden="true">{SIGLA_IDIOMA[otro]}</span>
+              <span class="sr-only">{NOMBRE_IDIOMA[otro]}</span>
+            </button>
+          ))
+        }
+      </fieldset>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <a
+          data-descargar-portfolio
+          href={pdfs[idioma]}
+          download={nombres[idioma]}
+          class="rotulo h-8 px-3 inline-flex items-center gap-2 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            class="w-3.5 h-3.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+          >
+            <path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 20h16"></path>
+          </svg>
+          <span class="hidden sm:inline">{t.portfolio.descargar}</span>
+          <span class="sm:hidden">PDF</span>
+        </a>
+
+        <button
+          type="button"
+          data-cerrar-portfolio
+          class="h-8 w-8 inline-flex items-center justify-center border border-papel/25 text-papel/70 hover:bg-papel hover:text-tinta transition-colors"
+          aria-label={t.general.cerrar}>✕</button
+        >
+      </div>
+    </div>
+
+    <!-- El documento. La dirección se pone desde el script al abrir la ventana. -->
+    <div class="flex-1 min-h-0 bg-papel-2">
+      <iframe data-vista-portfolio title={t.portfolio.titulo} class="w-full h-full border-0"
+      ></iframe>
+
+      <!--
+        Para cuando el navegador no sabe enseñar un PDF dentro de la página: es
+        lo normal en los móviles, donde los PDF se abren siempre aparte.
+      -->
+      <div
+        data-sin-vista
+        hidden
+        class="h-full flex flex-col items-center justify-center gap-6 px-6 text-center"
+      >
+        <p class="max-w-[34ch] text-sm leading-relaxed text-gris">{t.portfolio.sinVista}</p>
+        <a
+          data-abrir-aparte
+          href={pdfs[idioma]}
+          target="_blank"
+          rel="noopener"
+          class="rotulo h-11 px-6 inline-flex items-center gap-3 border border-tinta bg-tinta text-papel hover:bg-papel hover:text-tinta transition-colors"
+        >
+          {t.portfolio.enOtraPestana}
+          <span aria-hidden="true" class="w-5 h-px bg-current"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialogo = document.getElementById('visor-portfolio');
+
+  if (dialogo instanceof HTMLDialogElement) {
+    const pdfs: Record<string, string> = JSON.parse(dialogo.dataset.pdfs ?? '{}');
+    const nombres: Record<string, string> = JSON.parse(dialogo.dataset.nombres ?? '{}');
+    const botonesIdioma = dialogo.querySelectorAll<HTMLButtonElement>('[data-idioma-portfolio]');
+    const vista = dialogo.querySelector<HTMLIFrameElement>('[data-vista-portfolio]');
+    const sinVista = dialogo.querySelector<HTMLElement>('[data-sin-vista]');
+    const descarga = dialogo.querySelector<HTMLAnchorElement>('[data-descargar-portfolio]');
+    const aparte = dialogo.querySelector<HTMLAnchorElement>('[data-abrir-aparte]');
+
+    let elegido = dialogo.dataset.idioma ?? 'es';
+    let ultimoBoton: HTMLElement | null = null;
+
+    /* Si el navegador no trae visor de PDF —los móviles no lo traen— no tiene
+     * sentido pedir seis megas para no enseñar nada: se ofrece abrirlo aparte.
+     * Cuando el navegador es viejo y no contesta, se intenta igualmente. */
+    const puedeVerlo = navigator.pdfViewerEnabled !== false;
+
+    /** #view=Fit enseña la hoja entera, no un trozo ampliado. */
+    const direccion = (clave: string) => `${pdfs[clave]}#view=Fit`;
+
+    /** Cambia solo el portfolio: la web se queda en su idioma. */
+    const mostrar = (otro: string) => {
+      if (!pdfs[otro]) return;
+      elegido = otro;
+
+      for (const boton of botonesIdioma) {
+        boton.setAttribute(
+          'aria-pressed',
+          boton.dataset.idiomaPortfolio === otro ? 'true' : 'false',
+        );
+      }
+
+      if (descarga) {
+        descarga.href = pdfs[otro];
+        descarga.setAttribute('download', nombres[otro]);
+      }
+      if (aparte) aparte.href = pdfs[otro];
+      if (vista && dialogo.open && puedeVerlo) vista.src = direccion(otro);
+    };
+
+    for (const boton of botonesIdioma) {
+      boton.addEventListener('click', () => mostrar(boton.dataset.idiomaPortfolio!));
+    }
+
+    for (const abrir of document.querySelectorAll<HTMLElement>('[data-abrir-portfolio]')) {
+      abrir.addEventListener('click', () => {
+        ultimoBoton = abrir;
+
+        if (vista) vista.hidden = !puedeVerlo;
+        if (sinVista) sinVista.hidden = puedeVerlo;
+
+        dialogo.showModal();
+        /* El archivo se pide aquí, al abrir la ventana, y no al cargar la web. */
+        if (vista && puedeVerlo && !vista.getAttribute('src')) vista.src = direccion(elegido);
+      });
+    }
+
+    dialogo
+      .querySelector('[data-cerrar-portfolio]')
+      ?.addEventListener('click', () => dialogo.close());
+    dialogo.addEventListener('close', () => ultimoBoton?.focus());
+
+    // Cerrar al pulsar fuera del documento.
+    dialogo.addEventListener('click', (evento) => {
+      if (evento.target === dialogo) dialogo.close();
+    });
+  }
+</script>

@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import BotonCV from '../components/BotonCV.astro';
 import BotonPortfolio from '../components/BotonPortfolio.astro';
 import VisorCV from '../components/VisorCV.astro';
+import VisorPortfolio from '../components/VisorPortfolio.astro';
 import SeccionProyectos from '../components/SeccionProyectos.astro';
 import SeccionContacto from '../components/SeccionContacto.astro';
 import PuntosNavegacion from '../components/PuntosNavegacion.astro';
@@ -86,8 +87,9 @@ const t = textos(idioma);
   <SeccionProyectos idioma={idioma} />
   <SeccionContacto idioma={idioma} />
 
-  <!-- Los atajos laterales y la ventana del currículum: uno de cada por
-       página, o habría identificadores repetidos. -->
+  <!-- Los atajos laterales y las dos ventanas —currículum y portfolio—:
+       una de cada por página, o habría identificadores repetidos. -->
   <PuntosNavegacion idioma={idioma} />
   <VisorCV idioma={idioma} />
+  <VisorPortfolio idioma={idioma} />
 </Base>
