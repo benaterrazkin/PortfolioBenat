@@ -29,7 +29,17 @@ const claseCampo =
   novalidate
 >
   <input type="hidden" name="access_key" value={SITIO.claveFormulario} />
-  <input type="hidden" name="subject" value={`Contacto desde la web · ${SITIO.nombre}`} />
+  <!--
+    El asunto empieza SIEMPRE por "Contacto desde la web": es por donde se
+    filtra en el correo para que no acabe en spam. Al enviar se le añade
+    el nombre de quien escribe, pero ese principio no se toca.
+  -->
+  <input
+    type="hidden"
+    name="subject"
+    data-base="Contacto desde la web"
+    value="Contacto desde la web"
+  />
   <input type="hidden" name="from_name" value={SITIO.nombre} />
 
   <!-- Trampa antispam: si un robot la rellena, el envío se descarta. -->
@@ -145,6 +155,14 @@ const claseCampo =
       boton.disabled = true;
       const textoOriginal = boton.textContent;
       boton.textContent = mensajes.enviando;
+
+      /* El asunto lleva el nombre de quien escribe, para distinguir unos
+       * mensajes de otros en la bandeja. El principio se deja fijo: es
+       * por ahí por donde se filtra en el correo para que no caiga en
+       * spam, así que no puede cambiar. */
+      const quien = formulario.querySelector('[name="name"]')?.value?.trim();
+      const asunto = formulario.querySelector('[name="subject"]');
+      if (asunto && quien) asunto.value = asunto.dataset.base + ' · ' + quien;
 
       try {
         const respuesta = await fetch(formulario.action, {
