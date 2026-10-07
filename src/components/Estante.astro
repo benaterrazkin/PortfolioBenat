@@ -1,0 +1,152 @@
+---
+import { cuadernos } from '../data/cuaderno';
+import { textos, formatear } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+
+/**
+ * El estante: un lomo por proyecto, del color de su cinta, en una balda.
+ *
+ * Es el índice de la web. Cada lomo es un enlace normal al cuaderno de su
+ * proyecto (funciona sin JavaScript y deja una dirección que se puede
+ * mandar), y los cuadernos siguen todos abajo, uno detrás de otro.
+ *
+ * Lo que añade el script de la portada (Inicio.astro): al pasar por un
+ * lomo, el marco del retrato enseña ese proyecto. Y el de los puntos del
+ * lateral saca del estante el lomo del cuaderno que se está viendo.
+ */
+interface Props {
+  idioma: Idioma;
+}
+
+const { idioma } = Astro.props;
+const t = textos(idioma);
+const lista = cuadernos(idioma);
+---
+
+<nav id="estante" class="estante anclada" aria-label={t.inicio.estante}>
+  <p class="rotulo text-gris mb-4">{t.inicio.estante}</p>
+
+  <ul class="balda">
+    {
+      lista.map((c) => (
+        <li>
+          <a
+            href={`#${c.ancla}`}
+            class:list={['lomo', { 'lomo--destacado': c.numero === 1 }]}
+            style={c.lomo ? `--color:${c.lomo}` : undefined}
+            data-punto={c.ancla}
+            data-lomo={c.id}
+            data-titulo={c.titulo}
+            data-pie={[c.nombreCorto, c.anio].join(' · ')}
+          >
+            <span class="lomo-numero" aria-hidden="true">{String(c.numero).padStart(2, '0')}</span>
+            <!-- En el lomo, el lugar: «Astigarreta» cabe entero y se lee de
+                 un vistazo; el título completo saldría cortado. -->
+            <span class="lomo-titulo" aria-hidden="true">{c.nombreCorto}</span>
+            <span class="lomo-anio" aria-hidden="true">{c.anio}</span>
+            <span class="sr-only">{formatear(t.cuaderno.irA, { titulo: c.titulo })}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  /* La balda: los lomos de pie sobre una línea de tinta. En pantallas
+     estrechas se desliza en horizontal en vez de partirse. */
+  .balda {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.375rem;
+    padding: 0.875rem 0.25rem 0;
+    border-bottom: 2px solid var(--color-tinta);
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .balda::-webkit-scrollbar {
+    display: none;
+  }
+  .balda li {
+    scroll-snap-align: start;
+    flex: none;
+  }
+
+  .lomo {
+    --color: var(--color-lomo);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 3.5rem;
+    height: 15rem;
+    padding: 0.75rem 0 0.625rem;
+    background-color: var(--color);
+    color: #fff;
+    /* El canto del libro: un poco de sombra a un lado, como el lomo de verdad. */
+    box-shadow:
+      inset -3px 0 0 rgb(0 0 0 / 0.12),
+      inset 3px 0 0 rgb(255 255 255 / 0.08);
+    transform-origin: bottom center;
+    transition: transform 300ms var(--ease-suave);
+  }
+  /* Los lomos no son todos iguales, como en una estantería de verdad. */
+  .balda li:nth-child(3n + 2) .lomo {
+    height: 13.5rem;
+  }
+  .balda li:nth-child(3n) .lomo {
+    height: 14.25rem;
+  }
+  .lomo--destacado {
+    width: 4.5rem;
+  }
+
+  .lomo-numero {
+    font-family: 'Barlow Condensed', var(--font-titulo);
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1;
+    transform: scaleY(1.35);
+  }
+  .lomo-titulo {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-titulo);
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 9rem;
+  }
+  .lomo-anio {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    opacity: 0.85;
+  }
+
+  /* Al apuntar o al enfocar, el libro se levanta y se inclina un poco. */
+  .lomo:hover,
+  .lomo:focus-visible {
+    transform: translateY(-0.75rem) rotate(-3deg);
+  }
+  .lomo:focus-visible {
+    outline: 2px solid var(--color-tinta);
+    outline-offset: 3px;
+  }
+  /* El del cuaderno que se está viendo, medio sacado de la balda. */
+  .lomo[data-activo] {
+    transform: translateY(-0.5rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lomo:hover,
+    .lomo:focus-visible,
+    .lomo[data-activo] {
+      transform: none;
+    }
+  }
+</style>

@@ -20,6 +20,3 @@ dist/
 # Son medio giga de PDF de entrega: de aquí se sacan los planos, se guardan
 # ya a tamaño web en src/assets/img/ y esta carpeta se puede borrar.
 /assets/
-
-# Pruebas de estilo que genera `npm run vista-previa`.
-/vista-previa/

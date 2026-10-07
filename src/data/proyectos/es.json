@@ -1,7 +1,98 @@
 [
   {
-    "id": "astigarreta",
+    "id": "tfg",
     "orden": 1,
+    "titulo": "Rehabilitación en Urnieta",
+    "subtitulo": "Una ikastola vacía devuelta al pueblo",
+    "anio": "2025",
+    "lugar": "Urnieta, Gipuzkoa",
+    "tipo": "Rehabilitación · Equipamiento",
+    "contexto": "Trabajo de Fin de Grado · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Lumion",
+      "Photoshop"
+    ],
+    "lomo": "#9c6b14",
+    "texto": [
+      "El trabajo parte de un edificio que ha perdido su uso y busca darle una función nueva. El lugar es Urnieta, y el conjunto elegido es el de la ikastola donde estudié: se ha quedado pequeña y van a reubicarla en un edificio de nueva planta, así que la parcela camina hacia el vacío.",
+      "Al analizarla y ver la cantidad de problemas que arrastra, el encargo creció: no solo el edificio, sino la parcela entera vuelve a insertarse en el pueblo, con operaciones de rehabilitación, renovación y ampliación.",
+      "Los usos nuevos parten de lo que hoy falta en la oferta del municipio, y se dirigen tanto a los vecinos como a quien visita, pensando en el bienestar del pueblo ahora y de cara al futuro."
+    ],
+    "portada": {
+      "archivo": "proyectos/tfg/portada.webp",
+      "alt": "Vista aérea del edificio rehabilitado y la ampliación con fachada textil, entre los bloques del barrio"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/portada.webp",
+        "alt": "Vista aérea del edificio rehabilitado y la ampliación con fachada textil, entre los bloques del barrio",
+        "titulo": "Vista aérea"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/emplazamiento.webp",
+        "alt": "Vista aérea del barrio de la ikastola y plano de Urnieta con la parcela marcada",
+        "titulo": "Emplazamiento"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/situacion.webp",
+        "alt": "Planta de situación de la parcela entre la calle y el talud, con fotos del estado actual",
+        "titulo": "Situación"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/axonometrica.webp",
+        "alt": "Axonometría explotada del conjunto, con la estructura existente y las piezas nuevas",
+        "titulo": "Axonometría explotada"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-12.webp",
+        "alt": "Axonometría seccionada con los usos de cada planta y su superficie",
+        "titulo": "Programa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-13.webp",
+        "alt": "Plantas del edificio rehabilitado y de la ampliación, con el mobiliario",
+        "titulo": "Plantas"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/seccion-1.webp",
+        "alt": "Sección transversal del edificio y del terreno en pendiente",
+        "titulo": "Sección"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-09.webp",
+        "alt": "Fotos del estado actual de la parcela junto a vistas de la propuesta",
+        "titulo": "Antes y después"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/vistas-interiores.webp",
+        "alt": "Cuatro vistas interiores en línea: el acceso, la cafetería, la sala de estudio y la biblioteca",
+        "titulo": "Vistas interiores"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-11.webp",
+        "alt": "Vista desde la plaza en gradas, con el edificio nuevo de fachada textil al fondo",
+        "titulo": "Vista desde la plaza"
+      }
+    ]
+  },
+  {
+    "id": "astigarreta",
+    "orden": 2,
     "titulo": "Viviendas multifamiliares en Astigarreta",
     "subtitulo": "Tres bloques de vivienda para repoblar un pueblo del monte",
     "anio": "2023",
@@ -11,8 +102,8 @@
     "herramientas": [
       "AutoCAD",
       "Rhinoceros",
-      "Photoshop",
-      "InDesign"
+      "Maqueta física",
+      "Photoshop"
     ],
     "texto": [
       "Astigarreta es un pequeño grupo de edificios en el monte, en la comarca del Goierri. El encargo pedía tres bloques de viviendas que se adaptaran al entorno, atentos al estado actual del pueblo y a cómo ayudar a repoblar la zona impulsando la vida en comunidad.",
@@ -63,11 +154,77 @@
         "titulo": "Sección DD'"
       }
     ],
-    "lomo": "#e07b1e"
+    "lomo": "#b5501c"
+  },
+  {
+    "id": "urbanismo",
+    "orden": 3,
+    "titulo": "Reurbanización en Piekary",
+    "subtitulo": "Una zona de juego junto al colegio que sirve a todo el pueblo",
+    "anio": "2024",
+    "lugar": "Piekary, Polonia",
+    "tipo": "Urbanismo · Espacio público",
+    "contexto": "Architecture & Planning in the Countryside",
+    "herramientas": [
+      "AutoCAD",
+      "Lumion",
+      "Photoshop"
+    ],
+    "lomo": "#2e6b5e",
+    "texto": [
+      "Proyecto de reurbanización en un pueblo pequeño de Polonia, junto a un colegio que no tiene zona de juego propia.",
+      "El encargo se entiende desde el principio a dos escalas: resolver el patio que el colegio necesita y, con la misma operación, dar al pueblo entero el espacio público del que carece. Lo que se construye para los niños en horario lectivo queda disponible para los vecinos el resto del tiempo.",
+      "El trabajo arranca con un análisis de la zona —recorridos, usos y referencias— que es el que acaba fijando dónde se interviene y con qué intensidad."
+    ],
+    "portada": {
+      "archivo": "proyectos/urbanismo/portada.webp",
+      "alt": "Vista aérea de la plataforma elevada roja que une el patio del colegio, el campo y las pistas"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/portada.webp",
+        "alt": "Vista aérea de la plataforma elevada roja que une el patio del colegio, el campo y las pistas",
+        "titulo": "Vista aérea"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-1.webp",
+        "alt": "Mapa de análisis de Piekary con los puntos de interés, la DAFO y fotos de los edificios identificados",
+        "titulo": "Análisis de la zona"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-2.webp",
+        "alt": "Análisis de la arquitectura tradicional y del paisaje del pueblo, con fotos y notas",
+        "titulo": "Arquitectura y paisaje"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/referencias.webp",
+        "alt": "Planta de la propuesta con la plataforma elevada, el campo, las pistas y las referencias",
+        "titulo": "Planta de la propuesta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-2.webp",
+        "alt": "Vista de la plataforma elevada en curva sobre la zona de juegos",
+        "titulo": "Vista de la plataforma"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-3.webp",
+        "alt": "Vista del campo de fútbol y las pistas rodeados por la plataforma",
+        "titulo": "Vista de las pistas"
+      }
+    ]
   },
   {
     "id": "eliza-reforma",
-    "orden": 2,
+    "orden": 4,
     "titulo": "Rehabilitación de la iglesia de Gubin",
     "subtitulo": "Una ruina de ladrillo convertida en espacio de cultura",
     "anio": "2024",
@@ -77,8 +234,8 @@
     "herramientas": [
       "AutoCAD",
       "Rhinoceros",
-      "Photoshop",
-      "InDesign"
+      "Lumion",
+      "Photoshop"
     ],
     "lomo": "#97313e",
     "texto": [
@@ -88,7 +245,7 @@
     ],
     "portada": {
       "archivo": "proyectos/eliza-reforma/portada.webp",
-      "alt": "Vista exterior de la iglesia rehabilitada, con la torre de ladrillo en pie"
+      "alt": "Concierto de piano en la nave, entre los pilares de ladrillo"
     },
     "paginas": [
       {
@@ -97,13 +254,13 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/portada.webp",
-        "alt": "Vista exterior de la iglesia rehabilitada, con la torre de ladrillo en pie",
-        "titulo": "Vista exterior"
+        "alt": "Concierto de piano en la nave, entre los pilares de ladrillo",
+        "titulo": "Concierto en la nave"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-general.webp",
-        "alt": "Vista general del conjunto desde la plaza",
+        "alt": "Vista aérea de la iglesia con la nueva cubierta de vidrio sobre los muros de ladrillo",
         "titulo": "Vista general"
       },
       {
@@ -137,26 +294,26 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-1.webp",
-        "alt": "Vista exterior de la iglesia desde el acceso",
-        "titulo": "Vista exterior"
+        "alt": "Cafetería en la planta alta, junto al vacío abierto sobre las naves",
+        "titulo": "Cafetería bajo la cubierta"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-3.webp",
-        "alt": "Vista exterior de la fachada principal",
-        "titulo": "Vista exterior"
+        "alt": "Galería entre los pilares de ladrillo, con paneles de exposición en el piso alto",
+        "titulo": "Galería de exposiciones"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-5.webp",
-        "alt": "Vista exterior del conjunto al atardecer",
-        "titulo": "Vista exterior"
+        "alt": "Dos visitantes miran el concierto de la nave desde el balcón de vidrio",
+        "titulo": "Mirador sobre la nave"
       }
     ]
   },
   {
     "id": "proiektuak-9",
-    "orden": 3,
+    "orden": 5,
     "titulo": "Proyecto urbano en Hondarribia",
     "subtitulo": "Mercado, equipamientos y viviendas en el cubo de la Magdalena",
     "anio": "2024",
@@ -177,7 +334,7 @@
     ],
     "portada": {
       "archivo": "proyectos/proiektuak-9/portada.webp",
-      "alt": "Proyecto urbano en Hondarribia — Mercado, equipamientos y viviendas en el cubo de la Magdalena"
+      "alt": "Axonometría de los tres edificios en el cubo de la Magdalena, entre el casco histórico y el ensanche"
     },
     "paginas": [
       {
@@ -186,51 +343,51 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/portada.webp",
-        "alt": "Axonométrica — Proyecto urbano en Hondarribia",
-        "titulo": "Axonométrica"
+        "alt": "Axonometría de los tres edificios en el cubo de la Magdalena, entre el casco histórico y el ensanche",
+        "titulo": "Axonometría del conjunto"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/aretoa.webp",
-        "alt": "Vistas interiores — Proyecto urbano en Hondarribia",
-        "titulo": "Vistas interiores"
+        "alt": "Vistas de la sala cultural polivalente preparada para conciertos",
+        "titulo": "Sala polivalente"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/planta-baja.webp",
-        "alt": "Planta baja — Proyecto urbano en Hondarribia",
+        "alt": "Planta baja de las oficinas y del edificio cultural, con el patio y su árbol",
         "titulo": "Planta baja",
         "escala": "1:100"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/detalle-fachada.webp",
-        "alt": "Detalle de fachada — Proyecto urbano en Hondarribia",
+        "alt": "Detalle de la fachada de madera en alzado y sección",
         "titulo": "Detalle de fachada"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/vivienda-seccion.webp",
-        "alt": "Sección de vivienda — Proyecto urbano en Hondarribia",
+        "alt": "Sección de una vivienda tutelada, con el balcón y el mobiliario",
         "titulo": "Sección de vivienda"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/vivienda-planta.webp",
-        "alt": "Planta de vivienda — Proyecto urbano en Hondarribia",
+        "alt": "Planta de una vivienda tutelada con el dormitorio, la cocina y la terraza",
         "titulo": "Planta de vivienda"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/axonometrica.webp",
-        "alt": "Axonométrica — Proyecto urbano en Hondarribia",
-        "titulo": "Axonométrica"
+        "alt": "Axonometría del bloque de viviendas tuteladas y su fachada de madera",
+        "titulo": "Axonometría de las viviendas"
       }
     ]
   },
   {
     "id": "elorrieta",
-    "orden": 4,
+    "orden": 6,
     "titulo": "Urbanización de Elorrieta",
     "subtitulo": "Manzanas de bloques distintos ajustadas al clima y a la topografía",
     "anio": "2023",
@@ -240,8 +397,8 @@
     "herramientas": [
       "AutoCAD",
       "Rhinoceros",
-      "Photoshop",
-      "InDesign"
+      "ENVI-met",
+      "Photoshop"
     ],
     "lomo": "#6e624d",
     "texto": [
@@ -251,11 +408,11 @@
     ],
     "portada": {
       "archivo": "proyectos/elorrieta/situacion.webp",
-      "alt": "Urbanización de Elorrieta — Manzanas de bloques distintos ajustadas al clima y a la topografía"
+      "alt": "Planta de situación con las manzanas de bloques, los patios verdes y la ría"
     },
     "diagrama": {
       "archivo": "proyectos/elorrieta/diagrama.webp",
-      "alt": "Diagrama conceptual — Urbanización de Elorrieta"
+      "alt": "Diagrama de volúmenes de las manzanas con los espacios verdes entre ellas"
     },
     "paginas": [
       {
@@ -264,174 +421,26 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/situacion.webp",
-        "alt": "Situación — Urbanización de Elorrieta",
+        "alt": "Planta de situación con las manzanas de bloques, los patios verdes y la ría",
         "titulo": "Situación"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/plantas-tipo.webp",
-        "alt": "Plantas tipo — Urbanización de Elorrieta",
+        "alt": "Plantas tipo de los distintos bloques de vivienda",
         "titulo": "Plantas tipo"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/secciones.webp",
-        "alt": "Secciones — Urbanización de Elorrieta",
+        "alt": "Secciones por las manzanas, con bloques de distinta altura",
         "titulo": "Secciones"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/alzados.webp",
-        "alt": "Alzados — Urbanización de Elorrieta",
+        "alt": "Alzados de los bloques y axonometría de colores con los tipos de vivienda",
         "titulo": "Alzados"
-      }
-    ]
-  },
-  {
-    "id": "tfg",
-    "orden": 5,
-    "titulo": "Rehabilitación en Urnieta",
-    "subtitulo": "Una ikastola vacía devuelta al pueblo",
-    "anio": "2025",
-    "lugar": "Urnieta, Gipuzkoa",
-    "tipo": "Rehabilitación · Equipamiento",
-    "contexto": "Trabajo de Fin de Grado · UPV/EHU",
-    "herramientas": [
-      "AutoCAD",
-      "Rhinoceros",
-      "Photoshop",
-      "InDesign"
-    ],
-    "lomo": "#f0a923",
-    "texto": [
-      "El trabajo parte de un edificio que ha perdido su uso y busca darle una función nueva. El lugar es Urnieta, y el conjunto elegido es el de la ikastola donde estudié: se ha quedado pequeña y van a reubicarla en un edificio de nueva planta, así que la parcela camina hacia el vacío.",
-      "Al analizarla y ver la cantidad de problemas que arrastra, el encargo creció: no solo el edificio, sino la parcela entera vuelve a insertarse en el pueblo, con operaciones de rehabilitación, renovación y ampliación.",
-      "Los usos nuevos parten de lo que hoy falta en la oferta del municipio, y se dirigen tanto a los vecinos como a quien visita, pensando en el bienestar del pueblo ahora y de cara al futuro."
-    ],
-    "portada": {
-      "archivo": "proyectos/tfg/emplazamiento.webp",
-      "alt": "Rehabilitación en Urnieta — Una ikastola vacía devuelta al pueblo"
-    },
-    "paginas": [
-      {
-        "tipo": "presentacion"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/emplazamiento.webp",
-        "alt": "Emplazamiento — Rehabilitación en Urnieta",
-        "titulo": "Emplazamiento"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/situacion.webp",
-        "alt": "Situación — Rehabilitación en Urnieta",
-        "titulo": "Situación"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/axonometrica.webp",
-        "alt": "Axonométrica — Rehabilitación en Urnieta",
-        "titulo": "Axonométrica"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/seccion-1.webp",
-        "alt": "Sección — Rehabilitación en Urnieta",
-        "titulo": "Sección"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-12.webp",
-        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-13.webp",
-        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/vistas-interiores.webp",
-        "alt": "Vistas interiores — Rehabilitación en Urnieta",
-        "titulo": "Vistas interiores"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-09.webp",
-        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-11.webp",
-        "alt": "Rehabilitación en Urnieta — Rehabilitación en Urnieta"
-      }
-    ]
-  },
-  {
-    "id": "urbanismo",
-    "orden": 6,
-    "titulo": "Reurbanización en Piekary",
-    "subtitulo": "Una zona de juego junto al colegio que sirve a todo el pueblo",
-    "anio": "2024",
-    "lugar": "Piekary, Polonia",
-    "tipo": "Urbanismo · Espacio público",
-    "contexto": "Architecture & Planning in the Countryside",
-    "herramientas": [
-      "AutoCAD",
-      "Rhinoceros",
-      "Photoshop",
-      "InDesign"
-    ],
-    "lomo": "#616a70",
-    "texto": [
-      "Proyecto de reurbanización en un pueblo pequeño de Polonia, junto a un colegio que no tiene zona de juego propia.",
-      "El encargo se entiende desde el principio a dos escalas: resolver el patio que el colegio necesita y, con la misma operación, dar al pueblo entero el espacio público del que carece. Lo que se construye para los niños en horario lectivo queda disponible para los vecinos el resto del tiempo.",
-      "El trabajo arranca con un análisis de la zona —recorridos, usos y referencias— que es el que acaba fijando dónde se interviene y con qué intensidad."
-    ],
-    "portada": {
-      "archivo": "proyectos/urbanismo/portada.webp",
-      "alt": "Reurbanización en Piekary — Una zona de juego junto al colegio que sirve a todo el pueblo"
-    },
-    "paginas": [
-      {
-        "tipo": "presentacion"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/portada.webp",
-        "alt": "Vista — Reurbanización en Piekary",
-        "titulo": "Vista"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/analisis-1.webp",
-        "alt": "Análisis de la zona — Reurbanización en Piekary",
-        "titulo": "Análisis de la zona"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/analisis-2.webp",
-        "alt": "Análisis de la zona — Reurbanización en Piekary",
-        "titulo": "Análisis de la zona"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/referencias.webp",
-        "alt": "Referencias — Reurbanización en Piekary",
-        "titulo": "Referencias"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/vista-2.webp",
-        "alt": "Vista — Reurbanización en Piekary",
-        "titulo": "Vista"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/vista-3.webp",
-        "alt": "Vista — Reurbanización en Piekary",
-        "titulo": "Vista"
       }
     ]
   }

@@ -14,6 +14,8 @@ interface DatosSitio {
   linkedin: string;
   ubicacion: string;
   claveFormulario: string;
+  /** Programas que maneja; salen en la portada de la web y en el portfolio. */
+  programas: string[];
   anioInicio: number;
   /** Quién ha hecho la web. Aparece en el pie. */
   creadora: { nombre: string; correo: string };
@@ -62,15 +64,13 @@ export const SITIO: DatosSitio = {
    * es enviar un mensaje al correo de arriba. Si se deja vacía, el formulario
    * avisa de que no está configurado y ofrece escribir directamente al correo.
    *
-   * OJO: Web3Forms entrega SOLO a la dirección con la que se creó la
-   * clave, y no reenvía a ninguna otra. Esta clave está dada de alta con
-   * el correo de Julia, no con el de Beñat, así que los mensajes del
-   * formulario no llegan a la dirección que se enseña arriba.
-   *
-   * PENDIENTE: sacar una clave nueva desde benaterrazkin224@gmail.com y
-   * confirmarla desde ese mismo buzón.
+   * Web3Forms entrega SOLO a la dirección con la que se creó la clave.
+   * Esta está dada de alta con benaterrazkin224@gmail.com (confirmado por
+   * Beñat), así que los mensajes llegan al correo de arriba.
    */
   claveFormulario: 'bf8d2e16-9538-4132-82c9-5d3ce0c37ecd',
+
+  programas: ['AutoCAD', 'Rhino', 'Revit', 'D5', 'Adobe'],
 
   /** Primer año de actividad; se usa en el pie de página. */
   anioInicio: 2025,

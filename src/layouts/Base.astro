@@ -1,6 +1,8 @@
 ---
 import '@fontsource-variable/inter';
 import '@fontsource-variable/work-sans';
+/* Solo para los números de proyecto: finos y condensados. */
+import '@fontsource/barlow-condensed/latin-300.css';
 import '../styles/global.css';
 
 import Cabecera from '../components/Cabecera.astro';
@@ -35,6 +37,7 @@ const tituloCompleto =
 const direccion = (otro: Idioma) => ruta(pagina, otro);
 
 const canonica = new URL(direccion(idioma), Astro.site).toString();
+const imagenCompartir = new URL(recurso('compartir.jpg'), Astro.site).toString();
 const alternativas = IDIOMAS_PUBLICADOS.map((otro) => ({
   hreflang: CODIGO_HREFLANG[otro],
   href: new URL(direccion(otro), Astro.site).toString(),
@@ -72,7 +75,13 @@ const persona = {
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonica} />
     <meta property="og:locale" content={CODIGO_HREFLANG[idioma].replace('-', '_')} />
+    <!-- La imagen al compartir el enlace: la genera src/pages/compartir.jpg.ts. -->
+    <meta property="og:image" content={imagenCompartir} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${SITIO.nombreCompleto}, ${t.meta.inicio.titulo.toLowerCase()}`} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={imagenCompartir} />
 
     <meta name="theme-color" content="#fbfaf8" />
     <meta name="robots" content="index, follow" />

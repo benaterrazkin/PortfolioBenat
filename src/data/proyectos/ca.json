@@ -1,7 +1,98 @@
 [
   {
-    "id": "astigarreta",
+    "id": "tfg",
     "orden": 1,
+    "titulo": "Rehabilitació a Urnieta",
+    "subtitulo": "Una ikastola buida retornada al poble",
+    "anio": "2025",
+    "lugar": "Urnieta, Guipúscoa",
+    "tipo": "Rehabilitació · Equipament",
+    "contexto": "Treball de Fi de Grau · UPV/EHU",
+    "herramientas": [
+      "AutoCAD",
+      "Rhinoceros",
+      "Lumion",
+      "Photoshop"
+    ],
+    "lomo": "#9c6b14",
+    "texto": [
+      "El treball parteix d’un edifici que ha perdut el seu ús i busca donar-li una funció nova. El lloc és Urnieta, i el conjunt escollit és el de la ikastola on vaig estudiar: se li ha quedat petita i la reubicaran en un edifici de nova planta, de manera que la parcel·la camina cap al buit.",
+      "En analitzar-la i veure la quantitat de problemes que arrossega, l’encàrrec va créixer: no només l’edifici, sinó la parcel·la sencera es torna a inserir al poble, amb operacions de rehabilitació, renovació i ampliació.",
+      "Els usos nous parteixen del que avui falta a l’oferta del municipi, i s’adrecen tant als veïns com a qui visita, pensant en el benestar del poble ara i de cara al futur."
+    ],
+    "portada": {
+      "archivo": "proyectos/tfg/portada.webp",
+      "alt": "Vista aèria de l'edifici rehabilitat i l'ampliació amb façana tèxtil, entre els blocs del barri"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/portada.webp",
+        "alt": "Vista aèria de l'edifici rehabilitat i l'ampliació amb façana tèxtil, entre els blocs del barri",
+        "titulo": "Vista aèria"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/emplazamiento.webp",
+        "alt": "Fotografia aèria del barri de la ikastola i plànol d'Urnieta amb la parcel·la marcada",
+        "titulo": "Emplaçament"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/situacion.webp",
+        "alt": "Planta de situació de la parcel·la entre el carrer i el talús, amb fotos de l'estat actual",
+        "titulo": "Situació"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/axonometrica.webp",
+        "alt": "Axonometria explotada del conjunt, amb l'estructura existent i les peces noves",
+        "titulo": "Axonometria explotada"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-12.webp",
+        "alt": "Axonometria seccionada amb els usos de cada planta i la seva superfície",
+        "titulo": "Programa"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-13.webp",
+        "alt": "Plantes de l'edifici rehabilitat i de l'ampliació, amb el mobiliari",
+        "titulo": "Plantes"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/seccion-1.webp",
+        "alt": "Secció transversal de l'edifici i del terreny en pendent",
+        "titulo": "Secció"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-09.webp",
+        "alt": "Fotos de l'estat actual de la parcel·la al costat de vistes de la proposta",
+        "titulo": "Abans i després"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/vistas-interiores.webp",
+        "alt": "Quatre vistes interiors en línia: l'accés, la cafeteria, la sala d'estudi i la biblioteca",
+        "titulo": "Vistes interiors"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/tfg/lamina-11.webp",
+        "alt": "Vista des de la plaça en graderia, amb l'edifici nou de façana tèxtil al fons",
+        "titulo": "Vista des de la plaça"
+      }
+    ]
+  },
+  {
+    "id": "astigarreta",
+    "orden": 2,
     "titulo": "Habitatges multifamiliars a Astigarreta",
     "subtitulo": "Tres blocs d'habitatge per repoblar un poble de muntanya",
     "anio": "2023",
@@ -11,8 +102,8 @@
     "herramientas": [
       "AutoCAD",
       "Rhinoceros",
-      "Photoshop",
-      "InDesign"
+      "Maqueta física",
+      "Photoshop"
     ],
     "texto": [
       "Astigarreta és un petit grup d'edificis a la muntanya, a la comarca del Goierri. L'encàrrec demanava tres blocs d'habitatges que s'adaptessin a l'entorn, atents a l'estat actual del poble i a com ajudar a repoblar la zona impulsant la vida en comunitat.",
@@ -63,11 +154,77 @@
         "titulo": "Secció DD'"
       }
     ],
-    "lomo": "#e07b1e"
+    "lomo": "#b5501c"
+  },
+  {
+    "id": "urbanismo",
+    "orden": 3,
+    "titulo": "Reurbanització a Piekary",
+    "subtitulo": "Una zona de joc al costat de l’escola que serveix a tot el poble",
+    "anio": "2024",
+    "lugar": "Piekary, Polònia",
+    "tipo": "Urbanisme · Espai públic",
+    "contexto": "Architecture & Planning in the Countryside",
+    "herramientas": [
+      "AutoCAD",
+      "Lumion",
+      "Photoshop"
+    ],
+    "lomo": "#2e6b5e",
+    "texto": [
+      "Projecte de reurbanització en un poble petit de Polònia, al costat d’una escola que no té zona de joc pròpia.",
+      "L’encàrrec s’entén des del principi a dues escales: resoldre el pati que l’escola necessita i, amb la mateixa operació, donar al poble sencer l’espai públic que li falta. El que es construeix per als nens en horari lectiu queda disponible per als veïns la resta del temps.",
+      "El treball arrenca amb una anàlisi de la zona —recorreguts, usos i referències— que és la que acaba fixant on s’intervé i amb quina intensitat."
+    ],
+    "portada": {
+      "archivo": "proyectos/urbanismo/portada.webp",
+      "alt": "Vista aèria de la plataforma elevada vermella que uneix el pati de l'escola, el camp i les pistes"
+    },
+    "paginas": [
+      {
+        "tipo": "presentacion"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/portada.webp",
+        "alt": "Vista aèria de la plataforma elevada vermella que uneix el pati de l'escola, el camp i les pistes",
+        "titulo": "Vista aèria"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-1.webp",
+        "alt": "Mapa d'anàlisi de Piekary amb els punts d'interès, la DAFO i fotos dels edificis identificats",
+        "titulo": "Anàlisi de la zona"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/analisis-2.webp",
+        "alt": "Anàlisi de l'arquitectura tradicional i del paisatge del poble, amb fotos i notes",
+        "titulo": "Arquitectura i paisatge"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/referencias.webp",
+        "alt": "Planta de la proposta amb la plataforma elevada, el camp, les pistes i les referències",
+        "titulo": "Planta de la proposta"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-2.webp",
+        "alt": "Vista de la plataforma elevada en corba sobre la zona de jocs",
+        "titulo": "Vista de la plataforma"
+      },
+      {
+        "tipo": "lamina",
+        "archivo": "proyectos/urbanismo/vista-3.webp",
+        "alt": "Vista del camp de futbol i les pistes envoltats per la plataforma",
+        "titulo": "Vista de les pistes"
+      }
+    ]
   },
   {
     "id": "eliza-reforma",
-    "orden": 2,
+    "orden": 4,
     "titulo": "Rehabilitació de l'església de Gubin",
     "subtitulo": "Una ruïna de maó convertida en espai de cultura",
     "anio": "2024",
@@ -77,8 +234,8 @@
     "herramientas": [
       "AutoCAD",
       "Rhinoceros",
-      "Photoshop",
-      "InDesign"
+      "Lumion",
+      "Photoshop"
     ],
     "lomo": "#97313e",
     "texto": [
@@ -88,7 +245,7 @@
     ],
     "portada": {
       "archivo": "proyectos/eliza-reforma/portada.webp",
-      "alt": "Vista exterior de l'església rehabilitada, amb la torre de maó dempeus"
+      "alt": "Concert de piano a la nau, entre els pilars de maó"
     },
     "paginas": [
       {
@@ -97,13 +254,13 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/portada.webp",
-        "alt": "Vista exterior de l'església rehabilitada, amb la torre de maó dempeus",
-        "titulo": "Vista exterior"
+        "alt": "Concert de piano a la nau, entre els pilars de maó",
+        "titulo": "Concert a la nau"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-general.webp",
-        "alt": "Vista general del conjunt des de la plaça",
+        "alt": "Vista aèria de l'església amb la nova coberta de vidre sobre els murs de maó",
         "titulo": "Vista general"
       },
       {
@@ -137,26 +294,26 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-1.webp",
-        "alt": "Vista exterior de l'església des de l'accés",
-        "titulo": "Vista exterior"
+        "alt": "Cafeteria a la planta alta, al costat del buit obert sobre les naus",
+        "titulo": "Cafeteria sota la coberta"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-3.webp",
-        "alt": "Vista exterior de la façana principal",
-        "titulo": "Vista exterior"
+        "alt": "Galeria entre els pilars de maó, amb plafons d'exposició al pis alt",
+        "titulo": "Galeria d'exposicions"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/eliza-reforma/vista-5.webp",
-        "alt": "Vista exterior del conjunt al capvespre",
-        "titulo": "Vista exterior"
+        "alt": "Dos visitants miren el concert de la nau des del balcó de vidre",
+        "titulo": "Mirador sobre la nau"
       }
     ]
   },
   {
     "id": "proiektuak-9",
-    "orden": 3,
+    "orden": 5,
     "titulo": "Projecte urbà a Hondarribia",
     "subtitulo": "Mercat, equipaments i habitatges al cub de la Magdalena",
     "anio": "2024",
@@ -177,7 +334,7 @@
     ],
     "portada": {
       "archivo": "proyectos/proiektuak-9/portada.webp",
-      "alt": "Projecte urbà a Hondarribia — Mercat, equipaments i habitatges al cub de la Magdalena"
+      "alt": "Axonometria dels tres edificis al cub de la Magdalena, entre el nucli antic i l'eixample"
     },
     "paginas": [
       {
@@ -186,51 +343,51 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/portada.webp",
-        "alt": "Axonometria — Projecte urbà a Hondarribia",
-        "titulo": "Axonometria"
+        "alt": "Axonometria dels tres edificis al cub de la Magdalena, entre el nucli antic i l'eixample",
+        "titulo": "Axonometria del conjunt"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/aretoa.webp",
-        "alt": "Vistes interiors — Projecte urbà a Hondarribia",
-        "titulo": "Vistes interiors"
+        "alt": "Vistes de la sala cultural polivalent preparada per a concerts",
+        "titulo": "Sala polivalent"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/planta-baja.webp",
-        "alt": "Planta baixa — Projecte urbà a Hondarribia",
+        "alt": "Planta baixa de les oficines i de l'edifici cultural, amb el pati i el seu arbre",
         "titulo": "Planta baixa",
         "escala": "1:100"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/detalle-fachada.webp",
-        "alt": "Detall de façana — Projecte urbà a Hondarribia",
+        "alt": "Detall de la façana de fusta en alçat i secció",
         "titulo": "Detall de façana"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/vivienda-seccion.webp",
-        "alt": "Secció d'habitatge — Projecte urbà a Hondarribia",
+        "alt": "Secció d'un habitatge tutelat, amb el balcó i el mobiliari",
         "titulo": "Secció d'habitatge"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/vivienda-planta.webp",
-        "alt": "Planta d'habitatge — Projecte urbà a Hondarribia",
+        "alt": "Planta d'un habitatge tutelat amb el dormitori, la cuina i la terrassa",
         "titulo": "Planta d'habitatge"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/proiektuak-9/axonometrica.webp",
-        "alt": "Axonometria — Projecte urbà a Hondarribia",
-        "titulo": "Axonometria"
+        "alt": "Axonometria del bloc d'habitatges tutelats i la seva façana de fusta",
+        "titulo": "Axonometria dels habitatges"
       }
     ]
   },
   {
     "id": "elorrieta",
-    "orden": 4,
+    "orden": 6,
     "titulo": "Urbanització d’Elorrieta",
     "subtitulo": "Illes de blocs diferents ajustades al clima i a la topografia",
     "anio": "2023",
@@ -240,8 +397,8 @@
     "herramientas": [
       "AutoCAD",
       "Rhinoceros",
-      "Photoshop",
-      "InDesign"
+      "ENVI-met",
+      "Photoshop"
     ],
     "lomo": "#6e624d",
     "texto": [
@@ -251,11 +408,11 @@
     ],
     "portada": {
       "archivo": "proyectos/elorrieta/situacion.webp",
-      "alt": "Urbanització d’Elorrieta — Illes de blocs diferents ajustades al clima i a la topografia"
+      "alt": "Planta de situació amb les illes de blocs, els patis verds i la ria"
     },
     "diagrama": {
       "archivo": "proyectos/elorrieta/diagrama.webp",
-      "alt": "Diagrama conceptual — Urbanització d’Elorrieta"
+      "alt": "Diagrama de volums de les illes amb els espais verds entre elles"
     },
     "paginas": [
       {
@@ -264,174 +421,26 @@
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/situacion.webp",
-        "alt": "Situació — Urbanització d’Elorrieta",
+        "alt": "Planta de situació amb les illes de blocs, els patis verds i la ria",
         "titulo": "Situació"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/plantas-tipo.webp",
-        "alt": "Plantes tipus — Urbanització d’Elorrieta",
+        "alt": "Plantes tipus dels diferents blocs d’habitatge",
         "titulo": "Plantes tipus"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/secciones.webp",
-        "alt": "Seccions — Urbanització d’Elorrieta",
+        "alt": "Seccions per les illes, amb blocs d'alçades diferents",
         "titulo": "Seccions"
       },
       {
         "tipo": "lamina",
         "archivo": "proyectos/elorrieta/alzados.webp",
-        "alt": "Alçats — Urbanització d’Elorrieta",
+        "alt": "Alçats dels blocs i axonometria de colors amb els tipus d'habitatge",
         "titulo": "Alçats"
-      }
-    ]
-  },
-  {
-    "id": "tfg",
-    "orden": 5,
-    "titulo": "Rehabilitació a Urnieta",
-    "subtitulo": "Una ikastola buida retornada al poble",
-    "anio": "2025",
-    "lugar": "Urnieta, Guipúscoa",
-    "tipo": "Rehabilitació · Equipament",
-    "contexto": "Treball de Fi de Grau · UPV/EHU",
-    "herramientas": [
-      "AutoCAD",
-      "Rhinoceros",
-      "Photoshop",
-      "InDesign"
-    ],
-    "lomo": "#f0a923",
-    "texto": [
-      "El treball parteix d’un edifici que ha perdut el seu ús i busca donar-li una funció nova. El lloc és Urnieta, i el conjunt escollit és el de la ikastola on vaig estudiar: se li ha quedat petita i la reubicaran en un edifici de nova planta, de manera que la parcel·la camina cap al buit.",
-      "En analitzar-la i veure la quantitat de problemes que arrossega, l’encàrrec va créixer: no només l’edifici, sinó la parcel·la sencera es torna a inserir al poble, amb operacions de rehabilitació, renovació i ampliació.",
-      "Els usos nous parteixen del que avui falta a l’oferta del municipi, i s’adrecen tant als veïns com a qui visita, pensant en el benestar del poble ara i de cara al futur."
-    ],
-    "portada": {
-      "archivo": "proyectos/tfg/emplazamiento.webp",
-      "alt": "Rehabilitació a Urnieta — Una ikastola buida retornada al poble"
-    },
-    "paginas": [
-      {
-        "tipo": "presentacion"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/emplazamiento.webp",
-        "alt": "Emplaçament — Rehabilitació a Urnieta",
-        "titulo": "Emplaçament"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/situacion.webp",
-        "alt": "Situació — Rehabilitació a Urnieta",
-        "titulo": "Situació"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/axonometrica.webp",
-        "alt": "Axonometria — Rehabilitació a Urnieta",
-        "titulo": "Axonometria"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/seccion-1.webp",
-        "alt": "Secció — Rehabilitació a Urnieta",
-        "titulo": "Secció"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-12.webp",
-        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-13.webp",
-        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/vistas-interiores.webp",
-        "alt": "Vistes interiors — Rehabilitació a Urnieta",
-        "titulo": "Vistes interiors"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-09.webp",
-        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/tfg/lamina-11.webp",
-        "alt": "Rehabilitació a Urnieta — Rehabilitació a Urnieta"
-      }
-    ]
-  },
-  {
-    "id": "urbanismo",
-    "orden": 6,
-    "titulo": "Reurbanització a Piekary",
-    "subtitulo": "Una zona de joc al costat de l’escola que serveix a tot el poble",
-    "anio": "2024",
-    "lugar": "Piekary, Polònia",
-    "tipo": "Urbanisme · Espai públic",
-    "contexto": "Architecture & Planning in the Countryside",
-    "herramientas": [
-      "AutoCAD",
-      "Rhinoceros",
-      "Photoshop",
-      "InDesign"
-    ],
-    "lomo": "#616a70",
-    "texto": [
-      "Projecte de reurbanització en un poble petit de Polònia, al costat d’una escola que no té zona de joc pròpia.",
-      "L’encàrrec s’entén des del principi a dues escales: resoldre el pati que l’escola necessita i, amb la mateixa operació, donar al poble sencer l’espai públic que li falta. El que es construeix per als nens en horari lectiu queda disponible per als veïns la resta del temps.",
-      "El treball arrenca amb una anàlisi de la zona —recorreguts, usos i referències— que és la que acaba fixant on s’intervé i amb quina intensitat."
-    ],
-    "portada": {
-      "archivo": "proyectos/urbanismo/portada.webp",
-      "alt": "Reurbanització a Piekary — Una zona de joc al costat de l’escola que serveix a tot el poble"
-    },
-    "paginas": [
-      {
-        "tipo": "presentacion"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/portada.webp",
-        "alt": "Vista — Reurbanització a Piekary",
-        "titulo": "Vista"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/analisis-1.webp",
-        "alt": "Anàlisi de la zona — Reurbanització a Piekary",
-        "titulo": "Anàlisi de la zona"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/analisis-2.webp",
-        "alt": "Anàlisi de la zona — Reurbanització a Piekary",
-        "titulo": "Anàlisi de la zona"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/referencias.webp",
-        "alt": "Referències — Reurbanització a Piekary",
-        "titulo": "Referències"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/vista-2.webp",
-        "alt": "Vista — Reurbanització a Piekary",
-        "titulo": "Vista"
-      },
-      {
-        "tipo": "lamina",
-        "archivo": "proyectos/urbanismo/vista-3.webp",
-        "alt": "Vista — Reurbanització a Piekary",
-        "titulo": "Vista"
       }
     ]
   }

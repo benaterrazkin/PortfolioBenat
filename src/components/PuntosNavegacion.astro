@@ -83,22 +83,27 @@ const paradas = [
 
 <script>
   /* Enciende el punto —y el enlace del menú— de la sección que se está
-   * viendo. Un solo observador para las dos cosas. */
-  const puntos = new Map<string, HTMLElement>();
-  for (const punto of document.querySelectorAll<HTMLElement>('[data-punto]')) {
-    puntos.set(punto.dataset.punto!, punto);
-  }
+   * viendo. Un solo observador para las dos cosas. Una misma sección
+   * puede tener varios atajos (el punto del lateral y el lomo del
+   * estante), así que se guardan todos. */
+  const agrupar = (selector: string, clave: (e: HTMLElement) => string) => {
+    const mapa = new Map<string, HTMLElement[]>();
+    for (const elemento of document.querySelectorAll<HTMLElement>(selector)) {
+      const k = clave(elemento);
+      mapa.set(k, [...(mapa.get(k) ?? []), elemento]);
+    }
+    return mapa;
+  };
+  const puntos = agrupar('[data-punto]', (e) => e.dataset.punto!);
+  const enlacesMenu = agrupar('[data-ancla]', (e) => e.dataset.ancla!);
 
-  const enlacesMenu = new Map<string, HTMLElement>();
-  for (const enlace of document.querySelectorAll<HTMLElement>('[data-ancla]')) {
-    enlacesMenu.set(enlace.dataset.ancla!, enlace);
-  }
-
-  const marcar = (mapa: Map<string, HTMLElement>, clave: string | undefined) => {
-    for (const [nombre, elemento] of mapa) {
-      elemento.toggleAttribute('data-activo', nombre === clave);
-      if (nombre === clave) elemento.setAttribute('aria-current', 'true');
-      else elemento.removeAttribute('aria-current');
+  const marcar = (mapa: Map<string, HTMLElement[]>, clave: string | undefined) => {
+    for (const [nombre, elementos] of mapa) {
+      for (const elemento of elementos) {
+        elemento.toggleAttribute('data-activo', nombre === clave);
+        if (nombre === clave) elemento.setAttribute('aria-current', 'true');
+        else elemento.removeAttribute('aria-current');
+      }
     }
   };
 

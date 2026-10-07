@@ -29,7 +29,9 @@ Quedan aquí anotadas para que nadie las «corrija» de vuelta más adelante:
 Funciona con [Web3Forms](https://web3forms.com), un servicio gratuito que hace
 de intermediario: recoge el mensaje y lo entrega por correo. La clave está en
 `claveFormulario`, dentro de `src/config/sitio.ts`, y está dada de alta a
-nombre de `benaterrazkin224@gmail.com`: ahí es donde llegan los mensajes.
+nombre de `benaterrazkin224@gmail.com` (confirmado por Beñat): ahí es donde
+llegan los mensajes. Web3Forms solo entrega a la dirección con la que se creó
+la clave.
 
 Esa clave se ve en el código fuente de la web, y es así a propósito: lo único
 que permite hacer es enviar un mensaje a ese buzón. No da acceso a nada.
@@ -74,8 +76,10 @@ dice con un mensaje claro y **no publica nada roto**.
 
 | Qué quiero cambiar | Archivo |
 | --- | --- |
-| Correo, teléfono, ciudad, redes sociales | `src/config/sitio.ts` |
+| Correo, teléfono, ciudad, redes sociales, programas | `src/config/sitio.ts` |
 | Los proyectos | `src/data/proyectos/es.json` (y `en`, `eu`, `ca`) |
+| Qué proyectos van al portfolio en PDF y cómo se maqueta | `src/data/portfolio.ts` |
+| La foto (web, PDF y al compartir) | `src/assets/img/foto-benat.jpg` y `retrato.jpg` |
 | El currículum | `src/data/cv/es.json` (y `en`, `eu`, `ca`) |
 | Los textos de los botones y menús | `src/i18n/ui.ts` |
 | El aviso legal | `src/paginas/Privacidad.astro` |
@@ -106,16 +110,20 @@ dice con un mensaje claro y **no publica nada roto**.
      "tipo": "Vivienda unifamiliar",
      "contexto": "Proyectos V · UPV/EHU",
      "herramientas": ["Rhinoceros", "AutoCAD"],
+     "lomo": "#97313e",
      "texto": ["Primer párrafo.", "Segundo párrafo."],
      "portada": {
        "archivo": "proyectos/casa-ur/portada.jpg",
        "alt": "Vista exterior de la casa desde el camino"
      },
-     "imagenes": [
+     "paginas": [
+       { "tipo": "presentacion" },
        {
+         "tipo": "lamina",
          "archivo": "proyectos/casa-ur/planta.jpg",
-         "alt": "Planta baja de la vivienda",
-         "pie": "Planta baja. E 1:100"
+         "alt": "Planta baja de la vivienda, con el patio y la cocina",
+         "titulo": "Planta baja",
+         "escala": "1:100"
        }
      ]
    }
@@ -131,8 +139,20 @@ Detalles que importan:
 - **`orden`** decide en qué posición sale el proyecto: los números pequeños van
   primero.
 - **`alt`** es la descripción de la imagen para quien no puede verla (lectores
-  de pantalla, buscadores). Es obligatoria.
-- **`pie`** es el texto que se lee debajo de la imagen. Es opcional.
+  de pantalla, buscadores). Es obligatoria, y tiene que decir lo que se VE en
+  esa lámina, no repetir el título del proyecto.
+- **`titulo`** y **`escala`** de cada lámina salen en su cajetín, en la web y
+  en el PDF. Por eso no hay que escribirlos dentro de la imagen.
+- **`lomo`** es el color del proyecto: la cinta del cuaderno, el lomo del
+  estante y el lugar en el PDF.
+- **`herramientas`**: tres o cuatro, las de verdad de ese proyecto.
+
+### El estante
+
+En la portada, bajo el nombre, hay un estante con un lomo por proyecto (número,
+lugar y año, del color de `lomo`). Cada lomo lleva a su cuaderno; al pasar por
+encima, el marco del retrato enseña la portada del proyecto. Sale solo de los
+`.json`: no hay que tocar nada para que aparezca un proyecto nuevo.
 
 ### Cómo se reparte un proyecto en el cuaderno
 
@@ -156,16 +176,60 @@ Por dentro, las hojas son papeles con dos caras y girar una avanza dos páginas.
 Si el número de caras no sale par, es que falta o sobra algo: la web lo cuadra
 sola, pero conviene saberlo si algún día se toca `src/data/cuaderno.ts`.
 
-### Borrar los proyectos de relleno
+---
 
-Ahora mismo hay tres proyectos de mentira —`proyecto-1`, `proyecto-2` y
-`proyecto-3`— con imágenes grises de relleno, para ver cómo queda el cuaderno
-antes de tener láminas de verdad. Cuando haya proyectos reales:
+## El portfolio en PDF
 
-1. Borra los tres bloques de los cuatro `src/data/proyectos/*.json`.
-2. Borra las carpetas `src/assets/img/proyectos/proyecto-1`, `-2` y `-3`.
-3. Borra `scripts/placeholders.mjs` y la línea `"imagenes-ejemplo"` de
-   `package.json`.
+Se genera solo al compilar, uno por idioma (`/portfolio/es.pdf`…), con el mismo
+contenido que la web. **No entran todos los proyectos**: solo los de
+`src/data/portfolio.ts`, en ese orden (ahora: Urnieta, Astigarreta, Piekary y
+Gubin). La web sigue enseñando los seis.
+
+Se maqueta por **dobles páginas**: cada página del PDF es un pliego de
+594×210 mm (dos A4 apaisados), salvo la portada, que va sola. Así cualquier
+visor enseña la doble página entera y las imágenes grandes no se parten.
+
+| Pliego | Qué lleva |
+| --- | --- |
+| Portada (página suelta) | la portada del primer proyecto, "portfolio" y el nombre |
+| Sobre mí | la presentación y un currículum breve · la foto |
+| Índice | una columna por proyecto: imagen, número, título, lugar y página |
+| Apertura de cada proyecto | número, título, texto y ficha · la portada a sangre |
+| El resto | lo que diga `src/data/portfolio.ts`, pliego a pliego |
+
+En `src/data/portfolio.ts` cada pliego es de uno de estos tipos:
+
+- `par`: una lámina en cada página, en caja y con su cajetín.
+- `dibujo`: un dibujo muy alargado sobre las dos páginas (secciones largas).
+- `sangre`: una imagen a sangre sobre las dos páginas. Con `entera: true` no se
+  recorta (para vistas en las que no se puede perder nada).
+
+Regla que se ha seguido: además de la apertura, **como mucho una imagen
+grande por proyecto**; el resto, en caja. Las láminas se nombran por su
+archivo; el título y la escala salen del `.json` en cada idioma.
+
+En cada página solo se repiten el número del proyecto (arriba a la izquierda)
+y el número de página (en la esquina exterior). El nombre, "portfolio" y los
+programas salen solo en la portada y en la apertura de cada proyecto.
+
+Las tipografías son las de la web (Work Sans e Inter) y Barlow Condensed para
+los números grandes; van dentro del PDF.
+
+### Al preparar láminas nuevas
+
+- Renders: unos 6000 px de ancho, sin la marca de agua de Lumion. Si van a
+  doble página, sin nada importante en el centro (ahí cae el pliegue).
+- Planos: sin margen blanco alrededor y sin el título dentro de la imagen.
+- Basta con sustituir el archivo en `src/assets/img/proyectos/<proyecto>/` con
+  el mismo nombre: la web y el PDF se actualizan solos.
+
+## La imagen al compartir el enlace
+
+Al mandar la web por WhatsApp, LinkedIn o correo sale una imagen de
+1200×630: la foto de Beñat y la portada del primer proyecto del portfolio. La
+genera `src/pages/compartir.jpg.ts` a partir de `src/assets/img/foto-benat.jpg`.
+Para cambiar la foto, se sustituye ese archivo (y `retrato.jpg`, que es el
+recorte que sale en la portada de la web).
 
 ---
 
