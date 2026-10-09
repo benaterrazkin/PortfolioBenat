@@ -88,7 +88,11 @@
         "alt": "Vista des de la plaça en graderia, amb l'edifici nou de façana tèxtil al fons",
         "titulo": "Vista des de la plaça"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/tfg/diagrama.png",
+      "alt": "Esquema de volums: la ikastola existent, l'ampliació nova i la parcel·la verda oberta al poble"
+    }
   },
   {
     "id": "astigarreta",
@@ -154,7 +158,11 @@
         "titulo": "Secció DD'"
       }
     ],
-    "lomo": "#b5501c"
+    "lomo": "#b5501c",
+    "diagrama": {
+      "archivo": "proyectos/astigarreta/diagrama.png",
+      "alt": "Esquema de volums: tres cases a dues aigües sobre les terrasses del vessant"
+    }
   },
   {
     "id": "urbanismo",
@@ -220,7 +228,11 @@
         "alt": "Vista del camp de futbol i les pistes envoltats per la plataforma",
         "titulo": "Vista de les pistes"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/urbanismo/diagrama.png",
+      "alt": "Esquema: el camp, les pistes i l'escola units per una passarel·la elevada en bucle"
+    }
   },
   {
     "id": "eliza-reforma",
@@ -309,7 +321,11 @@
         "alt": "Dos visitants miren el concert de la nau des del balcó de vidre",
         "titulo": "Mirador sobre la nau"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/eliza-reforma/diagrama.png",
+      "alt": "Esquema de volums: la nau i la torre de l'església, amb la nova coberta de vidre en contorn"
+    }
   },
   {
     "id": "proiektuak-9",
@@ -383,7 +399,11 @@
         "alt": "Axonometria del bloc d'habitatges tutelats i la seva façana de fusta",
         "titulo": "Axonometria dels habitatges"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/proiektuak-9/diagrama.png",
+      "alt": "Esquema de volums: habitatges, edifici cultural i mercat al voltant d’un pati verd"
+    }
   },
   {
     "id": "elorrieta",
@@ -411,7 +431,7 @@
       "alt": "Planta de situació amb les illes de blocs, els patis verds i la ria"
     },
     "diagrama": {
-      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "archivo": "proyectos/elorrieta/diagrama.png",
       "alt": "Diagrama de volums de les illes amb els espais verds entre elles"
     },
     "paginas": [

@@ -59,7 +59,7 @@ const es = {
     enBlanco: 'Hoja en blanco',
     diagrama: 'Diagrama conceptual',
     volverAlPrincipio: 'Volver al principio',
-    alEstante: 'Volver al estante',
+    anteriorProyecto: 'Proyecto anterior',
   },
   portfolio: {
     abrir: 'Portfolio',
@@ -177,7 +177,7 @@ const en: Textos = {
     enBlanco: 'Blank page',
     diagrama: 'Concept diagram',
     volverAlPrincipio: 'Back to the start',
-    alEstante: 'Back to the shelf',
+    anteriorProyecto: 'Previous project',
   },
   portfolio: {
     abrir: 'Portfolio',
@@ -293,7 +293,7 @@ const eu: Textos = {
     enBlanco: 'Orri zuria',
     diagrama: 'Kontzeptu diagrama',
     volverAlPrincipio: 'Hasierara itzuli',
-    alEstante: 'Apalera itzuli',
+    anteriorProyecto: 'Aurreko proiektua',
   },
   portfolio: {
     abrir: 'Portfolioa',
@@ -409,7 +409,7 @@ const ca: Textos = {
     enBlanco: 'Pàgina en blanc',
     diagrama: 'Diagrama conceptual',
     volverAlPrincipio: 'Torna al principi',
-    alEstante: 'Torna al prestatge',
+    anteriorProyecto: 'Projecte anterior',
   },
   portfolio: {
     abrir: 'Portfolio',

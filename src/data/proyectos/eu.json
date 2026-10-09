@@ -88,7 +88,11 @@
         "alt": "Mailakatutako plazatik ikuspegia, ehunezko fatxadadun eraikin berria atzean",
         "titulo": "Plazatik ikusita"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/tfg/diagrama.png",
+      "alt": "Bolumen-eskema: dagoen ikastola, handitze berria eta herriari irekitako lursail berdea"
+    }
   },
   {
     "id": "astigarreta",
@@ -154,7 +158,11 @@
         "titulo": "DD' sekzioa"
       }
     ],
-    "lomo": "#b5501c"
+    "lomo": "#b5501c",
+    "diagrama": {
+      "archivo": "proyectos/astigarreta/diagrama.png",
+      "alt": "Bolumen-eskema: bi isurialdeko hiru etxe, maldako terrazen gainean"
+    }
   },
   {
     "id": "urbanismo",
@@ -220,7 +228,11 @@
         "alt": "Futbol-zelaiaren eta pisten ikuspegia, plataformak inguratuta",
         "titulo": "Pisten ikuspegia"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/urbanismo/diagrama.png",
+      "alt": "Eskema: zelaia, pistak eta ikastetxea, begizta itxurako pasabide altxatu batek lotuta"
+    }
   },
   {
     "id": "eliza-reforma",
@@ -309,7 +321,11 @@
         "alt": "Bi bisitarik nabeko kontzertua ikusten dute beirazko balkoitik",
         "titulo": "Nabearen gaineko begiratokia"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/eliza-reforma/diagrama.png",
+      "alt": "Bolumen-eskema: elizaren nabea eta dorrea, beirazko estalki berria ingeradan"
+    }
   },
   {
     "id": "proiektuak-9",
@@ -383,7 +399,11 @@
         "alt": "Etxebizitza tutoretzatuen blokearen axonometria eta bere egurrezko fatxada",
         "titulo": "Etxebizitzen axonometria"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/proiektuak-9/diagrama.png",
+      "alt": "Bolumen-eskema: etxebizitzak, eraikin kulturala eta merkatua patio berde baten inguruan"
+    }
   },
   {
     "id": "elorrieta",
@@ -411,7 +431,7 @@
       "alt": "Kokapen-planoa: blokeak, patio berdeak eta itsasadarra"
     },
     "diagrama": {
-      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "archivo": "proyectos/elorrieta/diagrama.png",
       "alt": "Etxadien bolumen-diagrama, tarteko gune berdeekin"
     },
     "paginas": [

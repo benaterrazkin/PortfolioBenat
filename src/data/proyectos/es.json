@@ -88,7 +88,11 @@
         "alt": "Vista desde la plaza en gradas, con el edificio nuevo de fachada textil al fondo",
         "titulo": "Vista desde la plaza"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/tfg/diagrama.png",
+      "alt": "Esquema de volúmenes: la ikastola existente, la ampliación nueva y la parcela verde abierta al pueblo"
+    }
   },
   {
     "id": "astigarreta",
@@ -154,7 +158,11 @@
         "titulo": "Sección DD'"
       }
     ],
-    "lomo": "#b5501c"
+    "lomo": "#b5501c",
+    "diagrama": {
+      "archivo": "proyectos/astigarreta/diagrama.png",
+      "alt": "Esquema de volúmenes: tres casas a dos aguas sobre las terrazas de la ladera"
+    }
   },
   {
     "id": "urbanismo",
@@ -220,7 +228,11 @@
         "alt": "Vista del campo de fútbol y las pistas rodeados por la plataforma",
         "titulo": "Vista de las pistas"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/urbanismo/diagrama.png",
+      "alt": "Esquema: el campo, las pistas y el colegio unidos por una pasarela elevada en bucle"
+    }
   },
   {
     "id": "eliza-reforma",
@@ -309,7 +321,11 @@
         "alt": "Dos visitantes miran el concierto de la nave desde el balcón de vidrio",
         "titulo": "Mirador sobre la nave"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/eliza-reforma/diagrama.png",
+      "alt": "Esquema de volúmenes: la nave y la torre de la iglesia, con la nueva cubierta de vidrio en contorno"
+    }
   },
   {
     "id": "proiektuak-9",
@@ -383,7 +399,11 @@
         "alt": "Axonometría del bloque de viviendas tuteladas y su fachada de madera",
         "titulo": "Axonometría de las viviendas"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/proiektuak-9/diagrama.png",
+      "alt": "Esquema de volúmenes: viviendas, edificio cultural y mercado alrededor de un patio verde"
+    }
   },
   {
     "id": "elorrieta",
@@ -411,7 +431,7 @@
       "alt": "Planta de situación con las manzanas de bloques, los patios verdes y la ría"
     },
     "diagrama": {
-      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "archivo": "proyectos/elorrieta/diagrama.png",
       "alt": "Diagrama de volúmenes de las manzanas con los espacios verdes entre ellas"
     },
     "paginas": [

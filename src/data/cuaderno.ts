@@ -99,6 +99,8 @@ export interface Cuaderno {
   /** Nombre corto para los atajos del lateral: el lugar, sin más. */
   nombreCorto: string;
   portada: { fuente: ImageMetadata; alt: string };
+  /** El esquema conceptual: la tapa del libro en el estante. */
+  diagrama?: { fuente: ImageMetadata; alt: string };
   /** Todas las caras en orden de lectura. Siempre son un número par. */
   caras: Cara[];
   guarda: Cara;
@@ -203,6 +205,7 @@ export function cuaderno(p: Proyecto, numero: number): Cuaderno {
      * se queda en "Astigarreta". Es lo que hace falta en un atajo. */
     nombreCorto: p.lugar?.split(',')[0]?.trim() || p.titulo,
     portada: { fuente: imagen(p.portada.archivo), alt: p.portada.alt },
+    diagrama: p.diagrama ? { fuente: imagen(p.diagrama.archivo), alt: p.diagrama.alt } : undefined,
     caras,
     guarda: caras[0]!,
     contraguarda: caras[caras.length - 1]!,

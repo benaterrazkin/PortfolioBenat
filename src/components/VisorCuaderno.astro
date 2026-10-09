@@ -1,0 +1,221 @@
+---
+import Cuaderno from './Cuaderno.astro';
+import { cuadernos } from '../data/cuaderno';
+import { textos } from '../i18n/ui';
+import type { Idioma } from '../i18n/idiomas';
+
+/**
+ * La ventana de los cuadernos.
+ *
+ * Los cuadernos ya no están en la página, uno detrás de otro: se abren
+ * aquí, a pantalla completa y sobre la mesa, cuando se elige un libro del
+ * estante. Están todos dentro, ocultos, y solo se ve el elegido.
+ *
+ * Funciona con la dirección: cada cuaderno es #cuaderno-<id>. Pulsar un
+ * libro cambia el #, y el cambio abre la ventana; así "atrás" en el
+ * navegador la cierra, y quien abre un enlace con el # entra con ese
+ * cuaderno ya abierto. Va una sola vez por página.
+ */
+interface Props {
+  idioma: Idioma;
+}
+
+const { idioma } = Astro.props;
+const t = textos(idioma);
+const lista = cuadernos(idioma);
+---
+
+<dialog id="visor-cuaderno" class="visor" aria-label={t.proyectos.titulo}>
+  <div class="visor-barra">
+    <button type="button" class="visor-boton" data-paso-proyecto="-1">
+      <span aria-hidden="true">←</span>
+      <span class="hidden sm:inline">{t.cuaderno.anteriorProyecto}</span>
+    </button>
+    <button type="button" class="visor-boton" data-paso-proyecto="1">
+      <span class="hidden sm:inline">{t.cuaderno.siguienteProyecto}</span>
+      <span aria-hidden="true">→</span>
+    </button>
+    <button type="button" class="visor-boton visor-cerrar" data-cerrar-cuaderno aria-label={t.general.cerrar}>
+      ✕
+    </button>
+  </div>
+
+  <div class="visor-cuerpo">
+    {
+      lista.map((c, i) => (
+        <div data-panel={c.ancla} hidden>
+          <Cuaderno
+            cuaderno={c}
+            idioma={idioma}
+            total={lista.length}
+            primero={i === 0}
+            anclaSiguiente={lista.length > 1 ? lista[(i + 1) % lista.length]!.ancla : undefined}
+            tituloSiguiente={lista.length > 1 ? lista[(i + 1) % lista.length]!.titulo : undefined}
+          />
+        </div>
+      ))
+    }
+  </div>
+</dialog>
+
+<style>
+  .visor {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: var(--color-mesa);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  /* Abierta, la ventana es una columna: la barra arriba y el cuaderno
+     centrado en el alto que queda. */
+  .visor[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .visor-cuerpo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .visor::backdrop {
+    background-color: rgb(20 22 26 / 0.6);
+  }
+
+  .visor-barra {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: color-mix(in srgb, var(--color-mesa) 88%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  @media (width >= 48rem) {
+    .visor-barra { padding-inline: 4rem; }
+  }
+
+  .visor-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.25rem;
+    padding-inline: 0.875rem;
+    border: 1px solid rgb(20 22 26 / 0.35);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-tinta);
+    transition: background-color 200ms, color 200ms;
+  }
+  .visor-boton:hover,
+  .visor-boton:focus-visible {
+    background-color: var(--color-tinta);
+    color: var(--color-papel);
+  }
+  .visor-cerrar {
+    width: 2.25rem;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+
+  /* Dentro de la ventana el cuaderno ya está sobre la mesa: sin el aire
+     de arriba que llevaba cuando iba en la página. */
+  .visor-cuerpo :global(.cuaderno-seccion) {
+    padding-block: 0.5rem 3rem;
+    background-color: transparent;
+  }
+</style>
+
+<script>
+  const elemento = document.getElementById('visor-cuaderno');
+
+  if (elemento instanceof HTMLDialogElement) {
+    const visor: HTMLDialogElement = elemento;
+    const paneles = Array.from(visor.querySelectorAll<HTMLElement>('[data-panel]'));
+    const anclas = paneles.map((p) => p.dataset.panel!);
+    let actual = -1;
+    /* Si la ventana se abrió desde la propia web (pulsando un libro), al
+     * cerrarla se vuelve atrás en el historial; si se entró con el # en la
+     * dirección, solo se limpia el #. */
+    let desdeLaWeb = false;
+    let desdeDonde: HTMLElement | null = null;
+
+    const anclaDelHash = () => decodeURIComponent(location.hash.slice(1));
+
+    function abrir(ancla: string) {
+      const i = anclas.indexOf(ancla);
+      if (i === -1) return;
+      actual = i;
+      paneles.forEach((p, j) => (p.hidden = j !== i));
+      if (!visor.open) {
+        desdeDonde = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        visor.showModal();
+        document.documentElement.style.overflow = 'hidden';
+      }
+      visor.scrollTop = 0;
+      /* El foco al cuaderno: así las flechas del teclado pasan las hojas. */
+      paneles[i]!.querySelector<HTMLElement>('[data-cuaderno]')?.focus({ preventScroll: true });
+    }
+
+    function alCerrar() {
+      actual = -1;
+      document.documentElement.style.overflow = '';
+      if (anclas.includes(anclaDelHash())) {
+        if (desdeLaWeb) history.back();
+        else history.replaceState(history.state, '', location.pathname + location.search);
+      }
+      desdeLaWeb = false;
+      desdeDonde?.focus({ preventScroll: true });
+    }
+
+    /* El # manda: cambia el #, se abre (o se cierra) la ventana. */
+    window.addEventListener('hashchange', () => {
+      const ancla = anclaDelHash();
+      if (anclas.includes(ancla)) {
+        desdeLaWeb = true;
+        abrir(ancla);
+      } else if (visor.open) {
+        desdeLaWeb = false;
+        visor.close();
+      }
+    });
+
+    /* Entrar con el # en la dirección abre el cuaderno directamente. */
+    if (anclas.includes(anclaDelHash())) abrir(anclaDelHash());
+
+    visor.addEventListener('close', alCerrar);
+    visor.querySelector('[data-cerrar-cuaderno]')?.addEventListener('click', () => visor.close());
+
+    /* El enlace "siguiente proyecto" de la contratapa, ya dentro de la
+     * ventana: cambia de cuaderno sin apilar historial, o al cerrar se
+     * volvería al cuaderno anterior en vez de a la web. */
+    visor.addEventListener('click', (evento) => {
+      const enlace = (evento.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+      const ancla = enlace?.getAttribute('href')?.slice(1);
+      if (!ancla || !anclas.includes(ancla)) return;
+      evento.preventDefault();
+      history.replaceState(history.state, '', `#${ancla}`);
+      abrir(ancla);
+    });
+
+    /* Proyecto anterior / siguiente: se cambia el # sin apilar historial. */
+    for (const boton of visor.querySelectorAll<HTMLElement>('[data-paso-proyecto]')) {
+      boton.addEventListener('click', () => {
+        if (actual === -1) return;
+        const paso = Number(boton.dataset.pasoProyecto);
+        const siguiente = anclas[(actual + paso + anclas.length) % anclas.length]!;
+        history.replaceState(history.state, '', `#${siguiente}`);
+        abrir(siguiente);
+      });
+    }
+  }
+</script>

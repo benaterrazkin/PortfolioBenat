@@ -226,6 +226,9 @@
 .hoja + .cara { margin-block-start: 1.25rem; }
 .cara--imagen img { max-height: 70vh; }
 .cuaderno .zona { display: none; }
+/* El cuaderno recibe el foco al abrirse (para las flechas del teclado),
+   pero no se recuadra: las zonas que se pulsan ya llevan su foco. */
+.cuaderno:focus { outline: none; }
 
 /* Donde no hay hoja se ve la mesa. Es lo que hace que el cuaderno
    parezca cerrado: al principio enseña solo la tapa a la derecha, y al

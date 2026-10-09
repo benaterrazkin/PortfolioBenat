@@ -5,10 +5,9 @@ import BotonCV from '../components/BotonCV.astro';
 import BotonPortfolio from '../components/BotonPortfolio.astro';
 import VisorCV from '../components/VisorCV.astro';
 import VisorPortfolio from '../components/VisorPortfolio.astro';
+import VisorCuaderno from '../components/VisorCuaderno.astro';
 import SeccionProyectos from '../components/SeccionProyectos.astro';
 import SeccionContacto from '../components/SeccionContacto.astro';
-import Estante from '../components/Estante.astro';
-import { cuadernos } from '../data/cuaderno';
 import PuntosNavegacion from '../components/PuntosNavegacion.astro';
 import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
@@ -17,15 +16,15 @@ import { SITIO } from '../config/sitio';
 import retrato from '../assets/img/retrato.jpg';
 
 /**
- * La web entera: el nombre y la foto, los proyectos en cuadernos y el
- * contacto, todo seguido en un mismo scroll.
+ * La web entera, corta y en un solo scroll: el nombre y la foto, el
+ * estante con los proyectos y el contacto. Los cuadernos no están en la
+ * página: se abren encima al elegir un libro (VisorCuaderno.astro).
  */
 interface Props {
   idioma: Idioma;
 }
 const { idioma } = Astro.props;
 const t = textos(idioma);
-const lista = cuadernos(idioma);
 ---
 
 <Base idioma={idioma} pagina="inicio">
@@ -65,13 +64,11 @@ const lista = cuadernos(idioma);
             <BotonCV idioma={idioma} tono="linea" />
             <BotonPortfolio idioma={idioma} tono="linea" />
           </div>
-
         </div>
 
-        <!-- Retrato, enmarcado como una lámina. Hace de ventana: al pasar
-             por un lomo del estante, enseña ese proyecto (script de abajo). -->
-        <figure class="relative lg:mt-2 max-w-[18rem]" data-ventana>
-          <div class="relative border border-tinta p-2 bg-papel">
+        <!-- Retrato, enmarcado como una lámina -->
+        <figure class="relative lg:mt-2 max-w-[18rem]">
+          <div class="border border-tinta p-2 bg-papel">
             <Image
               src={retrato}
               alt={`${SITIO.nombreCompleto}, ${t.inicio.rotulo.toLowerCase()}`}
@@ -80,30 +77,13 @@ const lista = cuadernos(idioma);
               class="w-full h-auto object-cover"
               loading="eager"
             />
-            {
-              lista.map((c) => (
-                <Image
-                  src={c.portada.fuente}
-                  alt=""
-                  widths={[320, 640]}
-                  sizes="18rem"
-                  class="ventana-proyecto absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] object-cover"
-                  data-proyecto={c.id}
-                  loading="lazy"
-                />
-              ))
-            }
           </div>
           <span class="absolute -top-1.5 -left-1.5 w-3 h-3 border-t border-l border-trazo" aria-hidden="true"></span>
           <span class="absolute -top-1.5 -right-1.5 w-3 h-3 border-t border-r border-trazo" aria-hidden="true"></span>
           <span class="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b border-l border-trazo" aria-hidden="true"></span>
           <span class="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b border-r border-trazo" aria-hidden="true"></span>
-          <figcaption class="mt-3 rotulo text-gris" data-pie-ventana>{SITIO.nombreCompleto}</figcaption>
+          <figcaption class="mt-3 rotulo text-gris">{SITIO.nombreCompleto}</figcaption>
         </figure>
-      </div>
-
-      <div class="mt-16 md:mt-20">
-        <Estante idioma={idioma} />
       </div>
     </div>
   </section>
@@ -111,49 +91,10 @@ const lista = cuadernos(idioma);
   <SeccionProyectos idioma={idioma} />
   <SeccionContacto idioma={idioma} />
 
-  <!-- Los atajos laterales y las dos ventanas —currículum y portfolio—:
-       una de cada por página, o habría identificadores repetidos. -->
-  <PuntosNavegacion idioma={idioma} />
+  <!-- El marcador del menú y las tres ventanas —cuadernos, currículum y
+       portfolio—: una de cada por página, o habría identificadores repetidos. -->
+  <PuntosNavegacion />
+  <VisorCuaderno idioma={idioma} />
   <VisorCV idioma={idioma} />
   <VisorPortfolio idioma={idioma} />
 </Base>
-
-<style>
-  /* Las portadas de los proyectos esperan encima del retrato, invisibles. */
-  .ventana-proyecto {
-    opacity: 0;
-    transition: opacity 350ms var(--ease-suave);
-    pointer-events: none;
-  }
-  .ventana-proyecto[data-visible] {
-    opacity: 1;
-  }
-</style>
-
-<script>
-  /* Al pasar por un lomo del estante —o al llegar a él con el tabulador—,
-   * el marco del retrato enseña la portada de ese proyecto y el pie dice
-   * cuál es. Al salir, vuelve la foto. */
-  const ventana = document.querySelector<HTMLElement>('[data-ventana]');
-  const pie = ventana?.querySelector<HTMLElement>('[data-pie-ventana]');
-  const pieOriginal = pie?.textContent ?? '';
-
-  const enseñar = (id?: string, titulo?: string, detalle?: string) => {
-    if (!ventana) return;
-    for (const imagen of ventana.querySelectorAll<HTMLElement>('[data-proyecto]')) {
-      const esta = imagen.dataset.proyecto === id;
-      imagen.toggleAttribute('data-visible', esta);
-      /* La imagen tiene loading="lazy" y está oculta: se pide en cuanto hace falta. */
-      if (esta && imagen instanceof HTMLImageElement) imagen.loading = 'eager';
-    }
-    if (pie) pie.textContent = id ? `${titulo} · ${detalle}` : pieOriginal;
-  };
-
-  for (const lomo of document.querySelectorAll<HTMLElement>('[data-lomo]')) {
-    const mostrar = () => enseñar(lomo.dataset.lomo, lomo.dataset.titulo, lomo.dataset.pie);
-    lomo.addEventListener('pointerenter', mostrar);
-    lomo.addEventListener('focus', mostrar);
-    lomo.addEventListener('pointerleave', () => enseñar());
-    lomo.addEventListener('blur', () => enseñar());
-  }
-</script>

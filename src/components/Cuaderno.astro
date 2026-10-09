@@ -54,14 +54,13 @@ const comunes = {
       </div>
       <!-- El recuento de hojas ya no se escribe aquí: cada hoja lleva su
            número en la esquina, que es como funciona un cuaderno. -->
-      <a href="#estante" class="rotulo text-gris hover:text-tinta transition-colors shrink-0">
-        <span aria-hidden="true">↑ </span>{t.cuaderno.alEstante}
-      </a>
+      <p class="rotulo text-tinta tabular-nums shrink-0">{c.anio}</p>
     </div>
 
     <div
       class="cuaderno"
       data-cuaderno
+      tabindex="-1"
       style={`--hojas:${c.hojas.length}${c.lomo ? `;--lomo:${c.lomo}` : ''}`}
       data-plantilla={t.cuaderno.hojaDe}
       data-total-caras={c.caras.length}

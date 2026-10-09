@@ -88,7 +88,11 @@
         "alt": "View from the stepped square, with the new textile-clad building behind",
         "titulo": "View from the square"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/tfg/diagrama.png",
+      "alt": "Massing diagram: the existing ikastola, the new extension and the green plot opened to the town"
+    }
   },
   {
     "id": "astigarreta",
@@ -154,7 +158,11 @@
         "titulo": "Section DD'"
       }
     ],
-    "lomo": "#b5501c"
+    "lomo": "#b5501c",
+    "diagrama": {
+      "archivo": "proyectos/astigarreta/diagrama.png",
+      "alt": "Massing diagram: three gabled houses on the terraces of the hillside"
+    }
   },
   {
     "id": "urbanismo",
@@ -220,7 +228,11 @@
         "alt": "View of the football pitch and courts wrapped by the walkway",
         "titulo": "View of the courts"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/urbanismo/diagrama.png",
+      "alt": "Diagram: the pitch, the courts and the school linked by a looping elevated walkway"
+    }
   },
   {
     "id": "eliza-reforma",
@@ -309,7 +321,11 @@
         "alt": "Two visitors watch the concert in the nave from the glass balcony",
         "titulo": "Balcony over the nave"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/eliza-reforma/diagrama.png",
+      "alt": "Massing diagram: the nave and tower of the church, with the new glass roof in outline"
+    }
   },
   {
     "id": "proiektuak-9",
@@ -383,7 +399,11 @@
         "alt": "Axonometric of the sheltered housing block and its timber façade",
         "titulo": "Axonometric of the housing"
       }
-    ]
+    ],
+    "diagrama": {
+      "archivo": "proyectos/proiektuak-9/diagrama.png",
+      "alt": "Massing diagram: housing, cultural building and market around a green courtyard"
+    }
   },
   {
     "id": "elorrieta",
@@ -411,7 +431,7 @@
       "alt": "Site plan with the blocks, the green courtyards and the estuary"
     },
     "diagrama": {
-      "archivo": "proyectos/elorrieta/diagrama.webp",
+      "archivo": "proyectos/elorrieta/diagrama.png",
       "alt": "Massing diagram of the blocks with the green spaces between them"
     },
     "paginas": [

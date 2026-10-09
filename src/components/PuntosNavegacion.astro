@@ -1,104 +1,23 @@
 ---
-import { cuadernos } from '../data/cuaderno';
-import { textos, formatear } from '../i18n/ui';
-import type { Idioma } from '../i18n/idiomas';
-
 /**
- * El carril de puntos de la derecha: un atajo por proyecto y otro para el
- * contacto. Son enlaces a anclas normales, así que funcionan aunque no
- * haya JavaScript; lo único que aporta el script es encender el punto de
- * la sección por la que se va pasando (y, de paso, el del menú de arriba).
+ * El marcador del menú: enciende en la cabecera el enlace de la sección
+ * por la que se va pasando (proyectos, contacto).
+ *
+ * Antes había además un carril de puntos en el lateral, un atajo por
+ * cuaderno; con los cuadernos fuera de la página, la web es corta y ya no
+ * hacía falta.
  */
-interface Props {
-  idioma: Idioma;
-}
-
-const { idioma } = Astro.props;
-const t = textos(idioma);
-
-/* En los atajos va el nombre corto —el lugar— y no el título entero:
- * «Astigarreta» se lee de un vistazo, «Viviendas multifamiliares en
- * Astigarreta» no. */
-const paradas = [
-  ...cuadernos(idioma).map((c) => ({ ancla: c.ancla, titulo: c.nombreCorto })),
-  { ancla: 'contacto', titulo: t.contacto.titulo },
-];
 ---
 
-<nav
-  class="puntos hidden lg:block fixed right-5 top-1/2 -translate-y-1/2 z-30"
-  aria-label={t.cuaderno.indice}
->
-  <ul class="grid gap-4">
-    {
-      paradas.map((parada) => (
-        <li>
-          <a href={`#${parada.ancla}`} data-punto={parada.ancla} class="group relative flex items-center justify-end">
-            <span class="etiqueta rotulo text-gris">{parada.titulo}</span>
-            <span class="punto" aria-hidden="true" />
-            <span class="sr-only">{formatear(t.cuaderno.irA, { titulo: parada.titulo })}</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
-
-<style>
-  /* Todos los puntos del mismo gris neutro; solo el de la sección que se
-     está viendo se enciende en rojo de lápiz. */
-  .punto {
-    display: block;
-    width: 0.8125rem;
-    height: 0.8125rem;
-    border-radius: 50%;
-    background-color: var(--color-gris-claro);
-    transition:
-      background-color 250ms var(--ease-suave),
-      transform 250ms var(--ease-suave);
-  }
-  a:hover .punto,
-  a:focus-visible .punto {
-    background-color: var(--color-gris);
-  }
-  a[data-activo] .punto {
-    background-color: var(--color-trazo);
-    transform: scale(1.15);
-  }
-
-  /* El nombre solo aparece al apuntar o al enfocar. */
-  .etiqueta {
-    position: absolute;
-    right: 1.25rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 200ms var(--ease-suave);
-  }
-  a:hover .etiqueta,
-  a:focus-visible .etiqueta {
-    opacity: 1;
-  }
-</style>
-
 <script>
-  /* Enciende el punto —y el enlace del menú— de la sección que se está
-   * viendo. Un solo observador para las dos cosas. Una misma sección
-   * puede tener varios atajos (el punto del lateral y el lomo del
-   * estante), así que se guardan todos. */
-  const agrupar = (selector: string, clave: (e: HTMLElement) => string) => {
-    const mapa = new Map<string, HTMLElement[]>();
-    for (const elemento of document.querySelectorAll<HTMLElement>(selector)) {
-      const k = clave(elemento);
-      mapa.set(k, [...(mapa.get(k) ?? []), elemento]);
-    }
-    return mapa;
-  };
-  const puntos = agrupar('[data-punto]', (e) => e.dataset.punto!);
-  const enlacesMenu = agrupar('[data-ancla]', (e) => e.dataset.ancla!);
+  const enlacesMenu = new Map<string, HTMLElement[]>();
+  for (const enlace of document.querySelectorAll<HTMLElement>('[data-ancla]')) {
+    const clave = enlace.dataset.ancla!;
+    enlacesMenu.set(clave, [...(enlacesMenu.get(clave) ?? []), enlace]);
+  }
 
-  const marcar = (mapa: Map<string, HTMLElement[]>, clave: string | undefined) => {
-    for (const [nombre, elementos] of mapa) {
+  const marcar = (clave: string | undefined) => {
+    for (const [nombre, elementos] of enlacesMenu) {
       for (const elemento of elementos) {
         elemento.toggleAttribute('data-activo', nombre === clave);
         if (nombre === clave) elemento.setAttribute('aria-current', 'true');
@@ -113,19 +32,13 @@ const paradas = [
     (entradas) => {
       for (const entrada of entradas) {
         if (!entrada.isIntersecting) continue;
-        const seccion = (entrada.target as HTMLElement).dataset.seccion;
-        const menu = (entrada.target as HTMLElement).dataset.menu ?? seccion;
-        marcar(puntos, seccion);
-        marcar(enlacesMenu, menu);
+        const el = entrada.target as HTMLElement;
+        marcar(el.dataset.menu ?? el.dataset.seccion);
       }
     },
     { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
   );
 
-  for (const seccion of document.querySelectorAll('[data-seccion]')) {
-    /* La sección "proyectos" envuelve a los cuadernos: si se observara
-     * también, competiría con ellos. Solo se observan las paradas reales. */
-    if ((seccion as HTMLElement).dataset.seccion === 'proyectos') continue;
-    vigia.observe(seccion);
-  }
+  /* Solo las secciones de la página: los cuadernos van dentro de su ventana. */
+  for (const seccion of document.querySelectorAll('main > [data-seccion]')) vigia.observe(seccion);
 </script>

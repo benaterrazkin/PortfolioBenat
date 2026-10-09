@@ -149,10 +149,27 @@ Detalles que importan:
 
 ### El estante
 
-En la portada, bajo el nombre, hay un estante con un lomo por proyecto (número,
-lugar y año, del color de `lomo`). Cada lomo lleva a su cuaderno; al pasar por
-encima, el marco del retrato enseña la portada del proyecto. Sale solo de los
-`.json`: no hay que tocar nada para que aparezca un proyecto nuevo.
+La sección Proyectos es un estante con los libros **de frente**, como el
+escaparate de una librería (`src/components/Estante.astro`). Cada tapa enseña el
+**esquema conceptual** del proyecto (`diagrama` en el `.json`) con el lomo del
+color de `lomo`, y debajo el número, el título y lugar · año. Al pasar por
+encima, el libro se levanta y deja ver la imagen del proyecto (`portada`). Sale
+solo de los `.json`: no hay que tocar nada para que aparezca un proyecto nuevo.
+
+**Los cuadernos ya no están en la página.** Al pulsar un libro, su cuaderno se
+abre en grande encima de la web (`src/components/VisorCuaderno.astro`), con
+botones de proyecto anterior / siguiente y la ✕ (o Esc) para cerrar. Cada
+cuaderno tiene su dirección propia, `…/es/#cuaderno-<id>`: quien abre ese
+enlace entra con el cuaderno ya abierto, y "atrás" en el navegador lo cierra.
+
+### Los esquemas conceptuales
+
+Van en `src/assets/img/proyectos/<id>/diagrama.png`, **con fondo
+transparente**, y salen en la tapa del libro y en la tapa del cuaderno. El de
+Elorrieta es el de Beñat (sacado del PDF de la entrega); los otros cinco son
+**provisionales**, volúmenes sencillos dibujados para ir dando forma. Para poner
+el definitivo, basta con sustituir el `diagrama.png` de ese proyecto por uno
+nuevo con el mismo nombre (PNG con fondo transparente).
 
 ### Cómo se reparte un proyecto en el cuaderno
 

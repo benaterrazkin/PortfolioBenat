@@ -1,12 +1,13 @@
 ---
 import TituloSeccion from './TituloSeccion.astro';
-import Cuaderno from './Cuaderno.astro';
+import Estante from './Estante.astro';
 import { cuadernos } from '../data/cuaderno';
 import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
 
 /**
- * Los proyectos, uno debajo de otro, cada uno como un cuaderno abierto.
+ * Los proyectos: el estante con un libro por proyecto. Los cuadernos se
+ * abren encima al pulsar un libro (VisorCuaderno.astro), no van aquí.
  */
 interface Props {
   idioma: Idioma;
@@ -14,30 +15,13 @@ interface Props {
 
 const { idioma } = Astro.props;
 const t = textos(idioma);
-
-const lista = cuadernos(idioma);
+const hay = cuadernos(idioma).length > 0;
 ---
 
-<section id="proyectos" class="anclada border-t border-linea" data-seccion="proyectos">
+<section id="proyectos" class="anclada border-t border-linea pb-20 md:pb-28" data-seccion="proyectos">
   <TituloSeccion indice="02" titulo={t.proyectos.titulo} entradilla={t.proyectos.entradilla} />
 
-  {
-    lista.length === 0 ? (
-      <p class="contenedor pb-24 text-gris">{t.proyectos.vacio}</p>
-    ) : (
-      <>
-        <p class="contenedor -mt-2 pb-2 text-sm text-gris-claro">{t.cuaderno.ayuda}</p>
-        {lista.map((c, i) => (
-          <Cuaderno
-            cuaderno={c}
-            idioma={idioma}
-            total={lista.length}
-            primero={i === 0}
-            anclaSiguiente={lista.length > 1 ? lista[(i + 1) % lista.length]!.ancla : undefined}
-            tituloSiguiente={lista.length > 1 ? lista[(i + 1) % lista.length]!.titulo : undefined}
-          />
-        ))}
-      </>
-    )
-  }
+  <div class="contenedor">
+    {hay ? <Estante idioma={idioma} /> : <p class="pb-24 text-gris">{t.proyectos.vacio}</p>}
+  </div>
 </section>
