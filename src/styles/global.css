@@ -50,6 +50,13 @@
 
   --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* Las dos curvas de interacción (criterios de Emil Kowalski): la de
+     salida, fuerte, para todo lo que entra o responde a un gesto; la de
+     ida y vuelta para lo que se mueve dentro de la pantalla. Las curvas
+     que trae CSS de serie son demasiado blandas. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
   /* Curva del pase de hoja: el papel tiene masa y arranca desde cero, al
      contrario que --ease-suave, que arranca a toda velocidad. */
   --ease-hoja: cubic-bezier(0.33, 0.02, 0.15, 1);
@@ -60,11 +67,15 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
+  /* Movimiento reducido no es movimiento cero: se quita lo que se
+     desplaza (scroll suave, giros, escalas) y se dejan los fundidos de
+     opacidad y color, que ayudan a ver qué ha cambiado. Cada componente
+     que mueve algo lo anula en su propio bloque reduced-motion. */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
     }
   }
   body {
@@ -110,6 +121,20 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+/* Todo lo que se pulsa: el color cambia al pasar por encima y, al
+   apretar, se hunde un poco. Es la confirmación de que la web ha oído
+   el clic. Sustituye a transition-colors en botones y botones-enlace. */
+@utility pulsable {
+  transition-property: color, background-color, border-color, transform;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-out);
+  &:active { transform: scale(0.97); }
+  &:disabled:active { transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    &:active { transform: none; }
+  }
 }
 
 /* Numeración de secciones: 01 / 02 / 03 */
@@ -188,6 +213,73 @@
 /* Deja sitio a la cabecera fija al saltar desde los puntos o el menú. */
 @utility anclada {
   scroll-margin-block-start: clamp(5rem, 12vh, 7rem);
+}
+
+/* ------------------------------------------------------------------ *
+ *  VENTANAS (cuaderno, currículum, portfolio)
+ *
+ *  Se abren de vez en cuando, así que llevan una entrada corta: aparecen
+ *  y crecen apenas, desde el centro (son modales, no salen de ningún
+ *  botón). Al cerrar, más rápido que al abrir: el sistema responde, no
+ *  hay nada que decidir. @starting-style da el punto de partida y
+ *  allow-discrete deja animar también el cierre del <dialog>. Donde el
+ *  navegador no lo entiende, se abren de golpe, como antes.
+ *  El color del fondo de detrás va en --fondo-ventana.
+ * ------------------------------------------------------------------ */
+.ventana {
+  opacity: 0;
+  transform: scale(0.98);
+  transition:
+    opacity 150ms var(--ease-out),
+    transform 150ms var(--ease-out),
+    overlay 150ms allow-discrete,
+    display 150ms allow-discrete;
+}
+.ventana[open] {
+  opacity: 1;
+  transform: none;
+  transition-duration: 220ms;
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+.ventana::backdrop {
+  background-color: transparent;
+  transition:
+    background-color 150ms var(--ease-out),
+    overlay 150ms allow-discrete,
+    display 150ms allow-discrete;
+}
+.ventana[open]::backdrop {
+  background-color: var(--fondo-ventana, rgb(20 22 26 / 0.6));
+  transition-duration: 220ms;
+  @starting-style {
+    background-color: transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ventana,
+  .ventana[open] { transform: none; }
+}
+
+/* El desplegable de idioma nace de su botón, arriba a la derecha. */
+[data-desplegable] > ul {
+  transform-origin: top right;
+  transition:
+    opacity 150ms var(--ease-out),
+    transform 150ms var(--ease-out);
+}
+[data-desplegable][open] > ul {
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-desplegable][open] > ul {
+    @starting-style { transform: none; }
+  }
 }
 
 /* El cuaderno pide más ancho que el resto de la web. */
@@ -294,7 +386,9 @@
  * ------------------------------------------------------------------ */
 @media (width >= 60rem) {
   .con-js .cuaderno {
-    --giro: 620ms;
+    /* Lo justo para que se vea el papel girar sin que pasar varias hojas
+       seguidas se haga pesado. Con el teclado no hay giro (Cuaderno.astro). */
+    --giro: 480ms;
 
     /* Dos hojas A4 apaisadas, una al lado de otra: 594 × 210. Sale una
        franja muy ancha, que es justo lo que piden los dibujos de
@@ -441,13 +535,20 @@
 
   /* Para recolocar las hojas de golpe, sin que se vea el giro. */
   .cuaderno[data-sin-animacion] .hoja { transition: none; }
+
+  /* Movimiento reducido: la hoja cambia sin girar. El script lee --giro
+     para saber cuánto esperar, así que se deja casi a cero. */
+  @media (prefers-reduced-motion: reduce) {
+    .con-js .cuaderno { --giro: 1ms; }
+    .con-js .hoja { transition: none; }
+  }
 }
 
 /* ------------------------------------------------------------------ *
  *  Con JS y pantalla estrecha: una hoja cada vez, y se arrastra
  * ------------------------------------------------------------------ */
 @media (width < 60rem) {
-  .con-js .cuaderno { --giro: 420ms; position: relative; }
+  .con-js .cuaderno { --giro: 300ms; position: relative; }
 
   .con-js .cuaderno-papel {
     position: relative;

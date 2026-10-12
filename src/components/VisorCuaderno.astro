@@ -25,7 +25,7 @@ const t = textos(idioma);
 const lista = cuadernos(idioma);
 ---
 
-<dialog id="visor-cuaderno" class="visor" aria-label={t.proyectos.titulo}>
+<dialog id="visor-cuaderno" class="visor ventana" aria-label={t.proyectos.titulo}>
   <div class="visor-barra">
     <button type="button" class="visor-boton" data-paso-proyecto="-1">
       <span aria-hidden="true">←</span>
@@ -70,6 +70,8 @@ const lista = cuadernos(idioma);
     background-color: var(--color-mesa);
     overflow-y: auto;
     overscroll-behavior: contain;
+    /* La entrada y la salida las pone .ventana (global.css). */
+    --fondo-ventana: rgb(20 22 26 / 0.6);
   }
   /* Abierta, la ventana es una columna: la barra arriba y el cuaderno
      centrado en el alto que queda. */
@@ -83,10 +85,6 @@ const lista = cuadernos(idioma);
     flex-direction: column;
     justify-content: center;
   }
-  .visor::backdrop {
-    background-color: rgb(20 22 26 / 0.6);
-  }
-
   .visor-barra {
     position: sticky;
     top: 0;
@@ -113,7 +111,13 @@ const lista = cuadernos(idioma);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-tinta);
-    transition: background-color 200ms, color 200ms;
+    transition:
+      background-color 160ms var(--ease-out),
+      color 160ms var(--ease-out),
+      transform 160ms var(--ease-out);
+  }
+  .visor-boton:active {
+    transform: scale(0.97);
   }
   .visor-boton:hover,
   .visor-boton:focus-visible {

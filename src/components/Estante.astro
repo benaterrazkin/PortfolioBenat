@@ -25,8 +25,8 @@ const lista = cuadernos(idioma);
 <nav id="estante" class="estante" aria-label={t.inicio.estante}>
   <ul class="balda">
     {
-      lista.map((c) => (
-        <li>
+      lista.map((c, i) => (
+        <li style={`--n:${i}`}>
           <a
             href={`#${c.ancla}`}
             class="libro"
@@ -93,7 +93,7 @@ const lista = cuadernos(idioma);
     flex-direction: column;
     height: 100%;
     color: var(--color-tinta);
-    transition: transform 350ms var(--ease-suave);
+    transition: transform 200ms var(--ease-out);
   }
 
   /* La tapa: papel, con el lomo de color asomando a la izquierda. */
@@ -108,7 +108,9 @@ const lista = cuadernos(idioma);
       inset 0.5rem 0 0 var(--color),
       0 1px 8px rgb(20 22 26 / 0.1);
     overflow: hidden;
-    transition: box-shadow 350ms var(--ease-suave);
+    transition:
+      box-shadow 200ms var(--ease-out),
+      transform 160ms var(--ease-out);
   }
 
   :global(.libro-esquema) {
@@ -132,7 +134,12 @@ const lista = cuadernos(idioma);
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 400ms var(--ease-suave);
+    /* Un desenfoque leve mientras se cruzan: sin él se ven dos dibujos
+       superpuestos en vez de uno que se transforma en el otro. */
+    filter: blur(2px);
+    transition:
+      opacity 250ms ease,
+      filter 250ms ease;
   }
 
   .libro-pie {
@@ -163,30 +170,89 @@ const lista = cuadernos(idioma);
     color: var(--color-gris);
   }
 
-  /* Al apuntar o al enfocar: el libro se levanta y enseña el proyecto. */
-  .libro:hover,
+  /* Al apuntar (solo con ratón: en el móvil el toque dejaría el libro
+     levantado) o al llegar con el tabulador: el libro se levanta y
+     enseña el proyecto. */
+  @media (hover: hover) and (pointer: fine) {
+    .libro:hover {
+      transform: translateY(-0.5rem);
+    }
+    .libro:hover .libro-tapa {
+      box-shadow:
+        inset 0.5rem 0 0 var(--color),
+        0 14px 28px rgb(20 22 26 / 0.18);
+    }
+    .libro:hover :global(.libro-imagen) {
+      opacity: 1;
+      filter: none;
+    }
+  }
   .libro:focus-visible {
     transform: translateY(-0.5rem);
+    outline: 2px solid var(--color-tinta);
+    outline-offset: 4px;
   }
-  .libro:hover .libro-tapa,
   .libro:focus-visible .libro-tapa {
     box-shadow:
       inset 0.5rem 0 0 var(--color),
       0 14px 28px rgb(20 22 26 / 0.18);
   }
-  .libro:hover :global(.libro-imagen),
   .libro:focus-visible :global(.libro-imagen) {
     opacity: 1;
+    filter: none;
   }
-  .libro:focus-visible {
-    outline: 2px solid var(--color-tinta);
-    outline-offset: 4px;
+
+  /* Al pulsar, la tapa se hunde un poco: el clic se ha oído. */
+  .libro:active .libro-tapa {
+    transform: scale(0.98);
+  }
+
+  /* Entrada escalonada, la primera vez que el estante aparece en
+     pantalla: los libros llegan uno detrás de otro, 50 ms entre cada
+     uno. Solo con JavaScript (sin él se ven siempre) y nunca bloquea los
+     clics. La activa el script de abajo. */
+  .estante[data-entrada] li {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .estante[data-entrada].visto li {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 300ms var(--ease-out),
+      transform 300ms var(--ease-out);
+    transition-delay: calc(var(--n) * 50ms);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .libro:hover,
-    .libro:focus-visible {
+    .libro:focus-visible,
+    .libro:active .libro-tapa {
       transform: none;
+    }
+    .libro :global(.libro-imagen) {
+      filter: none;
     }
   }
 </style>
+
+<script>
+  /* La entrada escalonada solo tiene sentido si el estante todavía no se
+   * ve al cargar: si ya está en pantalla (se ha entrado con #proyectos),
+   * o si se ha pedido menos movimiento, los libros salen tal cual. */
+  const estante = document.getElementById('estante');
+  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (estante && !quieto && estante.getBoundingClientRect().top > window.innerHeight) {
+    estante.setAttribute('data-entrada', '');
+    const vigia = new IntersectionObserver(
+      (entradas) => {
+        if (!entradas.some((e) => e.isIntersecting)) return;
+        estante.classList.add('visto');
+        vigia.disconnect();
+      },
+      { rootMargin: '0px 0px -15% 0px' },
+    );
+    vigia.observe(estante);
+  }
+</script>

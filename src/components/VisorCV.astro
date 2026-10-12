@@ -39,7 +39,7 @@ const pdfs = Object.fromEntries(
 
 <dialog
   id="visor-cv"
-  class="bg-transparent p-0 m-0 max-w-none max-h-none w-full h-full backdrop:bg-tinta/85"
+  class="bg-transparent p-0 m-0 max-w-none max-h-none w-full h-full ventana [--fondo-ventana:rgb(20_22_26/0.85)]"
   aria-label={t.cv.titulo}
   data-pdfs={JSON.stringify(pdfs)}
 >
@@ -58,7 +58,7 @@ const pdfs = Object.fromEntries(
               lang={CODIGO_HREFLANG[otro]}
               aria-pressed={otro === idioma ? 'true' : 'false'}
               title={NOMBRE_IDIOMA[otro]}
-              class="rotulo h-8 px-3 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors aria-pressed:bg-papel aria-pressed:text-tinta aria-pressed:border-papel"
+              class="rotulo h-8 px-3 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 pulsable aria-pressed:bg-papel aria-pressed:text-tinta aria-pressed:border-papel"
             >
               <span aria-hidden="true">{SIGLA_IDIOMA[otro]}</span>
               <span class="sr-only">{NOMBRE_IDIOMA[otro]}</span>
@@ -72,7 +72,7 @@ const pdfs = Object.fromEntries(
           data-descargar-cv
           href={pdfs[idioma]}
           download={`Benat-Errazkin-CV-${idioma}.pdf`}
-          class="rotulo h-8 px-3 inline-flex items-center gap-2 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 transition-colors"
+          class="rotulo h-8 px-3 inline-flex items-center gap-2 border border-papel/25 text-papel/60 hover:text-papel hover:border-papel/60 pulsable"
         >
           <svg aria-hidden="true" viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 20h16"></path>
@@ -84,7 +84,7 @@ const pdfs = Object.fromEntries(
         <button
           type="button"
           data-cerrar-cv
-          class="h-8 w-8 inline-flex items-center justify-center border border-papel/25 text-papel/70 hover:bg-papel hover:text-tinta transition-colors"
+          class="h-8 w-8 inline-flex items-center justify-center border border-papel/25 text-papel/70 hover:bg-papel hover:text-tinta pulsable"
           aria-label={t.general.cerrar}>✕</button
         >
       </div>
