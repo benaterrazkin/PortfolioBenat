@@ -46,7 +46,8 @@ const cajetin =
   {
     cara.tipo === 'tapa' && (
       <div class="cara-caja flex flex-col">
-        <p class="indice shrink-0">{String(numeroCuaderno).padStart(2, '0')}</p>
+        {/* En tinta y no en rojo: el rojo sobre el corcho no llega al contraste mínimo. */}
+        <p class="indice shrink-0" style="color: var(--color-tinta)">{String(numeroCuaderno).padStart(2, '0')}</p>
 
         {cara.lamina ? (
           <div class="flex-1 min-h-0 flex items-center justify-center py-[3%]">
@@ -84,9 +85,7 @@ const cajetin =
 
             <ul class="grid gap-px text-right">
               {cara.herramientas.map((herramienta) => (
-                <li class="rotulo text-tinta/70 text-[0.5625rem] tracking-[0.16em] leading-snug">
-                  {herramienta}
-                </li>
+                <li class="rotulo text-tinta leading-snug">{herramienta}</li>
               ))}
             </ul>
           </div>
@@ -95,9 +94,43 @@ const cajetin =
     )
   }
 
-  {/* El cartón por dentro y la tapa trasera van lisos, como en cualquier
+  {/* El cartón de delante, por dentro: la ficha del proyecto. Es lo que se
+      ve a la izquierda al abrir el cuaderno, frente al texto. */}
+  {
+    cara.tipo === 'tapa-interior' && cara.ficha && (
+      <div class="cara-caja flex flex-col">
+        {cara.ficha.lamina && (
+          <div class="flex-1 min-h-0 flex items-center justify-center pb-[4%]">
+            <Image
+              src={cara.ficha.lamina.fuente}
+              alt={cara.ficha.lamina.alt}
+              widths={[640, 1024]}
+              sizes="(min-width: 60rem) 30vw, 70vw"
+              class="max-w-full max-h-full w-auto h-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        <div class="shrink-0 pt-2.5 border-t border-tinta/40 grid gap-x-[6%] gap-y-3 sm:grid-cols-[1fr_auto] items-start">
+          <ul class="grid gap-px">
+            {cara.ficha.claves.map((clave) => (
+              <li class="rotulo text-tinta leading-snug">{clave}</li>
+            ))}
+          </ul>
+          <ul class="grid gap-px sm:text-right">
+            {cara.ficha.herramientas.map((herramienta) => (
+              <li class="rotulo text-tinta leading-snug">{herramienta}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  {/* El cartón de atrás y la tapa trasera van lisos, como en cualquier
       libro. La vuelta al principio está fuera del cuaderno. */}
-  {(cara.tipo === 'tapa-interior' || cara.tipo === 'contratapa') && (
+  {((cara.tipo === 'tapa-interior' && !cara.ficha) || cara.tipo === 'contratapa') && (
     <span class="sr-only">{t.cuaderno.enBlanco}</span>
   )}
 

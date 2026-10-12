@@ -1,5 +1,5 @@
 {
-  "titular": "Arkitektoa",
+  "titular": "Arkitekturan graduatua",
   "resumen": "Arkitekto sortzailea, 3D modelizazioan eta errenderizazioan esperientzia duena, diseinu berritzaile eta jasangarrietan zentratua. Konponbide ekologikoak arkitektura proiektuetan txertatzea gustuko dut, estetika bermatuz eta ingurumen inpaktua gutxituz. Nire esperientzia arkitektura jasangarriaren ekimenak bultzatzeko erabili nahi dut, etorkizunari begira dagoen erakunde batean.",
   "secciones": {
     "perfil": "Helburu profesionala",
@@ -71,7 +71,12 @@
       "centro": "Hernani BHI"
     }
   ],
-  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Errenderizazio programak"],
+  "programas": [
+    "Revit",
+    "Rhinoceros",
+    "AutoCAD",
+    "Errenderizazio programak"
+  ],
   "habilidades": [
     "Taldean lan egitea",
     "Lanerako gaitasuna",
@@ -82,9 +87,23 @@
     "Konpromisoa"
   ],
   "idiomas": [
-    { "lengua": "Euskara", "nivel": "Ama hizkuntza" },
-    { "lengua": "Gaztelania", "nivel": "Ama hizkuntza" },
-    { "lengua": "Ingelesa", "nivel": "Maila aurreratua" }
+    {
+      "lengua": "Euskara",
+      "nivel": "Ama hizkuntza"
+    },
+    {
+      "lengua": "Gaztelania",
+      "nivel": "Ama hizkuntza"
+    },
+    {
+      "lengua": "Ingelesa",
+      "nivel": "Maila aurreratua"
+    }
   ],
-  "otros": [{ "etiqueta": "Gidabaimena", "valor": "A1 eta B" }]
+  "otros": [
+    {
+      "etiqueta": "Gidabaimena",
+      "valor": "A1 eta B"
+    }
+  ]
 }

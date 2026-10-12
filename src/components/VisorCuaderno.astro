@@ -27,23 +27,36 @@ const lista = cuadernos(idioma);
 
 <dialog id="visor-cuaderno" class="visor ventana" aria-label={t.proyectos.titulo}>
   <div class="visor-barra">
-    <button type="button" class="visor-boton" data-paso-proyecto="-1">
-      <span aria-hidden="true">←</span>
-      <span class="hidden sm:inline">{t.cuaderno.anteriorProyecto}</span>
+    <!-- Cómo se usa, la primera vez. Se va en cuanto se pasa una hoja. -->
+    <p class="visor-ayuda" data-ayuda>{t.cuaderno.ayuda}</p>
+
+    <!-- Anterior / siguiente dicen a qué proyecto llevan. El nombre lo pone
+         el script al abrir cada cuaderno. -->
+    <button type="button" class="visor-boton" data-paso-proyecto="-1" title={t.cuaderno.anteriorProyecto}>
+      <svg aria-hidden="true" viewBox="0 0 24 24" class="visor-icono" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M19 12H5m0 0 6-6m-6 6 6 6"></path>
+      </svg>
+      <span class="sr-only">{t.cuaderno.anteriorProyecto}:</span>
+      <span data-destino></span>
     </button>
-    <button type="button" class="visor-boton" data-paso-proyecto="1">
-      <span class="hidden sm:inline">{t.cuaderno.siguienteProyecto}</span>
-      <span aria-hidden="true">→</span>
+    <button type="button" class="visor-boton" data-paso-proyecto="1" title={t.cuaderno.siguienteProyecto}>
+      <span class="sr-only">{t.cuaderno.siguienteProyecto}:</span>
+      <span data-destino></span>
+      <svg aria-hidden="true" viewBox="0 0 24 24" class="visor-icono" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M5 12h14m0 0-6-6m6 6-6 6"></path>
+      </svg>
     </button>
     <button type="button" class="visor-boton visor-cerrar" data-cerrar-cuaderno aria-label={t.general.cerrar}>
-      ✕
+      <svg aria-hidden="true" viewBox="0 0 24 24" class="visor-icono" fill="none" stroke="currentColor" stroke-width="1.25">
+        <path d="M6 6l12 12M18 6 6 18"></path>
+      </svg>
     </button>
   </div>
 
   <div class="visor-cuerpo">
     {
       lista.map((c, i) => (
-        <div data-panel={c.ancla} hidden>
+        <div data-panel={c.ancla} data-nombre={c.nombreCorto} data-titulo={c.titulo} hidden>
           <Cuaderno
             cuaderno={c}
             idioma={idioma}
@@ -128,7 +141,28 @@ const lista = cuadernos(idioma);
     width: 2.25rem;
     justify-content: center;
     padding: 0;
-    font-size: 0.875rem;
+  }
+  .visor-icono {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+  }
+  /* La ayuda ocupa el sitio libre de la izquierda; en pantallas estrechas
+     no cabe y el cuaderno ya enseña sus flechas. */
+  .visor-ayuda {
+    display: none;
+    margin-right: auto;
+    align-self: center;
+    font-size: 0.8125rem;
+    color: var(--color-tinta);
+    transition: opacity 200ms ease;
+  }
+  @media (width >= 48rem) {
+    .visor-ayuda { display: block; }
+  }
+  .visor-ayuda[data-oculta] {
+    opacity: 0;
+    pointer-events: none;
   }
 
   /* Dentro de la ventana el cuaderno ya está sobre la mesa: sin el aire
@@ -166,9 +200,43 @@ const lista = cuadernos(idioma);
         document.documentElement.style.overflow = 'hidden';
       }
       visor.scrollTop = 0;
+      /* La ventana se anuncia con el nombre del proyecto, y anterior /
+       * siguiente dicen adónde llevan. */
+      visor.setAttribute('aria-label', paneles[i]!.dataset.titulo ?? '');
+      const vecino = (paso: number) => paneles[(i + paso + paneles.length) % paneles.length]!;
+      for (const boton of visor.querySelectorAll<HTMLElement>('[data-paso-proyecto]')) {
+        const destino = boton.querySelector('[data-destino]');
+        if (destino) destino.textContent = vecino(Number(boton.dataset.pasoProyecto)).dataset.nombre ?? '';
+      }
+      /* Se abre por la ficha y el texto, no por la tapa cerrada. */
+      const cuaderno = paneles[i]!.querySelector<HTMLElement>('[data-cuaderno]');
+      cuaderno?.dispatchEvent(new CustomEvent('cuaderno:abrir'));
       /* El foco al cuaderno: así las flechas del teclado pasan las hojas. */
-      paneles[i]!.querySelector<HTMLElement>('[data-cuaderno]')?.focus({ preventScroll: true });
+      cuaderno?.focus({ preventScroll: true });
     }
+
+    /* La ayuda de la barra se va en cuanto se pasa la primera hoja, y no
+     * vuelve en el resto de la visita. */
+    const ayuda = visor.querySelector<HTMLElement>('[data-ayuda]');
+    const ocultarAyuda = () => {
+      ayuda?.setAttribute('data-oculta', '');
+      try {
+        sessionStorage.setItem('cuaderno-ayuda-vista', '1');
+      } catch {
+        /* Sin almacenamiento, la ayuda se oculta solo en esta página. */
+      }
+    };
+    try {
+      if (sessionStorage.getItem('cuaderno-ayuda-vista')) ayuda?.setAttribute('data-oculta', '');
+    } catch {
+      /* Sin almacenamiento, se enseña. */
+    }
+    visor.addEventListener('click', (evento) => {
+      if ((evento.target as HTMLElement).closest('.zona')) ocultarAyuda();
+    });
+    visor.addEventListener('keydown', (evento) => {
+      if (evento.key === 'ArrowRight' || evento.key === 'ArrowLeft') ocultarAyuda();
+    });
 
     function alCerrar() {
       actual = -1;

@@ -1,5 +1,5 @@
 {
-  "titular": "Arquitecte",
+  "titular": "Graduat en Arquitectura",
   "resumen": "Arquitecte creatiu amb experiència en modelatge 3D i renderització, centrat en dissenys innovadors i sostenibles. M'apassiona integrar solucions ecològiques en projectes arquitectònics, garantint l'estètica i minimitzant l'impacte ambiental. Busco aplicar la meva experiència per impulsar iniciatives d'arquitectura sostenible en una organització amb visió de futur.",
   "secciones": {
     "perfil": "Objectiu professional",
@@ -71,7 +71,12 @@
       "centro": "Hernani BHI"
     }
   ],
-  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Programes de renderització"],
+  "programas": [
+    "Revit",
+    "Rhinoceros",
+    "AutoCAD",
+    "Programes de renderització"
+  ],
   "habilidades": [
     "Treball en equip",
     "Capacitat de treball",
@@ -82,9 +87,23 @@
     "Compromís"
   ],
   "idiomas": [
-    { "lengua": "Basc", "nivel": "Nadiu" },
-    { "lengua": "Castellà", "nivel": "Nadiu" },
-    { "lengua": "Anglès", "nivel": "Nivell avançat" }
+    {
+      "lengua": "Basc",
+      "nivel": "Nadiu"
+    },
+    {
+      "lengua": "Castellà",
+      "nivel": "Nadiu"
+    },
+    {
+      "lengua": "Anglès",
+      "nivel": "Nivell avançat"
+    }
   ],
-  "otros": [{ "etiqueta": "Carnet de conduir", "valor": "A1 i B" }]
+  "otros": [
+    {
+      "etiqueta": "Carnet de conduir",
+      "valor": "A1 i B"
+    }
+  ]
 }

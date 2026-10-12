@@ -50,7 +50,7 @@ const lista = cuadernos(idioma);
               )}
               <Image
                 src={c.portada.fuente}
-                alt=""
+                alt={c.portada.alt}
                 widths={[320, 640]}
                 sizes="(min-width: 64rem) 15vw, (min-width: 40rem) 30vw, 45vw"
                 class="libro-imagen"
@@ -61,6 +61,7 @@ const lista = cuadernos(idioma);
             <span class="libro-pie">
               <span class="libro-numero" aria-hidden="true">{String(c.numero).padStart(2, '0')}</span>
               <span class="libro-titulo">{c.titulo}</span>
+              {c.subtitulo && <span class="libro-subtitulo">{c.subtitulo}</span>}
               <span class="libro-lugar">{[c.nombreCorto, c.anio].join(' · ')}</span>
             </span>
             <span class="sr-only">{formatear(t.cuaderno.irA, { titulo: c.titulo })}</span>
@@ -85,6 +86,7 @@ const lista = cuadernos(idioma);
   }
   @media (width >= 64rem) {
     .balda { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; }
+    .libro-tapa { aspect-ratio: 3 / 4; }
   }
 
   .libro {
@@ -96,13 +98,16 @@ const lista = cuadernos(idioma);
     transition: transform 200ms var(--ease-out);
   }
 
-  /* La tapa: papel, con el lomo de color asomando a la izquierda. */
+  /* La tapa: papel, con el lomo de color asomando a la izquierda. Arriba
+     el esquema; abajo, una franja del proyecto (ver .libro-imagen). En
+     el móvil, algo más baja, para no hacer bajar tanto. */
   .libro-tapa {
+    --franja: 38%;
     position: relative;
     display: grid;
     place-items: center;
-    aspect-ratio: 3 / 4;
-    padding: 12% 10% 12% 16%;
+    aspect-ratio: 4 / 5;
+    padding: 8% 8% calc(var(--franja) + 6%) 14%;
     background-color: var(--color-hoja);
     box-shadow:
       inset 0.5rem 0 0 var(--color),
@@ -126,20 +131,29 @@ const lista = cuadernos(idioma);
     transform: scaleY(1.35);
   }
 
-  /* La imagen del proyecto espera encima, invisible. */
+  /* La imagen del proyecto cubre la tapa entera, pero recortada: solo se
+     ve la franja de abajo, también en el móvil. Al apuntar, el recorte se
+     abre y la imagen ocupa toda la tapa. clip-path anima sin mover nada
+     de sitio. */
   :global(.libro-imagen) {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    inset: 0 0 0 0.5rem;
+    width: calc(100% - 0.5rem);
     height: 100%;
     object-fit: cover;
-    opacity: 0;
-    /* Un desenfoque leve mientras se cruzan: sin él se ven dos dibujos
-       superpuestos en vez de uno que se transforma en el otro. */
-    filter: blur(2px);
-    transition:
-      opacity 250ms ease,
-      filter 250ms ease;
+    clip-path: inset(calc(100% - var(--franja)) 0 0 0);
+    transition: clip-path 250ms var(--ease-out);
+  }
+
+  .libro-subtitulo {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--color-gris);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.125rem;
   }
 
   .libro-pie {
@@ -183,8 +197,7 @@ const lista = cuadernos(idioma);
         0 14px 28px rgb(20 22 26 / 0.18);
     }
     .libro:hover :global(.libro-imagen) {
-      opacity: 1;
-      filter: none;
+      clip-path: inset(0 0 0 0);
     }
   }
   .libro:focus-visible {
@@ -198,8 +211,7 @@ const lista = cuadernos(idioma);
       0 14px 28px rgb(20 22 26 / 0.18);
   }
   .libro:focus-visible :global(.libro-imagen) {
-    opacity: 1;
-    filter: none;
+    clip-path: inset(0 0 0 0);
   }
 
   /* Al pulsar, la tapa se hunde un poco: el clic se ha oído. */
@@ -231,7 +243,7 @@ const lista = cuadernos(idioma);
       transform: none;
     }
     .libro :global(.libro-imagen) {
-      filter: none;
+      transition: none;
     }
   }
 </style>

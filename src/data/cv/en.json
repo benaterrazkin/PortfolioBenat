@@ -1,5 +1,5 @@
 {
-  "titular": "Architect",
+  "titular": "Architecture graduate",
   "resumen": "Creative architect with experience in 3D modelling and rendering, focused on innovative and sustainable design. I am passionate about integrating ecological solutions into architectural projects, ensuring aesthetic quality while minimising environmental impact. I am looking to apply my experience to drive sustainable architecture initiatives within a forward-thinking organisation.",
   "secciones": {
     "perfil": "Professional objective",
@@ -71,7 +71,12 @@
       "centro": "Hernani BHI"
     }
   ],
-  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Rendering software"],
+  "programas": [
+    "Revit",
+    "Rhinoceros",
+    "AutoCAD",
+    "Rendering software"
+  ],
   "habilidades": [
     "Teamwork",
     "Strong work ethic",
@@ -82,9 +87,23 @@
     "Commitment"
   ],
   "idiomas": [
-    { "lengua": "Basque", "nivel": "Native" },
-    { "lengua": "Spanish", "nivel": "Native" },
-    { "lengua": "English", "nivel": "Advanced" }
+    {
+      "lengua": "Basque",
+      "nivel": "Native"
+    },
+    {
+      "lengua": "Spanish",
+      "nivel": "Native"
+    },
+    {
+      "lengua": "English",
+      "nivel": "Advanced"
+    }
   ],
-  "otros": [{ "etiqueta": "Driving licence", "valor": "A1 and B" }]
+  "otros": [
+    {
+      "etiqueta": "Driving licence",
+      "valor": "A1 and B"
+    }
+  ]
 }

@@ -113,8 +113,8 @@ const claseCampo =
   {
     !configurado && (
       <p class="text-sm p-3.5 border border-trazo/40 bg-trazo/5">
-        El formulario todavía no está conectado: falta poner la clave gratuita de Web3Forms en
-        <code class="font-mono">src/config/sitio.ts</code>. Mientras tanto, escribe directamente a{' '}
+        {/* Para quien mantiene la web: falta la clave de Web3Forms en src/config/sitio.ts. */}
+        {t.contacto.sinConectar}{' '}
         <a href={`mailto:${SITIO.correo}`} class="underline underline-offset-4">
           {SITIO.correo}
         </a>

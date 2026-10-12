@@ -19,7 +19,7 @@ const hay = cuadernos(idioma).length > 0;
 ---
 
 <section id="proyectos" class="anclada border-t border-linea pb-20 md:pb-28" data-seccion="proyectos">
-  <TituloSeccion indice="02" titulo={t.proyectos.titulo} entradilla={t.proyectos.entradilla} />
+  <TituloSeccion titulo={t.proyectos.titulo} entradilla={t.proyectos.entradilla} />
 
   <div class="contenedor">
     {hay ? <Estante idioma={idioma} /> : <p class="pb-24 text-gris">{t.proyectos.vacio}</p>}

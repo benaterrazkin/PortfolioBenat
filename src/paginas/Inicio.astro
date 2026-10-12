@@ -31,59 +31,66 @@ const t = textos(idioma);
   <!-- ---------------------------------------------------------------- -->
   <!--  Portada                                                          -->
   <!-- ---------------------------------------------------------------- -->
-  <section class="relative overflow-hidden">
+  <!-- Compacta a propósito: a la altura de un portátil tiene que asomar
+       el estante, que es el trabajo. -->
+  <section class="relative overflow-hidden" data-seccion="inicio">
     <div class="reticula absolute inset-0 opacity-60" aria-hidden="true"></div>
 
-    <div class="contenedor relative pt-16 pb-14 md:pt-24 md:pb-20">
-      <div class="grid gap-12 lg:grid-cols-[1fr_18rem] lg:gap-16 items-start">
-        <div>
-          <p class="indice">01 — {t.inicio.rotulo}</p>
-
-          <h1 class="mt-5 font-[family-name:var(--font-titulo)] font-light text-[3.25rem] sm:text-7xl lg:text-8xl leading-[0.88] tracking-[-0.03em]">
+    <div class="contenedor relative pt-10 pb-10 md:pt-14 md:pb-12">
+      <div class="grid gap-8 grid-cols-[1fr_7.5rem] sm:grid-cols-[1fr_11rem] lg:grid-cols-[1fr_13rem] lg:gap-16 items-start">
+        <div class="min-w-0">
+          <h1 class="font-[family-name:var(--font-titulo)] font-light text-[2.75rem] sm:text-6xl lg:text-7xl leading-[0.9] tracking-[-0.03em]">
             Beñat<br />Errazkin
           </h1>
 
-          <div class="mt-8 h-px w-full bg-tinta" aria-hidden="true"></div>
-
-          <!-- Lo que se lee de un vistazo. La presentación larga va en el
-               portfolio en PDF y en la descripción para buscadores. -->
-          <ul class="mt-8 grid gap-2">
-            {[...t.inicio.datos, SITIO.programas.join(' · ')].map((dato) => (
-              <li class="rotulo text-tinta">{dato}</li>
-            ))}
-          </ul>
-
-          <div class="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href={rutaSeccion('contacto', idioma)}
-              class="rotulo h-11 px-6 inline-flex items-center gap-3 border border-tinta bg-tinta text-papel hover:bg-papel hover:text-tinta pulsable"
-            >
-              {t.inicio.contacto}
-              <span aria-hidden="true" class="w-5 h-px bg-current"></span>
-            </a>
-            <BotonCV idioma={idioma} tono="linea" />
-            <BotonPortfolio idioma={idioma} tono="linea" />
-          </div>
+          <!-- Lo que se recuerda de él: su manera de proyectar. -->
+          <p class="mt-5 max-w-[34ch] font-[family-name:var(--font-titulo)] text-lg sm:text-xl leading-snug text-tinta">
+            {t.inicio.lema}
+          </p>
         </div>
 
-        <!-- Retrato, enmarcado como una lámina -->
-        <figure class="relative lg:mt-2 max-w-[18rem]">
-          <div class="border border-tinta p-2 bg-papel">
+        <!-- Retrato, enmarcado como una lámina. Las marcas de las esquinas
+             van sobre el propio marco. -->
+        <figure class="relative">
+          <div class="relative border border-tinta p-1.5 sm:p-2 bg-papel">
             <Image
               src={retrato}
               alt={`${SITIO.nombreCompleto}, ${t.inicio.rotulo.toLowerCase()}`}
-              widths={[320, 640, 800]}
-              sizes="(min-width: 40rem) 18rem, 90vw"
+              widths={[240, 480, 640]}
+              sizes="(min-width: 64rem) 13rem, (min-width: 40rem) 11rem, 7.5rem"
               class="w-full h-auto object-cover"
               loading="eager"
             />
+            <span class="absolute -top-1.5 -left-1.5 w-3 h-3 border-t border-l border-trazo" aria-hidden="true"></span>
+            <span class="absolute -top-1.5 -right-1.5 w-3 h-3 border-t border-r border-trazo" aria-hidden="true"></span>
+            <span class="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b border-l border-trazo" aria-hidden="true"></span>
+            <span class="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b border-r border-trazo" aria-hidden="true"></span>
           </div>
-          <span class="absolute -top-1.5 -left-1.5 w-3 h-3 border-t border-l border-trazo" aria-hidden="true"></span>
-          <span class="absolute -top-1.5 -right-1.5 w-3 h-3 border-t border-r border-trazo" aria-hidden="true"></span>
-          <span class="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b border-l border-trazo" aria-hidden="true"></span>
-          <span class="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b border-r border-trazo" aria-hidden="true"></span>
-          <figcaption class="mt-3 rotulo text-gris">{SITIO.nombreCompleto}</figcaption>
         </figure>
+      </div>
+
+      <div class="mt-8 h-px w-full bg-tinta" aria-hidden="true"></div>
+
+      <div class="mt-7 flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
+        <!-- Lo que se lee de un vistazo: el título primero, en tinta; lo
+             demás, en gris. La presentación larga va en el PDF. -->
+        <ul class="grid gap-2">
+          {[...t.inicio.datos, SITIO.programas.join(' · ')].map((dato, i) => (
+            <li class:list={['rotulo', i === 0 ? 'text-tinta' : 'text-gris']}>{dato}</li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href={rutaSeccion('contacto', idioma)}
+            class="rotulo h-11 px-6 inline-flex items-center gap-3 border border-tinta bg-tinta text-papel hover:bg-papel hover:text-tinta pulsable"
+          >
+            {t.inicio.contacto}
+            <span aria-hidden="true" class="w-5 h-px bg-current"></span>
+          </a>
+          <BotonCV idioma={idioma} tono="linea" />
+          <BotonPortfolio idioma={idioma} tono="linea" />
+        </div>
       </div>
     </div>
   </section>

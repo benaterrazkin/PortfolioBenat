@@ -1,5 +1,5 @@
 {
-  "titular": "Arquitecto",
+  "titular": "Graduado en Arquitectura",
   "resumen": "Arquitecto creativo con experiencia en modelado 3D y renderizado, enfocado en diseños innovadores y sostenibles. Me apasiona integrar soluciones ecológicas en proyectos arquitectónicos, garantizando la estética y minimizando el impacto ambiental. Busco aplicar mi experiencia para impulsar iniciativas de arquitectura sostenible en una organización con visión de futuro.",
   "secciones": {
     "perfil": "Objetivo profesional",
@@ -71,7 +71,12 @@
       "centro": "Hernani BHI"
     }
   ],
-  "programas": ["Revit", "Rhinoceros", "AutoCAD", "Programas de renderizado"],
+  "programas": [
+    "Revit",
+    "Rhinoceros",
+    "AutoCAD",
+    "Programas de renderizado"
+  ],
   "habilidades": [
     "Trabajo en equipo",
     "Capacidad de trabajo",
@@ -82,9 +87,23 @@
     "Compromiso"
   ],
   "idiomas": [
-    { "lengua": "Euskera", "nivel": "Nativo" },
-    { "lengua": "Español", "nivel": "Nativo" },
-    { "lengua": "Inglés", "nivel": "Nivel avanzado" }
+    {
+      "lengua": "Euskera",
+      "nivel": "Nativo"
+    },
+    {
+      "lengua": "Español",
+      "nivel": "Nativo"
+    },
+    {
+      "lengua": "Inglés",
+      "nivel": "Nivel avanzado"
+    }
   ],
-  "otros": [{ "etiqueta": "Carnet de conducir", "valor": "A1 y B" }]
+  "otros": [
+    {
+      "etiqueta": "Carnet de conducir",
+      "valor": "A1 y B"
+    }
+  ]
 }

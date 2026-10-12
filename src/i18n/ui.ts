@@ -23,11 +23,13 @@ const es = {
     privacidad: 'Aviso legal',
   },
   inicio: {
-    rotulo: 'Arquitecto',
+    rotulo: 'Graduado en Arquitectura',
+    /** Lo que se recuerda de Beñat, bajo su nombre. */
+    lema: 'Rehabilitación y patrimonio. Del dibujo a la maqueta.',
     entradilla:
-      'Arquitecto recién titulado por la UPV/EHU, cursando el máster habilitante en la ETSAB. Trabajo el proyecto desde el dibujo, el modelado tridimensional y la construcción, con atención al lugar y al impacto de lo que se construye.',
+      'Graduado en Arquitectura por la UPV/EHU y cursando el máster habilitante en la ETSAB. Trabajo el proyecto desde el dibujo, el modelado tridimensional y la construcción, con atención al lugar y al impacto de lo que se construye.',
     /** Lo que se lee de un vistazo bajo el nombre. Los programas salen de config/sitio.ts. */
-    datos: ['Arquitecto · UPV/EHU 2025', 'Máster habilitante · ETSAB', 'Barcelona · Euskera · Castellano · Inglés'],
+    datos: ['Graduado en Arquitectura · UPV/EHU 2025', 'Máster habilitante en curso · ETSAB', 'Barcelona · Euskera · Castellano · Inglés'],
     verProyectos: 'Ver proyectos',
     contacto: 'Contacto',
     cv: 'CV',
@@ -36,7 +38,7 @@ const es = {
   },
   proyectos: {
     titulo: 'Proyectos',
-    entradilla: 'Selección de trabajos académicos y profesionales.',
+    entradilla: 'Selección de trabajos académicos.',
     vacio: 'Todavía no hay proyectos publicados. Pronto habrá novedades.',
     ficha: {
       anio: 'Año',
@@ -103,6 +105,7 @@ const es = {
     enviando: 'Enviando…',
     exito: 'Mensaje enviado. Gracias por escribir: te responderé lo antes posible.',
     error: 'No se ha podido enviar el mensaje. Escribe directamente a {correo}.',
+    sinConectar: 'El formulario no está disponible ahora mismo. Escríbeme directamente a',
     obligatorio: 'Este campo es obligatorio.',
     avisoDatos: 'Tus datos solo se usan para responderte.',
     leerPrivacidad: 'Leer el aviso legal',
@@ -114,9 +117,9 @@ const es = {
   },
   meta: {
     inicio: {
-      titulo: 'Arquitecto',
+      titulo: 'Graduado en Arquitectura',
       descripcion:
-        'Portfolio de Beñat Errazkin Bermejo, arquitecto por la UPV/EHU: proyectos de arquitectura, dibujo y modelado tridimensional, y forma de ponerse en contacto.',
+        'Portfolio de Beñat Errazkin Bermejo, graduado en Arquitectura por la UPV/EHU: proyectos de arquitectura, dibujo y modelado tridimensional, y forma de ponerse en contacto.',
     },
     privacidad: {
       titulo: 'Aviso legal',
@@ -142,10 +145,11 @@ const en: Textos = {
     privacidad: 'Legal notice',
   },
   inicio: {
-    rotulo: 'Architect',
+    rotulo: 'Architecture graduate',
+    lema: 'Refurbishment and heritage. From drawing to model.',
     entradilla:
-      'Architect, recently graduated from the UPV/EHU and currently taking the professional master at ETSAB. I work on projects through drawing, three-dimensional modelling and construction, with attention to the site and to the impact of what gets built.',
-    datos: ['Architect · UPV/EHU 2025', "Professional master's · ETSAB", 'Barcelona · Basque · Spanish · English'],
+      'Architecture graduate from the UPV/EHU, currently taking the professional master at ETSAB. I work on projects through drawing, three-dimensional modelling and construction, with attention to the site and to the impact of what gets built.',
+    datos: ['Architecture graduate · UPV/EHU 2025', "Professional master's in progress · ETSAB", 'Barcelona · Basque · Spanish · English'],
     verProyectos: 'View projects',
     contacto: 'Contact',
     cv: 'CV',
@@ -154,7 +158,7 @@ const en: Textos = {
   },
   proyectos: {
     titulo: 'Projects',
-    entradilla: 'A selection of academic and professional work.',
+    entradilla: 'A selection of academic work.',
     vacio: 'No projects published yet. New work coming soon.',
     ficha: {
       anio: 'Year',
@@ -221,6 +225,7 @@ const en: Textos = {
     enviando: 'Sending…',
     exito: 'Message sent. Thanks for writing: I will reply as soon as possible.',
     error: 'The message could not be sent. Please write directly to {correo}.',
+    sinConectar: 'The form is not available right now. Please write to me directly at',
     obligatorio: 'This field is required.',
     avisoDatos: 'Your details are only used to reply to you.',
     leerPrivacidad: 'Read the legal notice',
@@ -232,9 +237,9 @@ const en: Textos = {
   },
   meta: {
     inicio: {
-      titulo: 'Architect',
+      titulo: 'Architecture graduate',
       descripcion:
-        'Portfolio of Beñat Errazkin Bermejo, architect (UPV/EHU): architecture projects, drawing and three-dimensional modelling, and how to get in touch.',
+        'Portfolio of Beñat Errazkin Bermejo, architecture graduate (UPV/EHU): architecture projects, drawing and three-dimensional modelling, and how to get in touch.',
     },
     privacidad: {
       titulo: 'Legal notice',
@@ -258,10 +263,11 @@ const eu: Textos = {
     privacidad: 'Lege oharra',
   },
   inicio: {
-    rotulo: 'Arkitektoa',
+    rotulo: 'Arkitekturan graduatua',
+    lema: 'Birgaitzea eta ondarea. Marrazkitik maketara.',
     entradilla:
-      'UPV/EHUn arkitektura ikasi berri duen arkitektoa, gaur egun ETSABeko master gaitzailea egiten. Proiektua marrazketatik, hiru dimentsioko modelizaziotik eta eraikuntzatik lantzen dut, lekuari eta eraikitzen denaren eraginari arreta jarrita.',
-    datos: ['Arkitektoa · UPV/EHU 2025', 'Master gaitzailea · ETSAB', 'Bartzelona · Euskara · Gaztelania · Ingelesa'],
+      'UPV/EHUn Arkitekturan graduatua, gaur egun ETSABeko master gaitzailea egiten. Proiektua marrazketatik, hiru dimentsioko modelizaziotik eta eraikuntzatik lantzen dut, lekuari eta eraikitzen denaren eraginari arreta jarrita.',
+    datos: ['Arkitekturan graduatua · UPV/EHU 2025', 'Master gaitzailea, egiten · ETSAB', 'Bartzelona · Euskara · Gaztelania · Ingelesa'],
     verProyectos: 'Ikusi proiektuak',
     contacto: 'Kontaktua',
     cv: 'CVa',
@@ -270,7 +276,7 @@ const eu: Textos = {
   },
   proyectos: {
     titulo: 'Proiektuak',
-    entradilla: 'Lan akademiko eta profesionalen hautaketa.',
+    entradilla: 'Lan akademikoen hautaketa.',
     vacio: 'Oraindik ez dago proiekturik argitaratuta. Laster izango dira berriak.',
     ficha: {
       anio: 'Urtea',
@@ -337,6 +343,7 @@ const eu: Textos = {
     enviando: 'Bidaltzen…',
     exito: 'Mezua bidali da. Eskerrik asko idazteagatik: ahalik eta azkarren erantzungo dizut.',
     error: 'Ezin izan da mezua bidali. Idatzi zuzenean {correo} helbidera.',
+    sinConectar: 'Formularioa ez dago erabilgarri une honetan. Idatzi zuzenean helbide honetara:',
     obligatorio: 'Eremu hau bete beharrekoa da.',
     avisoDatos: 'Zure datuak erantzuteko soilik erabiltzen dira.',
     leerPrivacidad: 'Irakurri lege oharra',
@@ -348,9 +355,9 @@ const eu: Textos = {
   },
   meta: {
     inicio: {
-      titulo: 'Arkitektoa',
+      titulo: 'Arkitekturan graduatua',
       descripcion:
-        'Beñat Errazkin Bermejoren portfolioa, UPV/EHUko arkitektoa: arkitektura proiektuak, marrazketa eta hiru dimentsioko modelizazioa, eta harremanetan jartzeko modua.',
+        'Beñat Errazkin Bermejoren portfolioa, UPV/EHUn Arkitekturan graduatua: arkitektura proiektuak, marrazketa eta hiru dimentsioko modelizazioa, eta harremanetan jartzeko modua.',
     },
     privacidad: {
       titulo: 'Lege oharra',
@@ -374,10 +381,11 @@ const ca: Textos = {
     privacidad: 'Avís legal',
   },
   inicio: {
-    rotulo: 'Arquitecte',
+    rotulo: 'Graduat en Arquitectura',
+    lema: 'Rehabilitació i patrimoni. Del dibuix a la maqueta.',
     entradilla:
-      "Arquitecte acabat de titular per la UPV/EHU, cursant el màster habilitant a l'ETSAB. Treballo el projecte des del dibuix, el modelatge tridimensional i la construcció, amb atenció al lloc i a l'impacte del que es construeix.",
-    datos: ['Arquitecte · UPV/EHU 2025', 'Màster habilitant · ETSAB', 'Barcelona · Basc · Castellà · Anglès'],
+      "Graduat en Arquitectura per la UPV/EHU i cursant el màster habilitant a l'ETSAB. Treballo el projecte des del dibuix, el modelatge tridimensional i la construcció, amb atenció al lloc i a l'impacte del que es construeix.",
+    datos: ['Graduat en Arquitectura · UPV/EHU 2025', 'Màster habilitant en curs · ETSAB', 'Barcelona · Basc · Castellà · Anglès'],
     verProyectos: 'Veure projectes',
     contacto: 'Contacte',
     cv: 'CV',
@@ -386,7 +394,7 @@ const ca: Textos = {
   },
   proyectos: {
     titulo: 'Projectes',
-    entradilla: 'Selecció de treballs acadèmics i professionals.',
+    entradilla: 'Selecció de treballs acadèmics.',
     vacio: 'Encara no hi ha projectes publicats. Aviat hi haurà novetats.',
     ficha: {
       anio: 'Any',
@@ -453,6 +461,7 @@ const ca: Textos = {
     enviando: 'Enviant…',
     exito: 'Missatge enviat. Gràcies per escriure: et respondré al més aviat possible.',
     error: "No s'ha pogut enviar el missatge. Escriu directament a {correo}.",
+    sinConectar: 'El formulari no està disponible ara mateix. Escriu-me directament a',
     obligatorio: 'Aquest camp és obligatori.',
     avisoDatos: "Les teves dades només s'utilitzen per respondre't.",
     leerPrivacidad: "Llegeix l'avís legal",
@@ -464,9 +473,9 @@ const ca: Textos = {
   },
   meta: {
     inicio: {
-      titulo: 'Arquitecte',
+      titulo: 'Graduat en Arquitectura',
       descripcion:
-        "Portfolio de Beñat Errazkin Bermejo, arquitecte per la UPV/EHU: projectes d'arquitectura, dibuix i modelatge tridimensional, i com posar-s'hi en contacte.",
+        "Portfolio de Beñat Errazkin Bermejo, graduat en Arquitectura per la UPV/EHU: projectes d'arquitectura, dibuix i modelatge tridimensional, i com posar-s'hi en contacte.",
     },
     privacidad: {
       titulo: 'Avís legal',
