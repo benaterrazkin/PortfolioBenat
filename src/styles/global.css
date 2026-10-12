@@ -319,20 +319,17 @@
 .cara--imagen img { max-height: 70vh; }
 .cuaderno .zona { display: none; }
 
-/* Las flechas de las zonas que pasan hoja: dicen que el cuaderno se
-   pasa, sin tapar el dibujo. Tenues en reposo; con ratón se marcan al
-   apuntar. Desaparecen en el extremo donde ya no hay más hojas. */
+/* Las flechas de las zonas que pasan hoja: solo el trazo negro, sin
+   fondo, para decir que el cuaderno se pasa sin tapar el dibujo. Tenues
+   en reposo; con ratón se marcan al apuntar. Desaparecen en el extremo
+   donde ya no hay más hojas. */
 .cuaderno .zona .flecha {
   position: absolute;
   top: 50%;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0.375rem;
-  border-radius: 999px;
+  width: 1.75rem;
+  height: 1.75rem;
   color: var(--color-tinta);
-  background-color: rgb(255 255 255 / 0.85);
-  box-shadow: 0 2px 10px rgb(20 22 26 / 0.12);
-  opacity: 0.55;
+  opacity: 0.5;
   transform: translateY(-50%);
   transition: opacity 160ms var(--ease-out);
   pointer-events: none;
@@ -341,7 +338,7 @@
 .cuaderno .zona--derecha .flecha { right: 0.75rem; }
 .cuaderno .zona[aria-disabled="true"] .flecha { opacity: 0; }
 @media (hover: hover) and (pointer: fine) {
-  .cuaderno .zona .flecha { opacity: 0.3; }
+  .cuaderno .zona .flecha { opacity: 0.35; }
   .cuaderno .zona:hover .flecha,
   .cuaderno .zona:focus-visible .flecha { opacity: 1; }
 }

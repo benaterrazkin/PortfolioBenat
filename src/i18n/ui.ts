@@ -24,8 +24,8 @@ const es = {
   },
   inicio: {
     rotulo: 'Graduado en Arquitectura',
-    /** Lo que se recuerda de Beñat, bajo su nombre. */
-    lema: 'Rehabilitación y patrimonio. Del dibujo a la maqueta.',
+    /** Bajo el nombre. De momento, solo la profesión; Beñat lo concretará. */
+    lema: 'Arquitecto',
     entradilla:
       'Graduado en Arquitectura por la UPV/EHU y cursando el máster habilitante en la ETSAB. Trabajo el proyecto desde el dibujo, el modelado tridimensional y la construcción, con atención al lugar y al impacto de lo que se construye.',
     /** Lo que se lee de un vistazo bajo el nombre. Los programas salen de config/sitio.ts. */
@@ -146,7 +146,7 @@ const en: Textos = {
   },
   inicio: {
     rotulo: 'Architecture graduate',
-    lema: 'Refurbishment and heritage. From drawing to model.',
+    lema: 'Architect',
     entradilla:
       'Architecture graduate from the UPV/EHU, currently taking the professional master at ETSAB. I work on projects through drawing, three-dimensional modelling and construction, with attention to the site and to the impact of what gets built.',
     datos: ['Architecture graduate · UPV/EHU 2025', "Professional master's in progress · ETSAB", 'Barcelona · Basque · Spanish · English'],
@@ -264,7 +264,7 @@ const eu: Textos = {
   },
   inicio: {
     rotulo: 'Arkitekturan graduatua',
-    lema: 'Birgaitzea eta ondarea. Marrazkitik maketara.',
+    lema: 'Arkitektoa',
     entradilla:
       'UPV/EHUn Arkitekturan graduatua, gaur egun ETSABeko master gaitzailea egiten. Proiektua marrazketatik, hiru dimentsioko modelizaziotik eta eraikuntzatik lantzen dut, lekuari eta eraikitzen denaren eraginari arreta jarrita.',
     datos: ['Arkitekturan graduatua · UPV/EHU 2025', 'Master gaitzailea, egiten · ETSAB', 'Bartzelona · Euskara · Gaztelania · Ingelesa'],
@@ -382,7 +382,7 @@ const ca: Textos = {
   },
   inicio: {
     rotulo: 'Graduat en Arquitectura',
-    lema: 'Rehabilitació i patrimoni. Del dibuix a la maqueta.',
+    lema: 'Arquitecte',
     entradilla:
       "Graduat en Arquitectura per la UPV/EHU i cursant el màster habilitant a l'ETSAB. Treballo el projecte des del dibuix, el modelatge tridimensional i la construcció, amb atenció al lloc i a l'impacte del que es construeix.",
     datos: ['Graduat en Arquitectura · UPV/EHU 2025', 'Màster habilitant en curs · ETSAB', 'Barcelona · Basc · Castellà · Anglès'],

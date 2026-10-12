@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import TapaCuaderno from './TapaCuaderno.astro';
 import type { Cara } from '../data/cuaderno';
 import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
@@ -43,94 +44,24 @@ const cajetin =
 ---
 
 <div class:list={clases} data-cara={cara.indice}>
+  {/* La tapa: la misma que sale en la pila de cuadernos de la portada. */}
   {
     cara.tipo === 'tapa' && (
-      <div class="cara-caja flex flex-col">
-        {/* En tinta y no en rojo: el rojo sobre el corcho no llega al contraste mínimo. */}
-        <p class="indice shrink-0" style="color: var(--color-tinta)">{String(numeroCuaderno).padStart(2, '0')}</p>
-
-        {cara.lamina ? (
-          <div class="flex-1 min-h-0 flex items-center justify-center py-[3%]">
-            <Image
-              src={cara.lamina.fuente}
-              alt={cara.lamina.alt}
-              widths={[640, 1024, 1600]}
-              sizes="(min-width: 60rem) 40vw, 85vw"
-              class="max-w-full max-h-full w-auto h-auto object-contain"
-              loading={prioritaria ? 'eager' : 'lazy'}
-              decoding="async"
-            />
-          </div>
-        ) : (
-          <div class="hueco-diagrama my-[3%]">
-            <span class="rotulo text-tinta/80">{t.cuaderno.diagrama}</span>
-          </div>
-        )}
-
-        <div class="shrink-0">
-          <h3 class="font-[family-name:var(--font-titulo)] font-semibold text-[clamp(1.25rem,2.4vw,2.25rem)] leading-[1.05] tracking-[-0.02em] max-w-[22ch]">
-            {cara.titulo}
-          </h3>
-
-          {/* La franja de abajo: una sola fila informativa. Los datos del
-              proyecto a la izquierda y los programas pegados al borde
-              derecho de la hoja, línea contra línea. Es la única vez que
-              aparecen en todo el cuaderno. */}
-          <div class="mt-3 pt-2.5 border-t border-tinta/40 grid gap-x-[6%] grid-cols-[1fr_auto] items-start">
-            <ul class="grid gap-px">
-              {cara.claves.map((clave) => (
-                <li class="rotulo text-tinta leading-snug">{clave}</li>
-              ))}
-            </ul>
-
-            <ul class="grid gap-px text-right">
-              {cara.herramientas.map((herramienta) => (
-                <li class="rotulo text-tinta leading-snug">{herramienta}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+      <TapaCuaderno
+        numero={numeroCuaderno}
+        titulo={cara.titulo}
+        claves={cara.claves}
+        herramientas={cara.herramientas}
+        lamina={cara.lamina}
+        rotuloHueco={t.cuaderno.diagrama}
+        prioritaria={prioritaria}
+      />
     )
   }
 
-  {/* El cartón de delante, por dentro: la ficha del proyecto. Es lo que se
-      ve a la izquierda al abrir el cuaderno, frente al texto. */}
-  {
-    cara.tipo === 'tapa-interior' && cara.ficha && (
-      <div class="cara-caja flex flex-col">
-        {cara.ficha.lamina && (
-          <div class="flex-1 min-h-0 flex items-center justify-center pb-[4%]">
-            <Image
-              src={cara.ficha.lamina.fuente}
-              alt={cara.ficha.lamina.alt}
-              widths={[640, 1024]}
-              sizes="(min-width: 60rem) 30vw, 70vw"
-              class="max-w-full max-h-full w-auto h-auto object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        )}
-        <div class="shrink-0 pt-2.5 border-t border-tinta/40 grid gap-x-[6%] gap-y-3 sm:grid-cols-[1fr_auto] items-start">
-          <ul class="grid gap-px">
-            {cara.ficha.claves.map((clave) => (
-              <li class="rotulo text-tinta leading-snug">{clave}</li>
-            ))}
-          </ul>
-          <ul class="grid gap-px sm:text-right">
-            {cara.ficha.herramientas.map((herramienta) => (
-              <li class="rotulo text-tinta leading-snug">{herramienta}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    )
-  }
-
-  {/* El cartón de atrás y la tapa trasera van lisos, como en cualquier
-      libro. La vuelta al principio está fuera del cuaderno. */}
-  {((cara.tipo === 'tapa-interior' && !cara.ficha) || cara.tipo === 'contratapa') && (
+  {/* El cartón por dentro y la tapa trasera van lisos, como en cualquier
+      libro: la tapa por detrás es la primera hoja y va vacía. */}
+  {(cara.tipo === 'tapa-interior' || cara.tipo === 'contratapa') && (
     <span class="sr-only">{t.cuaderno.enBlanco}</span>
   )}
 
@@ -244,18 +175,6 @@ const cajetin =
     bottom: clamp(0.625rem, 1.3vw, 1.5rem);
     right: clamp(0.625rem, 1.3vw, 1.5rem);
     pointer-events: none;
-  }
-
-  /* El hueco del diagrama conceptual, mientras no haya diagrama. En cuanto
-     la página reciba su "lamina", este recuadro desaparece solo. */
-  .hueco-diagrama {
-    flex: 1;
-    min-height: 0;
-    display: grid;
-    place-items: center;
-    /* Sobre el cartón, una línea de tinta rebajada se ve mejor que la
-       línea gris que usa el resto de la web. */
-    border: 1px dashed rgb(20 22 26 / 0.38);
   }
 
   /* El texto del proyecto: columna de 60 caracteres por línea, justificada.

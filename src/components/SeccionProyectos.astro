@@ -6,8 +6,8 @@ import { textos } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
 
 /**
- * Los proyectos: el estante con un libro por proyecto. Los cuadernos se
- * abren encima al pulsar un libro (VisorCuaderno.astro), no van aquí.
+ * Los proyectos: la pila de cuadernos, apoyada en la misma mesa sobre la
+ * que luego se abren (VisorCuaderno.astro).
  */
 interface Props {
   idioma: Idioma;
@@ -18,10 +18,29 @@ const t = textos(idioma);
 const hay = cuadernos(idioma).length > 0;
 ---
 
-<section id="proyectos" class="anclada border-t border-linea pb-20 md:pb-28" data-seccion="proyectos">
+<section id="proyectos" class="anclada border-t border-linea" data-seccion="proyectos">
   <TituloSeccion titulo={t.proyectos.titulo} entradilla={t.proyectos.entradilla} />
 
-  <div class="contenedor">
-    {hay ? <Estante idioma={idioma} /> : <p class="pb-24 text-gris">{t.proyectos.vacio}</p>}
-  </div>
+  {
+    hay ? (
+      <div class="mesa py-10 md:py-14">
+        <div class="contenedor">
+          <Estante idioma={idioma} />
+        </div>
+      </div>
+    ) : (
+      <p class="contenedor pb-24 text-gris">{t.proyectos.vacio}</p>
+    )
+  }
 </section>
+
+<style>
+  /* La misma mesa con retícula que hay bajo los cuadernos abiertos. */
+  .mesa {
+    background-color: var(--color-mesa);
+    background-image:
+      linear-gradient(to right, rgb(20 22 26 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(20 22 26 / 0.05) 1px, transparent 1px);
+    background-size: 5rem 5rem;
+  }
+</style>

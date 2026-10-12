@@ -147,20 +147,30 @@ Detalles que importan:
   estante y el lugar en el PDF.
 - **`herramientas`**: tres o cuatro, las de verdad de ese proyecto.
 
-### El estante
+### La pila de cuadernos
 
-La sección Proyectos es un estante con los libros **de frente**, como el
-escaparate de una librería (`src/components/Estante.astro`). Cada tapa enseña el
-**esquema conceptual** del proyecto (`diagrama` en el `.json`) con el lomo del
-color de `lomo`, y debajo el número, el título y lugar · año. Al pasar por
-encima, el libro se levanta y deja ver la imagen del proyecto (`portada`). Sale
-solo de los `.json`: no hay que tocar nada para que aparezca un proyecto nuevo.
+La sección Proyectos enseña los cuadernos **cerrados**, tal cual son: la tapa de
+corcho con la cinta de color (`lomo`), el número, el boceto (`diagrama`), el
+título y la ficha, en las mismas proporciones apaisadas que tienen por dentro
+(`src/components/Estante.astro`). La tapa es un único componente,
+`src/components/TapaCuaderno.astro`, que se usa también como primera cara del
+cuaderno: se ve igual en los dos sitios.
 
-**Los cuadernos ya no están en la página.** Al pulsar un libro, su cuaderno se
-abre en grande encima de la web (`src/components/VisorCuaderno.astro`), con
-botones de proyecto anterior / siguiente y la ✕ (o Esc) para cerrar. Cada
-cuaderno tiene su dirección propia, `…/es/#cuaderno-<id>`: quien abre ese
-enlace entra con el cuaderno ya abierto, y "atrás" en el navegador lo cierra.
+- **Con ratón**, los cuadernos están superpuestos en fila, como una pila: de
+  cada uno asoma la cinta, el número y el principio del título. Al pasar por
+  uno, los de al lado se apartan y se ve entero; al quitar el ratón vuelven a la
+  pila.
+- **En el móvil**, una fila de cuadernos que se desliza de lado.
+
+Sale solo de los `.json`: no hay que tocar nada para que aparezca un proyecto
+nuevo.
+
+**Los cuadernos no están en la página.** Al pulsar uno, se abre en grande encima
+de la web (`src/components/VisorCuaderno.astro`), **cerrado**, con la misma tapa
+sola a la derecha sobre la mesa. Al pasar la primera hoja se ve la tapa por
+detrás, vacía, a la izquierda, y el texto a la derecha. Hay botones de proyecto
+anterior / siguiente y la ✕ (o Esc) para cerrar. Cada cuaderno tiene su
+dirección propia, `…/es/#cuaderno-<id>`, y "atrás" en el navegador lo cierra.
 
 ### Los esquemas conceptuales
 

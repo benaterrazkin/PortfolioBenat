@@ -64,15 +64,8 @@ export type Cara =
     })
   /** La tapa trasera, por fuera: cartón y cinta, sin nada escrito. */
   | (Comun & { tipo: 'contratapa' })
-  /**
-   * El cartón por dentro, en cualquiera de las dos tapas. El de delante
-   * lleva la ficha del proyecto: el cuaderno se abre por ahí, con la
-   * ficha a la izquierda y el texto a la derecha.
-   */
-  | (Comun & {
-      tipo: 'tapa-interior';
-      ficha?: { claves: string[]; herramientas: string[]; lamina?: LaminaDeCara };
-    })
+  /** El cartón por dentro, en cualquiera de las dos tapas: liso, vacío. */
+  | (Comun & { tipo: 'tapa-interior' })
   | (Comun & { tipo: 'presentacion'; titulo: string; parrafos: string[] })
   | (Comun & { tipo: 'lamina'; lamina: LaminaDeCara })
   /** Hoja de papel sin nada: existe, es blanca y se pasa. */
@@ -179,14 +172,7 @@ export function cuaderno(p: Proyecto, numero: number): Cuaderno {
       herramientas: p.herramientas,
       lamina: p.diagrama ? resolver(p.diagrama) : undefined,
     },
-    {
-      tipo: 'tapa-interior',
-      ficha: {
-        claves: clavesDe(p),
-        herramientas: p.herramientas,
-        lamina: p.diagrama ? resolver(p.diagrama) : undefined,
-      },
-    },
+    { tipo: 'tapa-interior' },
     ...contenido,
     { tipo: 'tapa-interior' },
     { tipo: 'contratapa' },

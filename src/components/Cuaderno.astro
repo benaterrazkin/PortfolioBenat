@@ -343,12 +343,17 @@ const comunes = {
       });
     });
 
-    /* Abrir por la primera doble página con contenido: la ficha (el cartón
-     * de delante, por dentro) y el texto. La tapa sigue ahí para quien
-     * vuelva atrás. Lo pide la ventana de los cuadernos al abrirlo. */
+    /* Se abre cerrado, en la tapa: la misma que se ha pulsado en la pila.
+     * En pantalla ancha, la tapa sola a la derecha sobre la mesa; en
+     * estrecha, el carril se coloca en la tapa y no en la mesa vacía. Lo
+     * pide la ventana de los cuadernos al abrirlo. */
     cuaderno.addEventListener('cuaderno:abrir', () => {
-      irA(1);
-      if (!DOBLE.matches) carril.scrollLeft = caras[2]?.offsetLeft ?? 0;
+      irA(0);
+      if (!DOBLE.matches) {
+        cara = 1;
+        carril.scrollLeft = caras[1]?.offsetLeft ?? 0;
+        pintar();
+      }
     });
 
     /* Con el teclado, la hoja cambia sin girar: es un gesto que se repite

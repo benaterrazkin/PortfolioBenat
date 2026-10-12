@@ -1,17 +1,21 @@
 ---
-import { Image } from 'astro:assets';
+import TapaCuaderno from './TapaCuaderno.astro';
 import { cuadernos } from '../data/cuaderno';
 import { textos, formatear } from '../i18n/ui';
 import type { Idioma } from '../i18n/idiomas';
 
 /**
- * El estante: los proyectos como libros puestos de frente, igual que en
- * el escaparate de una librería. Cada tapa enseña el esquema conceptual
- * del proyecto y, al pasar por encima, se levanta y deja ver su imagen.
+ * La pila de cuadernos: un cuaderno cerrado por proyecto, con su tapa de
+ * corcho, su cinta de color y su boceto, en las mismas proporciones que
+ * tiene por dentro (A4 apaisado).
  *
- * Es el índice de la web. Cada libro es un enlace normal al cuaderno de su
- * proyecto (#cuaderno-<id>): con JavaScript, VisorCuaderno.astro lo abre
- * en grande encima de la página; sin él, la dirección sigue siendo buena.
+ * Con ratón, los cuadernos están superpuestos en fila: de cada uno asoma
+ * la cinta, el número y el principio del título. Al pasar por uno, los
+ * siguientes se apartan y se ve entero; al salir, vuelven a la pila. En
+ * pantallas táctiles o estrechas, la fila se desliza de lado.
+ *
+ * Cada cuaderno es un enlace a #cuaderno-<id>: VisorCuaderno.astro lo abre
+ * en grande, cerrado, con esta misma tapa.
  */
 interface Props {
   idioma: Idioma;
@@ -22,249 +26,148 @@ const t = textos(idioma);
 const lista = cuadernos(idioma);
 ---
 
-<nav id="estante" class="estante" aria-label={t.inicio.estante}>
-  <ul class="balda">
+<nav id="estante" class="pila" aria-label={t.inicio.estante} style={`--libros:${lista.length}`}>
+  <ul class="pila-fila">
     {
-      lista.map((c, i) => (
-        <li style={`--n:${i}`}>
-          <a
-            href={`#${c.ancla}`}
-            class="libro"
-            style={c.lomo ? `--color:${c.lomo}` : undefined}
-            data-libro={c.id}
-          >
-            <span class="libro-tapa">
-              {c.diagrama ? (
-                <Image
-                  src={c.diagrama.fuente}
-                  alt=""
-                  widths={[320, 560]}
-                  sizes="(min-width: 64rem) 15vw, (min-width: 40rem) 30vw, 45vw"
-                  class="libro-esquema"
-                  loading="lazy"
+      lista.map((c) => {
+        const tapa = c.caras.find((cara) => cara.tipo === 'tapa');
+        return (
+          <li>
+            <a
+              href={`#${c.ancla}`}
+              class="libro"
+              style={c.lomo ? `--lomo:${c.lomo}` : undefined}
+              data-libro={c.id}
+            >
+              {tapa && tapa.tipo === 'tapa' && (
+                <TapaCuaderno
+                  numero={c.numero}
+                  titulo={tapa.titulo}
+                  claves={tapa.claves}
+                  herramientas={tapa.herramientas}
+                  lamina={tapa.lamina}
+                  rotuloHueco={t.cuaderno.diagrama}
                 />
-              ) : (
-                <span class="libro-numero-grande" aria-hidden="true">
-                  {String(c.numero).padStart(2, '0')}
-                </span>
               )}
-              <Image
-                src={c.portada.fuente}
-                alt={c.portada.alt}
-                widths={[320, 640]}
-                sizes="(min-width: 64rem) 15vw, (min-width: 40rem) 30vw, 45vw"
-                class="libro-imagen"
-                loading="lazy"
-              />
-            </span>
-
-            <span class="libro-pie">
-              <span class="libro-numero" aria-hidden="true">{String(c.numero).padStart(2, '0')}</span>
-              <span class="libro-titulo">{c.titulo}</span>
-              {c.subtitulo && <span class="libro-subtitulo">{c.subtitulo}</span>}
-              <span class="libro-lugar">{[c.nombreCorto, c.anio].join(' · ')}</span>
-            </span>
-            <span class="sr-only">{formatear(t.cuaderno.irA, { titulo: c.titulo })}</span>
-          </a>
-        </li>
-      ))
+              <span class="sr-only">{formatear(t.cuaderno.irA, { titulo: c.titulo })}</span>
+            </a>
+          </li>
+        );
+      })
     }
   </ul>
 </nav>
 
 <style>
-  /* La balda: los libros de pie sobre una línea de tinta. */
-  .balda {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.75rem 1rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 2px solid var(--color-tinta);
-  }
-  @media (width >= 40rem) {
-    .balda { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-  @media (width >= 64rem) {
-    .balda { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; }
-    .libro-tapa { aspect-ratio: 3 / 4; }
+  .pila {
+    container-type: inline-size;
   }
 
-  .libro {
-    --color: var(--color-lomo);
+  .pila-fila {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    color: var(--color-tinta);
-    transition: transform 200ms var(--ease-out);
   }
 
-  /* La tapa: papel, con el lomo de color asomando a la izquierda. Arriba
-     el esquema; abajo, una franja del proyecto (ver .libro-imagen). En
-     el móvil, algo más baja, para no hacer bajar tanto. */
-  .libro-tapa {
-    --franja: 38%;
+  /* El cuaderno cerrado: corcho, la cinta del lomo a la izquierda y la
+     sombra de estar apoyado en la mesa. */
+  .libro {
+    --lomo-defecto: var(--color-lomo);
     position: relative;
-    display: grid;
-    place-items: center;
-    aspect-ratio: 4 / 5;
-    padding: 8% 8% calc(var(--franja) + 6%) 14%;
-    background-color: var(--color-hoja);
+    display: block;
+    aspect-ratio: 297 / 210;
+    background-color: var(--color-corcho);
     box-shadow:
-      inset 0.5rem 0 0 var(--color),
-      0 1px 8px rgb(20 22 26 / 0.1);
-    overflow: hidden;
+      0 2px 4px rgb(20 22 26 / 0.08),
+      0 10px 24px rgb(20 22 26 / 0.12);
     transition:
-      box-shadow 200ms var(--ease-out),
-      transform 160ms var(--ease-out);
+      transform 220ms var(--ease-out),
+      box-shadow 220ms var(--ease-out);
   }
-
-  :global(.libro-esquema) {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .libro-numero-grande {
-    font-family: 'Barlow Condensed', var(--font-titulo);
-    font-weight: 300;
-    font-size: clamp(3rem, 8vw, 5rem);
-    color: var(--color);
-    transform: scaleY(1.35);
-  }
-
-  /* La imagen del proyecto cubre la tapa entera, pero recortada: solo se
-     ve la franja de abajo, también en el móvil. Al apuntar, el recorte se
-     abre y la imagen ocupa toda la tapa. clip-path anima sin mover nada
-     de sitio. */
-  :global(.libro-imagen) {
+  .libro::before {
+    content: "";
     position: absolute;
-    inset: 0 0 0 0.5rem;
-    width: calc(100% - 0.5rem);
-    height: 100%;
-    object-fit: cover;
-    clip-path: inset(calc(100% - var(--franja)) 0 0 0);
-    transition: clip-path 250ms var(--ease-out);
-  }
-
-  .libro-subtitulo {
-    font-size: 0.8125rem;
-    line-height: 1.35;
-    color: var(--color-gris);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 0.125rem;
-  }
-
-  .libro-pie {
-    display: grid;
-    gap: 0.125rem;
-    padding-top: 0.875rem;
-  }
-  .libro-numero {
-    font-family: 'Barlow Condensed', var(--font-titulo);
-    font-weight: 300;
-    font-size: 2rem;
-    line-height: 1;
-    color: var(--color);
-    transform: scaleY(1.35);
-    transform-origin: left bottom;
-    margin-bottom: 0.5rem;
-  }
-  .libro-titulo {
-    font-family: var(--font-titulo);
-    font-weight: 500;
-    font-size: 0.9375rem;
-    line-height: 1.25;
-  }
-  .libro-lugar {
-    font-size: 0.6875rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-gris);
-  }
-
-  /* Al apuntar (solo con ratón: en el móvil el toque dejaría el libro
-     levantado) o al llegar con el tabulador: el libro se levanta y
-     enseña el proyecto. */
-  @media (hover: hover) and (pointer: fine) {
-    .libro:hover {
-      transform: translateY(-0.5rem);
-    }
-    .libro:hover .libro-tapa {
-      box-shadow:
-        inset 0.5rem 0 0 var(--color),
-        0 14px 28px rgb(20 22 26 / 0.18);
-    }
-    .libro:hover :global(.libro-imagen) {
-      clip-path: inset(0 0 0 0);
-    }
+    inset-block: 0;
+    left: 0;
+    width: clamp(0.75rem, 6%, 2.5rem);
+    background-color: var(--lomo, var(--lomo-defecto));
+    box-shadow: inset -1px 0 0 rgb(20 22 26 / 0.18);
   }
   .libro:focus-visible {
-    transform: translateY(-0.5rem);
     outline: 2px solid var(--color-tinta);
     outline-offset: 4px;
   }
-  .libro:focus-visible .libro-tapa {
-    box-shadow:
-      inset 0.5rem 0 0 var(--color),
-      0 14px 28px rgb(20 22 26 / 0.18);
-  }
-  .libro:focus-visible :global(.libro-imagen) {
-    clip-path: inset(0 0 0 0);
+  .libro:active {
+    transform: scale(0.99);
   }
 
-  /* Al pulsar, la tapa se hunde un poco: el clic se ha oído. */
-  .libro:active .libro-tapa {
-    transform: scale(0.98);
+  /* --- Táctil o estrecho: una fila que se desliza --- */
+  .pila-fila {
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-block: 0.5rem 1.5rem;
+  }
+  .pila-fila::-webkit-scrollbar {
+    display: none;
+  }
+  .pila-fila li {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
   }
 
-  /* Entrada escalonada, la primera vez que el estante aparece en
-     pantalla: los libros llegan uno detrás de otro, 50 ms entre cada
-     uno. Solo con JavaScript (sin él se ven siempre) y nunca bloquea los
-     clics. La activa el script de abajo. */
-  .estante[data-entrada] li {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  .estante[data-entrada].visto li {
-    opacity: 1;
-    transform: none;
-    transition:
-      opacity 300ms var(--ease-out),
-      transform 300ms var(--ease-out);
-    transition-delay: calc(var(--n) * 50ms);
+  /* --- Con ratón y sitio: la pila --- */
+  @media (hover: hover) and (pointer: fine) and (width >= 48rem) {
+    .pila {
+      /* Lo que mide cada cuaderno y lo que asoma de cada uno: los seis
+         caben justos a lo ancho, superpuestos. */
+      --ancho: 38cqw;
+      --paso: calc((100cqw - var(--ancho)) / (var(--libros) - 1));
+      --solape: calc(var(--ancho) - var(--paso));
+      overflow-x: clip;
+      padding-block: 1rem 2rem;
+    }
+    .pila-fila {
+      gap: 0;
+      overflow: visible;
+      scroll-snap-type: none;
+      padding: 0;
+    }
+    .pila-fila li {
+      flex: 0 0 var(--ancho);
+    }
+    .pila-fila li + li {
+      margin-left: calc(-1 * var(--solape));
+    }
+    /* Cada cuaderno echa sombra sobre el anterior, como en una pila. */
+    .libro {
+      box-shadow:
+        -6px 0 14px rgb(20 22 26 / 0.12),
+        0 10px 24px rgb(20 22 26 / 0.12);
+    }
+
+    /* Al pasar por uno (o llegar con el tabulador), los de detrás se
+       apartan y se ve entero; él se levanta un poco. */
+    .pila-fila li:hover ~ li .libro,
+    .pila-fila li:focus-within ~ li .libro {
+      transform: translateX(var(--solape));
+    }
+    .pila-fila li:hover .libro,
+    .pila-fila li:focus-within .libro {
+      transform: translateY(-0.375rem);
+      box-shadow:
+        -6px 0 14px rgb(20 22 26 / 0.12),
+        0 18px 34px rgb(20 22 26 / 0.2);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .libro:hover,
-    .libro:focus-visible,
-    .libro:active .libro-tapa {
-      transform: none;
-    }
-    .libro :global(.libro-imagen) {
+    .libro {
       transition: none;
+    }
+    .pila-fila li:hover .libro,
+    .pila-fila li:focus-within .libro,
+    .libro:active {
+      transform: none;
     }
   }
 </style>
-
-<script>
-  /* La entrada escalonada solo tiene sentido si el estante todavía no se
-   * ve al cargar: si ya está en pantalla (se ha entrado con #proyectos),
-   * o si se ha pedido menos movimiento, los libros salen tal cual. */
-  const estante = document.getElementById('estante');
-  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (estante && !quieto && estante.getBoundingClientRect().top > window.innerHeight) {
-    estante.setAttribute('data-entrada', '');
-    const vigia = new IntersectionObserver(
-      (entradas) => {
-        if (!entradas.some((e) => e.isIntersecting)) return;
-        estante.classList.add('visto');
-        vigia.disconnect();
-      },
-      { rootMargin: '0px 0px -15% 0px' },
-    );
-    vigia.observe(estante);
-  }
-</script>
