@@ -414,14 +414,13 @@
        seguidas se haga pesado. Con el teclado no hay giro (Cuaderno.astro). */
     --giro: 480ms;
 
-    /* Dos hojas A4 apaisadas, una al lado de otra: 594 × 210. Sale una
-       franja muy ancha, que es justo lo que piden los dibujos de
-       arquitectura —secciones, alzados, emplazamientos— porque son
-       anchos. Se mide contra el ancho disponible, no contra el alto. */
+    /* Dos hojas A4 verticales, una al lado de otra: 420 × 297, un A3
+       abierto, como los pliegos del PDF. Se mide contra el ancho
+       disponible y contra el alto de la ventana, lo que limite antes. */
     /* El 8rem que se descuenta es el aire a los lados: el cuaderno nunca
        llega al borde de la ventana. */
-    height: min(78svh, calc(min(100vw - 8rem, 96rem) * 210 / 594));
-    aspect-ratio: 594 / 210;
+    height: min(84svh, calc(min(100vw - 8rem, 96rem) * 297 / 420));
+    aspect-ratio: 420 / 297;
     width: auto;
     margin-inline: auto;
 
@@ -597,9 +596,9 @@
     width: 100%;
     margin: 0;
     scroll-snap-align: start;
-    /* Una sola hoja A4 apaisada. */
-    aspect-ratio: 297 / 210;
-    max-height: 76svh;
+    /* Una sola hoja A4 vertical. */
+    aspect-ratio: 210 / 297;
+    max-height: 80svh;
   }
   .con-js .hoja > .cara::after { display: none; }
 

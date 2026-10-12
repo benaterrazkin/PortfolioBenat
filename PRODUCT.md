@@ -36,7 +36,7 @@ Lo que Beñat quiere que se recuerde de él:
 ## Operating Context
 
 - El visitante entra por un enlace, mira la portada, recorre el estante de proyectos, abre uno o dos cuadernos y, si le interesa, descarga el portfolio o el CV o escribe.
-- El portfolio en PDF es el documento que se manda a los estudios: se genera desde la misma web y se maqueta por dobles páginas (pliegos de 594×210 mm).
+- El portfolio en PDF es el documento que se manda a los estudios: se genera desde la misma web y se maqueta por dobles páginas (pliegos de 420×297 mm: dos A4 verticales).
 - Cada proyecto tiene su propio enlace (`#cuaderno-<id>`) para mandarlo suelto.
 
 ## Capabilities and Constraints

@@ -13,7 +13,8 @@ import { SITIO } from '../../config/sitio';
  *  EL PORTFOLIO EN PDF
  *
  *  Se maqueta por PLIEGOS: cada página del PDF es una doble página de
- *  594×210 mm (dos A4 apaisados), salvo la portada, que va sola en A4.
+ *  420×297 mm (dos A4 verticales: un A3), salvo la portada, que va sola
+ *  en A4 vertical.
  *  Así cualquier visor —el del navegador, el del móvil, el del correo—
  *  enseña la doble página entera y las imágenes que cruzan el pliegue
  *  no se parten.
@@ -32,11 +33,15 @@ export function getStaticPaths() {
 
 /* Se dibuja en "píxeles de maqueta" a 10 px/mm y se escala a puntos al
  * abrir cada página: así las medidas se leen como milímetros ×10. */
-const P = 2970; // ancho de una página A4 apaisada
-const H = 2100; // alto
-const W = P * 2; // un pliego
+const P = 2100; // ancho de una página A4 vertical
+const H = 2970; // alto
+const W = P * 2; // un pliego: dos A4 verticales, un A3 apaisado
 const M = 130; // margen
-const K = 595.28 / H; // de píxel de maqueta a punto PDF
+const K = 841.89 / H; // de píxel de maqueta a punto PDF
+/* Las láminas, en su caja: debajo del número del proyecto y encima del
+ * cajetín, que va justo sobre el folio. */
+const ARRIBA = 380;
+const ABAJO = H - 270;
 
 /* Resolución de las imágenes respecto a la maqueta: 0,6 → unos 150 ppp,
  * nítido en pantalla sin que el PDF se dispare de peso. */
@@ -209,7 +214,7 @@ function folio(doc: Doc, lado: 0 | 1, n: number) {
 /** Título de la lámina y escala, bajo el dibujo. */
 function cajetin(doc: Doc, x: number, ancho: number, titulo?: string, escala?: string) {
   if (!titulo && !escala) return;
-  const y = 1890;
+  const y = ABAJO + 30;
   linea(doc, x, y, x + ancho, y);
   const estilo: Estilo = { fuente: 'rotulo', tam: 36, espacio: 5 };
   if (titulo) texto(doc, titulo.toUpperCase(), x, y + 54, estilo);
@@ -256,11 +261,11 @@ function lamina(p: Proyecto, archivo: string) {
 async function portada(doc: Doc, idioma: Idioma, primera: Proyecto, anio: string) {
   const t = textos(idioma);
   nuevaPagina(doc, P);
-  await aSangre(doc, primera.portada.archivo, { x: 0, y: 0, w: P, h: 1480 });
-  texto(doc, t.portfolio.titulo.toLowerCase(), M - 16, 1840, { fuente: 'grande', tam: 330, espacio: -6 });
-  const estilo: Estilo = { fuente: 'rotulo', tam: 46, espacio: 5 };
-  const ancho = texto(doc, `${SITIO.nombre.toUpperCase()}  ·  ${anio}  ·  `, M, 1990, estilo);
-  texto(doc, t.portfolio.seleccion.toUpperCase(), M + ancho, 1990, { ...estilo, color: TRAZO });
+  await aSangre(doc, primera.portada.archivo, { x: 0, y: 0, w: P, h: 2150 });
+  texto(doc, t.portfolio.titulo.toLowerCase(), M - 14, 2560, { fuente: 'grande', tam: 300, espacio: -6 });
+  const estilo: Estilo = { fuente: 'rotulo', tam: 42, espacio: 5 };
+  const ancho = texto(doc, `${SITIO.nombre.toUpperCase()}  ·  ${anio}  ·  `, M, 2720, estilo);
+  texto(doc, t.portfolio.seleccion.toUpperCase(), M + ancho, 2720, { ...estilo, color: TRAZO });
 }
 
 async function sobreMi(doc: Doc, idioma: Idioma) {
@@ -268,28 +273,28 @@ async function sobreMi(doc: Doc, idioma: Idioma) {
   const cv = curriculum(idioma);
   nuevaPagina(doc, W);
 
-  /* Página izquierda, columna 1: la presentación. */
+  /* Página izquierda, arriba: la presentación. */
+  const ancho = P - 2 * M;
   texto(doc, SITIO.nombre.toUpperCase(), M, 440, { fuente: 'titulo', tam: 96 });
   texto(doc, t.inicio.rotulo.toUpperCase(), M, 530, { fuente: 'acento', tam: 52, color: TRAZO });
-  parrafo(doc, t.inicio.entradilla, M, 680, 1240, 64, { fuente: 'cuerpo', tam: 46 });
+  let y = parrafo(doc, t.inicio.entradilla, M, 680, ancho - 120, 64, { fuente: 'cuerpo', tam: 46 }) + 60;
 
   const datos = [...t.inicio.datos, SITIO.programas.join(' · ')];
   datos.forEach((d, i) =>
-    texto(doc, d.toUpperCase(), M, 1480 + i * 60, { fuente: 'rotulo', tam: 34, espacio: 5 }),
+    texto(doc, d.toUpperCase(), M, y + i * 60, { fuente: 'rotulo', tam: 34, espacio: 5 }),
   );
-  texto(doc, SITIO.correo, M, 1790, { fuente: 'cuerpo', tam: 40 });
+  y += datos.length * 60 + 30;
+  texto(doc, SITIO.correo, M, y, { fuente: 'cuerpo', tam: 40 });
 
-  /* Columna 2: un currículum breve, con los mismos datos que el de la web. */
-  const c = 1560;
-  const ancho = P - M - c;
-  linea(doc, c - 70, 380, c - 70, 1800);
+  /* Debajo, un currículum breve, con los mismos datos que el de la web. */
+  const c = M;
+  y += 190;
   const entrada = (y: number, titulo: string, fecha: string, detalle: string) => {
     texto(doc, titulo, c, y, { fuente: 'titulo', tam: 38 });
     texto(doc, fecha.toUpperCase(), c + ancho, y, { fuente: 'rotulo', tam: 32, color: GRIS, espacio: 2, alinear: 'right' });
     return parrafo(doc, detalle, c, y + 48, ancho, 44, { fuente: 'cuerpo', tam: 34 }) - 4 + 40;
   };
 
-  let y = 380;
   bloque(doc, c, y, ancho, cv.secciones.estudios);
   y += 100;
   for (const e of cv.estudios) y = entrada(y, e.titulo, e.periodo, e.centro);
@@ -307,7 +312,7 @@ async function sobreMi(doc: Doc, idioma: Idioma) {
   for (const e of cv.experiencia) y = entrada(y, e.puesto, e.periodo, [e.entidad, e.lugar].filter(Boolean).join(' · '));
 
   /* Página derecha: la foto sola, recortada por la cintura y centrada. */
-  const alto = 1350;
+  const alto = 1600;
   const recorte = { left: 0, top: 380, width: 996, height: 920 };
   const anchoFoto = Math.round((alto * recorte.width) / recorte.height);
   await aSangre(doc, 'foto-benat.jpg', { x: P + Math.round((P - anchoFoto) / 2), y: Math.round((H - alto) / 2), w: anchoFoto, h: alto }, recorte);
@@ -322,17 +327,23 @@ async function indice(doc: Doc, idioma: Idioma, entradas: Entrada[]) {
   texto(doc, t.portfolio.indice, M, 420, { fuente: 'grande', tam: 160 });
   texto(doc, t.portfolio.seleccion.toUpperCase(), M, 510, { fuente: 'acento', tam: 50, color: TRAZO });
 
-  /* Una columna por proyecto; con cuatro, el pliegue cae entre la 2.ª y la 3.ª. */
-  const hueco = 80;
-  const ancho = Math.floor((W - 2 * M - (entradas.length - 1) * hueco) / entradas.length);
+  /* Rejilla de 2×2: dos proyectos por página, uno encima de otro, con la
+   * imagen a la izquierda y el número y los datos a su lado. */
+  const filas = 2;
+  const altoFila = 900;
+  const anchoImagen = 1000;
+  const anchoTexto = P - 2 * M - anchoImagen - 80;
   for (const [i, { numero, p, comienzo }] of entradas.entries()) {
-    const x = M + i * (ancho + hueco);
-    await aSangre(doc, p.portada.archivo, { x, y: 600, w: ancho, h: 760 });
-    cifra(doc, numero, x - 6, 1650, 210);
-    let y = parrafo(doc, p.titulo.toUpperCase(), x, 1720, ancho, 58, { fuente: 'titulo', tam: 48 });
+    const pagina = Math.floor(i / filas);
+    const x = pagina * P + M;
+    const yFila = 680 + (i % filas) * (altoFila + 160);
+    await aSangre(doc, p.portada.archivo, { x, y: yFila, w: anchoImagen, h: altoFila });
+    const xT = x + anchoImagen + 80;
+    cifra(doc, numero, xT - 6, yFila + 200, 210);
+    let y = parrafo(doc, p.titulo.toUpperCase(), xT, yFila + 330, anchoTexto, 58, { fuente: 'titulo', tam: 48 });
     y += 10;
-    texto(doc, (p.lugar ?? '').toUpperCase(), x, y, { fuente: 'acento', tam: 40, color: p.lomo ?? TRAZO });
-    texto(doc, `${t.portfolio.pagina} ${comienzo}`, x, y + 60, { fuente: 'rotulo', tam: 32, color: GRIS, espacio: 2 });
+    texto(doc, (p.lugar ?? '').toUpperCase(), xT, y, { fuente: 'acento', tam: 40, color: p.lomo ?? TRAZO });
+    texto(doc, `${t.portfolio.pagina} ${comienzo}`, xT, y + 60, { fuente: 'rotulo', tam: 32, color: GRIS, espacio: 2 });
   }
   folio(doc, 0, 4);
   folio(doc, 1, 5);
@@ -344,17 +355,21 @@ async function apertura(doc: Doc, idioma: Idioma, { numero, p, comienzo }: Entra
   nuevaPagina(doc, W);
   await aSangre(doc, p.portada.archivo, { x: P, y: 0, w: P, h: H });
 
+  const ancho = P - 2 * M;
   cifra(doc, numero, M, 500, 290);
-  texto(doc, p.titulo.toUpperCase(), M, 640, { fuente: 'titulo', tam: 72 });
-  texto(doc, (p.lugar ?? '').toUpperCase(), M, 720, { fuente: 'acento', tam: 52, color: p.lomo ?? TRAZO });
-  if (p.subtitulo) texto(doc, p.subtitulo, M, 810, { fuente: 'cuerpo', tam: 46, color: GRIS });
+  let y = parrafo(doc, p.titulo.toUpperCase(), M, 640, ancho, 84, { fuente: 'titulo', tam: 72 }) - 4;
+  texto(doc, (p.lugar ?? '').toUpperCase(), M, y, { fuente: 'acento', tam: 52, color: p.lomo ?? TRAZO });
+  y += 90;
+  if (p.subtitulo) y = parrafo(doc, p.subtitulo, M, y, ancho, 60, { fuente: 'cuerpo', tam: 46, color: GRIS });
 
-  let y = 930;
-  for (const s of p.texto) y = parrafo(doc, s, M, y, 1720, 60, { fuente: 'cuerpo', tam: 42 }) + 60;
+  y += 90;
+  for (const s of p.texto) y = parrafo(doc, s, M, y, ancho - 80, 60, { fuente: 'cuerpo', tam: 42 }) + 60;
 
-  /* La ficha: los datos del proyecto y los programas, solo aquí. */
-  const xF = 2050;
-  linea(doc, xF - 60, 880, xF - 60, 1800);
+  /* La ficha, debajo del texto: los datos del proyecto y los programas, solo aquí. */
+  y += 20;
+  linea(doc, M, y, P - M, y);
+  y += 90;
+  const xV = M + 520;
   const ficha: [string, string | undefined][] = [
     [t.proyectos.ficha.lugar, p.lugar],
     [t.proyectos.ficha.tipo, p.tipo],
@@ -362,11 +377,10 @@ async function apertura(doc: Doc, idioma: Idioma, { numero, p, comienzo }: Entra
     [t.proyectos.ficha.anio, p.anio],
     [t.portfolio.programas, p.herramientas.join(' · ')],
   ];
-  let yF = 930;
   for (const [clave, valor] of ficha) {
     if (!valor) continue;
-    texto(doc, clave.toUpperCase(), xF, yF, { fuente: 'rotulo', tam: 32, color: GRIS, espacio: 2 });
-    yF = parrafo(doc, valor, xF, yF + 52, P - M - xF, 50, { fuente: 'cuerpo', tam: 38 }) + 70;
+    texto(doc, clave.toUpperCase(), M, y, { fuente: 'rotulo', tam: 32, color: GRIS, espacio: 2 });
+    y = parrafo(doc, valor, xV, y, P - M - xV, 50, { fuente: 'cuerpo', tam: 38 }) + 30;
   }
   folio(doc, 0, comienzo);
 }
@@ -382,7 +396,20 @@ async function pliego(doc: Doc, { numero, p }: Entrada, pl: Pliego, pagina: numb
     }
     /* Entera: todo el alto, pegada a la derecha; el título en el blanco. */
     const meta = await sharp(ruta(l.archivo)).metadata();
-    const ancho = Math.min(W, Math.round((H * (meta.width ?? 1)) / (meta.height ?? 1)));
+    const proporcion = (meta.width ?? 1) / (meta.height ?? 1);
+    if (proporcion > W / H) {
+      /* Más apaisada que el pliego: a todo el ancho, arriba, sin recortar;
+       * el número y el título en el blanco de abajo. */
+      const alto = Math.round(W / proporcion);
+      await aSangre(doc, l.archivo, { x: 0, y: 0, w: W, h: alto });
+      cifra(doc, numero, M, H - 330, 140);
+      linea(doc, M + 260, H - 250, W - M, H - 250);
+      if (l.titulo) texto(doc, l.titulo.toUpperCase(), M + 260, H - 200, { fuente: 'rotulo', tam: 36, espacio: 5 });
+      folio(doc, 0, pagina);
+      folio(doc, 1, pagina + 1);
+      return;
+    }
+    const ancho = Math.min(W, Math.round(H * proporcion));
     await aSangre(doc, l.archivo, { x: W - ancho, y: 0, w: ancho, h: H });
     numeroMediano(doc, numero);
     linea(doc, M, H - 250, W - ancho - 80, H - 250);
@@ -395,12 +422,12 @@ async function pliego(doc: Doc, { numero, p }: Entrada, pl: Pliego, pagina: numb
 
   if (pl.formato === 'dibujo') {
     const l = lamina(p, pl.archivo);
-    await enCaja(doc, l.archivo, { x: M, y: 380, w: W - 2 * M, h: 1860 - 380 });
+    await enCaja(doc, l.archivo, { x: M, y: ARRIBA, w: W - 2 * M, h: ABAJO - ARRIBA });
     cajetin(doc, M, W - 2 * M, l.titulo, l.escala);
   } else {
     for (const [lado, archivo] of [[0, pl.izq], [1, pl.der]] as const) {
       const l = lamina(p, archivo);
-      const caja = { x: lado * P + (lado === 0 ? M : 80), y: 380, w: P - M - 80, h: 1860 - 380 };
+      const caja = { x: lado * P + (lado === 0 ? M : 80), y: ARRIBA, w: P - M - 80, h: ABAJO - ARRIBA };
       await enCaja(doc, l.archivo, caja);
       cajetin(doc, caja.x, caja.w, l.titulo, l.escala);
     }

@@ -151,7 +151,7 @@ Detalles que importan:
 
 La sección Proyectos enseña los cuadernos **cerrados**, tal cual son: la tapa de
 corcho con la cinta de color (`lomo`), el número, el boceto (`diagrama`), el
-título y la ficha, en las mismas proporciones apaisadas que tienen por dentro
+título y la ficha, en las mismas proporciones verticales (A4) que tienen por dentro
 (`src/components/Estante.astro`). La tapa es un único componente,
 `src/components/TapaCuaderno.astro`, que se usa también como primera cara del
 cuaderno: se ve igual en los dos sitios.
@@ -213,14 +213,15 @@ contenido que la web. **No entran todos los proyectos**: solo los de
 Gubin). La web sigue enseñando los seis.
 
 Se maqueta por **dobles páginas**: cada página del PDF es un pliego de
-594×210 mm (dos A4 apaisados), salvo la portada, que va sola. Así cualquier
-visor enseña la doble página entera y las imágenes grandes no se parten.
+420×297 mm (dos A4 verticales: un A3), salvo la portada, que va sola en A4
+vertical. Así cualquier visor enseña la doble página entera y las imágenes
+grandes no se parten. Los cuadernos de la web tienen las mismas proporciones.
 
 | Pliego | Qué lleva |
 | --- | --- |
 | Portada (página suelta) | la portada del primer proyecto, "portfolio" y el nombre |
 | Sobre mí | la presentación y un currículum breve · la foto |
-| Índice | una columna por proyecto: imagen, número, título, lugar y página |
+| Índice | dos proyectos por página: imagen, número, título, lugar y página |
 | Apertura de cada proyecto | número, título, texto y ficha · la portada a sangre |
 | El resto | lo que diga `src/data/portfolio.ts`, pliego a pliego |
 
@@ -234,6 +235,11 @@ En `src/data/portfolio.ts` cada pliego es de uno de estos tipos:
 Regla que se ha seguido: además de la apertura, **como mucho una imagen
 grande por proyecto**; el resto, en caja. Las láminas se nombran por su
 archivo; el título y la escala salen del `.json` en cada idioma.
+
+Al exportar láminas nuevas, piénsalas **en vertical**: unos 2100×2970 px para
+una página entera y unos 1900×2400 px para una lámina en caja (la de `par`).
+Las láminas apaisadas de ahora siguen valiendo: salen centradas en su página,
+más pequeñas, hasta que se recompongan.
 
 En cada página solo se repiten el número del proyecto (arriba a la izquierda)
 y el número de página (en la esquina exterior). El nombre, "portfolio" y los

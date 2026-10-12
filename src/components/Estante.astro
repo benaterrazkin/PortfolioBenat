@@ -7,7 +7,7 @@ import type { Idioma } from '../i18n/idiomas';
 /**
  * La pila de cuadernos: un cuaderno cerrado por proyecto, con su tapa de
  * corcho, su cinta de color y su boceto, en las mismas proporciones que
- * tiene por dentro (A4 apaisado).
+ * tiene por dentro (A4 vertical).
  *
  * Con ratón, los cuadernos están superpuestos en fila: de cada uno asoma
  * la cinta, el número y el principio del título. Al pasar por uno, los
@@ -73,7 +73,7 @@ const lista = cuadernos(idioma);
     --lomo-defecto: var(--color-lomo);
     position: relative;
     display: block;
-    aspect-ratio: 297 / 210;
+    aspect-ratio: 210 / 297;
     background-color: var(--color-corcho);
     box-shadow:
       0 2px 4px rgb(20 22 26 / 0.08),
@@ -111,7 +111,7 @@ const lista = cuadernos(idioma);
     display: none;
   }
   .pila-fila li {
-    flex: 0 0 82%;
+    flex: 0 0 70%;
     scroll-snap-align: start;
   }
 
@@ -119,8 +119,9 @@ const lista = cuadernos(idioma);
   @media (hover: hover) and (pointer: fine) and (width >= 48rem) {
     .pila {
       /* Lo que mide cada cuaderno y lo que asoma de cada uno: los seis
-         caben justos a lo ancho, superpuestos. */
-      --ancho: 38cqw;
+         caben justos a lo ancho, superpuestos, y de cada uno se ve más de
+         la mitad, boceto incluido. */
+      --ancho: 26cqw;
       --paso: calc((100cqw - var(--ancho)) / (var(--libros) - 1));
       --solape: calc(var(--ancho) - var(--paso));
       overflow-x: clip;
